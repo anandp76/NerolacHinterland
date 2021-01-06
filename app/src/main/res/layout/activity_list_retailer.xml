@@ -1,0 +1,71 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:background="#fafafa"
+    android:fitsSystemWindows="true"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+    <RelativeLayout
+        android:id="@+id/mLayoutTop"
+        android:background="@drawable/ic_swipe_list_bg"
+        android:layout_width="match_parent"
+        android:layout_height="100dp">
+        <ImageView
+            android:id="@+id/mImgLogo"
+            android:layout_marginTop="10dp"
+            android:layout_marginLeft="15dp"
+            android:layout_width="150dp"
+            android:layout_height="40dp"
+            android:src="@drawable/ic_nerolac_logo"/>
+
+        <ImageView
+            android:layout_alignParentRight="true"
+            android:layout_marginTop="10dp"
+            android:layout_marginRight="15dp"
+            android:layout_width="35dp"
+            android:layout_height="35dp"
+            android:src="@drawable/ic_menu_white"/>
+
+        <TextView
+            android:layout_marginTop="10dp"
+            android:layout_below="@+id/mImgLogo"
+            android:layout_centerHorizontal="true"
+            android:text="Retailers"
+            android:textSize="20dp"
+            android:textColor="#ffffff"
+            android:textStyle="bold"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"/>
+
+    </RelativeLayout>
+
+    <EditText
+        android:id="@+id/mEditSearch"
+        android:drawableRight="@drawable/ic_search_black"
+        android:layout_marginLeft="30dp"
+        android:layout_marginRight="30dp"
+        android:layout_marginTop="20dp"
+        android:layout_below="@+id/mLayoutTop"
+        android:background="@drawable/border_rectangle_shap"
+        android:padding="10dp"
+        android:hint="Search"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"/>
+
+<ListView
+    android:layout_marginTop="20dp"
+    android:layout_below="@+id/mEditSearch"
+    android:id="@+id/mListView"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"/>
+
+    <ImageView
+        android:id="@+id/mImgAddNew"
+        android:layout_margin="20dp"
+        android:layout_alignParentRight="true"
+        android:layout_alignParentBottom="true"
+        android:src="@drawable/ic_add_new"
+        android:layout_width="50dp"
+        android:layout_height="50dp"/>
+
+
+</RelativeLayout>

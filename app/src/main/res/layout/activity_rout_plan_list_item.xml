@@ -1,0 +1,79 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/mLayoutItem"
+    android:background="#ffffff"
+    android:padding="8dp"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content">
+
+
+
+    <RelativeLayout
+        android:id="@+id/mImgPhoto"
+        android:layout_width="55dp"
+        android:layout_height="55dp">
+
+        <TextView
+            android:id="@+id/mTxtDate"
+            android:layout_marginTop="5dp"
+            android:layout_centerHorizontal="true"
+            android:textSize="20dp"
+            android:textStyle="bold"
+            android:textColor="#7a7a7a"
+            android:text="5"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"/>
+
+        <TextView
+            android:layout_below="@+id/mTxtDate"
+            android:id="@+id/mTxtMon"
+            android:layout_marginTop="1dp"
+            android:layout_centerHorizontal="true"
+            android:textSize="13dp"
+            android:textColor="#A6a6a6"
+            android:text="JAN"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"/>
+
+    </RelativeLayout>
+    <View
+        android:layout_toRightOf="@+id/mImgPhoto"
+        android:id="@+id/mViewList"
+        android:background="#c2c2c2"
+        android:layout_centerVertical="true"
+        android:layout_width="1dp"
+        android:layout_height="40dp"/>
+    <RelativeLayout
+        android:layout_marginLeft="15dp"
+        android:layout_toRightOf="@+id/mViewList"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+        <ImageView
+            android:layout_centerVertical="true"
+            android:layout_alignParentRight="true"
+            android:src="@drawable/ic_check_gray"
+            android:layout_width="35dp"
+            android:layout_height="35dp"/>
+
+        <TextView
+            android:id="@+id/mTextTitle"
+            android:textStyle="bold"
+            android:textColor="@color/appblue"
+            android:text="Village Name"
+            android:textSize="16dp"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"/>
+
+        <TextView
+            android:id="@+id/mTextAddresss"
+            android:layout_marginTop="5dp"
+            android:layout_below="@+id/mTextTitle"
+            android:textColor="#000000"
+            android:text="Block, Tehsil, District"
+            android:textSize="15dp"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"/>
+
+    </RelativeLayout>
+
+</RelativeLayout>

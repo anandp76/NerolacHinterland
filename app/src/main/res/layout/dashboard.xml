@@ -1,0 +1,788 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:background="@drawable/ic_nero_home_bg">
+
+
+
+    <GridLayout
+        android:layout_alignParentBottom="true"
+        android:id="@+id/mainGrid"
+        android:columnCount="3"
+        android:alignmentMode="alignMargins"
+        android:columnOrderPreserved="false"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:padding="10dp">
+
+
+
+        <!--ROW A-->
+        <RelativeLayout
+            android:layout_width="0dp"
+            android:layout_height="130dp"
+            android:layout_columnWeight="1"
+            android:layout_marginBottom="10dp"
+            android:layout_marginLeft="5dp"
+            android:layout_marginRight="5dp">
+
+        <androidx.cardview.widget.CardView
+            android:id="@+id/mCard1"
+            android:layout_width="match_parent"
+            android:layout_height="100dp"
+            app:cardCornerRadius="18dp"
+            app:cardElevation="8dp"
+            android:background="@color/white"
+            app:cardBackgroundColor="@color/white">
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent">
+                <ImageView
+                    android:layout_centerInParent="true"
+                    android:layout_width="60dp"
+                    android:layout_height="60dp"
+                    android:src="@drawable/ic_nero_home_sales_order"/>
+            </RelativeLayout>
+
+        </androidx.cardview.widget.CardView>
+        <TextView
+            android:layout_marginTop="5dp"
+            android:layout_centerHorizontal="true"
+            android:textStyle="bold"
+            android:text="Retailer"
+            android:textSize="15dp"
+            android:textColor="@color/appblue"
+            android:layout_below="@+id/mCard1"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"/>
+        </RelativeLayout>
+
+        <RelativeLayout
+            android:layout_width="0dp"
+            android:layout_height="130dp"
+            android:layout_columnWeight="1"
+            android:layout_marginBottom="10dp"
+            android:layout_marginLeft="5dp"
+            android:layout_marginRight="5dp">
+
+            <androidx.cardview.widget.CardView
+                android:id="@+id/mCard2"
+                android:layout_width="match_parent"
+                android:layout_height="100dp"
+                app:cardCornerRadius="18dp"
+                app:cardElevation="8dp"
+                android:background="@color/white"
+                app:cardBackgroundColor="@color/white">
+                <RelativeLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent">
+                    <ImageView
+                        android:layout_centerInParent="true"
+                        android:layout_width="60dp"
+                        android:layout_height="60dp"
+                        android:src="@drawable/ic_nero_home_sales_order"/>
+                </RelativeLayout>
+
+            </androidx.cardview.widget.CardView>
+            <TextView
+                android:layout_marginTop="5dp"
+                android:layout_centerHorizontal="true"
+                android:textStyle="bold"
+                android:text="Distributor"
+                android:textSize="15dp"
+                android:textColor="@color/appblue"
+                android:layout_below="@+id/mCard2"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"/>
+        </RelativeLayout>
+
+
+        <RelativeLayout
+            android:layout_width="0dp"
+            android:layout_height="130dp"
+            android:layout_columnWeight="1"
+            android:layout_marginBottom="10dp"
+            android:layout_marginLeft="5dp"
+            android:layout_marginRight="5dp">
+
+            <androidx.cardview.widget.CardView
+                android:id="@+id/mCard3"
+                android:layout_width="match_parent"
+                android:layout_height="100dp"
+                app:cardCornerRadius="18dp"
+                app:cardElevation="8dp"
+                android:background="@color/white"
+                app:cardBackgroundColor="@color/white">
+                <RelativeLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent">
+                    <ImageView
+                        android:layout_centerInParent="true"
+                        android:layout_width="60dp"
+                        android:layout_height="60dp"
+                        android:src="@drawable/ic_nero_home_sales_order"/>
+                </RelativeLayout>
+
+            </androidx.cardview.widget.CardView>
+            <TextView
+                android:layout_marginTop="5dp"
+                android:layout_centerHorizontal="true"
+                android:textStyle="bold"
+                android:text="Sales Order"
+                android:textSize="15dp"
+                android:textColor="@color/appblue"
+                android:layout_below="@+id/mCard3"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"/>
+        </RelativeLayout>
+
+        <!--ROW B-->
+        <RelativeLayout
+            android:layout_width="0dp"
+            android:layout_height="130dp"
+            android:layout_columnWeight="1"
+            android:layout_marginBottom="10dp"
+            android:layout_marginLeft="5dp"
+            android:layout_marginRight="5dp">
+
+            <androidx.cardview.widget.CardView
+                android:id="@+id/mCard4"
+                android:layout_width="match_parent"
+                android:layout_height="100dp"
+                app:cardCornerRadius="18dp"
+                app:cardElevation="8dp"
+                android:background="@color/white"
+                app:cardBackgroundColor="@color/white">
+                <RelativeLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent">
+                    <ImageView
+                        android:layout_centerInParent="true"
+                        android:layout_width="60dp"
+                        android:layout_height="60dp"
+                        android:src="@drawable/ic_nero_home_sales_order"/>
+                </RelativeLayout>
+
+            </androidx.cardview.widget.CardView>
+            <TextView
+                android:layout_marginTop="5dp"
+                android:layout_centerHorizontal="true"
+                android:textStyle="bold"
+                android:text="Heat Market"
+                android:textSize="15dp"
+                android:textColor="@color/appblue"
+                android:layout_below="@+id/mCard4"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"/>
+        </RelativeLayout>
+
+        <RelativeLayout
+            android:layout_width="0dp"
+            android:layout_height="130dp"
+            android:layout_columnWeight="1"
+            android:layout_marginBottom="10dp"
+            android:layout_marginLeft="5dp"
+            android:layout_marginRight="5dp">
+
+            <androidx.cardview.widget.CardView
+                android:id="@+id/mCard5"
+                android:layout_width="match_parent"
+                android:layout_height="100dp"
+                app:cardCornerRadius="18dp"
+                app:cardElevation="8dp"
+                android:background="@color/white"
+                app:cardBackgroundColor="@color/white">
+                <RelativeLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent">
+                    <ImageView
+                        android:layout_centerInParent="true"
+                        android:layout_width="60dp"
+                        android:layout_height="60dp"
+                        android:src="@drawable/ic_nero_home_sales_order"/>
+                </RelativeLayout>
+
+            </androidx.cardview.widget.CardView>
+            <TextView
+                android:layout_marginTop="5dp"
+                android:layout_centerHorizontal="true"
+                android:textStyle="bold"
+                android:text="Anaj Mandi"
+                android:textSize="15dp"
+                android:textColor="@color/appblue"
+                android:layout_below="@+id/mCard5"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"/>
+        </RelativeLayout>
+
+
+        <RelativeLayout
+            android:layout_width="0dp"
+            android:layout_height="130dp"
+            android:layout_columnWeight="1"
+            android:layout_marginBottom="10dp"
+            android:layout_marginLeft="5dp"
+            android:layout_marginRight="5dp">
+
+            <androidx.cardview.widget.CardView
+                android:id="@+id/mCard6"
+                android:layout_width="match_parent"
+                android:layout_height="100dp"
+                app:cardCornerRadius="18dp"
+                app:cardElevation="8dp"
+                android:background="@color/white"
+                app:cardBackgroundColor="@color/white">
+                <RelativeLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent">
+                    <ImageView
+                        android:layout_centerInParent="true"
+                        android:layout_width="60dp"
+                        android:layout_height="60dp"
+                        android:src="@drawable/ic_nero_home_sales_order"/>
+                </RelativeLayout>
+
+            </androidx.cardview.widget.CardView>
+            <TextView
+                android:layout_marginTop="5dp"
+                android:layout_centerHorizontal="true"
+                android:textStyle="bold"
+                android:text="Asha Bahu"
+                android:textSize="15dp"
+                android:textColor="@color/appblue"
+                android:layout_below="@+id/mCard6"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"/>
+        </RelativeLayout>
+
+
+        <!--ROW C-->
+        <RelativeLayout
+            android:layout_width="0dp"
+            android:layout_height="130dp"
+            android:layout_columnWeight="1"
+            android:layout_marginBottom="10dp"
+            android:layout_marginLeft="5dp"
+            android:layout_marginRight="5dp">
+
+            <androidx.cardview.widget.CardView
+                android:id="@+id/mCard7"
+                android:layout_width="match_parent"
+                android:layout_height="100dp"
+                app:cardCornerRadius="18dp"
+                app:cardElevation="8dp"
+                android:background="@color/white"
+                app:cardBackgroundColor="@color/white">
+                <RelativeLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent">
+                    <ImageView
+                        android:layout_centerInParent="true"
+                        android:layout_width="60dp"
+                        android:layout_height="60dp"
+                        android:src="@drawable/ic_nero_home_sales_order"/>
+                </RelativeLayout>
+
+            </androidx.cardview.widget.CardView>
+            <TextView
+                android:layout_marginTop="5dp"
+                android:layout_centerHorizontal="true"
+                android:textStyle="bold"
+                android:text="Angan wadi"
+                android:textSize="15dp"
+                android:textColor="@color/appblue"
+                android:layout_below="@+id/mCard7"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"/>
+        </RelativeLayout>
+
+        <RelativeLayout
+            android:layout_width="0dp"
+            android:layout_height="130dp"
+            android:layout_columnWeight="1"
+            android:layout_marginBottom="10dp"
+            android:layout_marginLeft="5dp"
+            android:layout_marginRight="5dp">
+
+            <androidx.cardview.widget.CardView
+                android:id="@+id/mCard8"
+                android:layout_width="match_parent"
+                android:layout_height="100dp"
+                app:cardCornerRadius="18dp"
+                app:cardElevation="8dp"
+                android:background="@color/white"
+                app:cardBackgroundColor="@color/white">
+                <RelativeLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent">
+                    <ImageView
+                        android:layout_centerInParent="true"
+                        android:layout_width="60dp"
+                        android:layout_height="60dp"
+                        android:src="@drawable/ic_nero_home_sales_order"/>
+                </RelativeLayout>
+
+            </androidx.cardview.widget.CardView>
+            <TextView
+                android:layout_marginTop="5dp"
+                android:layout_centerHorizontal="true"
+                android:textStyle="bold"
+                android:text="Sarpanch"
+                android:textSize="15dp"
+                android:textColor="@color/appblue"
+                android:layout_below="@+id/mCard8"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"/>
+        </RelativeLayout>
+
+
+        <RelativeLayout
+            android:layout_width="0dp"
+            android:layout_height="130dp"
+            android:layout_columnWeight="1"
+            android:layout_marginBottom="10dp"
+            android:layout_marginLeft="5dp"
+            android:layout_marginRight="5dp">
+
+            <androidx.cardview.widget.CardView
+                android:id="@+id/mCard9"
+                android:layout_width="match_parent"
+                android:layout_height="100dp"
+                app:cardCornerRadius="18dp"
+                app:cardElevation="8dp"
+                android:background="@color/white"
+                app:cardBackgroundColor="@color/white">
+                <RelativeLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent">
+                    <ImageView
+                        android:layout_centerInParent="true"
+                        android:layout_width="60dp"
+                        android:layout_height="60dp"
+                        android:src="@drawable/ic_nero_home_sales_order"/>
+                </RelativeLayout>
+
+            </androidx.cardview.widget.CardView>
+            <TextView
+                android:layout_marginTop="5dp"
+                android:layout_centerHorizontal="true"
+                android:textStyle="bold"
+                android:text="Inbox"
+                android:textSize="15dp"
+                android:textColor="@color/appblue"
+                android:layout_below="@+id/mCard9"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"/>
+        </RelativeLayout>
+
+
+
+
+
+
+
+
+    </GridLayout>
+
+
+
+
+
+<!--<LinearLayout
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:background="#f8f8f8">
+
+
+
+    <LinearLayout
+        android:weightSum="2"
+        android:layout_marginTop="10dp"
+        android:orientation="horizontal"
+        android:layout_margin="10dp"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <LinearLayout
+            android:background="@drawable/btn_corner_dashboard"
+            android:elevation="2dp"
+            android:layout_margin="10dp"
+            android:layout_weight="1"
+            android:id="@+id/linearCalendars"
+            android:gravity="center"
+            android:orientation="vertical"
+            android:layout_width="0dp"
+            android:layout_height="120dp">
+
+            <ImageView
+                android:layout_marginTop="20dp"
+                android:layout_width="40dp"
+                android:layout_height="40dp"
+                android:background="@drawable/ic_calendars_on" />
+
+            <TextView
+                android:layout_marginTop="5dp"
+                android:textColor="#ffffff"
+                android:textSize="13dp"
+                android:layout_weight="1"
+                android:layout_width="wrap_content"
+                android:text="Calendars &amp; Chart"
+                android:layout_height="wrap_content" />
+
+        </LinearLayout>
+
+
+
+
+        <LinearLayout
+            android:background="@drawable/btn_corner_dashboard"
+            android:elevation="2dp"
+            android:padding="10dp"
+            android:layout_margin="10dp"
+            android:layout_weight="1"
+            android:id="@+id/linearSyllabus"
+            android:gravity="center"
+            android:orientation="vertical"
+            android:layout_width="0dp"
+            android:layout_height="120dp">
+
+            <ImageView
+                android:layout_marginTop="20dp"
+                android:layout_width="40dp"
+                android:layout_height="40dp"
+                android:background="@drawable/ic_syllabus_on" />
+
+            <TextView
+                android:layout_marginTop="5dp"
+                android:textColor="#ffffff"
+                android:textSize="13dp"
+                android:layout_weight="1"
+                android:layout_width="wrap_content"
+                android:text="Syllabus &amp; Homework"
+                android:layout_height="wrap_content" />
+
+
+        </LinearLayout>
+
+
+
+    </LinearLayout>
+
+
+
+
+    <LinearLayout
+        android:weightSum="2"
+        android:layout_marginTop="10dp"
+        android:orientation="horizontal"
+        android:layout_margin="10dp"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <LinearLayout
+            android:background="@drawable/btn_corner_dashboard"
+            android:elevation="2dp"
+            android:layout_margin="10dp"
+            android:layout_weight="1"
+            android:id="@+id/linearFees"
+            android:gravity="center"
+            android:orientation="vertical"
+            android:layout_width="0dp"
+            android:layout_height="120dp">
+
+            <ImageView
+                android:layout_marginTop="20dp"
+                android:layout_width="40dp"
+                android:layout_height="40dp"
+                android:background="@drawable/ic_fees_on" />
+
+            <TextView
+                android:layout_marginTop="5dp"
+                android:textColor="#ffffff"
+                android:textSize="13dp"
+                android:layout_weight="1"
+                android:layout_width="wrap_content"
+                android:text="Fees"
+                android:layout_height="wrap_content" />
+
+        </LinearLayout>
+
+
+
+
+        <LinearLayout
+            android:background="@drawable/btn_corner_dashboard"
+            android:elevation="2dp"
+            android:padding="10dp"
+            android:layout_margin="10dp"
+            android:layout_weight="1"
+            android:id="@+id/linearDiary"
+            android:gravity="center"
+            android:orientation="vertical"
+            android:layout_width="0dp"
+            android:layout_height="120dp">
+
+            <ImageView
+                android:layout_marginTop="20dp"
+                android:layout_width="40dp"
+                android:layout_height="40dp"
+                android:background="@drawable/ic_diary_on" />
+
+            <TextView
+                android:layout_marginTop="5dp"
+                android:textColor="#ffffff"
+                android:textSize="13dp"
+                android:layout_weight="1"
+                android:layout_width="wrap_content"
+                android:text="Diary"
+                android:layout_height="wrap_content" />
+
+
+        </LinearLayout>
+
+
+
+    </LinearLayout>
+
+
+    <LinearLayout
+        android:weightSum="2"
+        android:layout_marginTop="10dp"
+        android:orientation="horizontal"
+        android:layout_margin="10dp"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <LinearLayout
+            android:background="@drawable/btn_corner_dashboard"
+            android:elevation="2dp"
+            android:layout_margin="10dp"
+            android:layout_weight="1"
+            android:id="@+id/linearAssignment"
+            android:gravity="center"
+            android:orientation="vertical"
+            android:layout_width="0dp"
+            android:layout_height="120dp">
+
+            <ImageView
+                android:layout_marginTop="20dp"
+                android:layout_width="40dp"
+                android:layout_height="40dp"
+                android:background="@drawable/ic_assignment_on" />
+
+            <TextView
+                android:layout_marginTop="5dp"
+                android:textColor="#ffffff"
+                android:textSize="13dp"
+                android:layout_weight="1"
+                android:layout_width="wrap_content"
+                android:text="On Demand"
+                android:layout_height="wrap_content" />
+
+        </LinearLayout>
+
+
+
+
+        <LinearLayout
+            android:background="@drawable/btn_corner_dashboard"
+            android:elevation="2dp"
+            android:padding="10dp"
+            android:layout_margin="10dp"
+            android:layout_weight="1"
+            android:id="@+id/linearPhotographs"
+            android:gravity="center"
+            android:orientation="vertical"
+            android:layout_width="0dp"
+            android:layout_height="120dp">
+
+            <ImageView
+                android:layout_marginTop="20dp"
+                android:layout_width="40dp"
+                android:layout_height="40dp"
+                android:background="@drawable/ic_photographs_on" />
+
+            <TextView
+                android:layout_marginTop="5dp"
+                android:textColor="#ffffff"
+                android:textSize="13dp"
+                android:layout_weight="1"
+                android:layout_width="wrap_content"
+                android:text="Photographs of Bliss"
+                android:layout_height="wrap_content" />
+
+
+        </LinearLayout>
+
+
+
+    </LinearLayout>
+
+
+
+    <LinearLayout
+        android:weightSum="2"
+        android:layout_marginTop="10dp"
+        android:orientation="horizontal"
+        android:layout_margin="10dp"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <LinearLayout
+            android:background="@drawable/btn_corner_dashboard"
+            android:elevation="2dp"
+            android:layout_margin="10dp"
+            android:layout_weight="1"
+            android:id="@+id/linearComplaint"
+            android:gravity="center"
+            android:orientation="vertical"
+            android:layout_width="0dp"
+            android:layout_height="120dp">
+
+            <ImageView
+                android:layout_marginTop="20dp"
+                android:layout_width="40dp"
+                android:layout_height="40dp"
+                android:background="@drawable/ic_result_on" />
+
+            <TextView
+                android:layout_marginTop="5dp"
+                android:textColor="#ffffff"
+                android:textSize="13dp"
+                android:layout_weight="1"
+                android:layout_width="wrap_content"
+                android:text="Complaint &amp; Suggestion"
+                android:layout_height="wrap_content" />
+
+        </LinearLayout>
+
+
+
+
+        <LinearLayout
+            android:background="@drawable/btn_corner_dashboard"
+            android:elevation="2dp"
+            android:padding="10dp"
+            android:layout_margin="10dp"
+            android:layout_weight="1"
+            android:id="@+id/linearDevelopment"
+            android:gravity="center"
+            android:orientation="vertical"
+            android:layout_width="0dp"
+            android:layout_height="120dp">
+
+            <ImageView
+                android:layout_marginTop="20dp"
+                android:layout_width="40dp"
+                android:layout_height="40dp"
+                android:background="@drawable/ic_report_on" />
+
+            <TextView
+                android:layout_marginTop="5dp"
+                android:textColor="#ffffff"
+                android:textSize="13dp"
+                android:layout_weight="1"
+                android:layout_width="wrap_content"
+                android:text="Development Report"
+                android:layout_height="wrap_content" />
+
+
+        </LinearLayout>
+
+
+
+    </LinearLayout>
+
+
+
+    <LinearLayout
+        android:weightSum="2"
+        android:layout_marginTop="10dp"
+        android:orientation="horizontal"
+        android:layout_margin="10dp"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <LinearLayout
+            android:background="@drawable/btn_corner_dashboard"
+            android:elevation="2dp"
+            android:layout_margin="10dp"
+            android:layout_weight="1"
+            android:id="@+id/linearResult"
+            android:gravity="center"
+            android:orientation="vertical"
+            android:layout_width="0dp"
+            android:layout_height="120dp">
+
+            <ImageView
+                android:layout_marginTop="20dp"
+                android:layout_width="40dp"
+                android:layout_height="40dp"
+                android:background="@drawable/ic_event_on" />
+
+            <TextView
+                android:layout_marginTop="5dp"
+                android:textColor="#ffffff"
+                android:textSize="13dp"
+                android:layout_weight="1"
+                android:layout_width="wrap_content"
+                android:text="Event"
+                android:layout_height="wrap_content" />
+
+        </LinearLayout>
+
+
+
+
+        <LinearLayout
+            android:background="@drawable/btn_corner_dashboard"
+            android:elevation="2dp"
+            android:padding="10dp"
+            android:layout_margin="10dp"
+            android:layout_weight="1"
+            android:id="@+id/linearProfile"
+            android:gravity="center"
+            android:orientation="vertical"
+            android:layout_width="0dp"
+            android:layout_height="120dp">
+
+            <ImageView
+                android:layout_marginTop="20dp"
+                android:layout_width="40dp"
+                android:layout_height="40dp"
+                android:background="@drawable/ic_profile_on" />
+
+            <TextView
+                android:layout_marginTop="5dp"
+                android:textColor="#ffffff"
+                android:textSize="13dp"
+                android:layout_weight="1"
+                android:layout_width="wrap_content"
+                android:text="User Profile"
+                android:layout_height="wrap_content" />
+
+
+        </LinearLayout>
+
+
+
+    </LinearLayout>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+</LinearLayout>-->
+</RelativeLayout>
