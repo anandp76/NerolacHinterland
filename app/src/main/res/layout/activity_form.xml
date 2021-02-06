@@ -66,6 +66,7 @@
             </RelativeLayout>
 
             <EditText
+                android:id="@+id/mEditShopName"
                 android:layout_marginTop="10dp"
                 android:background="@drawable/border_rectangle_shap"
                 android:textColor="#000000"
@@ -74,6 +75,49 @@
                 android:padding="10dp"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"/>
+
+            <LinearLayout
+                android:layout_marginTop="10dp"
+                android:orientation="horizontal"
+                android:weightSum="2"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+                <RelativeLayout
+                    android:background="@drawable/border_rectangle_shap"
+                    android:layout_marginRight="5dp"
+                    android:layout_weight="1"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content">
+                    <Spinner
+                        android:paddingBottom="10dp"
+                        android:background="#00000000"
+                        android:paddingTop="10dp"
+                        android:id="@+id/mSpinnerGSTNumber"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"/>
+                    <ImageView
+                        android:layout_marginRight="10dp"
+                        android:layout_alignParentRight="true"
+                        android:layout_centerVertical="true"
+                        android:src="@drawable/ic_keyboard_arrow"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"/>
+
+                </RelativeLayout>
+                <EditText
+                    android:inputType="textCapCharacters"
+                    android:id="@+id/mEditGstNum"
+                    android:layout_marginLeft="5dp"
+                    android:layout_weight="1"
+                    android:background="@drawable/border_rectangle_shap"
+                    android:textColor="#000000"
+                    android:hint="GST Number"
+                    android:textSize="15dp"
+                    android:padding="10dp"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"/>
+
+            </LinearLayout>
             <LinearLayout
                 android:layout_marginTop="10dp"
                 android:orientation="horizontal"
@@ -81,6 +125,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content">
                 <EditText
+                    android:id="@+id/mEditOwnerFirstName"
                     android:layout_marginRight="5dp"
                     android:layout_weight="1"
                     android:background="@drawable/border_rectangle_shap"
@@ -91,6 +136,7 @@
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"/>
                 <EditText
+                    android:id="@+id/mEditOwnerLastName"
                     android:layout_marginLeft="5dp"
                     android:layout_weight="1"
                     android:background="@drawable/border_rectangle_shap"
@@ -109,16 +155,22 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content">
                 <EditText
+                    android:maxLength="10"
+                    android:id="@+id/mEditPhone"
                     android:layout_marginRight="5dp"
                     android:layout_weight="1"
                     android:background="@drawable/border_rectangle_shap"
                     android:textColor="#000000"
+                    android:inputType="number"
                     android:hint="Mobile Number"
                     android:textSize="15dp"
                     android:padding="10dp"
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"/>
                 <EditText
+                    android:maxLength="10"
+                    android:inputType="number"
+                    android:id="@+id/mEditWhatsapp"
                     android:layout_marginLeft="5dp"
                     android:layout_weight="1"
                     android:background="@drawable/border_rectangle_shap"
@@ -137,8 +189,10 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content">
                 <EditText
+                    android:id="@+id/mEditLandline"
                     android:layout_marginRight="5dp"
                     android:layout_weight="1"
+                    android:inputType="number"
                     android:background="@drawable/border_rectangle_shap"
                     android:textColor="#000000"
                     android:hint="Landline Number"
@@ -147,11 +201,12 @@
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"/>
                 <EditText
+                    android:id="@+id/mEditOutLetSize"
                     android:layout_marginLeft="5dp"
                     android:layout_weight="1"
                     android:background="@drawable/border_rectangle_shap"
                     android:textColor="#000000"
-                    android:hint="Outlet Size(WxL)"
+                    android:hint="Outlet Size(ex.10*20)"
                     android:textSize="15dp"
                     android:padding="10dp"
                     android:layout_width="0dp"
@@ -161,6 +216,7 @@
 
 
             <EditText
+                android:id="@+id/mEditAddress1"
                 android:layout_marginTop="10dp"
                 android:background="@drawable/border_rectangle_shap"
                 android:textColor="#000000"
@@ -171,6 +227,7 @@
                 android:layout_height="wrap_content"/>
 
             <EditText
+                android:id="@+id/mEditAddress2"
                 android:layout_marginTop="10dp"
                 android:background="@drawable/border_rectangle_shap"
                 android:textColor="#000000"
@@ -179,6 +236,7 @@
                 android:padding="10dp"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"/>
+
             <LinearLayout
                 android:layout_marginTop="10dp"
                 android:orientation="horizontal"
@@ -186,16 +244,18 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content">
                 <EditText
+                    android:maxLength="6"
+                    android:inputType="number"
+                    android:id="@+id/mEditPinNum"
                     android:layout_marginRight="5dp"
                     android:layout_weight="1"
                     android:background="@drawable/border_rectangle_shap"
                     android:textColor="#000000"
-                    android:hint="Village"
+                    android:hint="Pin Code"
                     android:textSize="15dp"
                     android:padding="10dp"
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"/>
-
                 <RelativeLayout
                     android:background="@drawable/border_rectangle_shap"
                     android:layout_marginLeft="5dp"
@@ -221,7 +281,6 @@
 
 
             </LinearLayout>
-
             <LinearLayout
                 android:layout_marginTop="10dp"
                 android:orientation="horizontal"
@@ -239,7 +298,7 @@
                         android:paddingBottom="10dp"
                         android:background="#00000000"
                         android:paddingTop="10dp"
-                        android:id="@+id/mSpinnerDistrict"
+                        android:id="@+id/mSpinnerBlock"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"/>
                     <ImageView
@@ -252,33 +311,23 @@
 
                 </RelativeLayout>
 
-
-                <RelativeLayout
-                    android:background="@drawable/border_rectangle_shap"
+                <AutoCompleteTextView
+                    android:id="@+id/mEditVilaage"
                     android:layout_marginLeft="5dp"
                     android:layout_weight="1"
+                    android:background="@drawable/border_rectangle_shap"
+                    android:textColor="#000000"
+                    android:hint="Village"
+                    android:textSize="15dp"
+                    android:padding="10dp"
                     android:layout_width="0dp"
-                    android:layout_height="wrap_content">
-                    <Spinner
-                        android:paddingBottom="10dp"
-                        android:background="#00000000"
-                        android:paddingTop="10dp"
-                        android:id="@+id/mSpinnerState"
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"/>
-                    <ImageView
-                        android:layout_marginRight="10dp"
-                        android:layout_alignParentRight="true"
-                        android:layout_centerVertical="true"
-                        android:src="@drawable/ic_keyboard_arrow"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"/>
-
-                </RelativeLayout>
-
+                    android:layout_height="wrap_content"/>
 
 
             </LinearLayout>
+
+
+
 
             <TextView
                 android:textStyle="bold"
@@ -289,59 +338,16 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"/>
 
-            <LinearLayout
+            <com.nerolac.Utils.FlowLayout
+                android:id="@+id/mLayoutProduct"
                 android:layout_marginTop="5dp"
                 android:orientation="horizontal"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content">
-                <CheckBox
-                    android:text="Cement"
-                    android:textColor="#000000"
-                    android:textSize="15dp"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"/>
 
-                <CheckBox
-                    android:layout_marginLeft="5dp"
-                    android:text="Paint"
-                    android:textColor="#000000"
-                    android:textSize="15dp"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"/>
-
-                <CheckBox
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginLeft="5dp"
-                    android:text="Pipe"
-                    android:textColor="#000000"
-                    android:textSize="15dp" />
-
-                <CheckBox
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="Sanitary"
-                    android:textColor="#000000"
-                    android:textSize="15dp" />
-
-            </LinearLayout>
-
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:orientation="horizontal">
+            </com.nerolac.Utils.FlowLayout>
 
 
-
-
-
-                <CheckBox
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="Others"
-                    android:textColor="#000000"
-                    android:textSize="15dp" />
-            </LinearLayout>
 
             <TextView
                 android:textStyle="bold"
@@ -352,58 +358,17 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"/>
 
-            <LinearLayout
-                android:layout_marginTop="5dp"
-                android:orientation="horizontal"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content">
-                <CheckBox
-                    android:text="Asian"
-                    android:textColor="#000000"
-                    android:textSize="15dp"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"/>
-                <CheckBox
-                    android:layout_marginLeft="5dp"
-                    android:text="Nerolac"
-                    android:textColor="#000000"
-                    android:textSize="15dp"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"/>
-                <CheckBox
-                    android:layout_marginLeft="5dp"
-                    android:text="Berger"
-                    android:textColor="#000000"
-                    android:textSize="15dp"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"/>
-
-                <CheckBox
-                    android:layout_marginLeft="5dp"
-                    android:text="Dulex"
-                    android:textColor="#000000"
-                    android:textSize="15dp"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"/>
-
-
-
-            </LinearLayout>
-            <LinearLayout
+            <com.nerolac.Utils.FlowLayout
+                android:id="@+id/mLayoutPaintBrands"
                 android:layout_marginTop="5dp"
                 android:orientation="horizontal"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content">
 
 
-                <CheckBox
-                    android:text="Others"
-                    android:textColor="#000000"
-                    android:textSize="15dp"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"/>
 
-            </LinearLayout>
+            </com.nerolac.Utils.FlowLayout>
+
 
             <TextView
                 android:textStyle="bold"
@@ -532,28 +497,6 @@
 
 
             </LinearLayout>
-            <LinearLayout
-                android:layout_marginTop="10dp"
-                android:orientation="horizontal"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content">
-                <com.nerolac.Utils.FontAwesome
-                    android:textColor="@color/apppink"
-                    android:layout_gravity="center_vertical"
-                    android:textSize="22dp"
-                    android:text="&#xf041;"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"/>
-                <TextView
-                    android:layout_marginLeft="8dp"
-                    android:textColor="#000000"
-                    android:layout_gravity="center_vertical"
-                    android:textSize="15dp"
-                    android:text="Mark Outlet Location"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"/>
-
-            </LinearLayout>
             <TextView
                 android:textStyle="bold"
                 android:textSize="18dp"
@@ -563,36 +506,18 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"/>
 
-            <LinearLayout
-                android:layout_marginTop="5dp"
-                android:orientation="horizontal"
+            <com.nerolac.Utils.FlowLayout
+                android:id="@+id/mLayoutDelivery"
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content">
-                <CheckBox
-                    android:text="Wholesale"
-                    android:textColor="#000000"
-                    android:textSize="15dp"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"/>
-                <CheckBox
-                    android:layout_marginLeft="5dp"
-                    android:text="C&amp;F"
-                    android:textColor="#000000"
-                    android:textSize="15dp"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"/>
-                <CheckBox
-                    android:layout_marginLeft="5dp"
-                    android:text="Dealer"
-                    android:textColor="#000000"
-                    android:textSize="15dp"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"/>
+                android:layout_height="wrap_content"
+                android:layout_marginTop="5dp"
+                android:orientation="horizontal">
 
 
-            </LinearLayout>
+            </com.nerolac.Utils.FlowLayout>
 
             <EditText
+                android:id="@+id/mEditRemark"
                 android:gravity="top"
                 android:lines="4"
                 android:layout_marginTop="10dp"
@@ -618,10 +543,12 @@
                     android:layout_height="90dp">
 
                     <ImageView
+                        android:scaleType="fitXY"
+                        android:id="@+id/mImgOne"
                         android:layout_centerInParent="true"
                         android:src="@drawable/ic_nero_add_img"
-                        android:layout_width="60dp"
-                        android:layout_height="60dp"/>
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"/>
 
                 </RelativeLayout>
 
@@ -633,10 +560,12 @@
                     android:layout_height="90dp">
 
                     <ImageView
+                        android:scaleType="fitXY"
+                        android:id="@+id/mImgTwo"
                         android:layout_centerInParent="true"
                         android:src="@drawable/ic_nero_add_img"
-                        android:layout_width="60dp"
-                        android:layout_height="60dp"/>
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"/>
 
                 </RelativeLayout>
 
@@ -646,10 +575,12 @@
                     android:layout_height="90dp">
 
                     <ImageView
+                        android:scaleType="fitXY"
+                        android:id="@+id/mImgThree"
                         android:layout_centerInParent="true"
                         android:src="@drawable/ic_nero_add_img"
-                        android:layout_width="60dp"
-                        android:layout_height="60dp"/>
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"/>
 
                 </RelativeLayout>
 

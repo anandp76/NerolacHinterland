@@ -1,0 +1,275 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:background="#fafafa"
+    android:fitsSystemWindows="true"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+    <RelativeLayout
+        android:id="@+id/mLayoutTop"
+        android:background="@color/appblue"
+        android:layout_width="match_parent"
+        android:layout_height="55dp">
+        <ImageView
+            android:layout_centerVertical="true"
+            android:layout_marginLeft="15dp"
+            android:layout_width="150dp"
+            android:layout_height="40dp"
+            android:src="@drawable/ic_nero_white_logo"/>
+
+    </RelativeLayout>
+
+
+    <ScrollView
+        android:scrollbars="none"
+        android:layout_above="@+id/mLayoutSubmit"
+        android:layout_below="@+id/mLayoutTop"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <LinearLayout
+            android:layout_marginRight="10dp"
+            android:layout_marginLeft="10dp"
+            android:orientation="vertical"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+            <RelativeLayout
+                android:id="@+id/mLayoutTitle"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+                <TextView
+                    android:id="@+id/mTxer"
+                    android:layout_marginLeft="5dp"
+                    android:layout_marginTop="15dp"
+                    android:text="Add Travel Log"
+                    android:textSize="22dp"
+                    android:textColor="@color/appblue"
+                    android:textStyle="bold"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"/>
+
+                <TextView
+                    android:layout_below="@+id/mTxer"
+                    android:layout_marginLeft="5dp"
+                    android:text="Please fill the information below"
+                    android:textSize="14dp"
+                    android:textColor="@color/appblue"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"/>
+                <ImageView
+                    android:layout_marginTop="-20dp"
+                    android:layout_alignParentRight="true"
+                    android:scaleType="fitXY"
+                    android:src="@drawable/ic_circle_red"
+                    android:layout_width="100dp"
+                    android:layout_height="65dp"/>
+
+            </RelativeLayout>
+
+            <RelativeLayout
+                android:layout_marginTop="15dp"
+                android:background="@drawable/border_rectangle_shap"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+                <Spinner
+                    android:paddingBottom="10dp"
+                    android:background="#00000000"
+                    android:paddingTop="10dp"
+                    android:id="@+id/mSpinnerState"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"/>
+                <ImageView
+                    android:layout_marginRight="10dp"
+                    android:layout_alignParentRight="true"
+                    android:layout_centerVertical="true"
+                    android:src="@drawable/ic_keyboard_arrow"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"/>
+
+            </RelativeLayout>
+
+            <RelativeLayout
+                android:layout_marginTop="15dp"
+                android:background="@drawable/border_rectangle_shap"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+                <Spinner
+                    android:paddingBottom="10dp"
+                    android:background="#00000000"
+                    android:paddingTop="10dp"
+                    android:id="@+id/mSpinnerDistrict"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"/>
+                <ImageView
+                    android:layout_marginRight="10dp"
+                    android:layout_alignParentRight="true"
+                    android:layout_centerVertical="true"
+                    android:src="@drawable/ic_keyboard_arrow"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"/>
+
+            </RelativeLayout>
+
+            <RelativeLayout
+                android:layout_marginTop="15dp"
+                android:background="@drawable/border_rectangle_shap"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+                <Spinner
+                    android:paddingBottom="10dp"
+                    android:background="#00000000"
+                    android:paddingTop="10dp"
+                    android:id="@+id/mSpinnerTehsil"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"/>
+                <ImageView
+                    android:layout_marginRight="10dp"
+                    android:layout_alignParentRight="true"
+                    android:layout_centerVertical="true"
+                    android:src="@drawable/ic_keyboard_arrow"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"/>
+
+            </RelativeLayout>
+
+            <RelativeLayout
+                android:layout_marginTop="15dp"
+                android:background="@drawable/border_rectangle_shap"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+                <Spinner
+                    android:paddingBottom="10dp"
+                    android:background="#00000000"
+                    android:paddingTop="10dp"
+                    android:id="@+id/mSpinnerBlock"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"/>
+                <ImageView
+                    android:layout_marginRight="10dp"
+                    android:layout_alignParentRight="true"
+                    android:layout_centerVertical="true"
+                    android:src="@drawable/ic_keyboard_arrow"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"/>
+
+            </RelativeLayout>
+
+            <AutoCompleteTextView
+                android:id="@+id/mEditVillage"
+                android:layout_marginTop="15dp"
+                android:background="@drawable/border_rectangle_shap"
+                android:textColor="#000000"
+                android:hint="Village"
+                android:textSize="15dp"
+                android:padding="10dp"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"/>
+
+            <EditText
+                android:inputType="number"
+                android:id="@+id/mEditKiloMeter"
+                android:layout_marginTop="15dp"
+                android:background="@drawable/border_rectangle_shap"
+                android:textColor="#000000"
+                android:hint="Km"
+                android:textSize="15dp"
+                android:padding="10dp"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"/>
+
+            <TextView
+                android:id="@+id/mTextRadioTitle"
+                android:textSize="16dp"
+                android:layout_marginTop="10dp"
+                android:text="Retailers present?"
+                android:textColor="#000000"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"/>
+            <RadioGroup
+                android:layout_marginTop="10dp"
+                android:id="@+id/radioGrpRetailers"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal">
+                <RadioButton
+                    android:checked="true"
+                    android:id="@+id/radioYes"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:textSize="15dp"
+                    android:text="Yes"
+                    />
+                <RadioButton
+                    android:layout_marginLeft="5dp"
+                    android:id="@+id/radioNo"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:textSize="15dp"
+                    android:text="No"
+                    />
+
+
+            </RadioGroup>
+
+            <TextView
+                android:visibility="gone"
+                android:id="@+id/mTextTitlePictures"
+                android:textSize="16dp"
+                android:layout_marginTop="10dp"
+                android:text="Add a picture"
+                android:textColor="#000000"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"/>
+
+            <LinearLayout
+                android:visibility="gone"
+                android:id="@+id/mLayoutPictures"
+                android:layout_marginBottom="15dp"
+                android:gravity="center_horizontal"
+                android:layout_gravity="center_horizontal"
+                android:layout_marginTop="15dp"
+                android:orientation="horizontal"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+                <RelativeLayout
+                    android:background="@drawable/border_rectangle_shap"
+                    android:layout_width="90dp"
+                    android:layout_height="90dp">
+
+                    <ImageView
+                        android:scaleType="fitXY"
+                        android:id="@+id/mImgOne"
+                        android:layout_centerInParent="true"
+                        android:src="@drawable/ic_nero_add_img"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"/>
+
+                </RelativeLayout>
+
+
+
+
+
+
+            </LinearLayout>
+
+        </LinearLayout>
+    </ScrollView>
+
+
+
+<RelativeLayout
+    android:id="@+id/mLayoutSubmit"
+    android:layout_alignParentBottom="true"
+    android:background="@color/apppink"
+    android:layout_width="match_parent"
+    android:layout_height="45dp">
+    <TextView
+        android:textSize="18dp"
+        android:layout_centerInParent="true"
+        android:textColor="#ffffff"
+        android:text="SUBMIT"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"/>
+</RelativeLayout>
+
+</RelativeLayout>

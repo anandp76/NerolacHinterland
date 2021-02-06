@@ -1,0 +1,61 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/mLayoutItem"
+    android:background="#ffffff"
+    android:padding="8dp"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content">
+
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+
+        <TextView
+            android:id="@+id/mTextVillage"
+            android:textStyle="bold"
+            android:textColor="@color/apppink"
+            android:text="Mehta Distributors"
+            android:textSize="16dp"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"/>
+
+        <TextView
+            android:textStyle="bold"
+            android:layout_marginTop="1dp"
+            android:id="@+id/mTextBlock"
+            android:layout_below="@+id/mTextVillage"
+            android:textColor="@color/appblue"
+            android:text="Akhilesh Pathak"
+            android:textSize="16dp"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"/>
+        <TextView
+            android:layout_marginTop="1dp"
+            android:id="@+id/mTextTehsil"
+            android:layout_below="@+id/mTextBlock"
+            android:textColor="#666666"
+            android:text="Akhilesh Pathak"
+            android:textSize="15dp"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"/>
+
+        <TextView
+            android:visibility="gone"
+            android:id="@+id/mTextPTag"
+            android:textColor="#00FF00"
+            android:gravity="center"
+            android:layout_alignParentRight="true"
+            android:textStyle="bold"
+            android:textSize="12dp"
+            android:background="@drawable/circule"
+            android:layout_width="25dp"
+            android:layout_height="25dp"
+            android:padding="5dp"
+            android:text="P"/>
+
+
+    </RelativeLayout>
+
+</RelativeLayout>

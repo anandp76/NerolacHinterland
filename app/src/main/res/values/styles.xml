@@ -12,7 +12,9 @@
         <item name="windowActionBar">false</item>
         <item name="windowNoTitle">true</item>
     </style>
-
+    <style name="progrssbar_style" parent="@android:style/Widget.ProgressBar">
+        <item name="android:windowBackground">@color/white</item>
+    </style>
 
 
 </resources>

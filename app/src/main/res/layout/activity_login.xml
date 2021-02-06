@@ -6,12 +6,13 @@
     <ImageView
         android:id="@+id/mImgLogo"
         android:layout_centerHorizontal="true"
-        android:layout_marginTop="170dp"
+        android:layout_marginTop="140dp"
         android:layout_width="250dp"
-        android:layout_height="wrap_content"
-        android:src="@drawable/ic_nero_home_logo"/>
+        android:layout_height="250dp"
+        android:src="@drawable/nerolac_logo_login"/>
 
     <ImageView
+        android:visibility="gone"
         android:id="@+id/mImgLogo2"
         android:layout_below="@+id/mImgLogo"
         android:layout_centerHorizontal="true"
@@ -28,6 +29,7 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content">
         <EditText
+            android:id="@+id/mEditEmail"
             android:padding="10dp"
             android:background="@color/white"
             android:textColor="@color/appblue"
@@ -43,6 +45,8 @@
             android:background="@color/appblue"/>
 
         <EditText
+            android:inputType="textPassword"
+            android:id="@+id/mEditPassword"
             android:layout_marginTop="20dp"
             android:padding="10dp"
             android:background="@color/white"

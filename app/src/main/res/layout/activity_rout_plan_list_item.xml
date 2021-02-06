@@ -49,11 +49,22 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content">
         <ImageView
-            android:layout_centerVertical="true"
+            android:id="@+id/mImgDelete"
+            android:visibility="visible"
             android:layout_alignParentRight="true"
-            android:src="@drawable/ic_check_gray"
-            android:layout_width="35dp"
-            android:layout_height="35dp"/>
+            android:src="@drawable/ic_delete"
+            android:layout_width="25dp"
+            android:layout_height="25dp"/>
+
+        <ImageView
+            android:layout_marginTop="5dp"
+            android:layout_below="@+id/mImgDelete"
+            android:id="@+id/mImgUpdate"
+            android:visibility="visible"
+            android:layout_alignParentRight="true"
+            android:src="@drawable/ic_edit"
+            android:layout_width="25dp"
+            android:layout_height="25dp"/>
 
         <TextView
             android:id="@+id/mTextTitle"

@@ -42,8 +42,8 @@ public class ACTRetailerListViewMore extends Activity {
             mStrBlock[0]=mStrTitle;
             //mTxer.setText(mStrTitle);
         }
-        RetailerListAdapter retailerListAdapter = new RetailerListAdapter(ACTRetailerListViewMore.this,mListItem);
-        mListView.setAdapter(retailerListAdapter);
+        //RetailerListAdapter retailerListAdapter = new RetailerListAdapter(ACTRetailerListViewMore.this,mListItem);
+        //mListView.setAdapter(retailerListAdapter);
 
         ArrayAdapter arrayPaintTurnover  = new ArrayAdapter(this,android.R.layout.simple_spinner_item,mStrBlock);
         arrayPaintTurnover.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);

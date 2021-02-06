@@ -2,11 +2,20 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="com.nerolac">
 
+    <uses-permission android:name="android.permission.INTERNET"/>
+    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE"/>
+    <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION"/>
+    <uses-permission android:name="android.permission.CAMERA"/>
+    <uses-permission android:name="android.permission.CALL_PHONE"/>
+    <uses-permission android:name="android.permission.FOREGROUND_SERVICE"/>
+
     <application
         android:allowBackup="true"
         android:icon="@mipmap/ic_launcher_new"
+        android:roundIcon="@mipmap/ic_launcher"
         android:label="@string/app_name"
         android:supportsRtl="true"
+        android:usesCleartextTraffic="true"
         android:theme="@style/AppTheme.NoActionBar">
         <activity android:name=".ACTSplash">
             <intent-filter>
@@ -21,6 +30,7 @@
         <activity android:name=".ACTHaatMarketForm"/>
         <activity android:name=".ACTAnajMandiForm"/>
         <activity android:name=".ACTAshaBahuForm"/>
+        <activity android:name=".ACTRoutPlanList"/>
         <activity android:name=".ACTSarpanchForm"/>
         <activity android:name=".ACTAnganWadiForm"/>
         <activity android:name=".ACTRetailerForm"/>
@@ -32,7 +42,10 @@
         <activity android:name=".ACTAnganwadiList"/>
         <activity android:name=".ACTSalesOrderList"/>
         <activity android:name=".ACTInboxList"/>
-        <activity android:name=".ACTRoutPlanList"/>
+        <activity android:name=".ACTTravelLog"/>
+        <activity android:name=".ACTPendingUpload"/>
+        <activity android:name=".ACTRoutPlanForm"/>
+        <activity android:name=".ACTAttendenceList"/>
         <activity android:name=".ACTVillageDistributorsGraph">
 
         </activity>
@@ -52,6 +65,31 @@
         <activity android:name=".ACTRetailerListViewMore">
 
         </activity>
+
+        <activity android:name=".ScreenNerolacHome">
+
+        </activity>
+
+        <activity android:name=".ViewPdfFile">
+
+        </activity>
+
+
+        <service
+            android:name=".AndroidLocationServices"
+            android:description="@string/app_name"
+            android:icon="@android:drawable/ic_dialog_map"></service>
+
+        <provider
+            android:name=".GenericFileProvider"
+            android:authorities="${applicationId}.provider"
+            android:exported="false"
+            android:grantUriPermissions="true">
+            <meta-data
+                android:name="android.support.FILE_PROVIDER_PATHS"
+                android:resource="@xml/provider_paths"/>
+        </provider>
+
 
     </application>
 

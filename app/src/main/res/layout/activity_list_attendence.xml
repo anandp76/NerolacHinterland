@@ -1,0 +1,93 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:background="#fafafa"
+    android:fitsSystemWindows="true"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+
+    <RelativeLayout
+        android:id="@+id/mLayoutTitle"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+        <TextView
+            android:id="@+id/mTxer"
+            android:layout_marginLeft="15dp"
+            android:layout_marginTop="15dp"
+            android:text="Attendance"
+            android:textSize="22dp"
+            android:textColor="@color/appblue"
+            android:textStyle="bold"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"/>
+
+        <ImageView
+            android:layout_marginTop="-20dp"
+            android:layout_alignParentRight="true"
+            android:scaleType="fitXY"
+            android:src="@drawable/ic_circle_brawoun"
+            android:layout_width="100dp"
+            android:layout_height="65dp"/>
+
+    </RelativeLayout>
+
+
+
+<ListView
+    android:layout_above="@+id/mLayoutBottom"
+    android:layout_marginTop="20dp"
+    android:layout_below="@+id/mLayoutTitle"
+    android:id="@+id/mListView"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"/>
+
+    <LinearLayout
+        android:id="@+id/mLayoutBottom"
+        android:layout_alignParentBottom="true"
+        android:background="@color/white"
+        android:weightSum="2"
+        android:orientation="horizontal"
+        android:layout_width="match_parent"
+        android:layout_height="50dp">
+
+        <RelativeLayout
+            android:id="@+id/mLayoutDayIn"
+            android:layout_marginRight="2dp"
+            android:layout_marginLeft="4dp"
+            android:background="@color/colorAccent"
+            android:layout_weight="1"
+            android:layout_width="0dp"
+            android:layout_height="match_parent">
+
+            <TextView
+                android:textStyle="bold"
+                android:layout_centerInParent="true"
+                android:textSize="18dp"
+                android:textColor="@color/white"
+                android:text="Day In"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"/>
+
+        </RelativeLayout>
+        <RelativeLayout
+            android:id="@+id/mLayoutDayOut"
+            android:layout_marginLeft="2dp"
+            android:layout_marginRight="4dp"
+            android:background="@color/colorAccent"
+            android:layout_weight="1"
+            android:layout_width="0dp"
+            android:layout_height="match_parent">
+            <TextView
+                android:textStyle="bold"
+                android:layout_centerInParent="true"
+                android:textSize="18dp"
+                android:textColor="@color/white"
+                android:text="Day Out"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"/>
+        </RelativeLayout>
+
+    </LinearLayout>
+
+
+</RelativeLayout>

@@ -1,0 +1,149 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/mLayoutItem"
+    android:background="#ffffff"
+    android:padding="8dp"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content">
+
+
+
+    <RelativeLayout
+        android:id="@+id/mImgPhoto"
+        android:layout_width="55dp"
+        android:layout_height="55dp">
+
+        <TextView
+            android:id="@+id/mTxtDay"
+            android:layout_marginTop="5dp"
+            android:layout_centerHorizontal="true"
+            android:textSize="20dp"
+            android:textStyle="bold"
+            android:textColor="#7a7a7a"
+            android:text="5"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"/>
+
+        <TextView
+            android:id="@+id/mTxtMonth"
+            android:layout_below="@+id/mTxtDay"
+            android:layout_marginTop="1dp"
+            android:layout_centerHorizontal="true"
+            android:textSize="13dp"
+            android:textColor="#A6a6a6"
+            android:text="Hours"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"/>
+
+    </RelativeLayout>
+    <View
+        android:layout_toRightOf="@+id/mImgPhoto"
+        android:id="@+id/mViewList"
+        android:background="#c2c2c2"
+        android:layout_centerVertical="true"
+        android:layout_width="1dp"
+        android:layout_height="40dp"/>
+    <RelativeLayout
+        android:layout_marginLeft="15dp"
+        android:layout_toRightOf="@+id/mViewList"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+        <ImageView
+            android:visibility="gone"
+            android:layout_centerVertical="true"
+            android:layout_alignParentRight="true"
+            android:src="@drawable/ic_check_gray"
+            android:layout_width="35dp"
+            android:layout_height="35dp"/>
+        <LinearLayout
+            android:id="@+id/mInLayout"
+            android:weightSum="2"
+            android:orientation="horizontal"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <LinearLayout
+                android:layout_weight="1"
+                android:orientation="horizontal"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content">
+                <TextView
+                    android:textStyle="bold"
+                    android:textColor="@color/appblue"
+                    android:text="In : "
+                    android:textSize="16dp"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"/>
+                <TextView
+                    android:layout_marginLeft="10dp"
+                    android:id="@+id/mTextInTime"
+                    android:textColor="#000000"
+                    android:text="20.09.2021"
+                    android:textSize="16dp"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"/>
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_weight="1"
+                android:orientation="horizontal"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content">
+                <TextView
+                    android:textStyle="bold"
+                    android:textColor="@color/appblue"
+                    android:text="Out : "
+                    android:textSize="16dp"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"/>
+                <TextView
+                    android:layout_marginLeft="10dp"
+                    android:id="@+id/mTextOutTime"
+                    android:textColor="#000000"
+                    android:text="20.09.2021"
+                    android:textSize="16dp"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"/>
+            </LinearLayout>
+        </LinearLayout>
+
+
+        <LinearLayout
+            android:layout_marginTop="2dp"
+            android:layout_below="@+id/mInLayout"
+            android:id="@+id/mHoursLayout"
+            android:orientation="horizontal"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+            <TextView
+                android:textStyle="bold"
+                android:textColor="@color/appblue"
+                android:text="Hours : "
+                android:textSize="16dp"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"/>
+            <TextView
+                android:layout_marginLeft="10dp"
+                android:id="@+id/mTextHours"
+                android:textColor="#000000"
+                android:text="20.09.2021"
+                android:textSize="16dp"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"/>
+        </LinearLayout>
+        <TextView
+            android:visibility="gone"
+            android:layout_below="@+id/mHoursLayout"
+            android:layout_marginTop="2dp"
+            android:id="@+id/mTextComment"
+            android:textColor="#000000"
+            android:text="hgh gh gfh h fhfgh fghfh fh"
+            android:textSize="16dp"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"/>
+
+
+
+    </RelativeLayout>
+
+</RelativeLayout>

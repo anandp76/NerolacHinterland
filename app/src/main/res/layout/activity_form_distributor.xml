@@ -74,6 +74,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content">
                 <EditText
+                    android:id="@+id/mEditFirstName"
                     android:layout_marginRight="5dp"
                     android:layout_weight="1"
                     android:background="@drawable/border_rectangle_shap"
@@ -84,6 +85,7 @@
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"/>
                 <EditText
+                    android:id="@+id/mEditLastName"
                     android:layout_marginLeft="5dp"
                     android:layout_weight="1"
                     android:background="@drawable/border_rectangle_shap"
@@ -96,6 +98,7 @@
 
             </LinearLayout>
             <EditText
+                android:id="@+id/mEditBusinessName"
                 android:layout_marginTop="10dp"
                 android:background="@drawable/border_rectangle_shap"
                 android:textColor="#000000"
@@ -105,15 +108,48 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"/>
 
-            <EditText
+            <LinearLayout
                 android:layout_marginTop="10dp"
-                android:background="@drawable/border_rectangle_shap"
-                android:textColor="#000000"
-                android:hint="GST Number"
-                android:textSize="15dp"
-                android:padding="10dp"
+                android:orientation="horizontal"
+                android:weightSum="2"
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"/>
+                android:layout_height="wrap_content">
+                <RelativeLayout
+                    android:background="@drawable/border_rectangle_shap"
+                    android:layout_marginRight="5dp"
+                    android:layout_weight="1"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content">
+                    <Spinner
+                        android:paddingBottom="10dp"
+                        android:background="#00000000"
+                        android:paddingTop="10dp"
+                        android:id="@+id/mSpinnerGSTNumber"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"/>
+                    <ImageView
+                        android:layout_marginRight="10dp"
+                        android:layout_alignParentRight="true"
+                        android:layout_centerVertical="true"
+                        android:src="@drawable/ic_keyboard_arrow"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"/>
+
+                </RelativeLayout>
+                <EditText
+                    android:inputType="textCapCharacters"
+                    android:id="@+id/mEditGstNumber"
+                    android:layout_marginLeft="5dp"
+                    android:layout_weight="1"
+                    android:background="@drawable/border_rectangle_shap"
+                    android:textColor="#000000"
+                    android:hint="GST Number"
+                    android:textSize="15dp"
+                    android:padding="10dp"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"/>
+
+            </LinearLayout>
             <LinearLayout
                 android:layout_marginTop="10dp"
                 android:orientation="horizontal"
@@ -121,6 +157,9 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content">
                 <EditText
+                    android:maxLength="10"
+                    android:id="@+id/mEditMobileNumber"
+                    android:inputType="number"
                     android:layout_marginRight="5dp"
                     android:layout_weight="1"
                     android:background="@drawable/border_rectangle_shap"
@@ -131,6 +170,9 @@
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"/>
                 <EditText
+                    android:maxLength="10"
+                    android:id="@+id/mEditWhatsNumber"
+                    android:inputType="number"
                     android:layout_marginLeft="5dp"
                     android:layout_weight="1"
                     android:background="@drawable/border_rectangle_shap"
@@ -149,6 +191,8 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content">
                 <EditText
+                    android:id="@+id/mEditLandlineNumber"
+                    android:inputType="number"
                     android:layout_marginRight="5dp"
                     android:layout_weight="1"
                     android:background="@drawable/border_rectangle_shap"
@@ -159,11 +203,12 @@
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"/>
                 <EditText
+                    android:id="@+id/mEditOutletSize"
                     android:layout_marginLeft="5dp"
                     android:layout_weight="1"
                     android:background="@drawable/border_rectangle_shap"
                     android:textColor="#000000"
-                    android:hint="Outlet Size(WxL)"
+                    android:hint="Outlet Size(ex.10*20)"
                     android:textSize="15dp"
                     android:padding="10dp"
                     android:layout_width="0dp"
@@ -172,6 +217,7 @@
             </LinearLayout>
 
             <EditText
+                android:id="@+id/mEditAddOne"
                 android:layout_marginTop="10dp"
                 android:background="@drawable/border_rectangle_shap"
                 android:textColor="#000000"
@@ -182,6 +228,7 @@
                 android:layout_height="wrap_content"/>
 
             <EditText
+                android:id="@+id/mEditAddTwo"
                 android:layout_marginTop="10dp"
                 android:background="@drawable/border_rectangle_shap"
                 android:textColor="#000000"
@@ -197,16 +244,18 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content">
                 <EditText
+                    android:maxLength="6"
+                    android:id="@+id/mEditPinCode"
+                    android:inputType="number"
                     android:layout_marginRight="5dp"
                     android:layout_weight="1"
                     android:background="@drawable/border_rectangle_shap"
                     android:textColor="#000000"
-                    android:hint="Village"
+                    android:hint="Pin Code"
                     android:textSize="15dp"
                     android:padding="10dp"
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"/>
-
                 <RelativeLayout
                     android:background="@drawable/border_rectangle_shap"
                     android:layout_marginLeft="5dp"
@@ -232,7 +281,6 @@
 
 
             </LinearLayout>
-
             <LinearLayout
                 android:layout_marginTop="10dp"
                 android:orientation="horizontal"
@@ -250,7 +298,7 @@
                         android:paddingBottom="10dp"
                         android:background="#00000000"
                         android:paddingTop="10dp"
-                        android:id="@+id/mSpinnerDistrict"
+                        android:id="@+id/mSpinnerBlock"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"/>
                     <ImageView
@@ -263,107 +311,18 @@
 
                 </RelativeLayout>
 
-
-                <RelativeLayout
-                    android:background="@drawable/border_rectangle_shap"
+                <AutoCompleteTextView
+                    android:id="@+id/mEditVilaage"
                     android:layout_marginLeft="5dp"
                     android:layout_weight="1"
+                    android:background="@drawable/border_rectangle_shap"
+                    android:textColor="#000000"
+                    android:hint="Village"
+                    android:textSize="15dp"
+                    android:padding="10dp"
                     android:layout_width="0dp"
-                    android:layout_height="wrap_content">
-                    <Spinner
-                        android:paddingBottom="10dp"
-                        android:background="#00000000"
-                        android:paddingTop="10dp"
-                        android:id="@+id/mSpinnerState"
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"/>
-                    <ImageView
-                        android:layout_marginRight="10dp"
-                        android:layout_alignParentRight="true"
-                        android:layout_centerVertical="true"
-                        android:src="@drawable/ic_keyboard_arrow"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"/>
-
-                </RelativeLayout>
-
-
-
-            </LinearLayout>
-
-            <TextView
-                android:textStyle="bold"
-                android:textSize="18dp"
-                android:layout_marginTop="10dp"
-                android:text="Business Type"
-                android:textColor="@color/appblue"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"/>
-
-            <LinearLayout
-                android:layout_marginTop="5dp"
-                android:orientation="horizontal"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content">
-                <CheckBox
-                    android:text="Building Material"
-                    android:textColor="#000000"
-                    android:textSize="15dp"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"/>
-                <CheckBox
-                    android:layout_marginLeft="5dp"
-                    android:text="FMCG"
-                    android:textColor="#000000"
-                    android:textSize="15dp"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"/>
-                <CheckBox
-                    android:layout_marginLeft="5dp"
-                    android:text="Both"
-                    android:textColor="#000000"
-                    android:textSize="15dp"
-                    android:layout_width="wrap_content"
                     android:layout_height="wrap_content"/>
 
-            </LinearLayout>
-
-
-
-            <TextView
-                android:textStyle="bold"
-                android:textSize="18dp"
-                android:layout_marginTop="10dp"
-                android:text="Business Territory"
-                android:textColor="@color/appblue"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"/>
-
-            <LinearLayout
-                android:layout_marginTop="5dp"
-                android:orientation="horizontal"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content">
-                <CheckBox
-                    android:text="District"
-                    android:textColor="#000000"
-                    android:textSize="15dp"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"/>
-                <CheckBox
-                    android:layout_marginLeft="5dp"
-                    android:text="Tehsil"
-                    android:textColor="#000000"
-                    android:textSize="15dp"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"/>
-                <CheckBox
-                    android:layout_marginLeft="5dp"
-                    android:text="Both"
-                    android:textColor="#000000"
-                    android:textSize="15dp"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"/>
 
             </LinearLayout>
 
@@ -376,58 +335,98 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"/>
 
-            <LinearLayout
+            <com.nerolac.Utils.FlowLayout
+                android:id="@+id/mLayoutBusinessCat"
                 android:layout_marginTop="5dp"
                 android:orientation="horizontal"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content">
-                <CheckBox
-                    android:text="Cement"
-                    android:textColor="#000000"
-                    android:textSize="15dp"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"/>
 
-                <CheckBox
-                    android:layout_marginLeft="5dp"
-                    android:text="Paint"
-                    android:textColor="#000000"
-                    android:textSize="15dp"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"/>
 
-                <CheckBox
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginLeft="5dp"
-                    android:text="Pipe"
-                    android:textColor="#000000"
-                    android:textSize="15dp" />
 
-                <CheckBox
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="Sanitary"
-                    android:textColor="#000000"
-                    android:textSize="15dp" />
+            </com.nerolac.Utils.FlowLayout>
 
-            </LinearLayout>
+
+            <TextView
+                android:textStyle="bold"
+                android:textSize="18dp"
+                android:layout_marginTop="10dp"
+                android:text="Business Type"
+                android:textColor="@color/appblue"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"/>
+            <com.nerolac.Utils.FlowLayout
+                android:id="@+id/mLayoutBusinessType"
+                android:layout_marginTop="5dp"
+                android:orientation="horizontal"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+
+
+
+
+            </com.nerolac.Utils.FlowLayout>
+
+
+
+            <TextView
+                android:textStyle="bold"
+                android:textSize="18dp"
+                android:layout_marginTop="10dp"
+                android:text="Business Territory"
+                android:textColor="@color/appblue"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"/>
+
+            <com.nerolac.Utils.FlowLayout
+                android:id="@+id/mLayoutBusinessTerritory"
+                android:layout_marginTop="5dp"
+                android:orientation="horizontal"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+
+
+            </com.nerolac.Utils.FlowLayout>
+
+            <TextView
+                android:textStyle="bold"
+                android:textSize="18dp"
+                android:layout_marginTop="10dp"
+                android:text="Product Category"
+                android:textColor="@color/appblue"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"/>
+
+            <com.nerolac.Utils.FlowLayout
+                android:id="@+id/mLayoutProductCate"
+                android:layout_marginTop="5dp"
+                android:orientation="horizontal"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+
+            </com.nerolac.Utils.FlowLayout>
 
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:orientation="horizontal">
-
-
-
-
-
                 <CheckBox
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="Others"
                     android:textColor="#000000"
                     android:textSize="15dp" />
+
+                <EditText
+                    android:layout_marginLeft="5dp"
+                    android:background="@drawable/border_rectangle_shap"
+                    android:textColor="#000000"
+                    android:hint="Others Categories"
+                    android:textSize="15dp"
+                    android:padding="10dp"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"/>
+
+
             </LinearLayout>
 
 
@@ -448,6 +447,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content">
                 <EditText
+                    android:id="@+id/mEditBrand1"
                     android:layout_marginRight="5dp"
                     android:layout_weight="1"
                     android:background="@drawable/border_rectangle_shap"
@@ -490,6 +490,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content">
                 <EditText
+                    android:id="@+id/mEditBrand2"
                     android:layout_marginRight="5dp"
                     android:layout_weight="1"
                     android:background="@drawable/border_rectangle_shap"
@@ -532,6 +533,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content">
                 <EditText
+                    android:id="@+id/mEditBrand3"
                     android:layout_marginRight="5dp"
                     android:layout_weight="1"
                     android:background="@drawable/border_rectangle_shap"
@@ -574,6 +576,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content">
                 <EditText
+                    android:id="@+id/mEditBrand4"
                     android:layout_marginRight="5dp"
                     android:layout_weight="1"
                     android:background="@drawable/border_rectangle_shap"
@@ -616,6 +619,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content">
                 <EditText
+                    android:id="@+id/mEditBrand5"
                     android:layout_marginRight="5dp"
                     android:layout_weight="1"
                     android:background="@drawable/border_rectangle_shap"
@@ -728,13 +732,13 @@
                 android:layout_height="wrap_content"/>
             <RadioGroup
                 android:layout_marginTop="10dp"
-                android:id="@+id/radioGrp11"
+                android:id="@+id/radioGrpFamilyMembers"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:orientation="horizontal">
                 <RadioButton
                     android:checked="true"
-                    android:id="@+id/radioM11"
+                    android:id="@+id/radioYes"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:textSize="15dp"
@@ -742,7 +746,7 @@
                     />
                 <RadioButton
                     android:layout_marginLeft="5dp"
-                    android:id="@+id/radioF55"
+                    android:id="@+id/radioNo"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:textSize="15dp"
@@ -829,103 +833,20 @@
                 android:textColor="#000000"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"/>
-            <LinearLayout
+            <com.nerolac.Utils.FlowLayout
+                android:id="@+id/mLayoutAssest"
                 android:layout_marginTop="5dp"
                 android:orientation="horizontal"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content">
-                <CheckBox
-                    android:text="Van"
-                    android:textColor="#000000"
-                    android:textSize="15dp"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"/>
-                <CheckBox
-                    android:layout_marginLeft="5dp"
-                    android:text="Godowns"
-                    android:textColor="#000000"
-                    android:textSize="15dp"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"/>
-                <CheckBox
-                    android:layout_marginLeft="5dp"
-                    android:text="Delivery Boys"
-                    android:textColor="#000000"
-                    android:textSize="15dp"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"/>
-
-
-            </LinearLayout>
-
-            <TextView
-                android:textSize="16dp"
-                android:layout_marginTop="10dp"
-                android:text="Nature of Business"
-                android:textColor="#000000"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"/>
-            <LinearLayout
-                android:layout_marginTop="5dp"
-                android:orientation="horizontal"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content">
-                <CheckBox
-                    android:text="Whole Seller"
-                    android:textColor="#000000"
-                    android:textSize="15dp"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"/>
-                <CheckBox
-                    android:layout_marginLeft="5dp"
-                    android:text="Distributor"
-                    android:textColor="#000000"
-                    android:textSize="15dp"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"/>
 
 
 
-            </LinearLayout>
+            </com.nerolac.Utils.FlowLayout>
 
-            <TextView
-                android:textSize="16dp"
-                android:layout_marginTop="10dp"
-                android:text="Outlet Classification"
-                android:textColor="#000000"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"/>
-            <RadioGroup
-                android:layout_marginTop="10dp"
-                android:id="@+id/radioGrp"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:orientation="horizontal">
-                <RadioButton
-                    android:id="@+id/radioM"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:textSize="15dp"
-                    android:text="Hot"
-                    />
-                <RadioButton
-                    android:layout_marginLeft="5dp"
-                    android:id="@+id/radioF"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:textSize="15dp"
-                    android:text="Cold"
-                    />
 
-                <RadioButton
-                    android:layout_marginLeft="5dp"
-                    android:id="@+id/radioC"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:textSize="15dp"
-                    android:text="Warm"
-                    />
-            </RadioGroup>
+
+
 
             <TextView
                 android:textSize="16dp"
@@ -936,20 +857,21 @@
                 android:layout_height="wrap_content"/>
             <RadioGroup
                 android:layout_marginTop="10dp"
-                android:id="@+id/radioGrpfgg"
+                android:id="@+id/radioGrpInterestLevel"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:orientation="horizontal">
                 <RadioButton
-                    android:id="@+id/radioM51"
+                    android:checked="true"
+                    android:id="@+id/radioLow"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:textSize="15dp"
-                    android:text="High"
+                    android:text="Low"
                     />
                 <RadioButton
                     android:layout_marginLeft="5dp"
-                    android:id="@+id/radioF651"
+                    android:id="@+id/radioMedium"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:textSize="15dp"
@@ -958,15 +880,86 @@
 
                 <RadioButton
                     android:layout_marginLeft="5dp"
-                    android:id="@+id/radioCfd"
+                    android:id="@+id/radioHigh"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:textSize="15dp"
-                    android:text="Low"
+                    android:text="High"
                     />
             </RadioGroup>
 
+            <LinearLayout
+                android:layout_marginTop="10dp"
+                android:orientation="horizontal"
+                android:weightSum="2"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+                <RelativeLayout
+                    android:background="@drawable/border_rectangle_shap"
+                    android:layout_marginRight="5dp"
+                    android:layout_weight="1.2"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content">
+                    <Spinner
+                        android:paddingBottom="10dp"
+                        android:background="#00000000"
+                        android:paddingTop="10dp"
+                        android:id="@+id/mSpinnerWillingness"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"/>
+                    <ImageView
+                        android:layout_marginRight="10dp"
+                        android:layout_alignParentRight="true"
+                        android:layout_centerVertical="true"
+                        android:src="@drawable/ic_keyboard_arrow"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"/>
+
+                </RelativeLayout>
+
+                <RelativeLayout
+                    android:background="@drawable/border_rectangle_shap"
+                    android:layout_marginLeft="5dp"
+                    android:layout_weight="0.8"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content">
+                    <Spinner
+                        android:paddingBottom="10dp"
+                        android:background="#00000000"
+                        android:paddingTop="10dp"
+                        android:id="@+id/mSpinnerTimeToStart"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"/>
+                    <ImageView
+                        android:layout_marginRight="10dp"
+                        android:layout_alignParentRight="true"
+                        android:layout_centerVertical="true"
+                        android:src="@drawable/ic_keyboard_arrow"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"/>
+
+                </RelativeLayout>
+
+
+            </LinearLayout>
+
+
+
+
             <EditText
+                android:id="@+id/mEditProspect"
+                android:gravity="top"
+                android:lines="4"
+                android:layout_marginTop="10dp"
+                android:background="@drawable/border_rectangle_shap"
+                android:textColor="#000000"
+                android:hint="Prospect Query"
+                android:textSize="15dp"
+                android:padding="10dp"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"/>
+            <EditText
+                android:id="@+id/mEditRemark"
                 android:gravity="top"
                 android:lines="4"
                 android:layout_marginTop="10dp"
@@ -992,10 +985,12 @@
                     android:layout_height="90dp">
 
                     <ImageView
+                        android:scaleType="fitXY"
+                        android:id="@+id/mImgOne"
                         android:layout_centerInParent="true"
                         android:src="@drawable/ic_nero_add_img"
-                        android:layout_width="60dp"
-                        android:layout_height="60dp"/>
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"/>
 
                 </RelativeLayout>
 
@@ -1007,10 +1002,12 @@
                     android:layout_height="90dp">
 
                     <ImageView
+                        android:scaleType="fitXY"
+                        android:id="@+id/mImgTwo"
                         android:layout_centerInParent="true"
                         android:src="@drawable/ic_nero_add_img"
-                        android:layout_width="60dp"
-                        android:layout_height="60dp"/>
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"/>
 
                 </RelativeLayout>
 
@@ -1020,10 +1017,12 @@
                     android:layout_height="90dp">
 
                     <ImageView
+                        android:scaleType="fitXY"
+                        android:id="@+id/mImgThree"
                         android:layout_centerInParent="true"
                         android:src="@drawable/ic_nero_add_img"
-                        android:layout_width="60dp"
-                        android:layout_height="60dp"/>
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"/>
 
                 </RelativeLayout>
 

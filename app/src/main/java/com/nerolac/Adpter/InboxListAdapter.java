@@ -10,18 +10,22 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.BaseAdapter;
 import android.widget.RelativeLayout;
+import android.widget.TextView;
 
+import com.nerolac.Modal.Inbox;
 import com.nerolac.R;
 
 import java.util.ArrayList;
 
+import static com.nerolac.Utils.CommonData.ChangeFormate;
+
 public class InboxListAdapter extends BaseAdapter {
 
-    private ArrayList<String> mListItems = new ArrayList<>();
+    private ArrayList<Inbox> mListItems = new ArrayList<>();
     Activity context;
     int ads = 0;
 
-    public InboxListAdapter(Activity context, ArrayList<String> mListItems) {
+    public InboxListAdapter(Activity context, ArrayList<Inbox> mListItems) {
         this.mListItems = mListItems;
         this.context = context;
     }
@@ -66,16 +70,21 @@ public class InboxListAdapter extends BaseAdapter {
             convertView = mInflater.inflate(R.layout.activity_inbox_list_item, null);
             holder = new ViewHolder();
             holder.mLayoutItem = convertView.findViewById(R.id.mLayoutItem);
+            holder.mTextTitle = convertView.findViewById(R.id.mTextTitle);
+            holder.mTextDate = convertView.findViewById(R.id.mTextDate);
             convertView.setTag(holder);
             } else {
             holder = (ViewHolder) convertView.getTag();
             }
-
             if(position % 2 == 0){
             holder.mLayoutItem.setBackgroundColor(Color.parseColor("#ffffff"));
             }else {
             holder.mLayoutItem.setBackgroundColor(Color.parseColor("#f2f2f2"));
             }
+
+            Inbox inbox = mListItems.get(position);
+            holder.mTextTitle.setText(inbox.getmStrTitle());
+            holder.mTextDate.setText(ChangeFormate(inbox.getmStrCreated()));
 
 
         return convertView;
@@ -84,6 +93,8 @@ public class InboxListAdapter extends BaseAdapter {
 
     private class ViewHolder {
     RelativeLayout mLayoutItem;
+    TextView mTextTitle;
+    TextView mTextDate;
     }
 
 

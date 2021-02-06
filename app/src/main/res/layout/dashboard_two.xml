@@ -4,6 +4,22 @@
     android:layout_height="match_parent"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:background="@drawable/ic_nero_home_bg">
+    <RelativeLayout
+        android:id="@+id/mLayoutTop"
+        android:layout_width="match_parent"
+        android:layout_height="100dp">
+        <ImageView
+            android:visibility="gone"
+            android:id="@+id/mImgLogo"
+            android:layout_marginTop="10dp"
+            android:layout_marginLeft="15dp"
+            android:layout_width="150dp"
+            android:layout_height="40dp"
+            android:src="@drawable/ic_nerolac_logo"/>
+
+
+
+    </RelativeLayout>
     <LinearLayout
         android:visibility="gone"
         android:id="@+id/mLayoutFull"
@@ -238,13 +254,14 @@
     </LinearLayout>
     <LinearLayout
         android:visibility="visible"
-        android:id="@+id/mLayoutHalf"
+        android:id="@+id/mLayoutDashbordMenu"
         android:layout_marginBottom="10dp"
         android:layout_alignParentBottom="true"
         android:orientation="vertical"
         android:layout_width="match_parent"
         android:layout_height="wrap_content">
         <LinearLayout
+
             android:gravity="center_horizontal"
             android:orientation="horizontal"
             android:layout_width="match_parent"
@@ -322,7 +339,7 @@
                     android:layout_marginTop="5dp"
                     android:layout_centerHorizontal="true"
                     android:textStyle="bold"
-                    android:text="Distributor"
+                    android:text="D.Prospects"
                     android:textSize="12dp"
                     android:textColor="@color/appblue"
                     android:layout_below="@+id/mCard2Distributor"
@@ -353,7 +370,7 @@
                             android:layout_centerInParent="true"
                             android:layout_width="45dp"
                             android:layout_height="45dp"
-                            android:src="@drawable/ic_nero_home_sales_order"/>
+                            android:src="@drawable/ic_travel_log"/>
                     </RelativeLayout>
 
                 </androidx.cardview.widget.CardView>
@@ -361,7 +378,7 @@
                     android:layout_marginTop="5dp"
                     android:layout_centerHorizontal="true"
                     android:textStyle="bold"
-                    android:text="Route Plan"
+                    android:text="Travel Log"
                     android:textSize="12dp"
                     android:textColor="@color/appblue"
                     android:layout_below="@+id/mCard2SalesOrder"
@@ -379,6 +396,139 @@
             android:layout_height="wrap_content">
 
 
+
+            <RelativeLayout
+                android:padding="10dp"
+                android:layout_width="100dp"
+                android:layout_height="120dp"
+                android:layout_marginBottom="10dp"
+                android:layout_marginLeft="10dp"
+                android:layout_marginRight="10dp">
+
+                <androidx.cardview.widget.CardView
+                    android:id="@+id/mCard2RoutePlan"
+                    android:layout_width="match_parent"
+                    android:layout_height="80dp"
+                    app:cardCornerRadius="18dp"
+                    app:cardElevation="8dp"
+                    android:background="@color/white"
+                    app:cardBackgroundColor="@color/white">
+                    <RelativeLayout
+                        android:id="@+id/mLayout2RoutePlan"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent">
+                        <ImageView
+                            android:layout_centerInParent="true"
+                            android:layout_width="45dp"
+                            android:layout_height="45dp"
+                            android:src="@drawable/ic_route_plan"/>
+                    </RelativeLayout>
+
+                </androidx.cardview.widget.CardView>
+                <TextView
+                    android:layout_marginTop="5dp"
+                    android:layout_centerHorizontal="true"
+                    android:textStyle="bold"
+                    android:text="Route Plan"
+                    android:textSize="12dp"
+                    android:textColor="@color/appblue"
+                    android:layout_below="@+id/mCard2RoutePlan"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"/>
+            </RelativeLayout>
+            <RelativeLayout
+                android:visibility="visible"
+                android:id="@+id/mLayoutOther"
+                android:padding="10dp"
+                android:layout_width="100dp"
+                android:layout_height="120dp"
+                android:layout_marginBottom="10dp"
+                android:layout_marginLeft="10dp"
+                android:layout_marginRight="10dp">
+
+                <androidx.cardview.widget.CardView
+                    android:id="@+id/mCard2Other"
+                    android:layout_width="match_parent"
+                    android:layout_height="80dp"
+                    app:cardCornerRadius="18dp"
+                    app:cardElevation="8dp"
+                    android:background="@color/white"
+                    app:cardBackgroundColor="@color/white">
+                    <RelativeLayout
+                        android:id="@+id/mLayout2Attandence"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent">
+                        <ImageView
+                            android:layout_centerInParent="true"
+                            android:layout_width="45dp"
+                            android:layout_height="45dp"
+                            android:src="@drawable/ic_attendance_icon"/>
+                    </RelativeLayout>
+
+                </androidx.cardview.widget.CardView>
+                <TextView
+                    android:layout_marginTop="5dp"
+                    android:layout_centerHorizontal="true"
+                    android:textStyle="bold"
+                    android:text="Attendance"
+                    android:textSize="12dp"
+                    android:textColor="@color/appblue"
+                    android:layout_below="@+id/mCard2Other"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"/>
+            </RelativeLayout>
+            <RelativeLayout
+                android:padding="10dp"
+                android:layout_width="100dp"
+                android:layout_height="120dp"
+                android:layout_marginBottom="10dp"
+                android:layout_marginLeft="10dp"
+                android:layout_marginRight="10dp">
+
+                <androidx.cardview.widget.CardView
+                    android:id="@+id/mCard2Pending"
+                    android:layout_width="match_parent"
+                    android:layout_height="80dp"
+                    app:cardCornerRadius="18dp"
+                    app:cardElevation="8dp"
+                    android:background="@color/white"
+                    app:cardBackgroundColor="@color/white">
+                    <RelativeLayout
+                        android:id="@+id/mLayout2Pending"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent">
+                        <ImageView
+                            android:layout_centerInParent="true"
+                            android:layout_width="45dp"
+                            android:layout_height="45dp"
+                            android:src="@drawable/ic_new_pendingupload"/>
+                    </RelativeLayout>
+
+                </androidx.cardview.widget.CardView>
+                <TextView
+                    android:layout_marginTop="5dp"
+                    android:layout_centerHorizontal="true"
+                    android:textStyle="bold"
+                    android:text="Pending Task"
+                    android:textSize="12dp"
+                    android:textColor="@color/appblue"
+                    android:layout_below="@+id/mCard2Pending"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"/>
+            </RelativeLayout>
+
+
+
+
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:visibility="gone"
+            android:gravity="center_horizontal"
+            android:orientation="horizontal"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
 
             <RelativeLayout
                 android:padding="10dp"
@@ -420,90 +570,54 @@
                     android:layout_height="wrap_content"/>
             </RelativeLayout>
 
-            <RelativeLayout
-                android:padding="10dp"
-                android:layout_width="100dp"
-                android:layout_height="120dp"
-                android:layout_marginBottom="10dp"
-                android:layout_marginLeft="10dp"
-                android:layout_marginRight="10dp">
 
-                <androidx.cardview.widget.CardView
-                    android:id="@+id/mCard2Pending"
-                    android:layout_width="match_parent"
-                    android:layout_height="80dp"
-                    app:cardCornerRadius="18dp"
-                    app:cardElevation="8dp"
-                    android:background="@color/white"
-                    app:cardBackgroundColor="@color/white">
-                    <RelativeLayout
-                        android:id="@+id/mLayout2Pending"
-                        android:layout_width="match_parent"
-                        android:layout_height="match_parent">
-                        <ImageView
-                            android:layout_centerInParent="true"
-                            android:layout_width="45dp"
-                            android:layout_height="45dp"
-                            android:src="@drawable/ic_new_pendingupload"/>
-                    </RelativeLayout>
 
-                </androidx.cardview.widget.CardView>
-                <TextView
-                    android:layout_marginTop="5dp"
-                    android:layout_centerHorizontal="true"
-                    android:textStyle="bold"
-                    android:text="Pending Task"
-                    android:textSize="12dp"
-                    android:textColor="@color/appblue"
-                    android:layout_below="@+id/mCard2Pending"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"/>
-            </RelativeLayout>
-            <RelativeLayout
-                android:visibility="gone"
-                android:id="@+id/mLayoutOther"
-                android:padding="10dp"
-                android:layout_width="100dp"
-                android:layout_height="120dp"
-                android:layout_marginBottom="10dp"
-                android:layout_marginLeft="10dp"
-                android:layout_marginRight="10dp">
-
-                <androidx.cardview.widget.CardView
-                    android:id="@+id/mCard2Other"
-                    android:layout_width="match_parent"
-                    android:layout_height="80dp"
-                    app:cardCornerRadius="18dp"
-                    app:cardElevation="8dp"
-                    android:background="@color/white"
-                    app:cardBackgroundColor="@color/white">
-                    <RelativeLayout
-                        android:layout_width="match_parent"
-                        android:layout_height="match_parent">
-                        <ImageView
-                            android:layout_centerInParent="true"
-                            android:layout_width="45dp"
-                            android:layout_height="45dp"
-                            android:src="@drawable/ic_nero_other"/>
-                    </RelativeLayout>
-
-                </androidx.cardview.widget.CardView>
-                <TextView
-                    android:layout_marginTop="5dp"
-                    android:layout_centerHorizontal="true"
-                    android:textStyle="bold"
-                    android:text="Other"
-                    android:textSize="12dp"
-                    android:textColor="@color/appblue"
-                    android:layout_below="@+id/mCard2Other"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"/>
-            </RelativeLayout>
 
 
         </LinearLayout>
 
+    <LinearLayout
+        android:visibility="visible"
+        android:gravity="center_horizontal"
+        android:orientation="horizontal"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+        <TextView
+            android:gravity="center_horizontal"
+            android:textSize="13dp"
+            android:textColor="@color/appblue"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Powered by : Nebula Advertising Pvt. Ltd."/>
     </LinearLayout>
+
+    </LinearLayout>
+<LinearLayout
+    android:id="@+id/mLayoutDataMsg"
+    android:orientation="vertical"
+    android:layout_marginBottom="50dp"
+    android:layout_alignParentBottom="true"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content">
+
+    <ImageView
+        android:layout_gravity="center_horizontal"
+        android:id="@+id/imgProgress"
+        android:layout_width="55dp"
+        android:layout_height="55dp"
+        android:src="@drawable/img_loader"/>
+
+    <TextView
+        android:layout_marginTop="20dp"
+        android:visibility="visible"
+        android:gravity="center_horizontal"
+        android:textColor="@color/appblue"
+        android:textStyle="bold"
+        android:text="Please wait data is loading..."
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"/>
+</LinearLayout>
+
 
 
 
