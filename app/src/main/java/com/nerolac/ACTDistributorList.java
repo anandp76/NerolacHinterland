@@ -205,7 +205,7 @@ public class ACTDistributorList extends Fragment {
                             String mStrStatus = response.getString("statusCode");
                             if (mStrStatus.equals("200")) {
                                 JSONArray jsonArrayProducts = response.getJSONArray("data");
-                                mTxer.setText("Distributor Prospects("+jsonArrayProducts.length()+")");
+                                mTxer.setText("Distributor Prospects ("+jsonArrayProducts.length()+")");
                                 for (int j = 0; j<jsonArrayProducts.length();j++) {
                                     JSONObject jsonObject = jsonArrayProducts.getJSONObject(j);
                                     String mStrRetailerName = jsonObject.getString("Business_name");

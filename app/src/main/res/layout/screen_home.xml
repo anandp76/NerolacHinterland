@@ -106,7 +106,7 @@
                         android:textSize="16dp"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:text="Retailer"/>
+                        android:text="Dealer"/>
 
                     <ImageView
                         android:src="@drawable/ic_forwaord"

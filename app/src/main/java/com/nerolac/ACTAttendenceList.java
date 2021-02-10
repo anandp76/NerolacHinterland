@@ -155,38 +155,48 @@ public class ACTAttendenceList extends Fragment {
                             System.out.println("<><><>## " + response.toString());
                             String mStrStatus = response.getString("statusCode");
                             if (mStrStatus.equals("200")) {
-                                JSONArray jsonArrayProducts = response.getJSONArray("data");
-                                for (int j = 0; j<jsonArrayProducts.length();j++) {
-                                    JSONObject jsonObject = jsonArrayProducts.getJSONObject(j);
-                                    String mStrId = jsonObject.getString("fld_aid");
-                                    String mStrInTime = jsonObject.getString("fld_time_in");
-                                    String mStrOutTime = jsonObject.getString("fld_time_out");
-                                    String mStrHours = jsonObject.getString("fld_total_hours");
-                                    String mStrComment = jsonObject.getString("fld_comment");
-                                    String mStrDate = jsonObject.getString("fld_created");
-                                    Attendence attendence = new Attendence();
-                                    attendence.setmStrId(mStrId);
-                                    attendence.setmStrComment(mStrComment);
-                                    attendence.setmStrHurs(mStrHours);
-                                    attendence.setmStrTimeIn(mStrInTime);
-                                    attendence.setmStrTimeOut(mStrOutTime);
-                                    attendence.setmStrDate(mStrDate);
-                                    mListItem.add(attendence);
-                                    if(CheckCurrentDate(mStrDate)){
-                                    a=1;
-                                    mLayoutDayIn.setBackgroundColor(Color.parseColor("#B3B3B3"));
-                                    if(mStrOutTime.equals("0000-00-00 00:00:00")){
+                                if(response.has("data")){
+                                    JSONArray jsonArrayProducts = response.getJSONArray("data");
+                                    for (int j = 0; j<jsonArrayProducts.length();j++) {
+                                        JSONObject jsonObject = jsonArrayProducts.getJSONObject(j);
+                                        String mStrId = jsonObject.getString("fld_aid");
+                                        String mStrInTime = jsonObject.getString("fld_time_in");
+                                        String mStrOutTime = jsonObject.getString("fld_time_out");
+                                        String mStrHours = jsonObject.getString("fld_total_hours");
+                                        String mStrComment = jsonObject.getString("fld_comment");
+                                        String mStrDate = jsonObject.getString("fld_created");
+                                        Attendence attendence = new Attendence();
+                                        attendence.setmStrId(mStrId);
+                                        attendence.setmStrComment(mStrComment);
+                                        attendence.setmStrHurs(mStrHours);
+                                        attendence.setmStrTimeIn(mStrInTime);
+                                        attendence.setmStrTimeOut(mStrOutTime);
+                                        attendence.setmStrDate(mStrDate);
+                                        mListItem.add(attendence);
+                                        if(CheckCurrentDate(mStrDate)){
+                                            a=1;
+                                            mLayoutDayIn.setBackgroundColor(Color.parseColor("#B3B3B3"));
+                                            if(mStrOutTime.equals("0000-00-00 00:00:00")){
 
-                                    }else {
+                                            }else {
+                                            b=1;
+                                            mLayoutDayOut.setBackgroundColor(Color.parseColor("#B3B3B3"));
+                                            }
+
+                                        }else {
+                                            b=1;
+                                            mLayoutDayOut.setBackgroundColor(Color.parseColor("#B3B3B3"));
+                                        }
+
+                                    }
+                                    AttendenceListAdapter retailerListAdapter = new AttendenceListAdapter(mActivity,mListItem);
+                                    mListView.setAdapter(retailerListAdapter);
+                                }else {
+                                    System.out.println("<><><>## calllllll");
                                     b=1;
                                     mLayoutDayOut.setBackgroundColor(Color.parseColor("#B3B3B3"));
-                                    }
-
-                                    }
-
                                 }
-                                AttendenceListAdapter retailerListAdapter = new AttendenceListAdapter(mActivity,mListItem);
-                                mListView.setAdapter(retailerListAdapter);
+
 
                             } else {
                                 mShowAlert(mActivity.getResources().getString(R.string.Something),mActivity);
@@ -238,6 +248,8 @@ public class ACTAttendenceList extends Fragment {
                                     @Override
                                     public void run() {
                                       // finish();
+                                        a=0;
+                                        b=0;
                                         getActivity().startForegroundService(new Intent(getActivity(), AndroidLocationServices.class));
                                         mListItem.clear();
                                         showProgress(getActivity());
@@ -298,6 +310,8 @@ public class ACTAttendenceList extends Fragment {
                                     @Override
                                     public void run() {
                                         // finish();
+                                        a=0;
+                                        b=0;
                                         getActivity().stopService(new Intent(getActivity(), AndroidLocationServices.class));
                                         mListItem.clear();
                                         showProgress(getActivity());

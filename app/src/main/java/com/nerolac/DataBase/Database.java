@@ -249,6 +249,12 @@ public class Database extends SQLiteOpenHelper {
         db.close();
     }
 
+    public void DT_LOCATION() {
+        SQLiteDatabase db = this.getWritableDatabase();
+        db.delete(TABLE_RAW_LOCATION,null, null);
+        db.close();
+    }
+
     public void DT_Retailers_By_Id(String mStrUserId,String mStrId) {
         SQLiteDatabase db = this.getWritableDatabase();
         db.delete(TABLE_RETAILER, RT_USERID + " = " + mStrUserId + " AND "+ RT_ID +" = "+mStrId, null);

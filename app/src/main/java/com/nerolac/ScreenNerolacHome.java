@@ -8,6 +8,7 @@ import android.content.IntentSender;
 import android.content.pm.PackageManager;
 import android.location.Location;
 import android.os.Bundle;
+import android.os.Handler;
 import android.util.Log;
 import android.view.View;
 import android.view.ViewGroup;
@@ -17,7 +18,13 @@ import android.widget.ImageView;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
 import android.widget.Toast;
+
+import com.android.volley.AuthFailureError;
+import com.android.volley.Request;
 import com.android.volley.RequestQueue;
+import com.android.volley.Response;
+import com.android.volley.VolleyError;
+import com.android.volley.toolbox.StringRequest;
 import com.android.volley.toolbox.Volley;
 import com.google.android.gms.common.ConnectionResult;
 import com.google.android.gms.common.api.GoogleApiClient;
@@ -31,7 +38,16 @@ import com.google.android.gms.location.LocationSettingsRequest;
 import com.google.android.gms.location.LocationSettingsResult;
 import com.google.android.gms.location.LocationSettingsStates;
 import com.google.android.gms.location.LocationSettingsStatusCodes;
+import com.nerolac.Adpter.RetailerListAdapter;
+import com.nerolac.Modal.Retailers;
 import com.nerolac.Utils.PreferenceManager;
+
+import org.json.JSONArray;
+import org.json.JSONException;
+import org.json.JSONObject;
+
+import java.util.HashMap;
+import java.util.Map;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
@@ -47,6 +63,8 @@ import static com.nerolac.ACTInboxList.CallThere;
 import static com.nerolac.ACTRetailerList.myDream;
 import static com.nerolac.ACTRoutPlanList.callMyDit;
 import static com.nerolac.ACTTravelLog.mycall;
+import static com.nerolac.Utils.CommonData.hidePDialog;
+import static com.nerolac.Utils.CommonData.mShowAlert;
 import static com.nerolac.Utils.CommonData.showProgress;
 
 public class ScreenNerolacHome extends AppCompatActivity implements
@@ -83,6 +101,7 @@ public class ScreenNerolacHome extends AppCompatActivity implements
     GoogleApiClient mGoogleApiClient;
     Location mLastLocation;
     LocationRequest mLocationRequest;
+    Handler handler;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -374,6 +393,8 @@ public class ScreenNerolacHome extends AppCompatActivity implements
 
             }
         });
+        //showProgress(ScreenNerolacHome.this);
+        mFunUserCheck();
 
         /**/
 
@@ -600,6 +621,70 @@ public class ScreenNerolacHome extends AppCompatActivity implements
        // _progressBar.setVisibility(View.INVISIBLE);
        // _latitude.setText("Latitude: " + String.valueOf(mLastLocation.getLatitude()));
        // _longitude.setText("Longitude: " + String.valueOf(mLastLocation.getLongitude()));
+    }
+
+
+        void mFunUserCheck() {
+        StringRequest strRequest = new StringRequest(Request.Method.POST,"http://hinterland.nerolachub.com/Api/check_user",
+                new Response.Listener<String>() {
+                    @Override
+                    public void onResponse(String str) {
+                        hidePDialog();
+                        try {
+                            JSONObject response = new JSONObject(str);
+                            System.out.println("<><><>## " + response.toString());
+                            String mStrStatus = response.getString("statusCode");
+                            if (mStrStatus.equals("200")) {
+                            String mStrData = response.getString("data");
+                            if(!mStrData.equals("A")){
+                                mShowAlert("You are deactivate from admin, Please contact to admin!!", ScreenNerolacHome.this);
+                                handler = new Handler();
+                                handler.postDelayed(new Runnable() {
+                                    @Override
+                                    public void run() {
+                                        mIntRetailer = 0;
+                                        mIntAttendance = 0;
+                                        mIntTravelLog = 0;
+                                        mIntProspects = 0;
+                                        mIntInbox = 0;
+                                        mIntRoutePlan = 0;
+                                        PreferenceManager.setNEROISLOGIN(ScreenNerolacHome.this,"0");
+                                        Intent intent = new Intent(ScreenNerolacHome.this,ACTLogin.class);
+                                        startActivity(intent);
+                                        finish();
+                                    }
+                                }, 3000);
+
+                            }
+                            } else {
+                            mShowAlert(getResources().getString(R.string.Something), ScreenNerolacHome.this);
+                            }
+                        } catch (JSONException e) {
+                            e.printStackTrace();
+                        }
+                    }
+                },
+                new Response.ErrorListener() {
+                    @Override
+                    public void onErrorResponse(VolleyError error) {
+                        hidePDialog();
+                        mShowAlert(getString(R.string.Something),ScreenNerolacHome.this);
+                    }
+                }) {
+            @Override
+            public Map<String, String> getHeaders() throws AuthFailureError {
+                Map<String, String> params = new HashMap<String, String>();
+                params.put("Authorization",PreferenceManager.getNEROTOKEN(ScreenNerolacHome.this));
+                return params;
+            }
+            @Override
+            protected Map<String, String> getParams() {
+                Map<String, String> params = new HashMap<String, String>();
+                params.put("user_id",PreferenceManager.getNEROUSERID(ScreenNerolacHome.this));
+                return params;
+            }
+        };
+        queue.add(strRequest);
     }
 
 

@@ -17,6 +17,7 @@ import com.android.volley.Response;
 import com.android.volley.VolleyError;
 import com.android.volley.toolbox.StringRequest;
 import com.android.volley.toolbox.Volley;
+import com.nerolac.DataBase.Database;
 import com.nerolac.Utils.PreferenceManager;
 
 import org.json.JSONException;
@@ -40,6 +41,7 @@ public class ACTLogin extends Activity {
    String mStrPass;
    String mStrEmail;
    RequestQueue queue;
+   Database database;
    private static final int PERMISSION_REQUEST_CODE = 200;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -47,6 +49,7 @@ public class ACTLogin extends Activity {
         setContentView(R.layout.activity_login);
         setTranceprent(ACTLogin.this,R.color.white);
         queue = Volley.newRequestQueue(ACTLogin.this);
+        database = new Database(ACTLogin.this);
         mLayoutLogin = (RelativeLayout)findViewById(R.id.mLayoutLogin);
         mEditPassword = (EditText)findViewById(R.id.mEditPassword);
         mEditEmail = (EditText)findViewById(R.id.mEditEmail);
@@ -124,7 +127,7 @@ public class ACTLogin extends Activity {
                                 String mStrPhone = jsonObject.getString("phone");
                                 String mStrIsStatus = jsonObject.getString("status");
                                 String mStrToken = jsonObject.getString("token");
-
+                                database.DT_LOCATION();
                                 PreferenceManager.setNEROISLOGIN(ACTLogin.this,"1");
                                 PreferenceManager.setNEROUSERID(ACTLogin.this,mStrId);
                                 PreferenceManager.setNEROFULLNAME(ACTLogin.this,mStrFullName);
