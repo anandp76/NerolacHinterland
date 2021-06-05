@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "997925064634",
+    "project_id": "nerolac-c356f",
+    "storage_bucket": "nerolac-c356f.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:997925064634:android:b9663d191655b59e675783",
+        "android_client_info": {
+          "package_name": "com.nerolac"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "997925064634-5q83pmgv804s37rp8qp81d10tqc097rs.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCAPhuiUjHQ-kS4xmcNXfyLa3FFupT5vOg"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "997925064634-5q83pmgv804s37rp8qp81d10tqc097rs.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

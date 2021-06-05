@@ -29,6 +29,8 @@ import android.widget.CompoundButton;
 import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
+import android.widget.RadioButton;
+import android.widget.RadioGroup;
 import android.widget.RelativeLayout;
 import android.widget.Spinner;
 import android.widget.TextView;
@@ -77,6 +79,7 @@ import static com.nerolac.DataBase.DataBaseStringRetailer.TABLE_RMD_PRODUCTS;
 import static com.nerolac.DataBase.DataBaseStringRetailer.TBL_RAW_LOCATION_BLOCK;
 import static com.nerolac.DataBase.DataBaseStringRetailer.TBL_RAW_LOCATION_TEHSIL;
 import static com.nerolac.DataBase.DataBaseStringRetailer.TBL_USER_ID;
+import static com.nerolac.Utils.CommonData.BaseUrl;
 import static com.nerolac.Utils.CommonData.getTimeformat;
 import static com.nerolac.Utils.CommonData.getTimeformatCurrent;
 import static com.nerolac.Utils.CommonData.hidePDialog;
@@ -93,6 +96,24 @@ public class ACTRetailerForm extends Activity {
     Spinner mSpinnerBussinessInYears;
     Spinner mSpinnerBussinessMargin;
     Spinner mSpinnerPaintTurnover;
+    Spinner mSpinnerOutletType;
+
+
+
+
+
+    Spinner mSpinnerPainterExp1;
+    Spinner mSpinnerPainterExp2;
+    Spinner mSpinnerPainterExp3;
+    Spinner mSpinnerPainterExp4;
+    Spinner mSpinnerPainterExp5;
+
+    Spinner mSpinnerPainterEducation1;
+    Spinner mSpinnerPainterEducation2;
+    Spinner mSpinnerPainterEducation3;
+    Spinner mSpinnerPainterEducation4;
+    Spinner mSpinnerPainterEducation5;
+
     RelativeLayout mLayoutSubmit;
     AutoCompleteTextView mEditVilaage;
     FlowLayout mLayoutProduct;
@@ -100,6 +121,9 @@ public class ACTRetailerForm extends Activity {
     FlowLayout mLayoutDelivery;
     String mStrBlock[] = {"BLOCK"};
     String mStrGst[] = {"GST Available","Yes","No"};
+    String mStrOutletType[] = {"Hardware","Kirana","Paint","Pipe Shop","Plywood","Sanitary","Tiles","Other"};
+    String mStrPainterExp[] = {"Experience(Yrs)","0-5","5-10","10-15","15-20"};
+    String mStrPainterEducation[] = {"Education","No","10 School","12 High School","Graduate","Post Graduate"};
     Database database;
 
     ArrayList<String> mListBusinessTurnover = new ArrayList<String>();
@@ -153,6 +177,7 @@ public class ACTRetailerForm extends Activity {
     String mStrGstAvailble;
     String mStrTehsil;
     String mStrBlocks;
+    String mStrOutLetType;
     String mStrDistrict;
     String mStrVillage;
     String mStrReProduct;
@@ -163,14 +188,105 @@ public class ACTRetailerForm extends Activity {
     ImageView mImgOne;
     ImageView mImgTwo;
     ImageView mImgThree;
+    ImageView mImgFour;
+    ImageView mImgFive;
+    ImageView mImgSix;
+    RadioGroup radioGrpPaintAvailable;
+
+
+
+
 
     String mStrImgOnePath;
     String mStrImgTwoPath;
     String mStrImgThreePath;
+    String mStrImgFourPath;
+    String mStrImgFivePath;
+    String mStrImgSixPath;
+
+    String mStrPainterName1;
+    String mStrPainterName2;
+    String mStrPainterName3;
+    String mStrPainterName4;
+    String mStrPainterName5;
+
+    String mStrPainterPhone1;
+    String mStrPainterPhone2;
+    String mStrPainterPhone3;
+    String mStrPainterPhone4;
+    String mStrPainterPhone5;
+
+    String mStrPainterExp1;
+    String mStrPainterExp2;
+    String mStrPainterExp3;
+    String mStrPainterExp4;
+    String mStrPainterExp5;
+
+    String mStrPainterEdu1;
+    String mStrPainterEdu2;
+    String mStrPainterEdu3;
+    String mStrPainterEdu4;
+    String mStrPainterEdu5;
+    String mStrPaintAvaible;
+
+
+
     String currenTime;
     Calendar c;
     String path;
     Handler handler;
+
+    String mStrSourceName1;
+    String mStrSourceName2;
+    String mStrSourceName3;
+    String mStrSourceName4;
+
+
+    String mStrSourceLocation1;
+    String mStrSourceLocation2;
+    String mStrSourceLocation3;
+    String mStrSourceLocation4;
+
+
+    String mStrSourceContact1;
+    String mStrSourceContact2;
+    String mStrSourceContact3;
+    String mStrSourceContact4;
+
+
+
+
+    EditText mEditSourceLocation4;
+    EditText mEditSourceContact4;
+    EditText mEditSourceName4;
+
+    EditText mEditSourceLocation3;
+    EditText mEditSourceContact3;
+    EditText mEditSourceName3;
+
+    EditText mEditSourceLocation2;
+    EditText mEditSourceContact2;
+    EditText mEditSourceName2;
+
+    EditText mEditSourceLocation1;
+    EditText mEditSourceContact1;
+    EditText mEditSourceName1;
+
+
+
+    Spinner mSpinnerSourceType4;
+    Spinner mSpinnerSourceType3;
+    Spinner mSpinnerSourceType2;
+    Spinner mSpinnerSourceType1;
+
+    String mStrSourceType5;
+    String mStrSourceType4;
+    String mStrSourceType2;
+    String mStrSourceType3;
+    String mStrSourceType1;
+
+    EditText mEditPainter1,mEditPainter2,mEditPainter3,mEditPainter4,mEditPainter5;
+    EditText mEditPainterNumber1,mEditPainterNumber2,mEditPainterNumber3,mEditPainterNumber4,mEditPainterNumber5;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -191,6 +307,26 @@ public class ACTRetailerForm extends Activity {
         mSpinnerBussinessInYears = (Spinner)findViewById(R.id.mSpinnerBussinessInYears);
         mSpinnerBussinessMargin = (Spinner)findViewById(R.id.mSpinnerBussinessMargin);
         mSpinnerPaintTurnover = (Spinner)findViewById(R.id.mSpinnerPaintTurnover);
+        mSpinnerOutletType = (Spinner)findViewById(R.id.mSpinnerOutletType);
+
+        mSpinnerPainterExp1 = (Spinner)findViewById(R.id.mSpinnerPainterExp1);
+        mSpinnerPainterExp2 = (Spinner)findViewById(R.id.mSpinnerPainterExp2);
+        mSpinnerPainterExp3 = (Spinner)findViewById(R.id.mSpinnerPainterExp3);
+        mSpinnerPainterExp4 = (Spinner)findViewById(R.id.mSpinnerPainterExp4);
+        mSpinnerPainterExp5 = (Spinner)findViewById(R.id.mSpinnerPainterExp5);
+
+        mSpinnerSourceType1 = (Spinner)findViewById(R.id.mSpinnerSourceType1);
+        mSpinnerSourceType2 = (Spinner)findViewById(R.id.mSpinnerSourceType2);
+        mSpinnerSourceType3 = (Spinner)findViewById(R.id.mSpinnerSourceType3);
+        mSpinnerSourceType4 = (Spinner)findViewById(R.id.mSpinnerSourceType4);
+
+        mSpinnerPainterEducation5 = (Spinner)findViewById(R.id.mSpinnerPainterEducation5);
+        mSpinnerPainterEducation4 = (Spinner)findViewById(R.id.mSpinnerPainterEducation4);
+        mSpinnerPainterEducation3 = (Spinner)findViewById(R.id.mSpinnerPainterEducation3);
+        mSpinnerPainterEducation2 = (Spinner)findViewById(R.id.mSpinnerPainterEducation2);
+        mSpinnerPainterEducation1 = (Spinner)findViewById(R.id.mSpinnerPainterEducation1);
+
+
         mEditVilaage = (AutoCompleteTextView) findViewById(R.id.mEditVilaage);
         mLayoutProduct = (FlowLayout) findViewById(R.id.mLayoutProduct);
         mLayoutPaintBrands = (FlowLayout) findViewById(R.id.mLayoutPaintBrands);
@@ -208,15 +344,84 @@ public class ACTRetailerForm extends Activity {
         mEditGstNum = (EditText) findViewById(R.id.mEditGstNum);
         mEditShopName = (EditText) findViewById(R.id.mEditShopName);
         mEditPinNum = (EditText) findViewById(R.id.mEditPinNum);
+
+        mEditPainter1 = (EditText) findViewById(R.id.mEditPainter1);
+        mEditPainter2 = (EditText) findViewById(R.id.mEditPainter2);
+        mEditPainter3 = (EditText) findViewById(R.id.mEditPainter3);
+        mEditPainter4 = (EditText) findViewById(R.id.mEditPainter4);
+        mEditPainter5 = (EditText) findViewById(R.id.mEditPainter5);
+
+
+
+        mEditSourceName4 = (EditText) findViewById(R.id.mEditSourceName4);
+        mEditSourceName3 = (EditText) findViewById(R.id.mEditSourceName3);
+        mEditSourceName2 = (EditText) findViewById(R.id.mEditSourceName2);
+        mEditSourceName1 = (EditText) findViewById(R.id.mEditSourceName1);
+
+
+
+
+        mEditSourceContact4 = (EditText) findViewById(R.id.mEditSourceContact4);
+        mEditSourceContact3 = (EditText) findViewById(R.id.mEditSourceContact3);
+        mEditSourceContact2 = (EditText) findViewById(R.id.mEditSourceContact2);
+        mEditSourceContact1 = (EditText) findViewById(R.id.mEditSourceContact1);
+
+
+
+        mEditSourceLocation4 = (EditText) findViewById(R.id.mEditSourceLocation4);
+        mEditSourceLocation3 = (EditText) findViewById(R.id.mEditSourceLocation3);
+        mEditSourceLocation2 = (EditText) findViewById(R.id.mEditSourceLocation2);
+        mEditSourceLocation1 = (EditText) findViewById(R.id.mEditSourceLocation1);
+
+        mEditPainterNumber1 = (EditText) findViewById(R.id.mEditPainterNumber1);
+        mEditPainterNumber2 = (EditText) findViewById(R.id.mEditPainterNumber2);
+        mEditPainterNumber3 = (EditText) findViewById(R.id.mEditPainterNumber3);
+        mEditPainterNumber4 = (EditText) findViewById(R.id.mEditPainterNumber4);
+        mEditPainterNumber5 = (EditText) findViewById(R.id.mEditPainterNumber5);
+
         mImgOne = (ImageView) findViewById(R.id.mImgOne);
         mImgTwo = (ImageView) findViewById(R.id.mImgTwo);
         mImgThree = (ImageView) findViewById(R.id.mImgThree);
+        mImgFour = (ImageView) findViewById(R.id.mImgFour);
+        mImgFive = (ImageView) findViewById(R.id.mImgFive);
+        mImgSix = (ImageView) findViewById(R.id.mImgSix);
+        radioGrpPaintAvailable = (RadioGroup) findViewById(R.id.radioGrpPaintAvailable);
 
 
         mFunLoadMataData();
+
+        ArrayAdapter arrayPainterEducation  = new ArrayAdapter(this,android.R.layout.simple_spinner_item,mStrPainterEducation);
+        arrayPainterEducation.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+        mSpinnerPainterEducation1.setAdapter(arrayPainterEducation);
+        mSpinnerPainterEducation2.setAdapter(arrayPainterEducation);
+        mSpinnerPainterEducation3.setAdapter(arrayPainterEducation);
+        mSpinnerPainterEducation4.setAdapter(arrayPainterEducation);
+        mSpinnerPainterEducation5.setAdapter(arrayPainterEducation);
+
+        ArrayAdapter arrayPainterExp  = new ArrayAdapter(this,android.R.layout.simple_spinner_item,mStrPainterExp);
+        arrayPainterExp.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+        mSpinnerPainterExp1.setAdapter(arrayPainterExp);
+        mSpinnerPainterExp2.setAdapter(arrayPainterExp);
+        mSpinnerPainterExp3.setAdapter(arrayPainterExp);
+        mSpinnerPainterExp4.setAdapter(arrayPainterExp);
+        mSpinnerPainterExp5.setAdapter(arrayPainterExp);
+
+
+
+
         ArrayAdapter arrayPaintTurnover  = new ArrayAdapter(this,android.R.layout.simple_spinner_item,mListPaintTurnover.toArray(new String[mListPaintTurnover.size()]));
         arrayPaintTurnover.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
         mSpinnerPaintTurnover.setAdapter(arrayPaintTurnover);
+
+
+
+        ArrayAdapter arrayOutletType  = new ArrayAdapter(this,android.R.layout.simple_spinner_item,mStrOutletType);
+        arrayOutletType.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+        mSpinnerOutletType.setAdapter(arrayOutletType);
+        mSpinnerSourceType4.setAdapter(arrayOutletType);
+        mSpinnerSourceType3.setAdapter(arrayOutletType);
+        mSpinnerSourceType2.setAdapter(arrayOutletType);
+        mSpinnerSourceType1.setAdapter(arrayOutletType);
 
 
         arrayAdapterTehsil  = new ArrayAdapter(this,android.R.layout.simple_spinner_item,mStrBlock);
@@ -401,6 +606,29 @@ public class ACTRetailerForm extends Activity {
                 startActivityForResult(intent, 400);
             }
         });
+        mImgFour.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent(android.provider.MediaStore.ACTION_IMAGE_CAPTURE);
+                startActivityForResult(intent, 500);
+            }
+        });
+
+        mImgFive.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent(android.provider.MediaStore.ACTION_IMAGE_CAPTURE);
+                startActivityForResult(intent, 600);
+            }
+        });
+
+        mImgSix.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent(android.provider.MediaStore.ACTION_IMAGE_CAPTURE);
+                startActivityForResult(intent, 700);
+            }
+        });
 
         mLayoutSubmit.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -419,7 +647,8 @@ public class ACTRetailerForm extends Activity {
                 mStrPinNum = mEditPinNum.getText().toString();
                 mStrTehsil = mSpinnerTehsil.getSelectedItem().toString();
                 mStrBlocks = mSpinnerBlock.getSelectedItem().toString();
-                mStrDistrict = database.GT_RAW_LOCATION_DISTRICT(mStrBlocks,mStrTehsil).get(0);
+                mStrOutLetType = mSpinnerOutletType.getSelectedItem().toString();
+
                 mStrVillage = mEditVilaage.getText().toString();
                 mStrReProduct = TextUtils.join(",", mListResultProduct);
                 mStrReBrands = TextUtils.join(",", mListResultBrands);
@@ -429,6 +658,60 @@ public class ACTRetailerForm extends Activity {
                 mStrPaintMargin = mSpinnerBussinessMargin.getSelectedItem().toString();
                 mStrReDelivery = TextUtils.join(",", mListResultDelivery);
                 mStrRemark = mEditRemark.getText().toString();
+                mStrPainterName1 = mEditPainter1.getText().toString();
+                mStrPainterName2 = mEditPainter2.getText().toString();
+                mStrPainterName3 = mEditPainter3.getText().toString();
+                mStrPainterName4 = mEditPainter4.getText().toString();
+                mStrPainterName5 = mEditPainter5.getText().toString();
+                mStrPainterPhone1 = mEditPainterNumber1.getText().toString();
+                mStrPainterPhone2 = mEditPainterNumber2.getText().toString();
+                mStrPainterPhone3 = mEditPainterNumber3.getText().toString();
+                mStrPainterPhone4 = mEditPainterNumber4.getText().toString();
+                mStrPainterPhone5 = mEditPainterNumber5.getText().toString();
+                mStrPainterExp1 = mSpinnerPainterExp1.getSelectedItem().toString();
+                mStrPainterExp2 = mSpinnerPainterExp2.getSelectedItem().toString();
+                mStrPainterExp3 = mSpinnerPainterExp3.getSelectedItem().toString();
+                mStrPainterExp4 = mSpinnerPainterExp4.getSelectedItem().toString();
+                mStrPainterExp5 = mSpinnerPainterExp5.getSelectedItem().toString();
+                mStrPainterEdu1 = mSpinnerPainterEducation1.getSelectedItem().toString();
+                mStrPainterEdu2 = mSpinnerPainterEducation2.getSelectedItem().toString();
+                mStrPainterEdu3 = mSpinnerPainterEducation3.getSelectedItem().toString();
+                mStrPainterEdu4 = mSpinnerPainterEducation4.getSelectedItem().toString();
+                mStrPainterEdu5 = mSpinnerPainterEducation5.getSelectedItem().toString();
+
+                mStrSourceName1 = mEditSourceName1.getText().toString();
+                mStrSourceLocation1 = mEditSourceLocation1.getText().toString();
+                mStrSourceContact1 = mEditSourceContact1.getText().toString();
+                mStrSourceType1 = mSpinnerSourceType1.getSelectedItem().toString();
+
+
+                mStrSourceName2 = mEditSourceName2.getText().toString();
+                mStrSourceLocation2 = mEditSourceLocation2.getText().toString();
+                mStrSourceContact2 = mEditSourceContact2.getText().toString();
+                mStrSourceType2 = mSpinnerSourceType2.getSelectedItem().toString();
+
+                mStrSourceName3 = mEditSourceName3.getText().toString();
+                mStrSourceLocation3 = mEditSourceLocation3.getText().toString();
+                mStrSourceContact3 = mEditSourceContact3.getText().toString();
+                mStrSourceType3 = mSpinnerSourceType3.getSelectedItem().toString();
+
+                mStrSourceName4 = mEditSourceName4.getText().toString();
+                mStrSourceLocation4 = mEditSourceLocation4.getText().toString();
+                mStrSourceContact4 = mEditSourceContact4.getText().toString();
+                mStrSourceType4 = mSpinnerSourceType4.getSelectedItem().toString();
+
+
+
+
+                int selectedIdFM = radioGrpPaintAvailable.getCheckedRadioButtonId();
+                RadioButton radioSexButton = (RadioButton) findViewById(selectedIdFM);
+                mStrPaintAvaible = radioSexButton.getText().toString();
+                if(mStrPaintAvaible.equals("Yes")){
+                mStrPaintAvaible = "1";
+                }else {
+                mStrPaintAvaible = "2";
+                }
+
                 if(mStrShopName.length()<=0){
                 mShowAlert("Please enter shop name!",ACTRetailerForm.this);
                 return;
@@ -439,57 +722,128 @@ public class ACTRetailerForm extends Activity {
                 mShowAlert("Please enter gst number!",ACTRetailerForm.this);
                 return;
                 }else if(mStrOwnerFirst.length()<=0){
-                    mShowAlert("Please enter owner first name!",ACTRetailerForm.this);
-                    return;
+                mShowAlert("Please enter owner first name!",ACTRetailerForm.this);
+                return;
                 }else if(mStrOwnerLast.length()<=0){
-                    mShowAlert("Please enter owner last name!",ACTRetailerForm.this);
-                    return;
+                mShowAlert("Please enter owner last name!",ACTRetailerForm.this);
+                return;
                 }else if(mStrPhone.length()<=0){
-                    mShowAlert("Please enter mobile number!",ACTRetailerForm.this);
-                    return;
+                mShowAlert("Please enter mobile number!",ACTRetailerForm.this);
+                return;
                 }else if(mStrWhatsNum.length()<=0){
-                    mShowAlert("Please enter whatsapp number!",ACTRetailerForm.this);
-                    return;
+                mShowAlert("Please enter whatsapp number!",ACTRetailerForm.this);
+                return;
                 }else if(mStrOutletSize.length()<=0){
-                    mShowAlert("Please enter outlet size!",ACTRetailerForm.this);
-                    return;
+                mShowAlert("Please enter outlet size!",ACTRetailerForm.this);
+                return;
                 }else if(mStrAddress1.length()<=0){
-                    mShowAlert("Please enter address 1!",ACTRetailerForm.this);
-                    return;
+                mShowAlert("Please enter address 1!",ACTRetailerForm.this);
+                return;
                 }else if(mStrPinNum.length()<=0){
-                    mShowAlert("Please enter pin code!",ACTRetailerForm.this);
-                    return;
+                mShowAlert("Please enter pin code!",ACTRetailerForm.this);
+                return;
                 }else if(mStrTehsil.equals("TEHSIL")){
-                    mShowAlert("Please select tehsil!",ACTRetailerForm.this);
-                    return;
+                mShowAlert("Please select tehsil!",ACTRetailerForm.this);
+                return;
                 }else if(mStrBlocks.equals("BLOCK")){
-                    mShowAlert("Please select block!",ACTRetailerForm.this);
-                    return;
+                mShowAlert("Please select block!",ACTRetailerForm.this);
+                return;
                 }else if(mStrVillage.length()<=0){
-                    mShowAlert("Please enter village!",ACTRetailerForm.this);
-                    return;
+                mShowAlert("Please enter village!",ACTRetailerForm.this);
+                return;
                 }else if(mStrReProduct.length()<=0){
-                    mShowAlert("Please select at least one product!",ACTRetailerForm.this);
-                    return;
+                mShowAlert("Please select at least one product!",ACTRetailerForm.this);
+                return;
                 }else if(mStrReBrands.length()<=0){
-                    mShowAlert("Please select at least one beands!",ACTRetailerForm.this);
-                    return;
+                mShowAlert("Please select at least one beands!",ACTRetailerForm.this);
+                return;
                 }else if(mStrYearInBussiness.equals("Years In Business")){
-                    mShowAlert("Please select years in business!",ACTRetailerForm.this);
-                    return;
+                mShowAlert("Please select years in business!",ACTRetailerForm.this);
+                return;
                 }else if(mStrMonthlySales.equals("Monthly Sales")){
-                    mShowAlert("Please select monthly sales!",ACTRetailerForm.this);
-                    return;
+                mShowAlert("Please select monthly sales!",ACTRetailerForm.this);
+                return;
                 }else if(mStrPaintSales.equals("Paint Sales")){
-                    mShowAlert("Please select paint sales!",ACTRetailerForm.this);
-                    return;
+                mShowAlert("Please select paint sales!",ACTRetailerForm.this);
+                return;
                 }else if(mStrPaintSales.equals("Paint Margin")){
-                    mShowAlert("Please select paint margin!",ACTRetailerForm.this);
-                    return;
+                mShowAlert("Please select paint margin!",ACTRetailerForm.this);
+                return;
                 }else if(mStrReDelivery.length()<=0){
-                    mShowAlert("Please select at least one delivery source!",ACTRetailerForm.this);
-                    return;
+                mShowAlert("Please select at least one delivery source!",ACTRetailerForm.this);
+                return;
+                }else if(mStrPainterName1.length()>0 && mStrPainterEdu1.equals("Education")){
+                mShowAlert("Please select painter 1 Education Level",ACTRetailerForm.this);
+                return;
+                }else if(mStrPainterName1.length()>0 && mStrPainterExp1.equals("Experience(Yrs)")){
+                mShowAlert("Please select painter 1 Experience",ACTRetailerForm.this);
+                return;
+                }else if(mStrPainterName1.length()>0 && mStrPainterPhone1.length()<=0){
+                mShowAlert("Please enter painter 1 phone number",ACTRetailerForm.this);
+                return;
+                }else if(mStrPainterName2.length()>0 && mStrPainterEdu2.equals("Education")){
+                mShowAlert("Please select painter 2 Education Level",ACTRetailerForm.this);
+                return;
+                }else if(mStrPainterName2.length()>0 && mStrPainterExp2.equals("Experience(Yrs)")){
+                mShowAlert("Please select painter 2 Experience",ACTRetailerForm.this);
+                return;
+                }else if(mStrPainterName2.length()>0 && mStrPainterPhone2.length()<=0){
+                mShowAlert("Please enter painter 2 phone number",ACTRetailerForm.this);
+                return;
+                }else if(mStrPainterName3.length()>0 && mStrPainterEdu3.equals("Education")){
+                mShowAlert("Please select painter 3 Education Level",ACTRetailerForm.this);
+                return;
+                }else if(mStrPainterName3.length()>0 && mStrPainterExp3.equals("Experience(Yrs)")){
+                mShowAlert("Please select painter 3 Experience",ACTRetailerForm.this);
+                return;
+                }else if(mStrPainterName3.length()>0 && mStrPainterPhone3.length()<=0){
+                mShowAlert("Please enter painter 3 phone number",ACTRetailerForm.this);
+                return;
+                }else if(mStrPainterName4.length()>0 && mStrPainterEdu4.equals("Education")){
+                mShowAlert("Please select painter 4 Education Level",ACTRetailerForm.this);
+                return;
+                }else if(mStrPainterName4.length()>0 && mStrPainterExp4.equals("Experience(Yrs)")){
+                mShowAlert("Please select painter 4 Experience",ACTRetailerForm.this);
+                return;
+                }else if(mStrPainterName4.length()>0 && mStrPainterPhone4.length()<=0){
+                mShowAlert("Please enter painter 4 phone number",ACTRetailerForm.this);
+                return;
+                }else if(mStrPainterName5.length()>0 && mStrPainterEdu5.equals("Education")){
+                mShowAlert("Please select painter 5 Education Level",ACTRetailerForm.this);
+                return;
+                }else if(mStrPainterName5.length()>0 && mStrPainterExp5.equals("Experience(Yrs)")){
+                mShowAlert("Please select painter 5 Experience",ACTRetailerForm.this);
+                return;
+                }else if(mStrPainterName5.length()>0 && mStrPainterPhone5.length()<=0){
+                mShowAlert("Please enter painter 5 phone number",ACTRetailerForm.this);
+                return;
+                }else if(mStrSourceName1.length()>0 && mStrSourceLocation1.length()<=0){
+                mShowAlert("Please enter source city name 1",ACTRetailerForm.this);
+                return;
+                }else if(mStrSourceName1.length()>0 && mStrSourceContact1.length()<=0){
+                mShowAlert("Please enter source contact 1",ACTRetailerForm.this);
+                return;
+                }else if(mStrSourceName2.length()>0 && mStrSourceLocation2.length()<=0){
+                mShowAlert("Please enter source city name 2",ACTRetailerForm.this);
+                return;
+                }else if(mStrSourceName2.length()>0 && mStrSourceContact2.length()<=0){
+                mShowAlert("Please enter source contact 2",ACTRetailerForm.this);
+                return;
+                }else if(mStrSourceName3.length()>0 && mStrSourceLocation3.length()<=0){
+                mShowAlert("Please enter source city name 3",ACTRetailerForm.this);
+                return;
+                }else if(mStrSourceName3.length()>0 && mStrSourceContact3.length()<=0){
+                mShowAlert("Please enter source contact 3",ACTRetailerForm.this);
+                return;
+                }else if(mStrSourceName4.length()>0 && mStrSourceLocation4.length()<=0){
+                mShowAlert("Please enter source city name 4",ACTRetailerForm.this);
+                return;
+                }else if(mStrSourceName4.length()>0 && mStrSourceContact4.length()<=0){
+                mShowAlert("Please enter source contact 4",ACTRetailerForm.this);
+                return;
                 }
+
+                mStrDistrict = database.GT_RAW_LOCATION_DISTRICT(mStrBlocks,mStrTehsil).get(0);
                 Retailers retailers = new Retailers();
                 retailers.setTbAddress1(mStrAddress1);
                 retailers.setTbAddress2(mStrAddress2);
@@ -518,9 +872,57 @@ public class ACTRetailerForm extends Activity {
                 retailers.setTbUserId(PreferenceManager.getNEROUSERID(ACTRetailerForm.this));
                 retailers.setTbVillage(mStrVillage);
                 retailers.setTbWhatsApp(mStrWhatsNum);
+                retailers.setTbOutletType(mStrOutLetType);
+                retailers.setTbPainterNameOne(mStrPainterName1);
+                retailers.setTbPainterExperienceOne(mStrPainterExp1);
+                retailers.setTbPainterEducationOne(mStrPainterEdu1);
+                retailers.setTbPainterPhoneOne(mStrPainterPhone1);
+                retailers.setTbPainterNameTwo(mStrPainterName2);
+                retailers.setTbPainterExperienceTwo(mStrPainterExp2);
+                retailers.setTbPainterEducationTwo(mStrPainterEdu2);
+                retailers.setTbPainterPhoneTwo(mStrPainterPhone2);
+                retailers.setTbPainterNameThree(mStrPainterName3);
+                retailers.setTbPainterExperienceThree(mStrPainterExp3);
+                retailers.setTbPainterEducationThree(mStrPainterEdu3);
+                retailers.setTbPainterPhoneThree(mStrPainterPhone3);
+                retailers.setTbPainterNameFour(mStrPainterName4);
+                retailers.setTbPainterExperienceFour(mStrPainterExp4);
+                retailers.setTbPainterEducationFour(mStrPainterEdu4);
+                retailers.setTbPainterPhoneFour(mStrPainterPhone4);
+                retailers.setTbPainterNameFive(mStrPainterName5);
+                retailers.setTbPainterExperienceFive(mStrPainterExp5);
+                retailers.setTbPainterEducationFive(mStrPainterEdu5);
+                retailers.setTbPainterPhoneFive(mStrPainterPhone5);
+
+                retailers.setTbSourceName1(mStrSourceName1);
+                retailers.setTbSourceContact1(mStrSourceContact1);
+                retailers.setTbSourceLocation1(mStrSourceLocation1);
+                retailers.setTbSourceType1(mStrSourceType1);
+
+                retailers.setTbSourceName2(mStrSourceName2);
+                retailers.setTbSourceContact2(mStrSourceContact2);
+                retailers.setTbSourceLocation2(mStrSourceLocation2);
+                retailers.setTbSourceType2(mStrSourceType2);
+
+                retailers.setTbSourceName3(mStrSourceName3);
+                retailers.setTbSourceContact3(mStrSourceContact3);
+                retailers.setTbSourceLocation3(mStrSourceLocation3);
+                retailers.setTbSourceType3(mStrSourceType3);
+
+                retailers.setTbSourceName4(mStrSourceName4);
+                retailers.setTbSourceContact4(mStrSourceContact4);
+                retailers.setTbSourceLocation4(mStrSourceLocation4);
+                retailers.setTbSourceType4(mStrSourceType4);
+
+
+                retailers.setTbPaintAvail(mStrPaintAvaible);
                 retailers.setTbImgOne(mStrImgOnePath);
                 retailers.setTbImgTwo(mStrImgTwoPath);
                 retailers.setTbImgThree(mStrImgThreePath);
+                retailers.setTbImgFour(mStrImgFourPath);
+                retailers.setTbImgFive(mStrImgFivePath);
+                retailers.setTbImgSix(mStrImgSixPath);
+
                 database.IN_DATA_RETAILERS(retailers);
                 mShowAlert("You have successfully submitted!!", ACTRetailerForm.this);
                 handler = new Handler();
@@ -530,21 +932,6 @@ public class ACTRetailerForm extends Activity {
                         finish();
                     }
                 }, 1000);
-
-
-
-
-
-
-
-
-
-
-
-                //showProgress(ACTRetailerForm.this);
-                //mFunEnterForm();
-
-
             }
         });
 
@@ -587,6 +974,39 @@ public class ACTRetailerForm extends Activity {
             System.out.println("<><>1234 "+storeImage(bitmap));
             //mStrImgThreePath = ImageUtil.convert(bitmap);
             mStrImgThreePath = storeImage(bitmap);
+        }else if (resultCode == RESULT_OK && requestCode == 500) {
+            Bitmap bitmap = (Bitmap) data.getExtras().get("data");
+            ByteArrayOutputStream baos = new ByteArrayOutputStream();
+            BitmapFactory.Options options = new BitmapFactory.Options();
+            options.inPreferredConfig = Bitmap.Config.ARGB_8888;
+            bitmap = writeTextOnDrawable(bitmap,getTimeformat());
+            bitmap.compress(Bitmap.CompressFormat.JPEG, 70, baos);
+            mImgFour.setImageBitmap(bitmap);
+            System.out.println("<><>1234 "+storeImage(bitmap));
+            //mStrImgThreePath = ImageUtil.convert(bitmap);
+            mStrImgFourPath = storeImage(bitmap);
+        }else if (resultCode == RESULT_OK && requestCode == 600) {
+            Bitmap bitmap = (Bitmap) data.getExtras().get("data");
+            ByteArrayOutputStream baos = new ByteArrayOutputStream();
+            BitmapFactory.Options options = new BitmapFactory.Options();
+            options.inPreferredConfig = Bitmap.Config.ARGB_8888;
+            bitmap = writeTextOnDrawable(bitmap,getTimeformat());
+            bitmap.compress(Bitmap.CompressFormat.JPEG, 70, baos);
+            mImgFive.setImageBitmap(bitmap);
+            System.out.println("<><>1234 "+storeImage(bitmap));
+            //mStrImgThreePath = ImageUtil.convert(bitmap);
+            mStrImgFivePath = storeImage(bitmap);
+        }else if (resultCode == RESULT_OK && requestCode == 700) {
+            Bitmap bitmap = (Bitmap) data.getExtras().get("data");
+            ByteArrayOutputStream baos = new ByteArrayOutputStream();
+            BitmapFactory.Options options = new BitmapFactory.Options();
+            options.inPreferredConfig = Bitmap.Config.ARGB_8888;
+            bitmap = writeTextOnDrawable(bitmap,getTimeformat());
+            bitmap.compress(Bitmap.CompressFormat.JPEG, 70, baos);
+            mImgSix.setImageBitmap(bitmap);
+            System.out.println("<><>1234 "+storeImage(bitmap));
+            //mStrImgThreePath = ImageUtil.convert(bitmap);
+            mStrImgSixPath = storeImage(bitmap);
         }
     }
 
@@ -638,7 +1058,7 @@ public class ACTRetailerForm extends Activity {
     }
 
     void mFunEnterForm() {
-        StringRequest strRequest = new StringRequest(Request.Method.POST,"http://hinterland.nerolachub.com/Api/addRetailer",
+        StringRequest strRequest = new StringRequest(Request.Method.POST,BaseUrl+"addRetailer",
                 new Response.Listener<String>() {
                     @Override
                     public void onResponse(String str) {

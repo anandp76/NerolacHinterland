@@ -13,7 +13,7 @@
             android:id="@+id/mTxer"
             android:layout_marginLeft="15dp"
             android:layout_marginTop="15dp"
-            android:text="Retailers"
+            android:text="Upload Dealers"
             android:textSize="22dp"
             android:textColor="@color/appblue"
             android:textStyle="bold"

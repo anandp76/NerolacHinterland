@@ -10,6 +10,7 @@
     <uses-permission android:name="android.permission.FOREGROUND_SERVICE"/>
 
     <application
+        android:name=".Utils.AppController"
         android:allowBackup="true"
         android:icon="@mipmap/ic_launcher_new"
         android:roundIcon="@mipmap/ic_launcher"
@@ -17,6 +18,7 @@
         android:supportsRtl="true"
         android:usesCleartextTraffic="true"
         android:theme="@style/AppTheme.NoActionBar">
+
         <activity android:name=".ACTSplash">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
@@ -24,6 +26,10 @@
             </intent-filter>
         </activity>
         <activity android:name=".MainActivity"/>
+        <activity android:name=".ACTRoutPlanList"/>
+        <activity android:name=".ACTRoutPlanPendingList"/>
+        <activity android:name=".ACTRoutPlanCoveredList"/>
+        <activity android:name=".ACTRoutPlanAdditionalList"/>
         <activity android:name=".ACTAnajMandiList"/>
         <activity android:name=".ACTLogin"/>
         <activity android:name=".ACTDistributorForm"/>
@@ -46,9 +52,10 @@
         <activity android:name=".ACTPendingUpload"/>
         <activity android:name=".ACTRoutPlanForm"/>
         <activity android:name=".ACTAttendenceList"/>
-        <activity android:name=".ACTVillageDistributorsGraph">
-
-        </activity>
+        <activity android:name=".ACTFormUpdate"/>
+        <activity android:name=".ACTAddOrderDilerList"/>
+        <activity android:name=".ACTProductList"/>
+        <activity android:name=".ACTOrderSummry"/>
 
         <activity android:name=".ACTViewMoreList">
 

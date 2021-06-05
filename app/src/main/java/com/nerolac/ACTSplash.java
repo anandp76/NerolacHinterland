@@ -28,7 +28,7 @@ public class ACTSplash extends Activity {
         setContentView(R.layout.activity_splash);
         setTranceprent(ACTSplash.this,R.color.white);
         //startForegroundService(new Intent(ACTSplash.this, AndroidLocationServices.class));
-
+        //stackOverflow();
         handler = new Handler();
         handler.postDelayed(new Runnable() {
             @Override
@@ -48,7 +48,10 @@ public class ACTSplash extends Activity {
 
     }
 
+    public void stackOverflow() {
+        this.stackOverflow();
 
+    }
 
 }
 

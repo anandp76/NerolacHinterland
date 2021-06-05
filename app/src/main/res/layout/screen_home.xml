@@ -6,7 +6,6 @@
     <include layout="@layout/item_toolbar" />
 
     <androidx.drawerlayout.widget.DrawerLayout
-
         android:id="@+id/mDrawerLayout"
         android:layout_width="match_parent"
         android:layout_height="match_parent">
@@ -133,6 +132,32 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:text="D. Prospects"/>
+
+                    <ImageView
+                        android:src="@drawable/ic_forwaord"
+                        android:layout_alignParentRight="true"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"/>
+
+                </RelativeLayout>
+                <View
+                    android:layout_width="match_parent"
+                    android:layout_height="1dp"
+                    android:background="#d7d7d7" />
+
+                <RelativeLayout
+                    android:id="@+id/mLayoutOrder"
+                    android:padding="8dp"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content">
+
+                    <TextView
+                        android:layout_centerVertical="true"
+                        android:textColor="@color/appblue"
+                        android:textSize="16dp"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Order"/>
 
                     <ImageView
                         android:src="@drawable/ic_forwaord"
@@ -346,6 +371,32 @@
                         android:text="Logout"/>
 
                     <ImageView
+                        android:src="@drawable/ic_forwaord"
+                        android:layout_alignParentRight="true"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"/>
+
+                </RelativeLayout>
+                <View
+                    android:layout_width="match_parent"
+                    android:layout_height="1dp"
+                    android:background="#d7d7d7" />
+                <RelativeLayout
+                    android:padding="8dp"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content">
+
+                    <TextView
+                        android:layout_centerHorizontal="true"
+                        android:layout_centerVertical="true"
+                        android:textColor="@color/appblue"
+                        android:textSize="11dp"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Version 3.20"/>
+
+                    <ImageView
+                        android:visibility="gone"
                         android:src="@drawable/ic_forwaord"
                         android:layout_alignParentRight="true"
                         android:layout_width="wrap_content"

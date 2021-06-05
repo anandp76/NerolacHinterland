@@ -58,6 +58,62 @@ public class DataBaseStringRetailer {
     public static String RT_IMGONE = "tbImgOne";
     public static String RT_IMGTWO = "tbImgTwo";
     public static String RT_IMGTHREE = "tbImgThree";
+    public static String RT_IMGFOUR = "tbImgFour";
+    public static String RT_IMGFIVE = "tbImgFive";
+    public static String RT_IMGSIX = "tbImgSix";
+    public static String RT_OUTLETTYPE = "tbOutletType";
+    public static String RT_PAINTAVAIL = "tbPaintAvail";
+
+
+
+    public static String RT_PAINTERNAMEONE = "tbPainterNameOne";
+    public static String RT_PAINTEREXPERIENCEONE = "tbPainterExperienceOne";
+    public static String RT_PAINTEREDUCATIONONE = "tbPainterEducationOne";
+    public static String RT_PAINTERPHONEONE = "tbPainterPhoneOne";
+
+
+    public static String RT_PAINTERNAMETWO = "tbPainterNameTwo";
+    public static String RT_PAINTEREXPERIENCETWO = "tbPainterExperienceTwo";
+    public static String RT_PAINTEREDUCATIONTWO = "tbPainterEducationTwo";
+    public static String RT_PAINTERPHONETWO = "tbPainterPhoneTwo";
+
+    public static String RT_PAINTERNAMETHREE = "tbPainterNameThree";
+    public static String RT_PAINTEREXPERIENCETHREE = "tbPainterExperienceThree";
+    public static String RT_PAINTEREDUCATIONTHREE = "tbPainterEducationThree";
+    public static String RT_PAINTERPHONETHREE = "tbPainterPhoneThree";
+
+    public static String RT_PAINTERNAMEFOUR = "tbPainterNameFour";
+    public static String RT_PAINTEREXPERIENCEFOUR = "tbPainterExperienceFour";
+    public static String RT_PAINTEREDUCATIONFOUR = "tbPainterEducationFour";
+    public static String RT_PAINTERPHONEFOUR = "tbPainterPhoneFour";
+
+
+    public static String RT_PAINTERNAMEFIVE = "tbPainterNameFive";
+    public static String RT_PAINTEREXPERIENCEFIVE = "tbPainterExperienceFive";
+    public static String RT_PAINTEREDUCATIONFIVE = "tbPainterEducationFive";
+    public static String RT_PAINTERPHONEFIVE = "tbPainterPhoneFive";
+
+
+    public static String RT_SOURCECONTACTONE = "tbSourceContactOne";
+    public static String RT_SOURCELOCATIONONE = "tbSourceLocationOne";
+    public static String RT_SOURCETYPEONE = "tbSourceTypeOne";
+    public static String RT_SOURCENAMEONE = "tbSourceNameOne";
+
+    public static String RT_SOURCECONTACTTWO = "tbSourceContactTwo";
+    public static String RT_SOURCELOCATIONTWO = "tbSourceLocationTwo";
+    public static String RT_SOURCETYPETWO = "tbSourceTypeTwo";
+    public static String RT_SOURCENAMETWO = "tbSourceNameTwo";
+
+    public static String RT_SOURCECONTACTTHREE = "tbSourceContactThree";
+    public static String RT_SOURCELOCATIONTHREE = "tbSourceLocationThree";
+    public static String RT_SOURCETYPETHREE = "tbSourceTypeThree";
+    public static String RT_SOURCENAMETHREE = "tbSourceNameThree";
+
+    public static String RT_SOURCECONTACTFOUR = "tbSourceContactFour";
+    public static String RT_SOURCELOCATIONFOUR = "tbSourceLocationFour";
+    public static String RT_SOURCETYPEFOUR = "tbSourceTypeFour";
+    public static String RT_SOURCENAMEFOUR = "tbSourceNameFour";
+
 
 
 
@@ -85,6 +141,7 @@ public class DataBaseStringRetailer {
             + RT_TEHSIL + " TEXT NOT NULL, "
             + RT_PRODUCTS + " TEXT NOT NULL, "
             + RT_BRANDS + " TEXT NOT NULL, "
+            + RT_PAINTAVAIL + " TEXT NOT NULL, "
             + RT_BUSINESSINYEARS + " TEXT NOT NULL, "
             + RT_OUTLETSALES + " TEXT NOT NULL, "
             + RT_PAINTSALES + " TEXT NOT NULL, "
@@ -92,9 +149,49 @@ public class DataBaseStringRetailer {
             + RT_DELIVERY + " TEXT NOT NULL, "
             + RT_LATITUDE + " TEXT NOT NULL, "
             + RT_LONGITUDE + " TEXT NOT NULL, "
+            + RT_OUTLETTYPE + " TEXT NOT NULL, "
             + RT_IMGONE + " TEXT, "
             + RT_IMGTWO + " TEXT, "
             + RT_IMGTHREE + " TEXT, "
+            + RT_IMGFOUR + " TEXT, "
+            + RT_IMGFIVE + " TEXT, "
+            + RT_IMGSIX + " TEXT, "
+            + RT_PAINTERNAMEONE + " TEXT, "
+            + RT_PAINTEREXPERIENCEONE + " TEXT, "
+            + RT_PAINTEREDUCATIONONE + " TEXT, "
+            + RT_PAINTERPHONEONE + " TEXT, "
+            + RT_PAINTERNAMETWO + " TEXT, "
+            + RT_PAINTEREXPERIENCETWO + " TEXT, "
+            + RT_PAINTEREDUCATIONTWO + " TEXT, "
+            + RT_PAINTERPHONETWO + " TEXT, "
+            + RT_PAINTERNAMETHREE + " TEXT, "
+            + RT_PAINTEREXPERIENCETHREE + " TEXT, "
+            + RT_PAINTEREDUCATIONTHREE + " TEXT, "
+            + RT_PAINTERPHONETHREE + " TEXT, "
+            + RT_PAINTERNAMEFOUR + " TEXT, "
+            + RT_PAINTEREXPERIENCEFOUR + " TEXT, "
+            + RT_PAINTEREDUCATIONFOUR + " TEXT, "
+            + RT_PAINTERPHONEFOUR + " TEXT, "
+            + RT_PAINTERNAMEFIVE + " TEXT, "
+            + RT_PAINTEREXPERIENCEFIVE + " TEXT, "
+            + RT_PAINTEREDUCATIONFIVE + " TEXT, "
+            + RT_PAINTERPHONEFIVE + " TEXT, "
+            + RT_SOURCECONTACTONE + " TEXT, "
+            + RT_SOURCELOCATIONONE + " TEXT, "
+            + RT_SOURCETYPEONE + " TEXT, "
+            + RT_SOURCENAMEONE + " TEXT, "
+            + RT_SOURCECONTACTTWO + " TEXT, "
+            + RT_SOURCELOCATIONTWO + " TEXT, "
+            + RT_SOURCETYPETWO + " TEXT, "
+            + RT_SOURCENAMETWO + " TEXT, "
+            + RT_SOURCECONTACTTHREE + " TEXT, "
+            + RT_SOURCELOCATIONTHREE + " TEXT, "
+            + RT_SOURCETYPETHREE + " TEXT, "
+            + RT_SOURCENAMETHREE + " TEXT, "
+            + RT_SOURCECONTACTFOUR + " TEXT, "
+            + RT_SOURCELOCATIONFOUR + " TEXT, "
+            + RT_SOURCETYPEFOUR + " TEXT, "
+            + RT_SOURCENAMEFOUR + " TEXT, "
             + RT_REMARK + " TEXT )";
 
 

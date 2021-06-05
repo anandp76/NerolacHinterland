@@ -47,6 +47,7 @@ import java.util.Map;
 import androidx.fragment.app.Fragment;
 
 import static com.nerolac.DataBase.DataBaseStringRetailer.TBL_RAW_LOCATION_TEHSIL;
+import static com.nerolac.Utils.CommonData.BaseUrl;
 import static com.nerolac.Utils.CommonData.hidePDialog;
 import static com.nerolac.Utils.CommonData.mShowAlert;
 import static com.nerolac.Utils.CommonData.setTranceprent;
@@ -112,7 +113,7 @@ public class ACTInboxList extends Fragment {
     
 
     public static void mFunGetMataData1() {
-        StringRequest strRequest = new StringRequest(Request.Method.POST,"http://hinterland.nerolachub.com/Api/getMessages",
+        StringRequest strRequest = new StringRequest(Request.Method.POST,BaseUrl+"getMessages",
                 new Response.Listener<String>() {
                     @Override
                     public void onResponse(String str) {

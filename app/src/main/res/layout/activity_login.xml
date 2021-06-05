@@ -29,11 +29,14 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content">
         <EditText
+            android:singleLine="true"
+            android:inputType="textEmailAddress"
             android:id="@+id/mEditEmail"
             android:padding="10dp"
             android:background="@color/white"
             android:textColor="@color/appblue"
             android:textSize="16dp"
+            android:imeOptions="actionNext"
             android:textStyle="bold"
             android:textColorHint="@color/appblue"
             android:hint="E-mail/Mobile"
@@ -45,6 +48,7 @@
             android:background="@color/appblue"/>
 
         <EditText
+            android:singleLine="true"
             android:inputType="textPassword"
             android:id="@+id/mEditPassword"
             android:layout_marginTop="20dp"
@@ -52,6 +56,7 @@
             android:background="@color/white"
             android:textColor="@color/appblue"
             android:textSize="16dp"
+            android:imeOptions="actionNext"
             android:textStyle="bold"
             android:textColorHint="@color/appblue"
             android:hint="Password"

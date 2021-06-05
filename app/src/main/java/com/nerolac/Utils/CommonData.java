@@ -28,7 +28,10 @@ import java.util.Date;
 import androidx.core.content.ContextCompat;
 
 public class CommonData {
+    //public static String BaseUrl = "http://hinterland.nerolachub.com/Api/";
+    public static String BaseUrl = "https://anmolratan.nerolachub.com/Api/";
     public static ProgressDialog pDialog;
+    public static ProgressDialog pDialog22;
     public static void setTranceprent(Activity activity, int color) {
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.KITKAT) {
             Window window = activity.getWindow();
@@ -49,6 +52,25 @@ public class CommonData {
             Animation animation1 = AnimationUtils.loadAnimation(context, R.anim.rotating);
             imgProgress.startAnimation(animation1);
       }
+
+    public static void showProgress22(Context context) {
+        pDialog22 = new ProgressDialog(context);
+        pDialog22.setIndeterminate(true);
+        pDialog22.setCancelable(false);
+        pDialog22.show();
+        pDialog22.getWindow().setBackgroundDrawable(new ColorDrawable(Color.TRANSPARENT));
+        pDialog22.setContentView(R.layout.progress_box);
+        ImageView imgProgress = (ImageView) pDialog22.findViewById(R.id.imgProgress);
+        Animation animation1 = AnimationUtils.loadAnimation(context, R.anim.rotating);
+        imgProgress.startAnimation(animation1);
+    }
+
+    public static void hidePDialog22() {
+        if (pDialog22 != null) {
+            pDialog22.dismiss();
+            pDialog22 = null;
+        }
+    }
 
     public static void hidePDialog() {
         if (pDialog != null) {
@@ -138,7 +160,6 @@ public class CommonData {
         System.out.println("Current time => " + c);
         SimpleDateFormat df = new SimpleDateFormat("yyyy-MM-dd");
         String formattedDate = df.format(c);
-
         Date date=df.parse(mStrDate);
         String mStrResult = (String) DateFormat.format("yyyy-MM-dd",   date);
         if(mStrResult.equals(formattedDate)){

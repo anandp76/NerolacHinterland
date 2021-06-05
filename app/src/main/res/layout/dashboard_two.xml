@@ -260,14 +260,15 @@
         android:orientation="vertical"
         android:layout_width="match_parent"
         android:layout_height="wrap_content">
-        <LinearLayout
 
+        <LinearLayout
             android:gravity="center_horizontal"
             android:orientation="horizontal"
             android:layout_width="match_parent"
             android:layout_height="wrap_content">
 
             <RelativeLayout
+                android:id="@+id/mLayout2Retailer"
                 android:padding="10dp"
                 android:layout_width="100dp"
                 android:layout_height="120dp"
@@ -284,7 +285,7 @@
                     android:background="@color/white"
                     app:cardBackgroundColor="@color/white">
                     <RelativeLayout
-                        android:id="@+id/mLayout2Retailer"
+
                         android:layout_width="match_parent"
                         android:layout_height="match_parent">
                         <ImageView
@@ -308,6 +309,7 @@
             </RelativeLayout>
 
             <RelativeLayout
+                android:id="@+id/mLayout2Distributor"
                 android:padding="10dp"
                 android:layout_width="100dp"
                 android:layout_height="120dp"
@@ -324,7 +326,7 @@
                     android:background="@color/white"
                     app:cardBackgroundColor="@color/white">
                     <RelativeLayout
-                        android:id="@+id/mLayout2Distributor"
+
                         android:layout_width="match_parent"
                         android:layout_height="match_parent">
                         <ImageView
@@ -348,6 +350,7 @@
             </RelativeLayout>
 
             <RelativeLayout
+                android:id="@+id/mLayout2SalesOrder"
                 android:padding="10dp"
                 android:layout_width="100dp"
                 android:layout_height="120dp"
@@ -363,7 +366,7 @@
                     android:background="@color/white"
                     app:cardBackgroundColor="@color/white">
                     <RelativeLayout
-                        android:id="@+id/mLayout2SalesOrder"
+
                         android:layout_width="match_parent"
                         android:layout_height="match_parent">
                         <ImageView
@@ -398,6 +401,7 @@
 
 
             <RelativeLayout
+                android:id="@+id/mLayout2Order"
                 android:padding="10dp"
                 android:layout_width="100dp"
                 android:layout_height="120dp"
@@ -406,7 +410,7 @@
                 android:layout_marginRight="10dp">
 
                 <androidx.cardview.widget.CardView
-                    android:id="@+id/mCard2RoutePlan"
+                    android:id="@+id/mCard2Order"
                     android:layout_width="match_parent"
                     android:layout_height="80dp"
                     app:cardCornerRadius="18dp"
@@ -414,14 +418,13 @@
                     android:background="@color/white"
                     app:cardBackgroundColor="@color/white">
                     <RelativeLayout
-                        android:id="@+id/mLayout2RoutePlan"
                         android:layout_width="match_parent"
                         android:layout_height="match_parent">
                         <ImageView
                             android:layout_centerInParent="true"
                             android:layout_width="45dp"
                             android:layout_height="45dp"
-                            android:src="@drawable/ic_route_plan"/>
+                            android:src="@drawable/ic_order_main"/>
                     </RelativeLayout>
 
                 </androidx.cardview.widget.CardView>
@@ -429,16 +432,16 @@
                     android:layout_marginTop="5dp"
                     android:layout_centerHorizontal="true"
                     android:textStyle="bold"
-                    android:text="Route Plan"
+                    android:text="Order"
                     android:textSize="12dp"
                     android:textColor="@color/appblue"
-                    android:layout_below="@+id/mCard2RoutePlan"
+                    android:layout_below="@+id/mCard2Order"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"/>
             </RelativeLayout>
             <RelativeLayout
+                android:id="@+id/mLayout2Attandence"
                 android:visibility="visible"
-                android:id="@+id/mLayoutOther"
                 android:padding="10dp"
                 android:layout_width="100dp"
                 android:layout_height="120dp"
@@ -455,7 +458,7 @@
                     android:background="@color/white"
                     app:cardBackgroundColor="@color/white">
                     <RelativeLayout
-                        android:id="@+id/mLayout2Attandence"
+
                         android:layout_width="match_parent"
                         android:layout_height="match_parent">
                         <ImageView
@@ -478,6 +481,7 @@
                     android:layout_height="wrap_content"/>
             </RelativeLayout>
             <RelativeLayout
+                android:id="@+id/mLayout2Pending"
                 android:padding="10dp"
                 android:layout_width="100dp"
                 android:layout_height="120dp"
@@ -494,7 +498,7 @@
                     android:background="@color/white"
                     app:cardBackgroundColor="@color/white">
                     <RelativeLayout
-                        android:id="@+id/mLayout2Pending"
+
                         android:layout_width="match_parent"
                         android:layout_height="match_parent">
                         <ImageView
@@ -588,7 +592,7 @@
             android:textColor="@color/appblue"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="Powered by : Nebula Advertising Pvt. Ltd."/>
+            android:text="Powered by : Nebula Advertising Pvt. Ltd.  V 3.20"/>
     </LinearLayout>
 
     </LinearLayout>

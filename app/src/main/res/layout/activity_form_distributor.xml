@@ -411,12 +411,14 @@
                 android:layout_height="wrap_content"
                 android:orientation="horizontal">
                 <CheckBox
+                    android:id="@+id/mCheckOtherCat"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:textColor="#000000"
                     android:textSize="15dp" />
 
                 <EditText
+                    android:id="@+id/mEditOtherCat"
                     android:layout_marginLeft="5dp"
                     android:background="@drawable/border_rectangle_shap"
                     android:textColor="#000000"
@@ -943,8 +945,398 @@
 
             </LinearLayout>
 
+            <TextView
+                android:textStyle="bold"
+                android:textSize="18dp"
+                android:layout_marginTop="10dp"
+                android:text="Delivery Source"
+                android:textColor="@color/appblue"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"/>
+
+            <com.nerolac.Utils.FlowLayout
+                android:id="@+id/mLayoutDelivery"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="5dp"
+                android:orientation="horizontal">
 
 
+            </com.nerolac.Utils.FlowLayout>
+            <TextView
+                android:textStyle="bold"
+                android:textSize="18dp"
+                android:layout_marginTop="10dp"
+                android:text="Source Contacts"
+                android:textColor="@color/appblue"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"/>
+
+            <LinearLayout
+                android:orientation="vertical"
+                android:background="@drawable/border_rectangle_shap"
+                android:layout_marginTop="10dp"
+                android:padding="5dp"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+                <LinearLayout
+                    android:orientation="horizontal"
+                    android:weightSum="2"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content">
+                    <EditText
+                        android:id="@+id/mEditSourceName1"
+                        android:layout_marginRight="5dp"
+                        android:layout_weight="1"
+                        android:background="@drawable/border_rectangle_shap"
+                        android:textColor="#000000"
+                        android:hint="Source Name"
+                        android:textSize="15dp"
+                        android:padding="10dp"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"/>
+                    <EditText
+                        android:maxLength="10"
+                        android:inputType="phone"
+                        android:id="@+id/mEditSourceContact1"
+                        android:layout_marginLeft="5dp"
+                        android:layout_weight="1"
+                        android:background="@drawable/border_rectangle_shap"
+                        android:textColor="#000000"
+                        android:hint="Mobile Number"
+                        android:textSize="15dp"
+                        android:padding="10dp"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"/>
+
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_marginTop="5dp"
+                    android:orientation="horizontal"
+                    android:weightSum="2"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content">
+
+
+                    <RelativeLayout
+                        android:background="@drawable/border_rectangle_shap"
+                        android:layout_marginRight="5dp"
+                        android:layout_weight="1"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content">
+                        <Spinner
+                            android:paddingBottom="10dp"
+                            android:background="#00000000"
+                            android:paddingTop="10dp"
+                            android:id="@+id/mSpinnerSourceType1"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"/>
+                        <ImageView
+                            android:layout_marginRight="10dp"
+                            android:layout_alignParentRight="true"
+                            android:layout_centerVertical="true"
+                            android:src="@drawable/ic_keyboard_arrow"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"/>
+
+                    </RelativeLayout>
+
+                    <EditText
+                        android:maxLength="10"
+                        android:inputType="phone"
+                        android:id="@+id/mEditSourceLocation1"
+                        android:layout_marginLeft="5dp"
+                        android:layout_weight="1"
+                        android:background="@drawable/border_rectangle_shap"
+                        android:textColor="#000000"
+                        android:hint="City Name"
+                        android:textSize="15dp"
+                        android:padding="10dp"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"/>
+
+
+                </LinearLayout>
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:orientation="vertical"
+                android:background="@drawable/border_rectangle_shap"
+                android:layout_marginTop="10dp"
+                android:padding="5dp"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+                <LinearLayout
+                    android:orientation="horizontal"
+                    android:weightSum="2"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content">
+                    <EditText
+                        android:id="@+id/mEditSourceName2"
+                        android:layout_marginRight="5dp"
+                        android:layout_weight="1"
+                        android:background="@drawable/border_rectangle_shap"
+                        android:textColor="#000000"
+                        android:hint="Source Name"
+                        android:textSize="15dp"
+                        android:padding="10dp"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"/>
+                    <EditText
+                        android:maxLength="10"
+                        android:inputType="phone"
+                        android:id="@+id/mEditSourceContact2"
+                        android:layout_marginLeft="5dp"
+                        android:layout_weight="1"
+                        android:background="@drawable/border_rectangle_shap"
+                        android:textColor="#000000"
+                        android:hint="Mobile Number"
+                        android:textSize="15dp"
+                        android:padding="10dp"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"/>
+
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_marginTop="5dp"
+                    android:orientation="horizontal"
+                    android:weightSum="2"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content">
+
+
+                    <RelativeLayout
+                        android:background="@drawable/border_rectangle_shap"
+                        android:layout_marginRight="5dp"
+                        android:layout_weight="1"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content">
+                        <Spinner
+                            android:paddingBottom="10dp"
+                            android:background="#00000000"
+                            android:paddingTop="10dp"
+                            android:id="@+id/mSpinnerSourceType2"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"/>
+                        <ImageView
+                            android:layout_marginRight="10dp"
+                            android:layout_alignParentRight="true"
+                            android:layout_centerVertical="true"
+                            android:src="@drawable/ic_keyboard_arrow"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"/>
+
+                    </RelativeLayout>
+
+                    <EditText
+                        android:maxLength="10"
+                        android:inputType="phone"
+                        android:id="@+id/mEditSourceLocation2"
+                        android:layout_marginLeft="5dp"
+                        android:layout_weight="1"
+                        android:background="@drawable/border_rectangle_shap"
+                        android:textColor="#000000"
+                        android:hint="City Name"
+                        android:textSize="15dp"
+                        android:padding="10dp"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"/>
+
+
+                </LinearLayout>
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:orientation="vertical"
+                android:background="@drawable/border_rectangle_shap"
+                android:layout_marginTop="10dp"
+                android:padding="5dp"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+                <LinearLayout
+                    android:orientation="horizontal"
+                    android:weightSum="2"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content">
+                    <EditText
+                        android:id="@+id/mEditSourceName3"
+                        android:layout_marginRight="5dp"
+                        android:layout_weight="1"
+                        android:background="@drawable/border_rectangle_shap"
+                        android:textColor="#000000"
+                        android:hint="Source Name"
+                        android:textSize="15dp"
+                        android:padding="10dp"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"/>
+                    <EditText
+                        android:maxLength="10"
+                        android:inputType="phone"
+                        android:id="@+id/mEditSourceContact3"
+                        android:layout_marginLeft="5dp"
+                        android:layout_weight="1"
+                        android:background="@drawable/border_rectangle_shap"
+                        android:textColor="#000000"
+                        android:hint="Mobile Number"
+                        android:textSize="15dp"
+                        android:padding="10dp"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"/>
+
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_marginTop="5dp"
+                    android:orientation="horizontal"
+                    android:weightSum="2"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content">
+
+
+                    <RelativeLayout
+                        android:background="@drawable/border_rectangle_shap"
+                        android:layout_marginRight="5dp"
+                        android:layout_weight="1"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content">
+                        <Spinner
+                            android:paddingBottom="10dp"
+                            android:background="#00000000"
+                            android:paddingTop="10dp"
+                            android:id="@+id/mSpinnerSourceType3"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"/>
+                        <ImageView
+                            android:layout_marginRight="10dp"
+                            android:layout_alignParentRight="true"
+                            android:layout_centerVertical="true"
+                            android:src="@drawable/ic_keyboard_arrow"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"/>
+
+                    </RelativeLayout>
+
+                    <EditText
+                        android:maxLength="10"
+                        android:inputType="phone"
+                        android:id="@+id/mEditSourceLocation3"
+                        android:layout_marginLeft="5dp"
+                        android:layout_weight="1"
+                        android:background="@drawable/border_rectangle_shap"
+                        android:textColor="#000000"
+                        android:hint="City Name"
+                        android:textSize="15dp"
+                        android:padding="10dp"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"/>
+
+
+                </LinearLayout>
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:orientation="vertical"
+                android:background="@drawable/border_rectangle_shap"
+                android:layout_marginTop="10dp"
+                android:padding="5dp"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+                <LinearLayout
+                    android:orientation="horizontal"
+                    android:weightSum="2"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content">
+                    <EditText
+                        android:id="@+id/mEditSourceName4"
+                        android:layout_marginRight="5dp"
+                        android:layout_weight="1"
+                        android:background="@drawable/border_rectangle_shap"
+                        android:textColor="#000000"
+                        android:hint="Source Name"
+                        android:textSize="15dp"
+                        android:padding="10dp"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"/>
+                    <EditText
+                        android:maxLength="10"
+                        android:inputType="phone"
+                        android:id="@+id/mEditSourceContact4"
+                        android:layout_marginLeft="5dp"
+                        android:layout_weight="1"
+                        android:background="@drawable/border_rectangle_shap"
+                        android:textColor="#000000"
+                        android:hint="Mobile Number"
+                        android:textSize="15dp"
+                        android:padding="10dp"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"/>
+
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_marginTop="5dp"
+                    android:orientation="horizontal"
+                    android:weightSum="2"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content">
+
+
+                    <RelativeLayout
+                        android:background="@drawable/border_rectangle_shap"
+                        android:layout_marginRight="5dp"
+                        android:layout_weight="1"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content">
+                        <Spinner
+                            android:paddingBottom="10dp"
+                            android:background="#00000000"
+                            android:paddingTop="10dp"
+                            android:id="@+id/mSpinnerSourceType4"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"/>
+                        <ImageView
+                            android:layout_marginRight="10dp"
+                            android:layout_alignParentRight="true"
+                            android:layout_centerVertical="true"
+                            android:src="@drawable/ic_keyboard_arrow"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"/>
+
+                    </RelativeLayout>
+
+                    <EditText
+                        android:maxLength="10"
+                        android:inputType="phone"
+                        android:id="@+id/mEditSourceLocation4"
+                        android:layout_marginLeft="5dp"
+                        android:layout_weight="1"
+                        android:background="@drawable/border_rectangle_shap"
+                        android:textColor="#000000"
+                        android:hint="City Name"
+                        android:textSize="15dp"
+                        android:padding="10dp"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"/>
+
+
+                </LinearLayout>
+
+            </LinearLayout>
+
+
+            <TextView
+                android:textStyle="bold"
+                android:textSize="18dp"
+                android:layout_marginTop="10dp"
+                android:text="Prospect Query"
+                android:textColor="@color/appblue"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"/>
 
             <EditText
                 android:id="@+id/mEditProspect"
@@ -957,6 +1349,14 @@
                 android:textSize="15dp"
                 android:padding="10dp"
                 android:layout_width="match_parent"
+                android:layout_height="wrap_content"/>
+            <TextView
+                android:textStyle="bold"
+                android:textSize="18dp"
+                android:layout_marginTop="10dp"
+                android:text="Remark"
+                android:textColor="@color/appblue"
+                android:layout_width="wrap_content"
                 android:layout_height="wrap_content"/>
             <EditText
                 android:id="@+id/mEditRemark"
@@ -971,11 +1371,20 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"/>
 
+            <TextView
+                android:textStyle="bold"
+                android:textSize="18dp"
+                android:layout_marginTop="10dp"
+                android:text="Outlet Photos"
+                android:textColor="@color/appblue"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"/>
+
             <LinearLayout
                 android:layout_marginBottom="15dp"
                 android:gravity="center_horizontal"
                 android:layout_gravity="center_horizontal"
-                android:layout_marginTop="15dp"
+                android:layout_marginTop="10dp"
                 android:orientation="horizontal"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content">

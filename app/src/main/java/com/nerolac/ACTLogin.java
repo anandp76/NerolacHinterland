@@ -5,6 +5,7 @@ import android.Manifest;
 import android.app.Activity;
 import android.content.Intent;
 import android.content.pm.PackageManager;
+import android.os.Build;
 import android.os.Bundle;
 import android.os.Handler;
 import android.view.View;
@@ -28,7 +29,9 @@ import java.util.Map;
 
 import androidx.core.app.ActivityCompat;
 import androidx.core.content.ContextCompat;
+import androidx.core.content.PermissionChecker;
 
+import static com.nerolac.Utils.CommonData.BaseUrl;
 import static com.nerolac.Utils.CommonData.hidePDialog;
 import static com.nerolac.Utils.CommonData.mShowAlert;
 import static com.nerolac.Utils.CommonData.setTranceprent;
@@ -76,17 +79,19 @@ public class ACTLogin extends Activity {
 
     }
 
+
+
     private boolean checkPermission() {
         int result0 = ContextCompat.checkSelfPermission(getApplicationContext(), Manifest.permission.ACCESS_FINE_LOCATION);
         int result1 = ContextCompat.checkSelfPermission(getApplicationContext(),Manifest.permission.WRITE_EXTERNAL_STORAGE);
         int result2 = ContextCompat.checkSelfPermission(getApplicationContext(),Manifest.permission.CAMERA);
         int result3 = ContextCompat.checkSelfPermission(getApplicationContext(),Manifest.permission.CALL_PHONE);
-        int result4 = ContextCompat.checkSelfPermission(getApplicationContext(),Manifest.permission.FOREGROUND_SERVICE);
-        return result0 == PackageManager.PERMISSION_GRANTED && result1 == PackageManager.PERMISSION_GRANTED && result2 == PackageManager.PERMISSION_GRANTED && result3 == PackageManager.PERMISSION_GRANTED && result4 == PackageManager.PERMISSION_GRANTED;
+        //int result4 = ContextCompat.checkSelfPermission(getApplicationContext(),Manifest.permission.FOREGROUND_SERVICE);
+        return result0 == PackageManager.PERMISSION_GRANTED && result1 == PackageManager.PERMISSION_GRANTED && result2 == PackageManager.PERMISSION_GRANTED && result3 == PackageManager.PERMISSION_GRANTED;
     }
 
     private void requestPermission() {
-        ActivityCompat.requestPermissions(this, new String[]{Manifest.permission.ACCESS_FINE_LOCATION, Manifest.permission.WRITE_EXTERNAL_STORAGE, Manifest.permission.CAMERA, Manifest.permission.CALL_PHONE, Manifest.permission.FOREGROUND_SERVICE}, PERMISSION_REQUEST_CODE);
+        ActivityCompat.requestPermissions(this, new String[]{Manifest.permission.ACCESS_FINE_LOCATION, Manifest.permission.WRITE_EXTERNAL_STORAGE, Manifest.permission.CAMERA, Manifest.permission.CALL_PHONE}, PERMISSION_REQUEST_CODE);
     }
     @Override
     public void onRequestPermissionsResult(int requestCode, String permissions[], int[] grantResults) {
@@ -97,10 +102,10 @@ public class ACTLogin extends Activity {
                     boolean result1 = grantResults[1] == PackageManager.PERMISSION_GRANTED;
                     boolean result2 = grantResults[2] == PackageManager.PERMISSION_GRANTED;
                     boolean result3 = grantResults[3] == PackageManager.PERMISSION_GRANTED;
-                    boolean result4 = grantResults[4] == PackageManager.PERMISSION_GRANTED;
-                    if (result0 && result1 && result2 && result3 && result4){
+
+                    if (result0 && result1 && result2 && result3){
                     }else{
-                    ActivityCompat.requestPermissions(this, new String[]{Manifest.permission.ACCESS_FINE_LOCATION, Manifest.permission.WRITE_EXTERNAL_STORAGE, Manifest.permission.CAMERA, Manifest.permission.CALL_PHONE, Manifest.permission.FOREGROUND_SERVICE}, PERMISSION_REQUEST_CODE);
+                    ActivityCompat.requestPermissions(this, new String[]{Manifest.permission.ACCESS_FINE_LOCATION, Manifest.permission.WRITE_EXTERNAL_STORAGE, Manifest.permission.CAMERA, Manifest.permission.CALL_PHONE}, PERMISSION_REQUEST_CODE);
                     }
                 }
             }
@@ -109,7 +114,7 @@ public class ACTLogin extends Activity {
     }
 
     void mFunSignIn() {
-        StringRequest strRequest = new StringRequest(Request.Method.POST,"http://hinterland.nerolachub.com/Api/login",
+        StringRequest strRequest = new StringRequest(Request.Method.POST,BaseUrl+"login",
                 new Response.Listener<String>() {
                     @Override
                     public void onResponse(String str) {

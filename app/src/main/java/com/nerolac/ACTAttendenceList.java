@@ -5,6 +5,7 @@ import android.app.Activity;
 import android.app.Dialog;
 import android.content.Intent;
 import android.graphics.Color;
+import android.os.Build;
 import android.os.Bundle;
 import android.os.Handler;
 import android.view.LayoutInflater;
@@ -47,6 +48,7 @@ import java.util.Map;
 import androidx.fragment.app.Fragment;
 
 import static com.nerolac.DataBase.DataBaseStringRetailer.TBL_RAW_LOCATION_TEHSIL;
+import static com.nerolac.Utils.CommonData.BaseUrl;
 import static com.nerolac.Utils.CommonData.CheckCurrentDate;
 import static com.nerolac.Utils.CommonData.getTimeformat;
 import static com.nerolac.Utils.CommonData.hidePDialog;
@@ -125,9 +127,9 @@ public class ACTAttendenceList extends Fragment {
 
             }
         });
-        
-        
 
+
+        //mLayoutDayOut.setBackgroundColor(Color.parseColor("#ff0000"));
         mListItem.clear();
         showProgress(getActivity());
         mFunGetMataData1();
@@ -145,7 +147,7 @@ public class ACTAttendenceList extends Fragment {
     
 
     public static void mFunGetMataData1() {
-        StringRequest strRequest = new StringRequest(Request.Method.POST,"http://hinterland.nerolachub.com/Api/getAttendance",
+        StringRequest strRequest = new StringRequest(Request.Method.POST,BaseUrl+"getAttendance",
                 new Response.Listener<String>() {
                     @Override
                     public void onResponse(String str) {
@@ -171,22 +173,28 @@ public class ACTAttendenceList extends Fragment {
                                         attendence.setmStrHurs(mStrHours);
                                         attendence.setmStrTimeIn(mStrInTime);
                                         attendence.setmStrTimeOut(mStrOutTime);
-                                        attendence.setmStrDate(mStrDate);
+                                        attendence.setmStrDate(mStrInTime);
                                         mListItem.add(attendence);
-                                        if(CheckCurrentDate(mStrDate)){
-                                            a=1;
-                                            mLayoutDayIn.setBackgroundColor(Color.parseColor("#B3B3B3"));
-                                            if(mStrOutTime.equals("0000-00-00 00:00:00")){
+                                        if(j==0){
+                                            if(CheckCurrentDate(mStrInTime)){
+                                                System.out.println("<><>1234  call");
+                                                a=1;
+                                                mLayoutDayIn.setBackgroundColor(Color.parseColor("#B3B3B3"));
+                                                if(mStrOutTime.equals("0000-00-00 00:00:00")){
+                                                    System.out.println("<><>123455  call");
+                                                    b=0;
+                                                    mLayoutDayOut.setBackgroundColor(Color.parseColor("#e91a4e"));
+                                                }else {
+                                                    b=1;
+                                                    mLayoutDayOut.setBackgroundColor(Color.parseColor("#B3B3B3"));
+                                                }
 
                                             }else {
-                                            b=1;
-                                            mLayoutDayOut.setBackgroundColor(Color.parseColor("#B3B3B3"));
+                                                b=1;
+                                                mLayoutDayOut.setBackgroundColor(Color.parseColor("#B3B3B3"));
                                             }
-
-                                        }else {
-                                            b=1;
-                                            mLayoutDayOut.setBackgroundColor(Color.parseColor("#B3B3B3"));
                                         }
+
 
                                     }
                                     AttendenceListAdapter retailerListAdapter = new AttendenceListAdapter(mActivity,mListItem);
@@ -231,7 +239,7 @@ public class ACTAttendenceList extends Fragment {
 
 
     void mFunDayIn() {
-        StringRequest strRequest = new StringRequest(Request.Method.POST,"http://hinterland.nerolachub.com/Api/addTimeIn",
+        StringRequest strRequest = new StringRequest(Request.Method.POST,BaseUrl+"addTimeIn",
                 new Response.Listener<String>() {
                     @Override
                     public void onResponse(String str) {
@@ -250,7 +258,11 @@ public class ACTAttendenceList extends Fragment {
                                       // finish();
                                         a=0;
                                         b=0;
+                                        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
                                         getActivity().startForegroundService(new Intent(getActivity(), AndroidLocationServices.class));
+                                        } else {
+                                        getActivity().startService(new Intent(getActivity(), AndroidLocationServices.class));
+                                        }
                                         mListItem.clear();
                                         showProgress(getActivity());
                                         mFunGetMataData1();
@@ -293,7 +305,7 @@ public class ACTAttendenceList extends Fragment {
 
 
     void mFunDayOut(final String mStrComment) {
-        StringRequest strRequest = new StringRequest(Request.Method.POST,"http://hinterland.nerolachub.com/Api/addTimeOut",
+        StringRequest strRequest = new StringRequest(Request.Method.POST,BaseUrl+"addTimeOut",
                 new Response.Listener<String>() {
                     @Override
                     public void onResponse(String str) {

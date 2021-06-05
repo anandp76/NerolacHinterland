@@ -4,6 +4,7 @@
 package com.nerolac.Adpter;
 
 import android.app.Activity;
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.graphics.Color;
 import android.view.LayoutInflater;
@@ -34,7 +35,10 @@ import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Map;
 
+import androidx.appcompat.app.AlertDialog;
+
 import static com.nerolac.ACTTravelLog.mycall;
+import static com.nerolac.Utils.CommonData.BaseUrl;
 import static com.nerolac.Utils.CommonData.getDay;
 import static com.nerolac.Utils.CommonData.getMonth;
 import static com.nerolac.Utils.CommonData.hidePDialog;
@@ -113,8 +117,26 @@ public class RoutPlanListAdapter extends BaseAdapter {
             holder.mImgDelete.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                showProgress(context);
-                mFunGetMataData1(routPlan.getmStrId());
+
+                AlertDialog.Builder alert = new AlertDialog.Builder(context);
+                alert.setTitle("Delete entry");
+                alert.setMessage("Are you sure you want to delete?");
+                alert.setPositiveButton(android.R.string.yes, new DialogInterface.OnClickListener() {
+                    public void onClick(DialogInterface dialog, int which) {
+                        // continue with delete
+                        dialog.dismiss();
+                        showProgress(context);
+                        mFunGetMataData1(routPlan.getmStrId());
+
+                    }
+                });
+                alert.setNegativeButton(android.R.string.no, new DialogInterface.OnClickListener() {
+                    public void onClick(DialogInterface dialog, int which) {
+                        // close dialog
+                        dialog.cancel();
+                    }
+                });
+                alert.show();
             }
             });
             holder.mImgUpdate.setOnClickListener(new View.OnClickListener() {
@@ -147,7 +169,7 @@ public class RoutPlanListAdapter extends BaseAdapter {
     }
 
     void mFunGetMataData1(final String mStrid) {
-        StringRequest strRequest = new StringRequest(Request.Method.POST,"http://hinterland.nerolachub.com/Api/deleteUsersTravel",
+        StringRequest strRequest = new StringRequest(Request.Method.POST,BaseUrl+"deleteUsersTravel",
                 new Response.Listener<String>() {
                     @Override
                     public void onResponse(String str) {

@@ -38,6 +38,7 @@ import java.util.Map;
 
 import androidx.fragment.app.Fragment;
 
+import static com.nerolac.Utils.CommonData.BaseUrl;
 import static com.nerolac.Utils.CommonData.hidePDialog;
 import static com.nerolac.Utils.CommonData.mShowAlert;
 import static com.nerolac.Utils.CommonData.showProgress;
@@ -68,7 +69,7 @@ public class ACTHandbookList extends Fragment {
     
 
     void mFunGetMataData1() {
-        StringRequest strRequest = new StringRequest(Request.Method.GET,"http://hinterland.nerolachub.com/Api/getHandbook",
+        StringRequest strRequest = new StringRequest(Request.Method.GET,BaseUrl+"getHandbook",
                 new Response.Listener<String>() {
                     @Override
                     public void onResponse(String str) {

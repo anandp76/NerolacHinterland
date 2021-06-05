@@ -68,9 +68,11 @@ import static com.nerolac.DataBase.DataBaseStringDistributor.TBL_DMD_MONTHLY_TUR
 import static com.nerolac.DataBase.DataBaseStringDistributor.TBL_DMD_PRODUCT_CATEGORY;
 import static com.nerolac.DataBase.DataBaseStringDistributor.TBL_DMD_WILLINGNESS_TO_INVEST;
 import static com.nerolac.DataBase.DataBaseStringRetailer.TABLE_RMD_OUTLET_SALES;
+import static com.nerolac.DataBase.DataBaseStringRetailer.TABLE_RMD_PAINT_DEL_SOURCE;
 import static com.nerolac.DataBase.DataBaseStringRetailer.TBL_RAW_LOCATION_BLOCK;
 import static com.nerolac.DataBase.DataBaseStringRetailer.TBL_RAW_LOCATION_TEHSIL;
 import static com.nerolac.DataBase.DataBaseStringRetailer.TBL_USER_ID;
+import static com.nerolac.Utils.CommonData.BaseUrl;
 import static com.nerolac.Utils.CommonData.getTimeformat;
 import static com.nerolac.Utils.CommonData.getTimeformatCurrent;
 import static com.nerolac.Utils.CommonData.hidePDialog;
@@ -129,10 +131,61 @@ public class ACTDistributorForm extends Activity {
     Spinner mSpinnerVillage;
     Spinner mSpinnerRetailers;
 
+    String mStrSourceName1;
+    String mStrSourceName2;
+    String mStrSourceName3;
+    String mStrSourceName4;
+    String mStrOtherCat;
+
+
+    String mStrSourceLocation1;
+    String mStrSourceLocation2;
+    String mStrSourceLocation3;
+    String mStrSourceLocation4;
+
+
+    String mStrSourceContact1;
+    String mStrSourceContact2;
+    String mStrSourceContact3;
+    String mStrSourceContact4;
+
+
+
+
+    EditText mEditSourceLocation4;
+    EditText mEditSourceContact4;
+    EditText mEditSourceName4;
+
+    EditText mEditSourceLocation3;
+    EditText mEditSourceContact3;
+    EditText mEditSourceName3;
+
+    EditText mEditSourceLocation2;
+    EditText mEditSourceContact2;
+    EditText mEditSourceName2;
+
+    EditText mEditSourceLocation1;
+    EditText mEditSourceContact1;
+    EditText mEditSourceName1;
+
+
+
+    Spinner mSpinnerSourceType4;
+    Spinner mSpinnerSourceType3;
+    Spinner mSpinnerSourceType2;
+    Spinner mSpinnerSourceType1;
+
+    String mStrSourceType5;
+    String mStrSourceType4;
+    String mStrSourceType2;
+    String mStrSourceType3;
+    String mStrSourceType1;
+
     String mStrBlock[] = {"Block"};
     String mStrTime[] = {"Time To Start","Within a month","Less then 3 months ","Less then 6 months"};
     String mStrGst[] = {"GST Available","Yes","No"};
     String mStrYears[] = {"Years","1","2","3","4","5","5+"};
+    String mStrOutletType[] = {"Hardware","Kirana","Paint","Pipe Shop","Plywood","Sanitary","Tiles","Other"};
 
 
     EditText mEditFirstName;
@@ -213,11 +266,20 @@ public class ACTDistributorForm extends Activity {
     String mStrImgOne;
     String mStrImgTwo;
     String mStrImgThree;
+    String mStrReDelivery;
+
+
+
+    EditText mEditOtherCat;
+    CheckBox mCheckOtherCat;
 
     Bitmap bitmap1;
     Bitmap bitmap2;
     Bitmap bitmap3;
     //String mStrMail
+    FlowLayout mLayoutDelivery;
+    ArrayList<String> mListPaintDelivery = new ArrayList<String>();
+    ArrayList<String> mListResultDelivery = new ArrayList<String>();
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -227,13 +289,20 @@ public class ACTDistributorForm extends Activity {
         database = new Database(ACTDistributorForm.this);
         queue = Volley.newRequestQueue(ACTDistributorForm.this);
         setTranceprent(ACTDistributorForm.this,R.color.appblue);
-
+        mLayoutDelivery = (FlowLayout) findViewById(R.id.mLayoutDelivery);
         mSpinnerBrand1 = (Spinner)findViewById(R.id.mSpinnerBrand1);
         mSpinnerBrand2 = (Spinner)findViewById(R.id.mSpinnerBrand2);
         mSpinnerBrand3 = (Spinner)findViewById(R.id.mSpinnerBrand3);
         mSpinnerBrand4 = (Spinner)findViewById(R.id.mSpinnerBrand4);
         mSpinnerBrand5 = (Spinner)findViewById(R.id.mSpinnerBrand5);
         mSpinnerVillage = (Spinner)findViewById(R.id.mSpinnerVillage);
+
+        mSpinnerSourceType1 = (Spinner)findViewById(R.id.mSpinnerSourceType1);
+        mSpinnerSourceType2 = (Spinner)findViewById(R.id.mSpinnerSourceType2);
+        mSpinnerSourceType3 = (Spinner)findViewById(R.id.mSpinnerSourceType3);
+        mSpinnerSourceType4 = (Spinner)findViewById(R.id.mSpinnerSourceType4);
+
+
         mSpinnerRetailers = (Spinner)findViewById(R.id.mSpinnerRetailers);
         mSpinnerTimeToStart = (Spinner)findViewById(R.id.mSpinnerTimeToStart);
         mSpinnerWillingness = (Spinner)findViewById(R.id.mSpinnerWillingness);
@@ -242,6 +311,8 @@ public class ACTDistributorForm extends Activity {
 
         radioGrpFamilyMembers = (RadioGroup) findViewById(R.id.radioGrpFamilyMembers);
         radioGrpInterestLevel = (RadioGroup) findViewById(R.id.radioGrpInterestLevel);
+        mEditOtherCat = (EditText) findViewById(R.id.mEditOtherCat);
+        mCheckOtherCat = (CheckBox) findViewById(R.id.mCheckOtherCat);
 
         mEditRemark = (EditText) findViewById(R.id.mEditRemark);
         mEditProspect = (EditText) findViewById(R.id.mEditProspect);
@@ -256,6 +327,26 @@ public class ACTDistributorForm extends Activity {
         mEditBusinessName = (EditText) findViewById(R.id.mEditBusinessName);
         mEditLastName = (EditText) findViewById(R.id.mEditLastName);
         mEditFirstName = (EditText) findViewById(R.id.mEditFirstName);
+
+        mEditSourceName4 = (EditText) findViewById(R.id.mEditSourceName4);
+        mEditSourceName3 = (EditText) findViewById(R.id.mEditSourceName3);
+        mEditSourceName2 = (EditText) findViewById(R.id.mEditSourceName2);
+        mEditSourceName1 = (EditText) findViewById(R.id.mEditSourceName1);
+
+
+
+
+        mEditSourceContact4 = (EditText) findViewById(R.id.mEditSourceContact4);
+        mEditSourceContact3 = (EditText) findViewById(R.id.mEditSourceContact3);
+        mEditSourceContact2 = (EditText) findViewById(R.id.mEditSourceContact2);
+        mEditSourceContact1 = (EditText) findViewById(R.id.mEditSourceContact1);
+
+
+
+        mEditSourceLocation4 = (EditText) findViewById(R.id.mEditSourceLocation4);
+        mEditSourceLocation3 = (EditText) findViewById(R.id.mEditSourceLocation3);
+        mEditSourceLocation2 = (EditText) findViewById(R.id.mEditSourceLocation2);
+        mEditSourceLocation1 = (EditText) findViewById(R.id.mEditSourceLocation1);
 
         mEditBrand1 = (EditText) findViewById(R.id.mEditBrand1);
         mEditBrand2 = (EditText) findViewById(R.id.mEditBrand2);
@@ -338,6 +429,14 @@ public class ACTDistributorForm extends Activity {
         mSpinnerTehsil.setAdapter(arrayAdapterDistrict);
 
 
+        ArrayAdapter arrayAdapterSourceType  = new ArrayAdapter(this,android.R.layout.simple_spinner_item,mStrOutletType);
+        arrayAdapterSourceType.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+        mSpinnerSourceType1.setAdapter(arrayAdapterSourceType);
+        mSpinnerSourceType2.setAdapter(arrayAdapterSourceType);
+        mSpinnerSourceType3.setAdapter(arrayAdapterSourceType);
+        mSpinnerSourceType4.setAdapter(arrayAdapterSourceType);
+
+
 
 
 
@@ -393,6 +492,7 @@ public class ACTDistributorForm extends Activity {
     }
 
     void mFunLoadMataData(){
+        mListPaintDelivery = database.GT_RAW_DATA(TABLE_RMD_PAINT_DEL_SOURCE, PreferenceManager.getNEROUSERID(ACTDistributorForm.this));
         mListBusinessCat = database.GT_DAW_DATA(TBL_DMD_BNS_CATEGORY, PreferenceManager.getNEROUSERID(ACTDistributorForm.this));
         mListBusinessType =  database.GT_DAW_DATA(TBL_DMD_BNS_TYPE, PreferenceManager.getNEROUSERID(ACTDistributorForm.this));
         mListBusinessTerritory =   database.GT_DAW_DATA(TBL_DMD_BNS_TERRITORY, PreferenceManager.getNEROUSERID(ACTDistributorForm.this));
@@ -416,6 +516,24 @@ public class ACTDistributorForm extends Activity {
 
         mListTehsil = database.GT_RAW_LOCATION_TEHSIL(TBL_USER_ID,PreferenceManager.getNEROUSERID(ACTDistributorForm.this));
         mListTehsil.add(0,"TEHSIL");
+
+        for (int i = 0; i<mListPaintDelivery.size();i++){
+            View mViewItemCheckBox = getLayoutInflater().inflate(R.layout.item_checkbox, mLayoutDelivery, false);
+            final CheckBox mCheckBox = (CheckBox)mViewItemCheckBox.findViewById(R.id.mCheckBox);
+            mCheckBox.setText(mListPaintDelivery.get(i));
+            mCheckBox.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
+                @Override
+                public void onCheckedChanged(CompoundButton compoundButton, boolean b) {
+                    if(mCheckBox.isChecked()){
+                        mListResultDelivery.add(mCheckBox.getText().toString());
+                    }else {
+                        mListResultDelivery.remove(mCheckBox.getText().toString());
+                    }
+                }
+            });
+            mLayoutDelivery.addView(mViewItemCheckBox);
+        }
+
 
         for (int i = 0; i<mListBusinessCat.size();i++){
             View mViewItemCheckBox = getLayoutInflater().inflate(R.layout.item_checkbox, mLayoutBusinessCat, false);
@@ -574,18 +692,20 @@ public class ACTDistributorForm extends Activity {
                 mStrBlocks = mSpinnerBlock.getSelectedItem().toString();
                 mStrTehsil = mSpinnerTehsil.getSelectedItem().toString();
                 if(database.GT_RAW_LOCATION_DISTRICT(mStrBlocks,mStrTehsil).size()>0){
-                mStrDistrict = database.GT_RAW_LOCATION_DISTRICT(mStrBlocks,mStrTehsil).get(0);
+                    mStrDistrict = database.GT_RAW_LOCATION_DISTRICT(mStrBlocks,mStrTehsil).get(0);
                 }
                 mStrBuisnessCategory = TextUtils.join(",", mListReBusinessCat);
                 mStrBuisnessTerritory = TextUtils.join(",", mListReBusinessTerritory);
                 mStrProductCategory = TextUtils.join(",", mListReProductCate);
                 mStrBusinessType = TextUtils.join(",", mListReBusinessType);
+                mStrReDelivery = TextUtils.join(",", mListResultDelivery);
                 mStrBusinessInYear = mSpinnerBussinessYear.getSelectedItem().toString();
                 mStrTurnOver = mSpinnerBusinessTurnover.getSelectedItem().toString();
                 mStrCoverageVillage = mSpinnerVillage.getSelectedItem().toString();
                 mStrCoverageRetailer = mSpinnerRetailers.getSelectedItem().toString();
                 mStrWillingnessInvest = mSpinnerWillingness.getSelectedItem().toString();
                 mStrAssets = TextUtils.join(",", mListReAssest);
+                mStrOtherCat = mEditOtherCat.getText().toString();
                 mStrProspect = mEditProspect.getText().toString();
                 mStrRemark = mEditRemark.getText().toString();
                 mStrBrandName1 = mEditBrand1.getText().toString();
@@ -598,12 +718,44 @@ public class ACTDistributorForm extends Activity {
                 mStrBrandYear3 = mSpinnerBrand3.getSelectedItem().toString();
                 mStrBrandYear4 = mSpinnerBrand4.getSelectedItem().toString();
                 mStrBrandYear5 = mSpinnerBrand5.getSelectedItem().toString();
+
+                mStrSourceName1 = mEditSourceName1.getText().toString();
+                mStrSourceLocation1 = mEditSourceLocation1.getText().toString();
+                mStrSourceContact1 = mEditSourceContact1.getText().toString();
+                mStrSourceType1 = mSpinnerSourceType1.getSelectedItem().toString();
+
+
+                mStrSourceName2 = mEditSourceName2.getText().toString();
+                mStrSourceLocation2 = mEditSourceLocation2.getText().toString();
+                mStrSourceContact2 = mEditSourceContact2.getText().toString();
+                mStrSourceType2 = mSpinnerSourceType2.getSelectedItem().toString();
+
+                mStrSourceName3 = mEditSourceName3.getText().toString();
+                mStrSourceLocation3 = mEditSourceLocation3.getText().toString();
+                mStrSourceContact3 = mEditSourceContact3.getText().toString();
+                mStrSourceType3 = mSpinnerSourceType3.getSelectedItem().toString();
+
+                mStrSourceName4 = mEditSourceName4.getText().toString();
+                mStrSourceLocation4 = mEditSourceLocation4.getText().toString();
+                mStrSourceContact4 = mEditSourceContact4.getText().toString();
+                mStrSourceType4 = mSpinnerSourceType4.getSelectedItem().toString();
+
                 int selectedIdFM = radioGrpFamilyMembers.getCheckedRadioButtonId();
                 RadioButton radioSexButton = (RadioButton) findViewById(selectedIdFM);
                 mStrFamilyMember = radioSexButton.getText().toString();
                 int selectedIdIL = radioGrpInterestLevel.getCheckedRadioButtonId();
                 RadioButton radioILButton = (RadioButton) findViewById(selectedIdIL);
                 mStrInterestedLevel = radioILButton.getText().toString();
+
+                if(mStrProductCategory.length()<=0){
+                    if(mCheckOtherCat.isChecked() && mStrOtherCat.length()>0){
+                        mStrProductCategory = mStrOtherCat;
+                    }
+                }else {
+                    if(mCheckOtherCat.isChecked() && mStrOtherCat.length()>0){
+                        mStrProductCategory = mStrProductCategory+","+mStrOtherCat;
+                    }
+                }
 
                 if(mStrFirstname.length()<=0){
                     mShowAlert("Please enter first name!",ACTDistributorForm.this);
@@ -671,8 +823,35 @@ public class ACTDistributorForm extends Activity {
                 }else if(mStrWillingnessInvest.equals("Willingness To Invest")){
                     mShowAlert("Please select willingness to invest!",ACTDistributorForm.this);
                     return;
+                }else if(mStrReDelivery.length()<=0){
+                    mShowAlert("Please select at least one delivery source!",ACTDistributorForm.this);
+                    return;
                 }else if(mSpinnerTimeToStart.getSelectedItem().toString().equals("Time To Start")){
                     mShowAlert("Please select time to start!",ACTDistributorForm.this);
+                    return;
+                }else if(mStrSourceName1.length()>0 && mStrSourceLocation1.length()<=0){
+                    mShowAlert("Please enter source city name 1",ACTDistributorForm.this);
+                    return;
+                }else if(mStrSourceName1.length()>0 && mStrSourceContact1.length()<=0){
+                    mShowAlert("Please enter source contact 1",ACTDistributorForm.this);
+                    return;
+                }else if(mStrSourceName2.length()>0 && mStrSourceLocation2.length()<=0){
+                    mShowAlert("Please enter source city name 2",ACTDistributorForm.this);
+                    return;
+                }else if(mStrSourceName2.length()>0 && mStrSourceContact2.length()<=0){
+                    mShowAlert("Please enter source contact 2",ACTDistributorForm.this);
+                    return;
+                }else if(mStrSourceName3.length()>0 && mStrSourceLocation3.length()<=0){
+                    mShowAlert("Please enter source city name 3",ACTDistributorForm.this);
+                    return;
+                }else if(mStrSourceName3.length()>0 && mStrSourceContact3.length()<=0){
+                    mShowAlert("Please enter source contact 3",ACTDistributorForm.this);
+                    return;
+                }else if(mStrSourceName4.length()>0 && mStrSourceLocation4.length()<=0){
+                    mShowAlert("Please enter source city name 4",ACTDistributorForm.this);
+                    return;
+                }else if(mStrSourceName4.length()>0 && mStrSourceContact4.length()<=0){
+                    mShowAlert("Please enter source contact 4",ACTDistributorForm.this);
                     return;
                 }else if(mStrProspect.length()<=0){
                     mShowAlert("Please enter prospect!",ACTDistributorForm.this);
@@ -686,7 +865,7 @@ public class ACTDistributorForm extends Activity {
     }
 
     void mFunEnterForm() {
-        StringRequest strRequest = new StringRequest(Request.Method.POST,"http://hinterland.nerolachub.com/Api/addDistributor",
+        StringRequest strRequest = new StringRequest(Request.Method.POST,BaseUrl+"addDistributor",
                 new Response.Listener<String>() {
                     @Override
                     public void onResponse(String str) {
@@ -747,6 +926,7 @@ public class ACTDistributorForm extends Activity {
                 params.put("block", mStrBlocks);
                 params.put("district", mStrDistrict);
                 params.put("tehsil", mStrTehsil);
+                params.put("delivery_source", mStrReDelivery);
                 params.put("latitude", PreferenceManager.getNEROLAT(ACTDistributorForm.this));
                 params.put("longitude", PreferenceManager.getNEROLONG(ACTDistributorForm.this));
                 params.put("buisness_category", mStrBuisnessCategory);
@@ -773,6 +953,22 @@ public class ACTDistributorForm extends Activity {
                 params.put("brand5name", mStrBrandName5);
                 params.put("brand5year", mStrBrandYear5);
                 params.put("assets", mStrAssets);
+
+                if(mStrSourceName1 != null && !mStrSourceName1.isEmpty()){
+                    params.put("source1", mStrSourceName1+","+mStrSourceType1+","+mStrSourceContact1+","+mStrSourceLocation1);
+                }
+
+                if(mStrSourceName2 != null && !mStrSourceName2.isEmpty()){
+                    params.put("source2", mStrSourceName2+","+mStrSourceType2+","+mStrSourceContact2+","+mStrSourceLocation2);
+                }
+
+                if(mStrSourceName3 != null && !mStrSourceName3.isEmpty()){
+                    params.put("source3", mStrSourceName3+","+mStrSourceType3+","+mStrSourceContact3+","+mStrSourceLocation3);
+                }
+
+                if(mStrSourceName4 != null && !mStrSourceName4.isEmpty()){
+                    params.put("source4", mStrSourceName4+","+mStrSourceType4+","+mStrSourceContact4+","+mStrSourceLocation4);
+                }
                 params.put("image1", "data:image/png;base64,"+mStrImgOne);
                 params.put("image2", "data:image/png;base64,"+mStrImgTwo);
                 params.put("image3", "data:image/png;base64,"+mStrImgThree);
@@ -781,7 +977,7 @@ public class ACTDistributorForm extends Activity {
             }
         };
         strRequest.setRetryPolicy(new DefaultRetryPolicy(
-                0,
+                65,
                 DefaultRetryPolicy.DEFAULT_MAX_RETRIES,
                 DefaultRetryPolicy.DEFAULT_BACKOFF_MULT));
         queue.add(strRequest);
@@ -802,7 +998,7 @@ public class ACTDistributorForm extends Activity {
             bitmap1 = bitmap;
             mImgView.setImageBitmap(bitmap);
             mStrImgOne = ImageUtil.convert(bitmap);
-         }else if (resultCode == RESULT_OK && requestCode == 300) {
+        }else if (resultCode == RESULT_OK && requestCode == 300) {
             Bitmap bitmap = (Bitmap) data.getExtras().get("data");
             ByteArrayOutputStream baos = new ByteArrayOutputStream();
             BitmapFactory.Options options = new BitmapFactory.Options();

@@ -1,6 +1,10 @@
 package com.nerolac;
 
+import android.Manifest;
+import android.content.Context;
 import android.content.Intent;
+import android.content.pm.PackageManager;
+import android.location.LocationManager;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -30,6 +34,8 @@ import org.json.JSONObject;
 import java.util.HashMap;
 import java.util.Map;
 
+import androidx.core.app.ActivityCompat;
+import androidx.core.content.ContextCompat;
 import androidx.fragment.app.Fragment;
 
 import static com.nerolac.DataBase.DataBaseStringDistributor.TBL_DMD_ASSETS;
@@ -44,6 +50,7 @@ import static com.nerolac.DataBase.DataBaseStringDistributor.TBL_DMD_MONTHLY_TUR
 import static com.nerolac.DataBase.DataBaseStringDistributor.TBL_DMD_PRODUCT_CATEGORY;
 import static com.nerolac.DataBase.DataBaseStringDistributor.TBL_DMD_WILLINGNESS_TO_INVEST;
 import static com.nerolac.DataBase.DataBaseStringRetailer.TBL_USER_ID;
+import static com.nerolac.Utils.CommonData.BaseUrl;
 import static com.nerolac.Utils.CommonData.hidePDialog;
 import static com.nerolac.Utils.CommonData.mShowAlert;
 import static com.nerolac.Utils.CommonData.showProgress;
@@ -66,7 +73,7 @@ public class MainActivity extends Fragment {
     RelativeLayout mLayout2Distributor;
     RelativeLayout mLayout2SalesOrder;
     RelativeLayout mLayout2Inbox;
-    RelativeLayout mLayout2RoutePlan;
+    RelativeLayout mLayout2Order;
     int a = 0;
     JSONArray jsonArrayProducts;
     JSONArray jsonArrayBrands;
@@ -77,13 +84,15 @@ public class MainActivity extends Fragment {
     JSONArray jsonArrayPaintDeliverySource;
     int RWA=0,RWB=0,RWC=0,RWD=0,RWE=0,RWF=0,RWG=0;
     ImageView imgProgress;
-
+    LocationManager manager;
+    private static final int PERMISSION_REQUEST_CODE = 200;
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.dashboard_two, container, false);
         queue = Volley.newRequestQueue(getActivity());
         database = new Database(getActivity());
+        manager = (LocationManager)getActivity().getSystemService(Context.LOCATION_SERVICE );
         mLayoutFull = (LinearLayout)view. findViewById(R.id.mLayoutFull);
         mLayoutDashbordMenu = (LinearLayout)view. findViewById(R.id.mLayoutDashbordMenu);
         mLayoutHeatMarket = (RelativeLayout)view. findViewById(R.id.mLayoutHeatMarket);
@@ -97,7 +106,7 @@ public class MainActivity extends Fragment {
         mLayout2Inbox = (RelativeLayout)view. findViewById(R.id.mLayout2Inbox);
         mLayout2Pending = (RelativeLayout)view. findViewById(R.id.mLayout2Pending);
         mLayout2Attandence = (RelativeLayout)view. findViewById(R.id.mLayout2Attandence);
-        mLayout2RoutePlan = (RelativeLayout)view. findViewById(R.id.mLayout2RoutePlan);
+        mLayout2Order = (RelativeLayout)view. findViewById(R.id.mLayout2Order);
         mLayoutDataMsg = (LinearLayout)view. findViewById(R.id.mLayoutDataMsg);
         imgProgress = (ImageView) view.findViewById(R.id.imgProgress);
 
@@ -109,117 +118,190 @@ public class MainActivity extends Fragment {
         mLayout2Retailer.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                ScreenNerolacHome.mIntRetailer = 1;
-                ScreenNerolacHome.mIntAttendance = 0;
-                ScreenNerolacHome.mIntTravelLog = 0;
-                ScreenNerolacHome.mIntProspects = 0;
-                ScreenNerolacHome.mIntInbox = 0;
-                ScreenNerolacHome.mIntRoutePlan = 0;
-                ACTRetailerList fragmentDiscover = new ACTRetailerList();
-                getActivity().getSupportFragmentManager()
-                        .beginTransaction()
-                        .replace(R.id.content_frame, fragmentDiscover, "ABC2")
-                        .commit();
+
+                if (!checkPermission()) {
+                    requestPermission();
+                }else {
+                    if ( !manager.isProviderEnabled( LocationManager.GPS_PROVIDER ) ){
+                        mShowAlert("Please turn on Gps first!!",getActivity());
+                    }else {
+                        ScreenNerolacHome.mIntRetailer = 1;
+                        ScreenNerolacHome.mIntAttendance = 0;
+                        ScreenNerolacHome.mIntTravelLog = 0;
+                        ScreenNerolacHome.mIntProspects = 0;
+                        ScreenNerolacHome.mIntInbox = 0;
+                        ScreenNerolacHome.mIntRoutePlan = 0;
+                        ACTRetailerList fragmentDiscover = new ACTRetailerList();
+                        getActivity().getSupportFragmentManager()
+                                .beginTransaction()
+                                .replace(R.id.content_frame, fragmentDiscover, "ABC2")
+                                .commit();
+                    }
+                }
+
+
+
+
             }
         });
         mLayout2Distributor.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                ScreenNerolacHome.mIntRetailer = 0;
-                ScreenNerolacHome.mIntAttendance = 0;
-                ScreenNerolacHome.mIntTravelLog = 0;
-                ScreenNerolacHome.mIntProspects = 1;
-                ScreenNerolacHome.mIntInbox = 0;
-                ScreenNerolacHome.mIntRoutePlan = 0;
-                ACTDistributorList fragmentDiscover = new ACTDistributorList();
-                getActivity().getSupportFragmentManager()
-                        .beginTransaction()
-                        .replace(R.id.content_frame, fragmentDiscover, "ABC2")
-                        .commit();
+                if (!checkPermission()) {
+                    requestPermission();
+                }else {
+                    if ( !manager.isProviderEnabled( LocationManager.GPS_PROVIDER ) ){
+                        mShowAlert("Please turn on Gps first!!",getActivity());
+                    }else {
+                        ScreenNerolacHome.mIntRetailer = 0;
+                        ScreenNerolacHome.mIntAttendance = 0;
+                        ScreenNerolacHome.mIntTravelLog = 0;
+                        ScreenNerolacHome.mIntProspects = 1;
+                        ScreenNerolacHome.mIntInbox = 0;
+                        ScreenNerolacHome.mIntRoutePlan = 0;
+                        ACTDistributorList fragmentDiscover = new ACTDistributorList();
+                        getActivity().getSupportFragmentManager()
+                                .beginTransaction()
+                                .replace(R.id.content_frame, fragmentDiscover, "ABC2")
+                                .commit();
+                    }
+                }
+
+
             }
         });
         mLayout2SalesOrder.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                ScreenNerolacHome.mIntRetailer = 0;
-                ScreenNerolacHome.mIntAttendance = 0;
-                ScreenNerolacHome.mIntTravelLog = 1;
-                ScreenNerolacHome.mIntProspects = 0;
-                ScreenNerolacHome.mIntInbox = 0;
-                ScreenNerolacHome.mIntRoutePlan = 0;
-                ACTTravelLog fragmentDiscover = new ACTTravelLog();
-                getActivity().getSupportFragmentManager()
-                        .beginTransaction()
-                        .replace(R.id.content_frame, fragmentDiscover, "ABC2")
-                        .commit();
+                if (!checkPermission()) {
+                    requestPermission();
+                }else {
+                    if ( !manager.isProviderEnabled( LocationManager.GPS_PROVIDER ) ){
+                        mShowAlert("Please turn on Gps first!!",getActivity());
+                    }else {
+                        ScreenNerolacHome.mIntRetailer = 0;
+                        ScreenNerolacHome.mIntAttendance = 0;
+                        ScreenNerolacHome.mIntTravelLog = 1;
+                        ScreenNerolacHome.mIntProspects = 0;
+                        ScreenNerolacHome.mIntInbox = 0;
+                        ScreenNerolacHome.mIntRoutePlan = 0;
+                        ACTTravelLog fragmentDiscover = new ACTTravelLog();
+                        getActivity().getSupportFragmentManager()
+                                .beginTransaction()
+                                .replace(R.id.content_frame, fragmentDiscover, "ABC2")
+                                .commit();
+                    }
+                }
+
+
             }
         });
         mLayout2Inbox.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                ScreenNerolacHome.mIntRetailer = 0;
-                ScreenNerolacHome.mIntAttendance = 0;
-                ScreenNerolacHome.mIntTravelLog = 0;
-                ScreenNerolacHome.mIntProspects = 0;
-                ScreenNerolacHome.mIntInbox = 1;
-                ScreenNerolacHome.mIntRoutePlan = 0;
-                ACTInboxList fragmentDiscover = new ACTInboxList();
-                getActivity().getSupportFragmentManager()
-                        .beginTransaction()
-                        .replace(R.id.content_frame, fragmentDiscover, "ABC2")
-                        .commit();
+                if (!checkPermission()) {
+                    requestPermission();
+                }else {
+                    if ( !manager.isProviderEnabled( LocationManager.GPS_PROVIDER ) ){
+                        mShowAlert("Please turn on Gps first!!",getActivity());
+                    }else {
+                        ScreenNerolacHome.mIntRetailer = 0;
+                        ScreenNerolacHome.mIntAttendance = 0;
+                        ScreenNerolacHome.mIntTravelLog = 0;
+                        ScreenNerolacHome.mIntProspects = 0;
+                        ScreenNerolacHome.mIntInbox = 1;
+                        ScreenNerolacHome.mIntRoutePlan = 0;
+                        ACTInboxList fragmentDiscover = new ACTInboxList();
+                        getActivity().getSupportFragmentManager()
+                                .beginTransaction()
+                                .replace(R.id.content_frame, fragmentDiscover, "ABC2")
+                                .commit();
+                    }
+                }
+
+
             }
         });
 
         mLayout2Pending.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+                if (!checkPermission()) {
+                    requestPermission();
+                }else {
+                    if ( !manager.isProviderEnabled( LocationManager.GPS_PROVIDER ) ){
+                        mShowAlert("Please turn on Gps first!!",getActivity());
+                    }else {
+                        ScreenNerolacHome.mIntRetailer = 0;
+                        ScreenNerolacHome.mIntAttendance = 0;
+                        ScreenNerolacHome.mIntTravelLog = 0;
+                        ScreenNerolacHome.mIntProspects = 0;
+                        ScreenNerolacHome.mIntInbox = 0;
+                        ScreenNerolacHome.mIntRoutePlan = 0;
+                        ACTPendingUpload fragmentDiscover = new ACTPendingUpload();
+                        getActivity().getSupportFragmentManager()
+                                .beginTransaction()
+                                .replace(R.id.content_frame, fragmentDiscover, "ABC11")
+                                .commit();
+                    }
+                }
 
-                ScreenNerolacHome.mIntRetailer = 0;
-                ScreenNerolacHome.mIntAttendance = 0;
-                ScreenNerolacHome.mIntTravelLog = 0;
-                ScreenNerolacHome.mIntProspects = 0;
-                ScreenNerolacHome.mIntInbox = 0;
-                ScreenNerolacHome.mIntRoutePlan = 0;
-                ACTPendingUpload fragmentDiscover = new ACTPendingUpload();
-                getActivity().getSupportFragmentManager()
-                        .beginTransaction()
-                        .replace(R.id.content_frame, fragmentDiscover, "ABC11")
-                        .commit();
+
             }
         });
 
         mLayout2Attandence.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                ScreenNerolacHome.mIntRetailer = 0;
-                ScreenNerolacHome.mIntAttendance = 1;
-                ScreenNerolacHome.mIntTravelLog = 0;
-                ScreenNerolacHome.mIntProspects = 0;
-                ScreenNerolacHome.mIntInbox = 0;
-                ScreenNerolacHome.mIntRoutePlan = 0;
-                ACTAttendenceList fragmentDiscover = new ACTAttendenceList();
-                getActivity().getSupportFragmentManager()
-                        .beginTransaction()
-                        .replace(R.id.content_frame, fragmentDiscover, "ABC2")
-                        .commit();
+                if (!checkPermission()) {
+                    requestPermission();
+                }else {
+                    if ( !manager.isProviderEnabled( LocationManager.GPS_PROVIDER ) ){
+                        mShowAlert("Please turn on Gps first!!",getActivity());
+                    }else {
+                        ScreenNerolacHome.mIntRetailer = 0;
+                        ScreenNerolacHome.mIntAttendance = 1;
+                        ScreenNerolacHome.mIntTravelLog = 0;
+                        ScreenNerolacHome.mIntProspects = 0;
+                        ScreenNerolacHome.mIntInbox = 0;
+                        ScreenNerolacHome.mIntRoutePlan = 0;
+                        ACTAttendenceList fragmentDiscover = new ACTAttendenceList();
+                        getActivity().getSupportFragmentManager()
+                                .beginTransaction()
+                                .replace(R.id.content_frame, fragmentDiscover, "ABC2")
+                                .commit();
+                    }
+
+                }
+
             }
         });
 
-        mLayout2RoutePlan.setOnClickListener(new View.OnClickListener() {
+        mLayout2Order.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                ScreenNerolacHome.mIntRetailer = 0;
-                ScreenNerolacHome.mIntAttendance = 0;
-                ScreenNerolacHome.mIntTravelLog = 0;
-                ScreenNerolacHome.mIntProspects = 0;
-                ScreenNerolacHome.mIntInbox = 0;
-                ScreenNerolacHome.mIntRoutePlan = 1;
-                ACTRoutPlanList fragmentDiscover = new ACTRoutPlanList();
-                getActivity().getSupportFragmentManager()
-                        .beginTransaction()
-                        .replace(R.id.content_frame, fragmentDiscover, "ABC2")
-                        .commit();
+                if (!checkPermission()) {
+                    requestPermission();
+                }else {
+                    if(!manager.isProviderEnabled( LocationManager.GPS_PROVIDER )){
+                        mShowAlert("Please turn on Gps first!!",getActivity());
+                    }else {
+                        ScreenNerolacHome.mIntRetailer = 0;
+                        ScreenNerolacHome.mIntAttendance = 0;
+                        ScreenNerolacHome.mIntTravelLog = 0;
+                        ScreenNerolacHome.mIntProspects = 0;
+                        ScreenNerolacHome.mIntInbox = 0;
+                        ScreenNerolacHome.mIntRoutePlan = 0;
+                        ACTOrderList fragmentDiscover = new ACTOrderList();
+                        getActivity().getSupportFragmentManager()
+                                .beginTransaction()
+                                .replace(R.id.content_frame, fragmentDiscover, "ABC2")
+                                .commit();
+                    }
+
+                }
+
+
             }
         });
 
@@ -279,7 +361,7 @@ public class MainActivity extends Fragment {
 
 
         void mFunRawLocation() {
-        StringRequest strRequest = new StringRequest(Request.Method.POST,"http://hinterland.nerolachub.com/Api/location",
+        StringRequest strRequest = new StringRequest(Request.Method.POST,BaseUrl+"location",
                 new Response.Listener<String>() {
                     @Override
                     public void onResponse(String str) {
@@ -352,7 +434,7 @@ public class MainActivity extends Fragment {
 
     void mFunGetMataData1() {
         System.out.println("<><><>## Call1");
-        StringRequest strRequest = new StringRequest(Request.Method.GET,"http://hinterland.nerolachub.com/Api/retailerMetadata",
+        StringRequest strRequest = new StringRequest(Request.Method.GET,BaseUrl+"retailerMetadata",
                 new Response.Listener<String>() {
                     @Override
                     public void onResponse(String str) {
@@ -408,7 +490,7 @@ public class MainActivity extends Fragment {
     }
     void mFunGetMataData2() {
         System.out.println("<><><>## Call2");
-        StringRequest strRequest = new StringRequest(Request.Method.GET,"http://hinterland.nerolachub.com/Api/retailerMetadata",
+        StringRequest strRequest = new StringRequest(Request.Method.GET,BaseUrl+"retailerMetadata",
                 new Response.Listener<String>() {
                     @Override
                     public void onResponse(String str) {
@@ -465,7 +547,7 @@ public class MainActivity extends Fragment {
 
     void mFunGetMataData3() {
         System.out.println("<><><>## Call3");
-        StringRequest strRequest = new StringRequest(Request.Method.GET,"http://hinterland.nerolachub.com/Api/retailerMetadata",
+        StringRequest strRequest = new StringRequest(Request.Method.GET,BaseUrl+"retailerMetadata",
                 new Response.Listener<String>() {
                     @Override
                     public void onResponse(String str) {
@@ -521,7 +603,7 @@ public class MainActivity extends Fragment {
     }
     void mFunGetMataData4() {
         System.out.println("<><><>## Call4");
-        StringRequest strRequest = new StringRequest(Request.Method.GET,"http://hinterland.nerolachub.com/Api/retailerMetadata",
+        StringRequest strRequest = new StringRequest(Request.Method.GET,BaseUrl+"retailerMetadata",
                 new Response.Listener<String>() {
                     @Override
                     public void onResponse(String str) {
@@ -576,7 +658,7 @@ public class MainActivity extends Fragment {
     }
     void mFunGetMataData5() {
         System.out.println("<><><>## Call5");
-        StringRequest strRequest = new StringRequest(Request.Method.GET,"http://hinterland.nerolachub.com/Api/retailerMetadata",
+        StringRequest strRequest = new StringRequest(Request.Method.GET,BaseUrl+"retailerMetadata",
                 new Response.Listener<String>() {
                     @Override
                     public void onResponse(String str) {
@@ -631,7 +713,7 @@ public class MainActivity extends Fragment {
         queue.add(strRequest);
     }
     void mFunGetMataData6() {
-        StringRequest strRequest = new StringRequest(Request.Method.GET,"http://hinterland.nerolachub.com/Api/retailerMetadata",
+        StringRequest strRequest = new StringRequest(Request.Method.GET,BaseUrl+"retailerMetadata",
                 new Response.Listener<String>() {
                     @Override
                     public void onResponse(String str) {
@@ -685,7 +767,7 @@ public class MainActivity extends Fragment {
         queue.add(strRequest);
     }
     void mFunGetMataData7() {
-        StringRequest strRequest = new StringRequest(Request.Method.GET,"http://hinterland.nerolachub.com/Api/retailerMetadata",
+        StringRequest strRequest = new StringRequest(Request.Method.GET,BaseUrl+"retailerMetadata",
                 new Response.Listener<String>() {
                     @Override
                     public void onResponse(String str) {
@@ -744,7 +826,7 @@ public class MainActivity extends Fragment {
     }
 
     void mFunGetMataData8() {
-        StringRequest strRequest = new StringRequest(Request.Method.GET,"http://hinterland.nerolachub.com/Api/distributorMetadata",
+        StringRequest strRequest = new StringRequest(Request.Method.GET,BaseUrl+"distributorMetadata",
                 new Response.Listener<String>() {
                     @Override
                     public void onResponse(String str) {
@@ -798,7 +880,7 @@ public class MainActivity extends Fragment {
         queue.add(strRequest);
     }
     void mFunGetMataData9() {
-        StringRequest strRequest = new StringRequest(Request.Method.GET,"http://hinterland.nerolachub.com/Api/distributorMetadata",
+        StringRequest strRequest = new StringRequest(Request.Method.GET,BaseUrl+"distributorMetadata",
                 new Response.Listener<String>() {
                     @Override
                     public void onResponse(String str) {
@@ -852,7 +934,7 @@ public class MainActivity extends Fragment {
         queue.add(strRequest);
     }
     void mFunGetMataData10() {
-        StringRequest strRequest = new StringRequest(Request.Method.GET,"http://hinterland.nerolachub.com/Api/distributorMetadata",
+        StringRequest strRequest = new StringRequest(Request.Method.GET,BaseUrl+"distributorMetadata",
                 new Response.Listener<String>() {
                     @Override
                     public void onResponse(String str) {
@@ -906,7 +988,7 @@ public class MainActivity extends Fragment {
         queue.add(strRequest);
     }
     void mFunGetMataData11() {
-        StringRequest strRequest = new StringRequest(Request.Method.GET,"http://hinterland.nerolachub.com/Api/distributorMetadata",
+        StringRequest strRequest = new StringRequest(Request.Method.GET,BaseUrl+"distributorMetadata",
                 new Response.Listener<String>() {
                     @Override
                     public void onResponse(String str) {
@@ -960,7 +1042,7 @@ public class MainActivity extends Fragment {
         queue.add(strRequest);
     }
     void mFunGetMataData12() {
-        StringRequest strRequest = new StringRequest(Request.Method.GET,"http://hinterland.nerolachub.com/Api/distributorMetadata",
+        StringRequest strRequest = new StringRequest(Request.Method.GET,BaseUrl+"distributorMetadata",
                 new Response.Listener<String>() {
                     @Override
                     public void onResponse(String str) {
@@ -1014,7 +1096,7 @@ public class MainActivity extends Fragment {
         queue.add(strRequest);
     }
     void mFunGetMataData13() {
-        StringRequest strRequest = new StringRequest(Request.Method.GET,"http://hinterland.nerolachub.com/Api/distributorMetadata",
+        StringRequest strRequest = new StringRequest(Request.Method.GET,BaseUrl+"distributorMetadata",
                 new Response.Listener<String>() {
                     @Override
                     public void onResponse(String str) {
@@ -1068,7 +1150,7 @@ public class MainActivity extends Fragment {
         queue.add(strRequest);
     }
     void mFunGetMataData14() {
-        StringRequest strRequest = new StringRequest(Request.Method.GET,"http://hinterland.nerolachub.com/Api/distributorMetadata",
+        StringRequest strRequest = new StringRequest(Request.Method.GET,BaseUrl+"distributorMetadata",
                 new Response.Listener<String>() {
                     @Override
                     public void onResponse(String str) {
@@ -1122,7 +1204,7 @@ public class MainActivity extends Fragment {
         queue.add(strRequest);
     }
     void mFunGetMataData15() {
-        StringRequest strRequest = new StringRequest(Request.Method.GET,"http://hinterland.nerolachub.com/Api/distributorMetadata",
+        StringRequest strRequest = new StringRequest(Request.Method.GET,BaseUrl+"distributorMetadata",
                 new Response.Listener<String>() {
                     @Override
                     public void onResponse(String str) {
@@ -1176,7 +1258,7 @@ public class MainActivity extends Fragment {
         queue.add(strRequest);
     }
     void mFunGetMataData16() {
-        StringRequest strRequest = new StringRequest(Request.Method.GET,"http://hinterland.nerolachub.com/Api/distributorMetadata",
+        StringRequest strRequest = new StringRequest(Request.Method.GET,BaseUrl+"distributorMetadata",
                 new Response.Listener<String>() {
                     @Override
                     public void onResponse(String str) {
@@ -1230,7 +1312,7 @@ public class MainActivity extends Fragment {
         queue.add(strRequest);
     }
     void mFunGetMataData17() {
-        StringRequest strRequest = new StringRequest(Request.Method.GET,"http://hinterland.nerolachub.com/Api/distributorMetadata",
+        StringRequest strRequest = new StringRequest(Request.Method.GET,BaseUrl+"distributorMetadata",
                 new Response.Listener<String>() {
                     @Override
                     public void onResponse(String str) {
@@ -1284,7 +1366,7 @@ public class MainActivity extends Fragment {
         queue.add(strRequest);
     }
     void mFunGetMataData18() {
-        StringRequest strRequest = new StringRequest(Request.Method.GET,"http://hinterland.nerolachub.com/Api/distributorMetadata",
+        StringRequest strRequest = new StringRequest(Request.Method.GET,BaseUrl+"distributorMetadata",
                 new Response.Listener<String>() {
                     @Override
                     public void onResponse(String str) {
@@ -1419,32 +1501,43 @@ public class MainActivity extends Fragment {
 
             }
         }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
         } catch (JSONException e) {
             e.printStackTrace();
         }
     }
+
+    private boolean checkPermission() {
+        int result0 = ContextCompat.checkSelfPermission(getActivity(), Manifest.permission.ACCESS_FINE_LOCATION);
+        int result1 = ContextCompat.checkSelfPermission(getActivity(),Manifest.permission.WRITE_EXTERNAL_STORAGE);
+        int result2 = ContextCompat.checkSelfPermission(getActivity(),Manifest.permission.CAMERA);
+        int result3 = ContextCompat.checkSelfPermission(getActivity(),Manifest.permission.CALL_PHONE);
+
+        return result0 == PackageManager.PERMISSION_GRANTED && result1 == PackageManager.PERMISSION_GRANTED && result2 == PackageManager.PERMISSION_GRANTED && result3 == PackageManager.PERMISSION_GRANTED;
+    }
+
+    private void requestPermission() {
+        ActivityCompat.requestPermissions(getActivity(), new String[]{Manifest.permission.ACCESS_FINE_LOCATION, Manifest.permission.WRITE_EXTERNAL_STORAGE, Manifest.permission.CAMERA, Manifest.permission.CALL_PHONE}, PERMISSION_REQUEST_CODE);
+    }
+    @Override
+    public void onRequestPermissionsResult(int requestCode, String permissions[], int[] grantResults) {
+        switch (requestCode) {
+            case PERMISSION_REQUEST_CODE:{
+                if (grantResults.length > 0) {
+                    boolean result0 = grantResults[0] == PackageManager.PERMISSION_GRANTED;
+                    boolean result1 = grantResults[1] == PackageManager.PERMISSION_GRANTED;
+                    boolean result2 = grantResults[2] == PackageManager.PERMISSION_GRANTED;
+                    boolean result3 = grantResults[3] == PackageManager.PERMISSION_GRANTED;
+
+                    if (result0 && result1 && result2 && result3){
+                    }else{
+                        ActivityCompat.requestPermissions(getActivity(), new String[]{Manifest.permission.ACCESS_FINE_LOCATION, Manifest.permission.WRITE_EXTERNAL_STORAGE, Manifest.permission.CAMERA, Manifest.permission.CALL_PHONE}, PERMISSION_REQUEST_CODE);
+                    }
+                }
+            }
+            break;
+        }
+    }
+
 
 
 }

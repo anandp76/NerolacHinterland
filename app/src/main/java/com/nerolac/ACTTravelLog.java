@@ -38,6 +38,7 @@ import java.util.Map;
 import androidx.fragment.app.Fragment;
 
 import static com.nerolac.DataBase.DataBaseStringRetailer.TBL_RAW_LOCATION_TEHSIL;
+import static com.nerolac.Utils.CommonData.BaseUrl;
 import static com.nerolac.Utils.CommonData.hidePDialog;
 import static com.nerolac.Utils.CommonData.mShowAlert;
 import static com.nerolac.Utils.CommonData.setTranceprent;
@@ -86,7 +87,7 @@ public class ACTTravelLog extends Fragment {
 
 
     public static void mFunGetMataData1() {
-        StringRequest strRequest = new StringRequest(Request.Method.POST,"http://hinterland.nerolachub.com/Api/getUserTravelDetails",
+        StringRequest strRequest = new StringRequest(Request.Method.POST,BaseUrl+"getUserTravelDetails",
                 new Response.Listener<String>() {
                     @Override
                     public void onResponse(String str) {
@@ -96,34 +97,38 @@ public class ACTTravelLog extends Fragment {
                             System.out.println("<><><>## " + response.toString());
                             String mStrStatus = response.getString("statusCode");
                             if (mStrStatus.equals("200")) {
-                                JSONArray jsonArrayProducts = response.getJSONArray("data");
-                                for (int j = 0; j<jsonArrayProducts.length();j++) {
-                                    JSONObject jsonObject = jsonArrayProducts.getJSONObject(j);
-                                    String mStrId = jsonObject.getString("fld_utid");
-                                    String mStrUserid = jsonObject.getString("fld_user_id");
-                                    String mStrState = jsonObject.getString("fld_state");
-                                    String mStrDistrict = jsonObject.getString("fld_district");
-                                    String mStrTehsil = jsonObject.getString("fld_tehsil");
-                                    String mStrBlock = jsonObject.getString("fld_block");
-                                    String mStrVillage = jsonObject.getString("fld_village");
-                                    String mStrKiloMeter = jsonObject.getString("fld_kms");
-                                    String mStrCreated = jsonObject.getString("fld_created_at");
-                                    RoutPlan routPlan = new RoutPlan();
-                                    routPlan.setmStrId(mStrId);
-                                    routPlan.setmStrBlock(mStrBlock);
-                                    routPlan.setmStrCreated(mStrCreated);
-                                    routPlan.setmStrDistrict(mStrDistrict);
-                                    routPlan.setmStrKiloMeter(mStrKiloMeter);
-                                    routPlan.setmStrState(mStrState);
-                                    routPlan.setmStrTehsil(mStrTehsil);
-                                    routPlan.setmStrUserid(mStrUserid);
-                                    routPlan.setmStrVillage(mStrVillage);
-                                    mListItem.add(routPlan);
+                                if(response.has("data")){
+                                    JSONArray jsonArrayProducts = response.getJSONArray("data");
+                                    for (int j = 0; j<jsonArrayProducts.length();j++) {
+                                        JSONObject jsonObject = jsonArrayProducts.getJSONObject(j);
+                                        String mStrId = jsonObject.getString("fld_utid");
+                                        String mStrUserid = jsonObject.getString("fld_user_id");
+                                        String mStrState = jsonObject.getString("fld_state");
+                                        String mStrDistrict = jsonObject.getString("fld_district");
+                                        String mStrTehsil = jsonObject.getString("fld_tehsil");
+                                        String mStrBlock = jsonObject.getString("fld_block");
+                                        String mStrVillage = jsonObject.getString("fld_village");
+                                        String mStrKiloMeter = jsonObject.getString("fld_kms");
+                                        String mStrCreated = jsonObject.getString("fld_created_at");
+                                        RoutPlan routPlan = new RoutPlan();
+                                        routPlan.setmStrId(mStrId);
+                                        routPlan.setmStrBlock(mStrBlock);
+                                        routPlan.setmStrCreated(mStrCreated);
+                                        routPlan.setmStrDistrict(mStrDistrict);
+                                        routPlan.setmStrKiloMeter(mStrKiloMeter);
+                                        routPlan.setmStrState(mStrState);
+                                        routPlan.setmStrTehsil(mStrTehsil);
+                                        routPlan.setmStrUserid(mStrUserid);
+                                        routPlan.setmStrVillage(mStrVillage);
+                                        mListItem.add(routPlan);
 
-                                }
+                                    }
                                 RoutPlanListAdapter retailerListAdapter = new RoutPlanListAdapter(mActitivty,mListItem);
                                 mListView.setAdapter(retailerListAdapter);
-
+                                }else {
+                                RoutPlanListAdapter retailerListAdapter = new RoutPlanListAdapter(mActitivty,mListItem);
+                                mListView.setAdapter(retailerListAdapter);
+                                }
                             } else {
                                 mShowAlert(mActitivty.getResources().getString(R.string.Something),mActitivty);
                             }

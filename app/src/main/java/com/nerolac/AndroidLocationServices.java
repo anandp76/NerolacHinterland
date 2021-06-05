@@ -42,6 +42,7 @@ import java.util.Map;
 import androidx.annotation.Nullable;
 import androidx.core.app.NotificationCompat;
 
+import static com.nerolac.Utils.CommonData.BaseUrl;
 import static com.nerolac.Utils.CommonData.getTimeformat;
 import static com.nerolac.Utils.CommonData.hidePDialog;
 import static com.nerolac.Utils.CommonData.mShowAlert;
@@ -158,21 +159,24 @@ public class AndroidLocationServices extends Service {
 
     private void startMyOwnForeground(){
         String NOTIFICATION_CHANNEL_ID = "com.nerolac";
-        String channelName = "My Background Service";
-        NotificationChannel chan = new NotificationChannel(NOTIFICATION_CHANNEL_ID, channelName, NotificationManager.IMPORTANCE_NONE);
-        chan.setLightColor(Color.BLUE);
-        chan.setLockscreenVisibility(Notification.VISIBILITY_PRIVATE);
-        NotificationManager manager = (NotificationManager) getSystemService(Context.NOTIFICATION_SERVICE);
-        assert manager != null;
-        manager.createNotificationChannel(chan);
-        NotificationCompat.Builder notificationBuilder = new NotificationCompat.Builder(this, NOTIFICATION_CHANNEL_ID);
-        Notification notification = notificationBuilder.setOngoing(true)
-                .setSmallIcon(R.drawable.ic_launcher)
-                .setContentTitle("App is running in background")
-                .setPriority(NotificationManager.IMPORTANCE_MIN)
-                .setCategory(Notification.CATEGORY_SERVICE)
-                .build();
-        startForeground(2, notification);
+        if(Build.VERSION.SDK_INT >= 26) {
+            String channelName = "My Background Service";
+            NotificationChannel chan = new NotificationChannel(NOTIFICATION_CHANNEL_ID, channelName, NotificationManager.IMPORTANCE_NONE);
+            chan.setLightColor(Color.BLUE);
+            chan.setLockscreenVisibility(Notification.VISIBILITY_PRIVATE);
+            NotificationManager manager = (NotificationManager) getSystemService(Context.NOTIFICATION_SERVICE);
+            assert manager != null;
+            manager.createNotificationChannel(chan);
+            NotificationCompat.Builder notificationBuilder = new NotificationCompat.Builder(this, NOTIFICATION_CHANNEL_ID);
+            Notification notification = notificationBuilder.setOngoing(true)
+                    .setSmallIcon(R.drawable.ic_launcher)
+                    .setContentTitle("App is running in background")
+                    .setPriority(NotificationManager.IMPORTANCE_MIN)
+                    .setCategory(Notification.CATEGORY_SERVICE)
+                    .build();
+            startForeground(2, notification);
+        }
+
     }
 
     @SuppressLint("MissingPermission")
@@ -201,12 +205,12 @@ public class AndroidLocationServices extends Service {
         // TODO Auto-generated method stub
         super.onDestroy();
 
-        wakeLock.release();
+       // wakeLock.release();
 
     }
 
     void mFunDayIn(final String mStrLat,final String mStrLong) {
-        StringRequest strRequest = new StringRequest(Request.Method.POST,"http://hinterland.nerolachub.com/Api/addTrack",
+        StringRequest strRequest = new StringRequest(Request.Method.POST,BaseUrl+"addTrack",
                 new Response.Listener<String>() {
                     @Override
                     public void onResponse(String str) {

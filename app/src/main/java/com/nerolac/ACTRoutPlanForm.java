@@ -65,6 +65,7 @@ import static com.nerolac.DataBase.DataBaseStringRetailer.TBL_RAW_LOCATION_DISTR
 import static com.nerolac.DataBase.DataBaseStringRetailer.TBL_RAW_LOCATION_STATE;
 import static com.nerolac.DataBase.DataBaseStringRetailer.TBL_RAW_LOCATION_TEHSIL;
 import static com.nerolac.DataBase.DataBaseStringRetailer.TBL_USER_ID;
+import static com.nerolac.Utils.CommonData.BaseUrl;
 import static com.nerolac.Utils.CommonData.getTimeformat;
 import static com.nerolac.Utils.CommonData.getTimeformatCurrent;
 import static com.nerolac.Utils.CommonData.hidePDialog;
@@ -122,6 +123,7 @@ public class ACTRoutPlanForm extends Activity {
     String mStrRawKilometer;
     String mStrRawOption;
     String mStrRawTravelId;
+    String mStrShopValue;
 
 
 
@@ -309,6 +311,11 @@ public class ACTRoutPlanForm extends Activity {
                 int selectedIdFM = radioGrpRetailers.getCheckedRadioButtonId();
                 RadioButton radioSexButton = (RadioButton) findViewById(selectedIdFM);
                 mStrSope = radioSexButton.getText().toString();
+                if(mStrSope.equals("No")){
+                    mStrShopValue="0";
+                }else {
+                    mStrShopValue="1";
+                }
                 if(mStrRawOption.equals("0")){
                     if(mStrState.equals("STATE")){
                         mShowAlert("Please select state!", ACTRoutPlanForm.this);
@@ -506,7 +513,7 @@ public class ACTRoutPlanForm extends Activity {
     }
 
     void mFunEnterForm() {
-        StringRequest strRequest = new StringRequest(Request.Method.POST,"http://hinterland.nerolachub.com/Api/usersTravel",
+        StringRequest strRequest = new StringRequest(Request.Method.POST,BaseUrl+"usersTravel",
                 new Response.Listener<String>() {
                     @Override
                     public void onResponse(String str) {
@@ -551,7 +558,7 @@ public class ACTRoutPlanForm extends Activity {
                 params.put("kilometer", mStrKiloMeter);
                 params.put("latitude", PreferenceManager.getNEROLAT(ACTRoutPlanForm.this));
                 params.put("longitude", PreferenceManager.getNEROLONG(ACTRoutPlanForm.this));
-                params.put("shop", mStrSope);
+                params.put("shop", mStrShopValue);
                 params.put("image", "data:image/png;base64,"+mStrImgOne);
                 System.out.println("<><><>## "+params);
                 return params;
@@ -564,7 +571,7 @@ public class ACTRoutPlanForm extends Activity {
         queue.add(strRequest);
     }
     void mFunEnterFormEdit() {
-        StringRequest strRequest = new StringRequest(Request.Method.POST,"http://hinterland.nerolachub.com/Api/editUsersTravel",
+        StringRequest strRequest = new StringRequest(Request.Method.POST,BaseUrl+"editUsersTravel",
                 new Response.Listener<String>() {
                     @Override
                     public void onResponse(String str) {

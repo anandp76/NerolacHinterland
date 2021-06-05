@@ -54,7 +54,10 @@ import static com.nerolac.DataBase.DataBaseStringRetailer.RT_FIRSTNAME;
 import static com.nerolac.DataBase.DataBaseStringRetailer.RT_GSTAVAILABLE;
 import static com.nerolac.DataBase.DataBaseStringRetailer.RT_GST_NUMBER;
 import static com.nerolac.DataBase.DataBaseStringRetailer.RT_ID;
+import static com.nerolac.DataBase.DataBaseStringRetailer.RT_IMGFIVE;
+import static com.nerolac.DataBase.DataBaseStringRetailer.RT_IMGFOUR;
 import static com.nerolac.DataBase.DataBaseStringRetailer.RT_IMGONE;
+import static com.nerolac.DataBase.DataBaseStringRetailer.RT_IMGSIX;
 import static com.nerolac.DataBase.DataBaseStringRetailer.RT_IMGTHREE;
 import static com.nerolac.DataBase.DataBaseStringRetailer.RT_IMGTWO;
 import static com.nerolac.DataBase.DataBaseStringRetailer.RT_LANDLINE;
@@ -64,12 +67,50 @@ import static com.nerolac.DataBase.DataBaseStringRetailer.RT_LONGITUDE;
 import static com.nerolac.DataBase.DataBaseStringRetailer.RT_MOBILE;
 import static com.nerolac.DataBase.DataBaseStringRetailer.RT_OUTLETSALES;
 import static com.nerolac.DataBase.DataBaseStringRetailer.RT_OUTLETSIZE;
+import static com.nerolac.DataBase.DataBaseStringRetailer.RT_OUTLETTYPE;
+import static com.nerolac.DataBase.DataBaseStringRetailer.RT_PAINTAVAIL;
+import static com.nerolac.DataBase.DataBaseStringRetailer.RT_PAINTEREDUCATIONFIVE;
+import static com.nerolac.DataBase.DataBaseStringRetailer.RT_PAINTEREDUCATIONFOUR;
+import static com.nerolac.DataBase.DataBaseStringRetailer.RT_PAINTEREDUCATIONONE;
+import static com.nerolac.DataBase.DataBaseStringRetailer.RT_PAINTEREDUCATIONTHREE;
+import static com.nerolac.DataBase.DataBaseStringRetailer.RT_PAINTEREDUCATIONTWO;
+import static com.nerolac.DataBase.DataBaseStringRetailer.RT_PAINTEREXPERIENCEFIVE;
+import static com.nerolac.DataBase.DataBaseStringRetailer.RT_PAINTEREXPERIENCEFOUR;
+import static com.nerolac.DataBase.DataBaseStringRetailer.RT_PAINTEREXPERIENCEONE;
+import static com.nerolac.DataBase.DataBaseStringRetailer.RT_PAINTEREXPERIENCETHREE;
+import static com.nerolac.DataBase.DataBaseStringRetailer.RT_PAINTEREXPERIENCETWO;
+import static com.nerolac.DataBase.DataBaseStringRetailer.RT_PAINTERNAMEFIVE;
+import static com.nerolac.DataBase.DataBaseStringRetailer.RT_PAINTERNAMEFOUR;
+import static com.nerolac.DataBase.DataBaseStringRetailer.RT_PAINTERNAMEONE;
+import static com.nerolac.DataBase.DataBaseStringRetailer.RT_PAINTERNAMETHREE;
+import static com.nerolac.DataBase.DataBaseStringRetailer.RT_PAINTERNAMETWO;
+import static com.nerolac.DataBase.DataBaseStringRetailer.RT_PAINTERPHONEFIVE;
+import static com.nerolac.DataBase.DataBaseStringRetailer.RT_PAINTERPHONEFOUR;
+import static com.nerolac.DataBase.DataBaseStringRetailer.RT_PAINTERPHONEONE;
+import static com.nerolac.DataBase.DataBaseStringRetailer.RT_PAINTERPHONETHREE;
+import static com.nerolac.DataBase.DataBaseStringRetailer.RT_PAINTERPHONETWO;
 import static com.nerolac.DataBase.DataBaseStringRetailer.RT_PAINTMARGIN;
 import static com.nerolac.DataBase.DataBaseStringRetailer.RT_PAINTSALES;
 import static com.nerolac.DataBase.DataBaseStringRetailer.RT_PINCODE;
 import static com.nerolac.DataBase.DataBaseStringRetailer.RT_PRODUCTS;
 import static com.nerolac.DataBase.DataBaseStringRetailer.RT_REMARK;
 import static com.nerolac.DataBase.DataBaseStringRetailer.RT_SHOPNAME;
+import static com.nerolac.DataBase.DataBaseStringRetailer.RT_SOURCECONTACTFOUR;
+import static com.nerolac.DataBase.DataBaseStringRetailer.RT_SOURCECONTACTONE;
+import static com.nerolac.DataBase.DataBaseStringRetailer.RT_SOURCECONTACTTHREE;
+import static com.nerolac.DataBase.DataBaseStringRetailer.RT_SOURCECONTACTTWO;
+import static com.nerolac.DataBase.DataBaseStringRetailer.RT_SOURCELOCATIONFOUR;
+import static com.nerolac.DataBase.DataBaseStringRetailer.RT_SOURCELOCATIONONE;
+import static com.nerolac.DataBase.DataBaseStringRetailer.RT_SOURCELOCATIONTHREE;
+import static com.nerolac.DataBase.DataBaseStringRetailer.RT_SOURCELOCATIONTWO;
+import static com.nerolac.DataBase.DataBaseStringRetailer.RT_SOURCENAMEFOUR;
+import static com.nerolac.DataBase.DataBaseStringRetailer.RT_SOURCENAMEONE;
+import static com.nerolac.DataBase.DataBaseStringRetailer.RT_SOURCENAMETHREE;
+import static com.nerolac.DataBase.DataBaseStringRetailer.RT_SOURCENAMETWO;
+import static com.nerolac.DataBase.DataBaseStringRetailer.RT_SOURCETYPEFOUR;
+import static com.nerolac.DataBase.DataBaseStringRetailer.RT_SOURCETYPEONE;
+import static com.nerolac.DataBase.DataBaseStringRetailer.RT_SOURCETYPETHREE;
+import static com.nerolac.DataBase.DataBaseStringRetailer.RT_SOURCETYPETWO;
 import static com.nerolac.DataBase.DataBaseStringRetailer.RT_TEHSIL;
 import static com.nerolac.DataBase.DataBaseStringRetailer.RT_USERID;
 import static com.nerolac.DataBase.DataBaseStringRetailer.RT_VILLAGE;
@@ -177,6 +218,7 @@ public class Database extends SQLiteOpenHelper {
         values.put(RT_REMARK, retailers.getTbRemark());
         values.put(RT_LONGITUDE, retailers.getTbLongitude());
         values.put(RT_LATITUDE, retailers.getTbLatitude());
+        values.put(RT_OUTLETTYPE, retailers.getTbOutletType());
         values.put(RT_DELIVERY, retailers.getTbDeliverySource());
         values.put(RT_PAINTMARGIN, retailers.getTbPaintMargin());
         values.put(RT_PAINTSALES, retailers.getTbPaintSales());
@@ -192,6 +234,51 @@ public class Database extends SQLiteOpenHelper {
         values.put(RT_IMGONE, retailers.getTbImgOne());
         values.put(RT_IMGTWO, retailers.getTbImgTwo());
         values.put(RT_IMGTHREE, retailers.getTbImgThree());
+        values.put(RT_IMGFOUR, retailers.getTbImgFour());
+        values.put(RT_IMGFIVE, retailers.getTbImgFive());
+        values.put(RT_IMGSIX, retailers.getTbImgSix());
+        values.put(RT_PAINTERNAMEONE, retailers.getTbPainterNameOne());
+        values.put(RT_PAINTEREXPERIENCEONE, retailers.getTbPainterExperienceOne());
+        values.put(RT_PAINTEREDUCATIONONE, retailers.getTbPainterEducationOne());
+        values.put(RT_PAINTERPHONEONE, retailers.getTbPainterPhoneOne());
+        values.put(RT_PAINTERNAMETWO, retailers.getTbPainterNameTwo());
+        values.put(RT_PAINTEREXPERIENCETWO, retailers.getTbPainterExperienceTwo());
+        values.put(RT_PAINTEREDUCATIONTWO, retailers.getTbPainterEducationTwo());
+        values.put(RT_PAINTERPHONETWO, retailers.getTbPainterPhoneTwo());
+        values.put(RT_PAINTERNAMETHREE, retailers.getTbPainterNameThree());
+        values.put(RT_PAINTEREXPERIENCETHREE, retailers.getTbPainterExperienceThree());
+        values.put(RT_PAINTEREDUCATIONTHREE, retailers.getTbPainterEducationThree());
+        values.put(RT_PAINTERPHONETHREE, retailers.getTbPainterPhoneThree());
+        values.put(RT_PAINTERNAMEFOUR, retailers.getTbPainterNameFour());
+        values.put(RT_PAINTEREXPERIENCEFOUR, retailers.getTbPainterExperienceFour());
+        values.put(RT_PAINTEREDUCATIONFOUR, retailers.getTbPainterEducationFour());
+        values.put(RT_PAINTERPHONEFOUR, retailers.getTbPainterPhoneFour());
+        values.put(RT_PAINTERNAMEFIVE, retailers.getTbPainterNameFive());
+        values.put(RT_PAINTEREXPERIENCEFIVE, retailers.getTbPainterExperienceFive());
+        values.put(RT_PAINTEREDUCATIONFIVE, retailers.getTbPainterEducationFive());
+        values.put(RT_PAINTERPHONEFIVE, retailers.getTbPainterPhoneFive());
+
+        values.put(RT_SOURCENAMEONE, retailers.getTbSourceName1());
+        values.put(RT_SOURCECONTACTONE, retailers.getTbSourceContact1());
+        values.put(RT_SOURCETYPEONE, retailers.getTbSourceType1());
+        values.put(RT_SOURCELOCATIONONE, retailers.getTbSourceLocation1());
+
+        values.put(RT_SOURCENAMETWO, retailers.getTbSourceName2());
+        values.put(RT_SOURCECONTACTTWO, retailers.getTbSourceContact2());
+        values.put(RT_SOURCETYPETWO, retailers.getTbSourceType2());
+        values.put(RT_SOURCELOCATIONTWO, retailers.getTbSourceLocation2());
+
+        values.put(RT_SOURCENAMETHREE, retailers.getTbSourceName3());
+        values.put(RT_SOURCECONTACTTHREE, retailers.getTbSourceContact3());
+        values.put(RT_SOURCETYPETHREE, retailers.getTbSourceType3());
+        values.put(RT_SOURCELOCATIONTHREE, retailers.getTbSourceLocation3());
+
+        values.put(RT_SOURCENAMEFOUR, retailers.getTbSourceName4());
+        values.put(RT_SOURCECONTACTFOUR, retailers.getTbSourceContact4());
+        values.put(RT_SOURCETYPEFOUR, retailers.getTbSourceType4());
+        values.put(RT_SOURCELOCATIONFOUR, retailers.getTbSourceLocation4());
+
+        values.put(RT_PAINTAVAIL, retailers.getTbPaintAvail());
         db.insert(TABLE_RETAILER, null, values);
         db.close();
     }
@@ -220,6 +307,7 @@ public class Database extends SQLiteOpenHelper {
                 retailers.setTbLastName(c.getString((c.getColumnIndex(RT_LASTNAME))));
                 retailers.setTbLatitude(c.getString((c.getColumnIndex(RT_LATITUDE))));
                 retailers.setTbLongitude(c.getString((c.getColumnIndex(RT_LONGITUDE))));
+                retailers.setTbOutletType(c.getString((c.getColumnIndex(RT_OUTLETTYPE))));
                 retailers.setTbMobile(c.getString((c.getColumnIndex(RT_MOBILE))));
                 retailers.setTbOutletSales(c.getString((c.getColumnIndex(RT_OUTLETSALES))));
                 retailers.setTbOutletSize(c.getString((c.getColumnIndex(RT_OUTLETSIZE))));
@@ -233,9 +321,54 @@ public class Database extends SQLiteOpenHelper {
                 retailers.setTbUserId(c.getString((c.getColumnIndex(RT_USERID))));
                 retailers.setTbVillage(c.getString((c.getColumnIndex(RT_VILLAGE))));
                 retailers.setTbWhatsApp(c.getString((c.getColumnIndex(RT_WHATSAPP))));
+                retailers.setTbPainterNameOne(c.getString((c.getColumnIndex(RT_PAINTERNAMEONE))));
+                retailers.setTbPainterEducationOne(c.getString((c.getColumnIndex(RT_PAINTEREDUCATIONONE))));
+                retailers.setTbPainterExperienceOne(c.getString((c.getColumnIndex(RT_PAINTEREXPERIENCEONE))));
+                retailers.setTbPainterPhoneOne(c.getString((c.getColumnIndex(RT_PAINTERPHONEONE))));
+                retailers.setTbPainterNameTwo(c.getString((c.getColumnIndex(RT_PAINTERNAMETWO))));
+                retailers.setTbPainterEducationTwo(c.getString((c.getColumnIndex(RT_PAINTEREDUCATIONTWO))));
+                retailers.setTbPainterExperienceTwo(c.getString((c.getColumnIndex(RT_PAINTEREXPERIENCETWO))));
+                retailers.setTbPainterPhoneTwo(c.getString((c.getColumnIndex(RT_PAINTERPHONETWO))));
+                retailers.setTbPainterNameThree(c.getString((c.getColumnIndex(RT_PAINTERNAMETHREE))));
+                retailers.setTbPainterEducationThree(c.getString((c.getColumnIndex(RT_PAINTEREDUCATIONTHREE))));
+                retailers.setTbPainterExperienceThree(c.getString((c.getColumnIndex(RT_PAINTEREXPERIENCETHREE))));
+                retailers.setTbPainterPhoneThree(c.getString((c.getColumnIndex(RT_PAINTERPHONETHREE))));
+                retailers.setTbPainterNameFour(c.getString((c.getColumnIndex(RT_PAINTERNAMEFOUR))));
+                retailers.setTbPainterEducationFour(c.getString((c.getColumnIndex(RT_PAINTEREDUCATIONFOUR))));
+                retailers.setTbPainterExperienceFour(c.getString((c.getColumnIndex(RT_PAINTEREXPERIENCEFOUR))));
+                retailers.setTbPainterPhoneFour(c.getString((c.getColumnIndex(RT_PAINTERPHONEFOUR))));
+                retailers.setTbPainterNameFive(c.getString((c.getColumnIndex(RT_PAINTERNAMEFIVE))));
+                retailers.setTbPainterEducationFive(c.getString((c.getColumnIndex(RT_PAINTEREDUCATIONFIVE))));
+                retailers.setTbPainterExperienceFive(c.getString((c.getColumnIndex(RT_PAINTEREXPERIENCEFIVE))));
+                retailers.setTbPainterPhoneFive(c.getString((c.getColumnIndex(RT_PAINTERPHONEFIVE))));
+
+                retailers.setTbSourceName1(c.getString((c.getColumnIndex(RT_SOURCENAMEONE))));
+                retailers.setTbSourceType1(c.getString((c.getColumnIndex(RT_SOURCETYPEONE))));
+                retailers.setTbSourceContact1(c.getString((c.getColumnIndex(RT_SOURCECONTACTONE))));
+                retailers.setTbSourceLocation1(c.getString((c.getColumnIndex(RT_SOURCELOCATIONONE))));
+
+                retailers.setTbSourceName2(c.getString((c.getColumnIndex(RT_SOURCENAMETWO))));
+                retailers.setTbSourceType2(c.getString((c.getColumnIndex(RT_SOURCETYPETWO))));
+                retailers.setTbSourceContact2(c.getString((c.getColumnIndex(RT_SOURCECONTACTTWO))));
+                retailers.setTbSourceLocation2(c.getString((c.getColumnIndex(RT_SOURCELOCATIONTWO))));
+
+                retailers.setTbSourceName3(c.getString((c.getColumnIndex(RT_SOURCENAMETHREE))));
+                retailers.setTbSourceType3(c.getString((c.getColumnIndex(RT_SOURCETYPETHREE))));
+                retailers.setTbSourceContact3(c.getString((c.getColumnIndex(RT_SOURCECONTACTTHREE))));
+                retailers.setTbSourceLocation3(c.getString((c.getColumnIndex(RT_SOURCELOCATIONTHREE))));
+
+                retailers.setTbSourceName4(c.getString((c.getColumnIndex(RT_SOURCENAMEFOUR))));
+                retailers.setTbSourceType4(c.getString((c.getColumnIndex(RT_SOURCETYPEFOUR))));
+                retailers.setTbSourceContact4(c.getString((c.getColumnIndex(RT_SOURCECONTACTFOUR))));
+                retailers.setTbSourceLocation4(c.getString((c.getColumnIndex(RT_SOURCELOCATIONFOUR))));
+
                 retailers.setTbImgOne(c.getString((c.getColumnIndex(RT_IMGONE))));
                 retailers.setTbImgTwo(c.getString((c.getColumnIndex(RT_IMGTWO))));
                 retailers.setTbImgThree(c.getString((c.getColumnIndex(RT_IMGTHREE))));
+                retailers.setTbImgFour(c.getString((c.getColumnIndex(RT_IMGFOUR))));
+                retailers.setTbImgFive(c.getString((c.getColumnIndex(RT_IMGFIVE))));
+                retailers.setTbImgSix(c.getString((c.getColumnIndex(RT_IMGSIX))));
+                retailers.setTbPaintAvail(c.getString((c.getColumnIndex(RT_PAINTAVAIL))));
                 mListLocation.add(retailers);
             } while (c.moveToNext());
         }
@@ -245,13 +378,33 @@ public class Database extends SQLiteOpenHelper {
 
     public void DT_Retailers(String mStrUserId) {
         SQLiteDatabase db = this.getWritableDatabase();
-        db.delete(TABLE_RETAILER, RT_USERID + " = " + mStrUserId, null);
+        db.delete(TABLE_RETAILER, RT_ID + " = " + mStrUserId, null);
         db.close();
     }
+
+
 
     public void DT_LOCATION() {
         SQLiteDatabase db = this.getWritableDatabase();
         db.delete(TABLE_RAW_LOCATION,null, null);
+        db.delete(TBL_DMD_INTEREST_LEVEL,null, null);
+        db.delete(TBL_DMD_ASSETS,null, null);
+        db.delete(TBL_DMD_WILLINGNESS_TO_INVEST,null, null);
+        db.delete(TBL_DMD_BNS_COVERAGE_RETAILERS,null, null);
+        db.delete(TBL_DMD_BNS_COVERAGE_VILLAGES,null, null);
+        db.delete(TBL_DMD_MONTHLY_TURNOVER,null, null);
+        db.delete(TBL_DMD_BNS_TYPE,null, null);
+        db.delete(TBL_DMD_BNS_IN_YEAR,null, null);
+        db.delete(TBL_DMD_BNS_TERRITORY,null, null);
+        db.delete(TBL_DMD_BNS_CATEGORY,null, null);
+        db.delete(TABLE_RMD_PRODUCTS,null, null);
+        db.delete(TABLE_RMD_BRANDS,null, null);
+        db.delete(TABLE_RMD_BNS_IN_YEAR,null, null);
+        db.delete(TABLE_RMD_OUTLET_SALES,null, null);
+        db.delete(TABLE_RMD_PAINT_SALES,null, null);
+        db.delete(TABLE_RMD_PAINT_MERGE,null, null);
+        db.delete(TABLE_RMD_PAINT_DEL_SOURCE,null, null);
+        db.delete(TBL_DMD_PRODUCT_CATEGORY,null, null);
         db.close();
     }
 
