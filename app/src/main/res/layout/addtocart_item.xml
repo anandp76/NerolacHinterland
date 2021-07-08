@@ -1,0 +1,152 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content">
+    <RelativeLayout
+        android:layout_marginTop="10dp"
+        android:id="@+id/mLayoutItem1"
+        android:background="#ffffff"
+        android:padding="8dp"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <ImageView
+            android:id="@+id/mImgPhoto"
+            android:layout_width="71dp"
+            android:layout_height="72dp"
+            android:scaleType="fitXY"
+            android:src="@drawable/img_dummy" />
+        <RelativeLayout
+            android:layout_marginLeft="15dp"
+            android:layout_toRightOf="@+id/mImgPhoto"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+
+            <TextView
+                android:id="@+id/mTextTitle"
+                android:textStyle="bold"
+                android:textColor="@color/apppink"
+                android:text="Wood Coatings(1L)"
+                android:textSize="15dp"
+                android:layout_marginEnd="5dp"
+                android:lines="3"
+                android:layout_toLeftOf="@+id/editamount"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"/>
+
+            <RelativeLayout
+                android:layout_marginRight="8dp"
+                android:layout_alignParentRight="true"
+                android:layout_width="wrap_content"
+                android:id="@+id/editamount"
+                android:layout_height="wrap_content">
+
+                <ImageView
+                    android:visibility="gone"
+                    android:id="@+id/mImgDelete"
+                    android:src="@drawable/ic_delete_black"
+                    android:layout_width="20dp"
+                    android:layout_height="20dp"/>
+                <EditText
+                    android:id="@+id/pricevalue"
+                    android:layout_marginTop="10dp"
+                    android:background="@drawable/border_rectangle_shap"
+                    android:textColor="#000000"
+                    android:hint="00000"
+                    android:textSize="15dp"
+                    android:padding="10dp"
+                    android:inputType="number"
+                    android:maxLength="5"
+                    android:layout_width="80dp"
+                    android:layout_height="wrap_content"/>
+
+            </RelativeLayout>
+
+            <TextView
+                android:layout_below="@+id/mTextTitle"
+                android:id="@+id/mTextProductId"
+                android:textStyle="bold"
+                android:textColor="@color/appblue"
+                android:text="PRODUCT ID: W133X30"
+                android:textSize="13dp"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"/>
+
+            <TextView
+                android:layout_below="@+id/mTextProductId"
+                android:id="@+id/packsize"
+                android:textStyle="bold"
+                android:textColor="@color/appblue"
+                android:text="PRODUCT ID: W133X30"
+                android:textSize="13dp"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"/>
+
+
+
+
+
+
+            <TextView
+                android:textStyle="bold"
+                android:textAllCaps="false"
+                android:layout_marginTop="1dp"
+                android:id="@+id/prize"
+                android:layout_below="@+id/packsize"
+                android:textColor="@color/appblue"
+                android:text="Rs. 0.00"
+                android:textSize="13dp"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"/>
+            <TextView
+                android:textStyle="bold"
+                android:textAllCaps="false"
+                android:layout_marginTop="1dp"
+                android:id="@+id/remove"
+                android:layout_below="@+id/prize"
+                android:textColor="@color/appblue"
+                android:text="Remove Item"
+                android:textSize="16dp"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"/>
+
+            <RelativeLayout
+                android:layout_marginRight="8dp"
+                android:layout_alignParentRight="true"
+                android:layout_below="@+id/mTextProductId"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content">
+
+                <ImageView
+                    android:id="@+id/mImgMinus"
+                    android:src="@drawable/ic_minus"
+                    android:layout_width="30dp"
+                    android:layout_height="30dp"/>
+                <TextView
+                    android:layout_marginLeft="5dp"
+                    android:layout_marginRight="5dp"
+                    android:layout_centerVertical="true"
+                    android:id="@+id/mTextQuantity"
+                    android:layout_toRightOf="@+id/mImgMinus"
+                    android:textColor="@color/appblue"
+                    android:textStyle="bold"
+                    android:textSize="20dp"
+                    android:text="1"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"/>
+                <ImageView
+                    android:layout_toRightOf="@+id/mTextQuantity"
+                    android:id="@+id/mImgPlus"
+                    android:src="@drawable/ic_plus"
+                    android:layout_width="30dp"
+                    android:layout_height="30dp"/>
+
+            </RelativeLayout>
+
+
+        </RelativeLayout>
+
+
+    </RelativeLayout>
+</LinearLayout>

@@ -6,9 +6,12 @@ import android.content.Context;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
+
+import com.nerolac.Modal.AddcartModal;
 import com.nerolac.Modal.RawData;
 import com.nerolac.Modal.RawLocation;
 import com.nerolac.Modal.Retailers;
+import com.nerolac.Modal.productsModal;
 
 import static com.nerolac.DataBase.DataBaseStringDistributor.CT_TBL_DMD_ASSETS;
 import static com.nerolac.DataBase.DataBaseStringDistributor.CT_TBL_DMD_BNS_CATEGORY;
@@ -34,111 +37,15 @@ import static com.nerolac.DataBase.DataBaseStringDistributor.TBL_DMD_PRODUCT_CAT
 import static com.nerolac.DataBase.DataBaseStringDistributor.TBL_DMD_WILLINGNESS_TO_INVEST;
 import static com.nerolac.DataBase.DataBaseStringDistributor.TD_DATA;
 import static com.nerolac.DataBase.DataBaseStringDistributor.TD_USER_ID;
-import static com.nerolac.DataBase.DataBaseStringRetailer.CT_TABLE_RAW_LOCATION;
-import static com.nerolac.DataBase.DataBaseStringRetailer.CT_TABLE_RETAILER;
-import static com.nerolac.DataBase.DataBaseStringRetailer.CT_TABLE_RMD_BNS_IN_YEAR;
-import static com.nerolac.DataBase.DataBaseStringRetailer.CT_TABLE_RMD_BRANDS;
-import static com.nerolac.DataBase.DataBaseStringRetailer.CT_TABLE_RMD_OUTLET_SALES;
-import static com.nerolac.DataBase.DataBaseStringRetailer.CT_TABLE_RMD_PAINT_DEL_SOURCE;
-import static com.nerolac.DataBase.DataBaseStringRetailer.CT_TABLE_RMD_PAINT_MERGE;
-import static com.nerolac.DataBase.DataBaseStringRetailer.CT_TABLE_RMD_PAINT_SALES;
-import static com.nerolac.DataBase.DataBaseStringRetailer.CT_TABLE_RMD_PRODUCTS;
-import static com.nerolac.DataBase.DataBaseStringRetailer.RT_ADDRESS1;
-import static com.nerolac.DataBase.DataBaseStringRetailer.RT_ADDRESS2;
-import static com.nerolac.DataBase.DataBaseStringRetailer.RT_BLOCK;
-import static com.nerolac.DataBase.DataBaseStringRetailer.RT_BRANDS;
-import static com.nerolac.DataBase.DataBaseStringRetailer.RT_BUSINESSINYEARS;
-import static com.nerolac.DataBase.DataBaseStringRetailer.RT_DELIVERY;
-import static com.nerolac.DataBase.DataBaseStringRetailer.RT_DISTRICT;
-import static com.nerolac.DataBase.DataBaseStringRetailer.RT_FIRSTNAME;
-import static com.nerolac.DataBase.DataBaseStringRetailer.RT_GSTAVAILABLE;
-import static com.nerolac.DataBase.DataBaseStringRetailer.RT_GST_NUMBER;
-import static com.nerolac.DataBase.DataBaseStringRetailer.RT_ID;
-import static com.nerolac.DataBase.DataBaseStringRetailer.RT_IMGFIVE;
-import static com.nerolac.DataBase.DataBaseStringRetailer.RT_IMGFOUR;
-import static com.nerolac.DataBase.DataBaseStringRetailer.RT_IMGONE;
-import static com.nerolac.DataBase.DataBaseStringRetailer.RT_IMGSIX;
-import static com.nerolac.DataBase.DataBaseStringRetailer.RT_IMGTHREE;
-import static com.nerolac.DataBase.DataBaseStringRetailer.RT_IMGTWO;
-import static com.nerolac.DataBase.DataBaseStringRetailer.RT_LANDLINE;
-import static com.nerolac.DataBase.DataBaseStringRetailer.RT_LASTNAME;
-import static com.nerolac.DataBase.DataBaseStringRetailer.RT_LATITUDE;
-import static com.nerolac.DataBase.DataBaseStringRetailer.RT_LONGITUDE;
-import static com.nerolac.DataBase.DataBaseStringRetailer.RT_MOBILE;
-import static com.nerolac.DataBase.DataBaseStringRetailer.RT_OUTLETSALES;
-import static com.nerolac.DataBase.DataBaseStringRetailer.RT_OUTLETSIZE;
-import static com.nerolac.DataBase.DataBaseStringRetailer.RT_OUTLETTYPE;
-import static com.nerolac.DataBase.DataBaseStringRetailer.RT_PAINTAVAIL;
-import static com.nerolac.DataBase.DataBaseStringRetailer.RT_PAINTEREDUCATIONFIVE;
-import static com.nerolac.DataBase.DataBaseStringRetailer.RT_PAINTEREDUCATIONFOUR;
-import static com.nerolac.DataBase.DataBaseStringRetailer.RT_PAINTEREDUCATIONONE;
-import static com.nerolac.DataBase.DataBaseStringRetailer.RT_PAINTEREDUCATIONTHREE;
-import static com.nerolac.DataBase.DataBaseStringRetailer.RT_PAINTEREDUCATIONTWO;
-import static com.nerolac.DataBase.DataBaseStringRetailer.RT_PAINTEREXPERIENCEFIVE;
-import static com.nerolac.DataBase.DataBaseStringRetailer.RT_PAINTEREXPERIENCEFOUR;
-import static com.nerolac.DataBase.DataBaseStringRetailer.RT_PAINTEREXPERIENCEONE;
-import static com.nerolac.DataBase.DataBaseStringRetailer.RT_PAINTEREXPERIENCETHREE;
-import static com.nerolac.DataBase.DataBaseStringRetailer.RT_PAINTEREXPERIENCETWO;
-import static com.nerolac.DataBase.DataBaseStringRetailer.RT_PAINTERNAMEFIVE;
-import static com.nerolac.DataBase.DataBaseStringRetailer.RT_PAINTERNAMEFOUR;
-import static com.nerolac.DataBase.DataBaseStringRetailer.RT_PAINTERNAMEONE;
-import static com.nerolac.DataBase.DataBaseStringRetailer.RT_PAINTERNAMETHREE;
-import static com.nerolac.DataBase.DataBaseStringRetailer.RT_PAINTERNAMETWO;
-import static com.nerolac.DataBase.DataBaseStringRetailer.RT_PAINTERPHONEFIVE;
-import static com.nerolac.DataBase.DataBaseStringRetailer.RT_PAINTERPHONEFOUR;
-import static com.nerolac.DataBase.DataBaseStringRetailer.RT_PAINTERPHONEONE;
-import static com.nerolac.DataBase.DataBaseStringRetailer.RT_PAINTERPHONETHREE;
-import static com.nerolac.DataBase.DataBaseStringRetailer.RT_PAINTERPHONETWO;
-import static com.nerolac.DataBase.DataBaseStringRetailer.RT_PAINTMARGIN;
-import static com.nerolac.DataBase.DataBaseStringRetailer.RT_PAINTSALES;
-import static com.nerolac.DataBase.DataBaseStringRetailer.RT_PINCODE;
-import static com.nerolac.DataBase.DataBaseStringRetailer.RT_PRODUCTS;
-import static com.nerolac.DataBase.DataBaseStringRetailer.RT_REMARK;
-import static com.nerolac.DataBase.DataBaseStringRetailer.RT_SHOPNAME;
-import static com.nerolac.DataBase.DataBaseStringRetailer.RT_SOURCECONTACTFOUR;
-import static com.nerolac.DataBase.DataBaseStringRetailer.RT_SOURCECONTACTONE;
-import static com.nerolac.DataBase.DataBaseStringRetailer.RT_SOURCECONTACTTHREE;
-import static com.nerolac.DataBase.DataBaseStringRetailer.RT_SOURCECONTACTTWO;
-import static com.nerolac.DataBase.DataBaseStringRetailer.RT_SOURCELOCATIONFOUR;
-import static com.nerolac.DataBase.DataBaseStringRetailer.RT_SOURCELOCATIONONE;
-import static com.nerolac.DataBase.DataBaseStringRetailer.RT_SOURCELOCATIONTHREE;
-import static com.nerolac.DataBase.DataBaseStringRetailer.RT_SOURCELOCATIONTWO;
-import static com.nerolac.DataBase.DataBaseStringRetailer.RT_SOURCENAMEFOUR;
-import static com.nerolac.DataBase.DataBaseStringRetailer.RT_SOURCENAMEONE;
-import static com.nerolac.DataBase.DataBaseStringRetailer.RT_SOURCENAMETHREE;
-import static com.nerolac.DataBase.DataBaseStringRetailer.RT_SOURCENAMETWO;
-import static com.nerolac.DataBase.DataBaseStringRetailer.RT_SOURCETYPEFOUR;
-import static com.nerolac.DataBase.DataBaseStringRetailer.RT_SOURCETYPEONE;
-import static com.nerolac.DataBase.DataBaseStringRetailer.RT_SOURCETYPETHREE;
-import static com.nerolac.DataBase.DataBaseStringRetailer.RT_SOURCETYPETWO;
-import static com.nerolac.DataBase.DataBaseStringRetailer.RT_TEHSIL;
-import static com.nerolac.DataBase.DataBaseStringRetailer.RT_USERID;
-import static com.nerolac.DataBase.DataBaseStringRetailer.RT_VILLAGE;
-import static com.nerolac.DataBase.DataBaseStringRetailer.RT_WHATSAPP;
-import static com.nerolac.DataBase.DataBaseStringRetailer.TABLE_RAW_LOCATION;
-import static com.nerolac.DataBase.DataBaseStringRetailer.TABLE_RETAILER;
-import static com.nerolac.DataBase.DataBaseStringRetailer.TABLE_RMD_BNS_IN_YEAR;
-import static com.nerolac.DataBase.DataBaseStringRetailer.TABLE_RMD_BRANDS;
-import static com.nerolac.DataBase.DataBaseStringRetailer.TABLE_RMD_OUTLET_SALES;
-import static com.nerolac.DataBase.DataBaseStringRetailer.TABLE_RMD_PAINT_DEL_SOURCE;
-import static com.nerolac.DataBase.DataBaseStringRetailer.TABLE_RMD_PAINT_MERGE;
-import static com.nerolac.DataBase.DataBaseStringRetailer.TABLE_RMD_PAINT_SALES;
-import static com.nerolac.DataBase.DataBaseStringRetailer.TABLE_RMD_PRODUCTS;
-import static com.nerolac.DataBase.DataBaseStringRetailer.TBL_RAW_LOCATION_BLOCK;
-import static com.nerolac.DataBase.DataBaseStringRetailer.TBL_RAW_LOCATION_DISTRICT;
-import static com.nerolac.DataBase.DataBaseStringRetailer.TBL_RAW_LOCATION_PLAN;
-import static com.nerolac.DataBase.DataBaseStringRetailer.TBL_RAW_LOCATION_STATE;
-import static com.nerolac.DataBase.DataBaseStringRetailer.TBL_RAW_LOCATION_TEHSIL;
-import static com.nerolac.DataBase.DataBaseStringRetailer.TBL_RAW_LOCATION_VILLAGE;
-import static com.nerolac.DataBase.DataBaseStringRetailer.TBL_RMD_STR;
-import static com.nerolac.DataBase.DataBaseStringRetailer.TBL_USER_ID;
+import static com.nerolac.DataBase.DataBaseStringRetailer.CT_TABLE_RMD_PRODUCTS_raw;
+import static com.nerolac.DataBase.DataBaseStringRetailer.*;
 
 public class Database extends SQLiteOpenHelper {
 
     Context context;
 
     public Database(Context c) {
-        super(c, "HinterlandLm.db", null, 6);
+        super(c, "HinterlandLm.db", null, 11);
         this.context = c;
         // TODO Auto-generated constructor stub
     }
@@ -155,7 +62,7 @@ public class Database extends SQLiteOpenHelper {
         db.execSQL(CT_TABLE_RMD_PAINT_MERGE);
         db.execSQL(CT_TABLE_RMD_PAINT_DEL_SOURCE);
         db.execSQL(CT_TABLE_RETAILER);
-
+        db.execSQL(CT_TABLE_RMD_PRODUCTS_raw);
         db.execSQL(CT_TBL_DMD_BNS_CATEGORY);
         db.execSQL(CT_TBL_DMD_BNS_TERRITORY);
         db.execSQL(CT_TBL_DMD_BNS_IN_YEAR);
@@ -167,6 +74,8 @@ public class Database extends SQLiteOpenHelper {
         db.execSQL(CT_TBL_DMD_WILLINGNESS_TO_INVEST);
         db.execSQL(CT_TBL_DMD_ASSETS);
         db.execSQL(CT_TBL_DMD_INTEREST_LEVEL);
+        db.execSQL(CT_TABLE_RMD_Add_to_Cart);
+
 
     }
 
@@ -195,7 +104,8 @@ public class Database extends SQLiteOpenHelper {
         db.execSQL("drop table if exists " + TBL_DMD_BNS_IN_YEAR);
         db.execSQL("drop table if exists " + TBL_DMD_BNS_TERRITORY);
         db.execSQL("drop table if exists " + TBL_DMD_BNS_CATEGORY);
-
+        db.execSQL("drop table if exists " + CT_TABLE_RMD_Add_to_Cart);
+        db.execSQL("drop table if exists " + TABLE_RMD_PRODUCTS_raw);
         onCreate(db);
     }
 
@@ -566,18 +476,49 @@ public class Database extends SQLiteOpenHelper {
         c.close();
         return mListLocation;
     }
-
-    public void IN_RAW_RMD_PRODUCTS(RawData rawData) {
+    public void IN_RAW_RMD_PRODUCTS_raw(RawData rawData) {
         System.out.println("<><><>## call 1");
         SQLiteDatabase db = this.getWritableDatabase();
         ContentValues values = new ContentValues();
         values.put(TBL_USER_ID,rawData.getmStrUserId());
         values.put(TBL_RMD_STR,rawData.getmStrValue());
+        db.insert(TABLE_RMD_PRODUCTS_raw, null, values);
+        db.close();
+    }
+    public void IN_RAW_RMD_PRODUCTS(productsModal rawData) {
+        System.out.println("<><><>## call 1");
+        SQLiteDatabase db = this.getWritableDatabase();
+        ContentValues values = new ContentValues();
+        values.put(TBL_RAW_product_id,rawData.getproduct_id());
+        values.put(TBL_RAW_pack_size,rawData.getpack());
+        values.put(TBL_RAW_category,rawData.getcategory());
+        values.put(TBL_RAW_sku,rawData.getsku());
+        values.put(TBL_RAW_description,rawData.getdescription());
+        values.put(TBL_RAW_amount,rawData.getamount());
         db.insert(TABLE_RMD_PRODUCTS, null, values);
         db.close();
     }
 
+    public void IN_RAW_RMD_ADDtocart(AddcartModal rawData) {
+        System.out.println("<><><>## call 1");
+        SQLiteDatabase db = this.getWritableDatabase();
+        ContentValues values = new ContentValues();
+        values.put(TBL_RAW_product_id,rawData.getproduct_id());
+        values.put(TBL_RAW_pack_size,rawData.getpack());
+        values.put(TBL_RAW_category,rawData.getcategory());
+        values.put(TBL_RAW_sku,rawData.getsku());
+        values.put(TBL_RAW_description,rawData.getdescription());
+        values.put(TBL_RAW_amount,rawData.getamount());
+        values.put(TBL_RAW_Retailer_id,rawData.getRetailer_id());
+        values.put(TBL_RAW_Retailer_name,rawData.getRetailer_name());
+        values.put(TBL_RAW_owner,rawData.getowner());
+        values.put(TBL_RAW_Retailer_photo,rawData.getRetailer_photo());
+        values.put(TBL_RAW_quntity,String.valueOf(rawData.getquntity()));
+        values.put(TBL_RAW_Retailer_price,rawData.getprice());
 
+        db.insert(TABLE_RMD_Add_To_Cart, null, values);
+        db.close();
+    }
     public void IN_RAW_RMD_BRANDS(RawData rawData) {
         SQLiteDatabase db = this.getWritableDatabase();
         ContentValues values = new ContentValues();
@@ -651,5 +592,112 @@ public class Database extends SQLiteOpenHelper {
         }
         c.close();
         return mListLocation;
+    }
+    public ArrayList<String> GT_RAW_DATA_Raw_products(String mStrTblName,String mStrValue) {
+        ArrayList<String> mListLocation = new ArrayList<String>();
+        //String selectQuery = "SELECT * FROM " + mStrTblName  ;
+        String selectQuery = "SELECT * FROM " + mStrTblName + " WHERE " + TBL_USER_ID +  " = '" + mStrValue + "'";
+        System.out.println("<><><>selectQuery " + selectQuery);
+        SQLiteDatabase db = this.getReadableDatabase();
+        Cursor c = db.rawQuery(selectQuery, null);
+        if (c.moveToFirst()) {
+            do {
+                mListLocation.add(c.getString((c.getColumnIndex(TBL_RMD_STR))));
+            } while (c.moveToNext());
+        }
+        c.close();
+        return mListLocation;
+    }
+    public ArrayList<productsModal> GT_AllProducts(String productIDS) {
+        ArrayList<productsModal> mListMetadeta = new ArrayList<productsModal>();
+        String selectQuery = "SELECT * FROM " + TABLE_RMD_PRODUCTS + " WHERE " + TBL_RAW_product_id +  " NOT IN ( " + productIDS + ")";
+        System.out.println("<><><>selectQuery " + selectQuery);
+        SQLiteDatabase db = this.getReadableDatabase();
+        Cursor c = db.rawQuery(selectQuery, null);
+        if (c.moveToFirst()) {
+            do {
+                productsModal retailers = new productsModal();
+                retailers.setproduct_id(c.getString((c.getColumnIndex(TBL_RAW_product_id))));
+                retailers.setamount(c.getString((c.getColumnIndex(TBL_RAW_amount))));
+                retailers.setpack(c.getString((c.getColumnIndex(TBL_RAW_pack_size))));
+                retailers.setdescription(c.getString((c.getColumnIndex(TBL_RAW_description))));
+                retailers.setsku(c.getString((c.getColumnIndex(TBL_RAW_sku))));
+                retailers.setcategory(c.getString((c.getColumnIndex(TBL_RAW_category))));
+
+                mListMetadeta.add(retailers);
+
+            } while (c.moveToNext());
+        }
+        c.close();
+        return mListMetadeta;
+    }
+    public ArrayList<AddcartModal> GT_Addtocart(String mStrValue) {
+        ArrayList<AddcartModal> mListMetadeta = new ArrayList<AddcartModal>();
+        String selectQuery = "SELECT * FROM " + TABLE_RMD_Add_To_Cart + " WHERE " + TBL_RAW_Retailer_id +  " = '" + mStrValue + "'";
+        System.out.println("<><><>selectQuery " + selectQuery);
+        SQLiteDatabase db = this.getReadableDatabase();
+        Cursor c = db.rawQuery(selectQuery, null);
+        if (c.moveToFirst()) {
+            do {
+                AddcartModal retailers = new AddcartModal();
+                retailers.setproduct_id(c.getString((c.getColumnIndex(TBL_RAW_product_id))));
+                retailers.setamount(c.getString((c.getColumnIndex(TBL_RAW_amount))));
+                retailers.setpack(c.getString((c.getColumnIndex(TBL_RAW_pack_size))));
+                retailers.setdescription(c.getString((c.getColumnIndex(TBL_RAW_description))));
+                retailers.setsku(c.getString((c.getColumnIndex(TBL_RAW_sku))));
+                retailers.setcategory(c.getString((c.getColumnIndex(TBL_RAW_category))));
+                retailers.setRetailer_id(c.getString((c.getColumnIndex(TBL_RAW_Retailer_id))));
+                retailers.setRetailer_name(c.getString((c.getColumnIndex(TBL_RAW_Retailer_name))));
+                retailers.setowner(c.getString((c.getColumnIndex(TBL_RAW_owner))));
+                retailers.setRetailer_photo(c.getString((c.getColumnIndex(TBL_RAW_Retailer_photo))));
+                retailers.setprice(c.getString((c.getColumnIndex(TBL_RAW_Retailer_price))));
+                retailers.setquntity(Integer.parseInt(c.getString((c.getColumnIndex(TBL_RAW_quntity)))));
+
+                mListMetadeta.add(retailers);
+
+            } while (c.moveToNext());
+        }
+        c.close();
+        return mListMetadeta;
+    }
+    public void UP_RAW_RMD_ADDtocart(AddcartModal rawData,String retailerid) {
+//        db.execSQL("UPDATE DB_TABLE SET YOUR_COLUMN='newValue' WHERE id=6 ");
+//        String selectQuery = "UPDATE" + TABLE_RMD_Add_To_Cart +" SET "+TBL_RAW_product_id+" = '"+rawData.getproduct_id()+"',"+ " WHERE " + TBL_RAW_Retailer_id +  " = '" + mStrValue + "'";
+//        System.out.println("<><><>selectQuery " + selectQuery);
+        System.out.println("<><><>## call 1");
+        SQLiteDatabase db = this.getWritableDatabase();
+        ContentValues values = new ContentValues();
+        values.put(TBL_RAW_product_id,rawData.getproduct_id());
+        values.put(TBL_RAW_pack_size,rawData.getpack());
+        values.put(TBL_RAW_category,rawData.getcategory());
+        values.put(TBL_RAW_sku,rawData.getsku());
+        values.put(TBL_RAW_description,rawData.getdescription());
+        values.put(TBL_RAW_amount,rawData.getamount());
+        values.put(TBL_RAW_Retailer_id,rawData.getRetailer_id());
+        values.put(TBL_RAW_Retailer_name,rawData.getRetailer_name());
+        values.put(TBL_RAW_owner,rawData.getowner());
+        values.put(TBL_RAW_Retailer_photo,rawData.getRetailer_photo());
+        values.put(TBL_RAW_Retailer_price,rawData.getprice());
+        values.put(TBL_RAW_quntity,rawData.getquntity());
+        String[] args = new String[]{retailerid, rawData.getproduct_id()};
+db.update(TABLE_RMD_Add_To_Cart,values, "Retailer_id = ? AND product_id = ?", args);
+        //db.insert(TABLE_RMD_Add_To_Cart, null, values);
+        db.close();
+    }
+    public void deleteorder(String retelerid){
+        SQLiteDatabase db = this.getWritableDatabase();
+
+        String[] args = new String[]{retelerid};
+        db.delete(TABLE_RMD_Add_To_Cart,"Retailer_id = ?",args);
+        //db.insert(TABLE_RMD_PAINT_SALES, null, values);
+        db.close();
+    }
+    public void deleteorderItem(String retelerid ,String product_id){
+        SQLiteDatabase db = this.getWritableDatabase();
+
+        String[] args = new String[]{retelerid, product_id};
+        db.delete(TABLE_RMD_Add_To_Cart,"Retailer_id = ? AND product_id = ?",args);
+        //db.insert(TABLE_RMD_PAINT_SALES, null, values);
+        db.close();
     }
 }

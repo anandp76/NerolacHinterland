@@ -977,7 +977,7 @@ public class ACTDistributorForm extends Activity {
             }
         };
         strRequest.setRetryPolicy(new DefaultRetryPolicy(
-                65,
+                5000,
                 DefaultRetryPolicy.DEFAULT_MAX_RETRIES,
                 DefaultRetryPolicy.DEFAULT_BACKOFF_MULT));
         queue.add(strRequest);

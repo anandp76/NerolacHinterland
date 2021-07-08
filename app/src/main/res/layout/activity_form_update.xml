@@ -65,6 +65,7 @@
                 android:textColor="#000000"
                 android:hint="Business Name"
                 android:textSize="15dp"
+                android:inputType="textPersonName"
                 android:padding="10dp"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"/>
@@ -78,7 +79,8 @@
                 android:textSize="15dp"
                 android:padding="10dp"
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"/>
+                android:layout_height="wrap_content"
+                android:visibility="gone"/>
 
             <LinearLayout
                 android:layout_marginTop="10dp"
@@ -117,6 +119,7 @@
                     android:textColor="#000000"
                     android:hint="GST Number"
                     android:textSize="15dp"
+
                     android:padding="10dp"
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"/>
@@ -130,6 +133,7 @@
                 android:textColor="#000000"
                 android:hint="Owner Name"
                 android:textSize="15dp"
+                android:inputType="textPersonName"
                 android:padding="10dp"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"/>
@@ -141,10 +145,32 @@
                 android:textColor="#000000"
                 android:hint="Mobile Number"
                 android:textSize="15dp"
+                android:inputType="number"
+                android:maxLength="10"
                 android:padding="10dp"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"/>
+            <RelativeLayout
+                android:layout_marginTop="10dp"
+                android:background="@drawable/border_rectangle_shap"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+                <Spinner
+                    android:paddingBottom="10dp"
+                    android:background="#00000000"
+                    android:paddingTop="10dp"
+                    android:id="@+id/mSpinnerTehsil"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"/>
+                <ImageView
+                    android:layout_marginRight="10dp"
+                    android:layout_alignParentRight="true"
+                    android:layout_centerVertical="true"
+                    android:src="@drawable/ic_keyboard_arrow"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"/>
 
+            </RelativeLayout>
             <RelativeLayout
                 android:layout_marginTop="10dp"
                 android:background="@drawable/border_rectangle_shap"

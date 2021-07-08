@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:background="#fafafa"
     android:fitsSystemWindows="true"
     android:layout_width="match_parent"
@@ -13,7 +14,7 @@
             android:id="@+id/mTxer"
             android:layout_marginLeft="15dp"
             android:layout_marginTop="15dp"
-            android:text="Order Summary"
+            android:text="Estimate Summary"
             android:textSize="22dp"
             android:textColor="@color/appblue"
             android:textStyle="bold"
@@ -30,7 +31,7 @@
 
     </RelativeLayout>
 
-    <ScrollView
+    <androidx.core.widget.NestedScrollView
         android:scrollbars="none"
         android:layout_above="@+id/mLayoutPlaceOrder"
         android:layout_below="@+id/mLayoutTitle"
@@ -41,386 +42,21 @@
 
             android:layout_width="match_parent"
             android:layout_height="match_parent">
-            <RelativeLayout
-                android:layout_marginTop="10dp"
-                android:id="@+id/mLayoutItem1"
-                android:background="#ffffff"
-                android:padding="8dp"
+
+            <androidx.recyclerview.widget.RecyclerView
+                android:id="@+id/mListView"
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content">
-
-                <ImageView
-                    android:scaleType="fitXY"
-                    android:id="@+id/mImgPhoto"
-                    android:src="@drawable/img_dummy"
-                    android:layout_width="70dp"
-                    android:layout_height="70dp"/>
-                <RelativeLayout
-                    android:layout_marginLeft="15dp"
-                    android:layout_toRightOf="@+id/mImgPhoto"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content">
-
-
-                    <TextView
-                        android:id="@+id/mTextTitle"
-                        android:textStyle="bold"
-                        android:textColor="@color/apppink"
-                        android:text="Wood Coatings(1L)"
-                        android:textSize="15dp"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"/>
-
-                    <RelativeLayout
-                        android:layout_marginRight="8dp"
-                        android:layout_alignParentRight="true"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content">
-
-                        <ImageView
-                            android:visibility="gone"
-                            android:id="@+id/mImgDelete"
-                            android:src="@drawable/ic_delete_black"
-                            android:layout_width="20dp"
-                            android:layout_height="20dp"/>
-
-
-                    </RelativeLayout>
-
-                    <TextView
-                        android:layout_below="@+id/mTextTitle"
-                        android:id="@+id/mTextProductId"
-                        android:textStyle="bold"
-                        android:textColor="@color/appblue"
-                        android:text="PRODUCT ID: W133X30"
-                        android:textSize="13dp"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"/>
-
-
-
-
-
-
-
-
-                    <TextView
-                        android:textStyle="bold"
-                        android:textAllCaps="false"
-                        android:layout_marginTop="1dp"
-                        android:id="@+id/mTextAddresss"
-                        android:layout_below="@+id/mTextProductId"
-                        android:textColor="@color/appblue"
-                        android:text="Rs. 1050.00"
-                        android:textSize="13dp"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"/>
-
-                    <TextView
-                        android:textStyle="bold"
-                        android:textAllCaps="false"
-                        android:layout_marginTop="1dp"
-                        android:id="@+id/ttht"
-                        android:layout_below="@+id/mTextAddresss"
-                        android:textColor="#666666"
-                        android:text="@string/remove"
-                        android:textSize="13dp"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"/>
-
-                    <RelativeLayout
-                        android:layout_marginRight="8dp"
-                        android:layout_alignParentRight="true"
-                        android:layout_below="@+id/mTextProductId"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content">
-
-                        <ImageView
-                            android:id="@+id/mImgPlus"
-                            android:src="@drawable/ic_minus"
-                            android:layout_width="30dp"
-                            android:layout_height="30dp"/>
-                        <TextView
-                            android:layout_marginLeft="5dp"
-                            android:layout_marginRight="5dp"
-                            android:layout_centerVertical="true"
-                            android:id="@+id/mTextQuantity"
-                            android:layout_toRightOf="@+id/mImgPlus"
-                            android:textColor="@color/appblue"
-                            android:textStyle="bold"
-                            android:textSize="20dp"
-                            android:text="1"
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"/>
-                        <ImageView
-                            android:layout_toRightOf="@+id/mTextQuantity"
-                            android:id="@+id/mImgMinus"
-                            android:src="@drawable/ic_plus"
-                            android:layout_width="30dp"
-                            android:layout_height="30dp"/>
-
-                    </RelativeLayout>
-
-
-                </RelativeLayout>
-
-
-            </RelativeLayout>
-            <RelativeLayout
+                android:layout_height="wrap_content"
+                android:divider="@null"
+                android:dividerHeight="0dp"
                 android:layout_marginTop="10dp"
-                android:layout_below="@+id/mLayoutItem1"
-                android:id="@+id/mLayoutItem2"
-                android:background="#ffffff"
-                android:padding="8dp"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content">
-
-                <ImageView
-                    android:scaleType="fitXY"
-                    android:id="@+id/mImgPhoto2"
-                    android:src="@drawable/img_dummy"
-                    android:layout_width="70dp"
-                    android:layout_height="70dp"/>
-                <RelativeLayout
-                    android:layout_marginLeft="15dp"
-                    android:layout_toRightOf="@+id/mImgPhoto2"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content">
+                android:orientation="vertical"
+                app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager" />
 
 
-                    <TextView
-                        android:id="@+id/mTextTitle2"
-                        android:textStyle="bold"
-                        android:textColor="@color/apppink"
-                        android:text="Wood Coatings(1L)"
-                        android:textSize="15dp"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"/>
-
-                    <RelativeLayout
-                        android:layout_marginRight="8dp"
-                        android:layout_alignParentRight="true"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content">
-
-                        <ImageView
-                            android:visibility="gone"
-                            android:id="@+id/mImgDelete2"
-                            android:src="@drawable/ic_delete_black"
-                            android:layout_width="20dp"
-                            android:layout_height="20dp"/>
-
-
-                    </RelativeLayout>
-
-                    <TextView
-                        android:layout_below="@+id/mTextTitle2"
-                        android:id="@+id/mTextProductId2"
-                        android:textStyle="bold"
-                        android:textColor="@color/appblue"
-                        android:text="PRODUCT ID: W133X30"
-                        android:textSize="13dp"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"/>
-
-
-
-
-
-
-
-
-                    <TextView
-                        android:textStyle="bold"
-                        android:textAllCaps="false"
-                        android:layout_marginTop="1dp"
-                        android:id="@+id/mTextAddresss2"
-                        android:layout_below="@+id/mTextProductId2"
-                        android:textColor="@color/appblue"
-                        android:text="Rs. 1050.00"
-                        android:textSize="13dp"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"/>
-
-                    <TextView
-                        android:textStyle="bold"
-                        android:textAllCaps="false"
-                        android:layout_marginTop="1dp"
-                        android:id="@+id/ttht2"
-                        android:layout_below="@+id/mTextAddresss2"
-                        android:textColor="#666666"
-                        android:text="@string/remove"
-                        android:textSize="13dp"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"/>
-
-                    <RelativeLayout
-                        android:layout_marginRight="8dp"
-                        android:layout_alignParentRight="true"
-                        android:layout_below="@+id/mTextProductId2"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content">
-
-                        <ImageView
-                            android:id="@+id/mImgPlus2"
-                            android:src="@drawable/ic_minus"
-                            android:layout_width="30dp"
-                            android:layout_height="30dp"/>
-                        <TextView
-                            android:layout_marginLeft="5dp"
-                            android:layout_marginRight="5dp"
-                            android:layout_centerVertical="true"
-                            android:id="@+id/mTextQuantity2"
-                            android:layout_toRightOf="@+id/mImgPlus2"
-                            android:textColor="@color/appblue"
-                            android:textStyle="bold"
-                            android:textSize="20dp"
-                            android:text="1"
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"/>
-                        <ImageView
-                            android:layout_toRightOf="@+id/mTextQuantity2"
-                            android:id="@+id/mImgMinus2"
-                            android:src="@drawable/ic_plus"
-                            android:layout_width="30dp"
-                            android:layout_height="30dp"/>
-
-                    </RelativeLayout>
-
-
-                </RelativeLayout>
-
-
-            </RelativeLayout>
-            <RelativeLayout
-                android:layout_marginTop="10dp"
-                android:layout_below="@+id/mLayoutItem2"
-                android:id="@+id/mLayoutItem3"
-                android:background="#ffffff"
-                android:padding="8dp"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content">
-
-                <ImageView
-                    android:scaleType="fitXY"
-                    android:id="@+id/mImgPhoto3"
-                    android:src="@drawable/img_dummy"
-                    android:layout_width="70dp"
-                    android:layout_height="70dp"/>
-                <RelativeLayout
-                    android:layout_marginLeft="15dp"
-                    android:layout_toRightOf="@+id/mImgPhoto3"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content">
-
-
-                    <TextView
-                        android:id="@+id/mTextTitle3"
-                        android:textStyle="bold"
-                        android:textColor="@color/apppink"
-                        android:text="Wood Coatings(1L)"
-                        android:textSize="15dp"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"/>
-
-                    <RelativeLayout
-                        android:layout_marginRight="8dp"
-                        android:layout_alignParentRight="true"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content">
-
-                        <ImageView
-                            android:visibility="gone"
-                            android:id="@+id/mImgDelete3"
-                            android:src="@drawable/ic_delete_black"
-                            android:layout_width="20dp"
-                            android:layout_height="20dp"/>
-
-
-                    </RelativeLayout>
-
-                    <TextView
-                        android:layout_below="@+id/mTextTitle3"
-                        android:id="@+id/mTextProductId3"
-                        android:textStyle="bold"
-                        android:textColor="@color/appblue"
-                        android:text="PRODUCT ID: W133X30"
-                        android:textSize="13dp"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"/>
-
-
-
-
-
-
-
-
-                    <TextView
-                        android:textStyle="bold"
-                        android:textAllCaps="false"
-                        android:layout_marginTop="1dp"
-                        android:id="@+id/mTextAddresss3"
-                        android:layout_below="@+id/mTextProductId3"
-                        android:textColor="@color/appblue"
-                        android:text="Rs. 1050.00"
-                        android:textSize="13dp"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"/>
-
-                    <TextView
-                        android:textStyle="bold"
-                        android:textAllCaps="false"
-                        android:layout_marginTop="1dp"
-                        android:id="@+id/ttht3"
-                        android:layout_below="@+id/mTextAddresss3"
-                        android:textColor="#666666"
-                        android:text="@string/remove"
-                        android:textSize="13dp"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"/>
-
-                    <RelativeLayout
-                        android:layout_marginRight="8dp"
-                        android:layout_alignParentRight="true"
-                        android:layout_below="@+id/mTextProductId3"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content">
-
-                        <ImageView
-                            android:id="@+id/mImgPlus3"
-                            android:src="@drawable/ic_minus"
-                            android:layout_width="30dp"
-                            android:layout_height="30dp"/>
-                        <TextView
-                            android:layout_marginLeft="5dp"
-                            android:layout_marginRight="5dp"
-                            android:layout_centerVertical="true"
-                            android:id="@+id/mTextQuantity3"
-                            android:layout_toRightOf="@+id/mImgPlus3"
-                            android:textColor="@color/appblue"
-                            android:textStyle="bold"
-                            android:textSize="22dp"
-                            android:text="1"
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"/>
-                        <ImageView
-                            android:layout_toRightOf="@+id/mTextQuantity3"
-                            android:id="@+id/mImgMinus3"
-                            android:src="@drawable/ic_plus"
-                            android:layout_width="30dp"
-                            android:layout_height="30dp"/>
-
-                    </RelativeLayout>
-
-
-                </RelativeLayout>
-
-
-            </RelativeLayout>
 
             <RelativeLayout
-                android:layout_below="@+id/mLayoutItem3"
+                android:layout_below="@+id/mListView"
                 android:id="@+id/mLayoutAddMore"
                 android:background="@color/colorAccent"
                 android:layout_width="match_parent"
@@ -454,7 +90,7 @@
 
                 <TextView
                     android:layout_below="@+id/mTextTitles2252"
-                    android:id="@+id/mTextTitlefgdfsgd"
+                    android:id="@+id/mretailername"
                     android:textStyle="bold"
                     android:textColor="@color/apppink"
                     android:text="Mehta Dealer"
@@ -466,7 +102,7 @@
                     android:textAllCaps="false"
                     android:layout_marginTop="1dp"
                     android:id="@+id/mTextAddresssgh"
-                    android:layout_below="@+id/mTextTitlefgdfsgd"
+                    android:layout_below="@+id/mretailername"
                     android:textColor="#666666"
                     android:text="BAZARGATE (SUB OFFICE), MUMBAI"
                     android:textSize="15dp"
@@ -494,7 +130,7 @@
                         android:paddingBottom="10dp"
                         android:background="#00000000"
                         android:paddingTop="10dp"
-                        android:id="@+id/mSpinnerBlock"
+                        android:id="@+id/mSpinnerDistributor"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"/>
                     <ImageView
@@ -518,6 +154,7 @@
                 android:id="@+id/mLayoutItem5"
                 android:background="#ffffff"
                 android:padding="8dp"
+                android:visibility="gone"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content">
 
@@ -591,7 +228,7 @@
                             android:paddingBottom="10dp"
                             android:background="#00000000"
                             android:paddingTop="10dp"
-                            android:id="@+id/mSpinnerDistributor"
+                            android:id="@+id/mDistributor"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"/>
                         <ImageView
@@ -614,7 +251,8 @@
                 android:background="#ffffff"
                 android:padding="8dp"
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content">
+                android:layout_height="wrap_content"
+                >
                 <TextView
                     android:id="@+id/mTextTitles"
                     android:text="Price Details ( 3 Items )"
@@ -622,14 +260,16 @@
                     android:textColor="@color/appblue"
                     android:textStyle="bold"
                     android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"/>
+                    android:layout_height="wrap_content"
+                    android:visibility="gone"/>
 
                 <RelativeLayout
                     android:id="@+id/mFirst"
                     android:layout_marginTop="7dp"
                     android:layout_below="@+id/mTextTitles"
                     android:layout_width="match_parent"
-                    android:layout_height="wrap_content">
+                    android:layout_height="wrap_content"
+                    android:visibility="gone">
                     <TextView
                         android:layout_alignParentLeft="true"
                         android:text="Product Total"
@@ -650,7 +290,8 @@
                     android:layout_marginTop="7dp"
                     android:layout_below="@+id/mFirst"
                     android:layout_width="match_parent"
-                    android:layout_height="wrap_content">
+                    android:layout_height="wrap_content"
+                    android:visibility="gone">
                     <TextView
                         android:layout_alignParentLeft="true"
                         android:text="Dealer Scheme"
@@ -672,7 +313,8 @@
                     android:layout_marginTop="7dp"
                     android:layout_below="@+id/mSecond"
                     android:layout_width="match_parent"
-                    android:layout_height="wrap_content">
+                    android:layout_height="wrap_content"
+                    android:visibility="gone">
                     <TextView
                         android:layout_alignParentLeft="true"
                         android:text="Distributor Discount"
@@ -695,13 +337,15 @@
                     android:layout_below="@+id/mThird"
                     android:layout_width="match_parent"
                     android:layout_height="1dp"
-                    android:background="#666666"/>
+                    android:background="#666666"
+                    android:visibility="gone"/>
                 <RelativeLayout
                     android:id="@+id/mThirdgfh"
                     android:layout_marginTop="7dp"
                     android:layout_below="@+id/fdggh"
                     android:layout_width="match_parent"
-                    android:layout_height="wrap_content">
+                    android:layout_height="wrap_content"
+                    android:visibility="gone">
                     <TextView
                         android:layout_alignParentLeft="true"
                         android:text="Sub Total"
@@ -722,7 +366,8 @@
                     android:layout_marginTop="7dp"
                     android:layout_below="@+id/mThirdgfh"
                     android:layout_width="match_parent"
-                    android:layout_height="wrap_content">
+                    android:layout_height="wrap_content"
+                    android:visibility="gone">
                     <TextView
                         android:layout_alignParentLeft="true"
                         android:text="GST (18%)"
@@ -755,15 +400,16 @@
                     <TextView
                         android:textStyle="bold"
                         android:layout_alignParentLeft="true"
-                        android:text="Total Amount"
+                        android:text="Total Estimate Amount"
                         android:textSize="15dp"
                         android:textColor="@color/apppink"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"/>
                     <TextView
                         android:textStyle="bold"
+                        android:id="@+id/totalamount"
                         android:layout_alignParentRight="true"
-                        android:text="Rs. 3009.00"
+                        android:text="Rs. 0"
                         android:textSize="15dp"
                         android:textColor="@color/apppink"
                         android:layout_width="wrap_content"
@@ -773,24 +419,63 @@
             </RelativeLayout>
         </RelativeLayout>
 
-    </ScrollView>
+    </androidx.core.widget.NestedScrollView>
 
 
 
 
 
-    <RelativeLayout
-        android:layout_alignParentBottom="true"
-        android:id="@+id/mLayoutPlaceOrder"
-        android:background="@color/colorAccent"
+
+    <LinearLayout
+
+        android:id="@+id/mLayoutSearch"
+
+
+        android:orientation="horizontal"
+        android:weightSum="2"
         android:layout_width="match_parent"
+        android:layout_alignParentBottom="true"
         android:layout_height="45dp">
-        <TextView
-            android:textColor="@color/white"
-            android:textSize="16dp"
-            android:layout_centerInParent="true"
-            android:text="Place Order"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"/>
-    </RelativeLayout>
+        <RelativeLayout
+
+            android:id="@+id/mLayoutdelete"
+            android:background="@color/lightgray"
+            android:layout_width="match_parent"
+            android:layout_weight="1"
+            android:layout_marginLeft="7dp"
+
+            android:layout_height="45dp">
+            <TextView
+                android:textColor="@color/mdtp_dark_gray"
+                android:textSize="16dp"
+                android:layout_centerInParent="true"
+                android:text="Cancel Order"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"/>
+        </RelativeLayout>
+        <RelativeLayout
+            android:layout_weight="1"
+            android:id="@+id/mLayoutPlaceOrder"
+            android:background="@color/colorAccent"
+            android:layout_width="match_parent"
+
+            android:layout_marginRight="7dp"
+            android:layout_height="45dp">
+<!--            <ImageView-->
+<!--                android:layout_centerVertical="true"-->
+<!--                android:layout_width="wrap_content"-->
+<!--                android:layout_height="wrap_content"-->
+<!--                android:src="@drawable/ic_order_check_24"/>-->
+            <TextView
+                android:textColor="@color/white"
+                android:textSize="16dp"
+                android:layout_centerInParent="true"
+                android:text="Place Order"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"/>
+        </RelativeLayout>
+
+
+
+    </LinearLayout>
 </RelativeLayout>

@@ -47,6 +47,7 @@
             android:layout_marginRight="5dp"
             android:layout_weight="1"
             android:layout_width="0dp"
+            android:visibility="gone"
             android:layout_height="wrap_content">
             <Spinner
                 android:paddingBottom="10dp"
@@ -69,6 +70,7 @@
             android:layout_marginLeft="5dp"
             android:layout_weight="1"
             android:layout_width="0dp"
+            android:visibility="gone"
             android:layout_height="wrap_content">
             <Spinner
                 android:paddingBottom="10dp"
@@ -87,7 +89,21 @@
 
         </RelativeLayout>
 
-
+        <RelativeLayout
+            android:layout_marginTop="7dp"
+            android:layout_marginLeft="7dp"
+            android:layout_marginRight="7dp"
+            android:background="@drawable/border_rectangle_shap"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+            <EditText
+                android:hint="Search By Name"
+                android:padding="8dp"
+                android:background="#ffffff"
+                android:id="@+id/mEditByName"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"/>
+        </RelativeLayout>
     </LinearLayout>
 
 

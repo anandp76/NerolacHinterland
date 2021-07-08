@@ -25,6 +25,7 @@ import com.android.volley.toolbox.Volley;
 import com.nerolac.DataBase.Database;
 import com.nerolac.Modal.RawData;
 import com.nerolac.Modal.RawLocation;
+import com.nerolac.Modal.productsModal;
 import com.nerolac.Utils.PreferenceManager;
 
 import org.json.JSONArray;
@@ -434,7 +435,7 @@ public class MainActivity extends Fragment {
 
     void mFunGetMataData1() {
         System.out.println("<><><>## Call1");
-        StringRequest strRequest = new StringRequest(Request.Method.GET,BaseUrl+"retailerMetadata",
+        StringRequest strRequest = new StringRequest(Request.Method.POST,BaseUrl+"products_list",
                 new Response.Listener<String>() {
                     @Override
                     public void onResponse(String str) {
@@ -447,11 +448,23 @@ public class MainActivity extends Fragment {
                             JSONObject jsonObject = response.getJSONObject("data");
                             jsonArrayProducts = jsonObject.getJSONArray("products");
                                 for (int j = 0; j<jsonArrayProducts.length();j++) {
-                                    String mStrProduct = jsonArrayProducts.getString(j);
-                                    System.out.println("<><><>##11 " + mStrProduct);
-                                    RawData rawDataProduct = new RawData();
-                                    rawDataProduct.setmStrValue(mStrProduct);
-                                    rawDataProduct.setmStrUserId(PreferenceManager.getNEROUSERID(getActivity()));
+                                    JSONObject jsonObject1 = jsonArrayProducts.getJSONObject(j);
+
+
+                                    String product_id = jsonObject1.getString("product_id");
+                                    String category = jsonObject1.getString("category");
+                                    String sku = jsonObject1.getString("sku");
+                                    String description = jsonObject1.getString("description");
+                                    String amount = jsonObject1.getString("amount");
+                                    String pack_size = jsonObject1.getString("pack size");
+
+                                    productsModal rawDataProduct = new productsModal();
+                                    rawDataProduct.setproduct_id(product_id);
+                                    rawDataProduct.setcategory(category);
+                                    rawDataProduct.setsku(sku);
+                                    rawDataProduct.setdescription(description);
+                                    rawDataProduct.setpack(pack_size);
+                                    rawDataProduct.setamount(amount);
                                     database.IN_RAW_RMD_PRODUCTS(rawDataProduct);
                                     if(j==jsonArrayProducts.length()-1){
                                         showProgress(getActivity());
@@ -483,6 +496,7 @@ public class MainActivity extends Fragment {
             @Override
             protected Map<String, String> getParams() {
                 Map<String, String> params = new HashMap<String, String>();
+                params.put("user_id",PreferenceManager.getNEROUSERID(getActivity()));
                 return params;
             }
         };
@@ -501,6 +515,16 @@ public class MainActivity extends Fragment {
                             String mStrStatus = response.getString("statusCode");
                             if (mStrStatus.equals("200")) {
                                 JSONObject jsonObject = response.getJSONObject("data");
+                                jsonArrayProducts = jsonObject.getJSONArray("products");
+                                for (int j = 0; j<jsonArrayProducts.length();j++) {
+                                    String mStrProduct = jsonArrayProducts.getString(j);
+                                    System.out.println("<><><>##11 " + mStrProduct);
+                                    RawData rawDataProduct = new RawData();
+                                    rawDataProduct.setmStrValue(mStrProduct);
+                                    rawDataProduct.setmStrUserId(PreferenceManager.getNEROUSERID(getActivity()));
+                                    database.IN_RAW_RMD_PRODUCTS_raw(rawDataProduct);
+
+                                }
                                 jsonArrayBrands = jsonObject.getJSONArray("brands");
                                 for (int b = 0; b<jsonArrayBrands.length();b++) {
                                     RWB = b;
@@ -1428,7 +1452,7 @@ public class MainActivity extends Fragment {
             RawData rawDataProduct = new RawData();
             rawDataProduct.setmStrValue(mStrProduct);
             rawDataProduct.setmStrUserId(PreferenceManager.getNEROUSERID(getActivity()));
-            database.IN_RAW_RMD_PRODUCTS(rawDataProduct);
+           // database.IN_RAW_RMD_PRODUCTS(rawDataProduct);
             if(j==jsonArrayProducts.length()-1){
                 for (int b = 0; b<jsonArrayBrands.length();b++){
                     RWB=b;

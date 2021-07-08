@@ -13,8 +13,8 @@
         android:layout_width="80dp"
         android:layout_height="80dp"/>
     <RelativeLayout
-        android:layout_marginLeft="5dp"
-        android:layout_toRightOf="@+id/mImgPhoto"
+        android:layout_marginStart="5dp"
+        android:layout_toEndOf="@+id/mImgPhoto"
         android:layout_width="match_parent"
         android:layout_height="wrap_content">
         <ImageView
@@ -25,13 +25,36 @@
             android:layout_width="25dp"
             android:layout_height="25dp"/>
 
+        <ImageView
+            android:id="@+id/mIngbilling"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/mImgCall"
+            android:layout_alignParentRight="true"
+            android:layout_marginStart="2dp"
+            android:layout_marginTop="2dp"
+            android:layout_marginEnd="2dp"
+            android:layout_marginBottom="2dp"
+            android:src="@drawable/ic_baseline_attach_file_24" />
+        <ImageView
+            android:id="@+id/mIngdelete"
+            android:layout_below="@id/mIngbilling"
+            android:layout_margin="2dp"
+            android:layout_marginTop="5dp"
+            android:layout_alignParentRight="true"
+            android:src="@drawable/ic_baseline_delete_24"
+            android:layout_width="25dp"
+            android:visibility="gone"
+            android:layout_height="25dp"/>
+
         <TextView
             android:id="@+id/mTextTitle"
             android:textStyle="bold"
             android:textColor="@color/apppink"
             android:text="Mehta Dealer"
             android:textSize="16dp"
-            android:layout_width="wrap_content"
+            android:layout_width="match_parent"
+            android:layout_toStartOf="@+id/mIngbilling"
             android:layout_height="wrap_content"/>
 
         <TextView
@@ -41,7 +64,8 @@
             android:textColor="#666666"
             android:text="Anil Mehta"
             android:textSize="13dp"
-            android:layout_width="wrap_content"
+            android:layout_toStartOf="@+id/mIngbilling"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"/>
 
         <TextView
@@ -51,13 +75,9 @@
             android:textColor="#666666"
             android:text="Last order is Rs. 2000.00 on 20 Mar, 2021"
             android:textSize="13dp"
-            android:layout_width="wrap_content"
+            android:layout_toStartOf="@+id/mIngbilling"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"/>
-
-
-
-
-
 
         <TextView
             android:textAllCaps="false"

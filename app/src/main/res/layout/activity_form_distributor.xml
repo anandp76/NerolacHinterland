@@ -1044,7 +1044,7 @@
 
                     <EditText
                         android:maxLength="10"
-                        android:inputType="phone"
+                        android:inputType="textCapWords"
                         android:id="@+id/mEditSourceLocation1"
                         android:layout_marginLeft="5dp"
                         android:layout_weight="1"
@@ -1133,7 +1133,7 @@
 
                     <EditText
                         android:maxLength="10"
-                        android:inputType="phone"
+                        android:inputType="textCapWords"
                         android:id="@+id/mEditSourceLocation2"
                         android:layout_marginLeft="5dp"
                         android:layout_weight="1"
@@ -1222,7 +1222,7 @@
 
                     <EditText
                         android:maxLength="10"
-                        android:inputType="phone"
+                        android:inputType="textCapWords"
                         android:id="@+id/mEditSourceLocation3"
                         android:layout_marginLeft="5dp"
                         android:layout_weight="1"
@@ -1311,7 +1311,7 @@
 
                     <EditText
                         android:maxLength="10"
-                        android:inputType="phone"
+                        android:inputType="textCapWords"
                         android:id="@+id/mEditSourceLocation4"
                         android:layout_marginLeft="5dp"
                         android:layout_weight="1"

@@ -2,90 +2,68 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="com.nerolac">
 
-    <uses-permission android:name="android.permission.INTERNET"/>
-    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE"/>
-    <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION"/>
-    <uses-permission android:name="android.permission.CAMERA"/>
-    <uses-permission android:name="android.permission.CALL_PHONE"/>
-    <uses-permission android:name="android.permission.FOREGROUND_SERVICE"/>
+    <uses-permission android:name="android.permission.INTERNET" />
+    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
+    <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION" />
+    <uses-permission android:name="android.permission.CAMERA" />
+    <uses-permission android:name="android.permission.CALL_PHONE" />
+    <uses-permission android:name="android.permission.FOREGROUND_SERVICE" />
 
     <application
         android:name=".Utils.AppController"
         android:allowBackup="true"
         android:icon="@mipmap/ic_launcher_new"
-        android:roundIcon="@mipmap/ic_launcher"
         android:label="@string/app_name"
+        android:requestLegacyExternalStorage="true"
+        android:roundIcon="@mipmap/ic_launcher"
         android:supportsRtl="true"
-        android:usesCleartextTraffic="true"
-        android:theme="@style/AppTheme.NoActionBar">
-
+        android:theme="@style/AppTheme.NoActionBar"
+        android:usesCleartextTraffic="true">
+        <activity android:name=".ViewOrdersummryActivity"></activity>
+        <activity android:name=".AddvisitActivity" />
+        <activity android:name=".RetailerVisitListActivity" />
+        <activity android:name=".ACT_UPLOAD_BILL_ACTIVITY" />
         <activity android:name=".ACTSplash">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
+
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".MainActivity"/>
-        <activity android:name=".ACTRoutPlanList"/>
-        <activity android:name=".ACTRoutPlanPendingList"/>
-        <activity android:name=".ACTRoutPlanCoveredList"/>
-        <activity android:name=".ACTRoutPlanAdditionalList"/>
-        <activity android:name=".ACTAnajMandiList"/>
-        <activity android:name=".ACTLogin"/>
-        <activity android:name=".ACTDistributorForm"/>
-        <activity android:name=".ACTHaatMarketForm"/>
-        <activity android:name=".ACTAnajMandiForm"/>
-        <activity android:name=".ACTAshaBahuForm"/>
-        <activity android:name=".ACTRoutPlanList"/>
-        <activity android:name=".ACTSarpanchForm"/>
-        <activity android:name=".ACTAnganWadiForm"/>
-        <activity android:name=".ACTRetailerForm"/>
-        <activity android:name=".ACTRetailerList"/>
-        <activity android:name=".ACTSarpanchList"/>
-        <activity android:name=".ACTHaatMarketList"/>
-        <activity android:name=".ACTDistributorList"/>
-        <activity android:name=".ACTAshaBahuList"/>
-        <activity android:name=".ACTAnganwadiList"/>
-        <activity android:name=".ACTSalesOrderList"/>
-        <activity android:name=".ACTInboxList"/>
-        <activity android:name=".ACTTravelLog"/>
-        <activity android:name=".ACTPendingUpload"/>
-        <activity android:name=".ACTRoutPlanForm"/>
-        <activity android:name=".ACTAttendenceList"/>
-        <activity android:name=".ACTFormUpdate"/>
-        <activity android:name=".ACTAddOrderDilerList"/>
-        <activity android:name=".ACTProductList"/>
-        <activity android:name=".ACTOrderSummry"/>
-
-        <activity android:name=".ACTViewMoreList">
-
-
-        </activity>
-        <activity android:name=".ACTTehsilMoreList">
-
-        </activity>
-
-        <activity android:name=".ACTBlockMoreList">
-
-        </activity>
-
-        <activity android:name=".ACTRetailerListViewMore">
-
-        </activity>
-
-        <activity android:name=".ScreenNerolacHome">
-
-        </activity>
-
-        <activity android:name=".ViewPdfFile">
-
-        </activity>
-
+        <activity android:name=".ACTRoutPlanList" />
+        <activity android:name=".ACTRoutPlanPendingList" />
+        <activity android:name=".ACTRoutPlanCoveredList" />
+        <activity android:name=".ACTRoutPlanAdditionalList" />
+        <activity android:name=".ACTAnajMandiList" />
+        <activity android:name=".ACTLogin" />
+        <activity android:name=".ACTDistributorForm" />
+        <activity android:name=".ACTHaatMarketForm" />
+        <activity android:name=".ACTAnajMandiForm" />
+        <activity android:name=".ACTAshaBahuForm" />
+        <activity android:name=".ACTSarpanchForm" />
+        <activity android:name=".ACTAnganWadiForm" />
+        <activity android:name=".ACTRetailerForm" />
+        <activity android:name=".ACTSarpanchList" />
+        <activity android:name=".ACTHaatMarketList" />
+        <activity android:name=".ACTAshaBahuList" />
+        <activity android:name=".ACTAnganwadiList" />
+        <activity android:name=".ACTSalesOrderList" />
+        <activity android:name=".ACTRoutPlanForm" />
+        <activity android:name=".ACTFormUpdate" />
+        <activity android:name=".ACTAddOrderDilerList" />
+        <activity android:name=".ACTProductList" />
+        <activity android:name=".ACTOrderSummry" />
+        <activity android:name=".ACTViewMoreList" />
+        <activity android:name=".ACTTehsilMoreList" />
+        <activity android:name=".ACTBlockMoreList" />
+        <activity android:name=".ACTRetailerListViewMore" />
+        <activity android:name=".ScreenNerolacHome" />
+        <activity android:name=".ViewPdfFile" />
 
         <service
             android:name=".AndroidLocationServices"
             android:description="@string/app_name"
-            android:icon="@android:drawable/ic_dialog_map"></service>
+            android:icon="@android:drawable/ic_dialog_map" />
 
         <provider
             android:name=".GenericFileProvider"
@@ -94,10 +72,8 @@
             android:grantUriPermissions="true">
             <meta-data
                 android:name="android.support.FILE_PROVIDER_PATHS"
-                android:resource="@xml/provider_paths"/>
+                android:resource="@xml/provider_paths" />
         </provider>
-
-
     </application>
 
 </manifest>

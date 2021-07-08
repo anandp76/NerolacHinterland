@@ -4,6 +4,8 @@ package com.nerolac;
 import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
+import android.text.Editable;
+import android.text.TextWatcher;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -12,6 +14,7 @@ import android.view.animation.Animation;
 import android.view.animation.AnimationUtils;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
+import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.ListView;
@@ -20,6 +23,7 @@ import android.widget.Spinner;
 import android.widget.TextView;
 
 import com.android.volley.AuthFailureError;
+import com.android.volley.DefaultRetryPolicy;
 import com.android.volley.Request;
 import com.android.volley.RequestQueue;
 import com.android.volley.Response;
@@ -66,6 +70,7 @@ public class ACTRetailerList extends Fragment {
     public static Activity mActivity;
     public static TextView mTxer;
     int r = 0;
+    EditText searchbox;
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.activity_list_retailer, container, false);
@@ -77,6 +82,7 @@ public class ACTRetailerList extends Fragment {
         mSpinnerTehsil = (Spinner)view. findViewById(R.id.mSpinnerTehsil);
         mSpinnerBlock = (Spinner)view. findViewById(R.id.mSpinnerBlock);
         mTxer = (TextView) view. findViewById(R.id.mTxer);
+        searchbox = view.findViewById(R.id.mEditByName);
         mImgAddNew.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -84,72 +90,89 @@ public class ACTRetailerList extends Fragment {
                 startActivity(intent);
             }
         });
-
-        mSpinnerTehsil.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
+        searchbox.addTextChangedListener(new TextWatcher() {
             @Override
-            public void onItemSelected(AdapterView<?> adapterView, View view, int i, long l) {
-                if(mSpinnerTehsil.getSelectedItem().toString().equals("ALL TEHSIL") && mSpinnerBlock.getSelectedItem().toString().equals("ALL BLOCKS")){
-                    String mStrMTehsil = mSpinnerTehsil.getSelectedItem().toString();
-                    String mStrMBlock = mSpinnerBlock.getSelectedItem().toString();
-                    if(mStrMBlock.equals("ALL BLOCKS")){
-                        retailerListAdapter.getFilter().filter(mStrMTehsil+"#");
-                    }else {
-                        retailerListAdapter.getFilter().filter(mStrMTehsil+"#"+mStrMBlock);
-                    }
-                }else {
-                    String mStrMTehsil = mSpinnerTehsil.getSelectedItem().toString();
-                    String mStrMBlock = mSpinnerBlock.getSelectedItem().toString();
-                    if(mStrMBlock.equals("ALL BLOCKS")){
-                        retailerListAdapter.getFilter().filter(mStrMTehsil+"#");
-                    }else {
-                        retailerListAdapter.getFilter().filter(mStrMTehsil+"#"+mStrMBlock);
-                    }
-                    //retailerListAdapter.getFilter().filter(mSpinnerTehsil.getSelectedItem().toString());
-                }
-                //retailerListAdapter.getFilter().filter(mSpinnerTehsil.getSelectedItem().toString());
-                mListBlock = database.GT_RAW_LOCATION_BLOCK(TBL_RAW_LOCATION_TEHSIL,mSpinnerTehsil.getSelectedItem().toString());
-                mListBlock.add(0,"ALL BLOCKS");
-                ArrayAdapter arrayAdapterBlock  = new ArrayAdapter(getActivity(),android.R.layout.simple_spinner_item,mListBlock.toArray(new String[mListBlock.size()]));
-                arrayAdapterBlock.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
-                mSpinnerBlock.setAdapter(arrayAdapterBlock);
+            public void beforeTextChanged(CharSequence s, int start, int count, int after) {
 
             }
 
             @Override
-            public void onNothingSelected(AdapterView<?> adapterView) {
+            public void onTextChanged(CharSequence s, int start, int before, int count) {
+                if (retailerListAdapter != null) {
+                    retailerListAdapter.getFilter().filter(searchbox.getText().toString().trim());
+                }
+            }
+
+            @Override
+            public void afterTextChanged(Editable s) {
 
             }
         });
-
-        mSpinnerBlock.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
-            @Override
-            public void onItemSelected(AdapterView<?> adapterView, View view, int i, long l) {
-                if(mSpinnerTehsil.getSelectedItem().toString().equals("ALL TEHSIL") && mSpinnerBlock.getSelectedItem().toString().equals("BLOCK")){
-                    String mStrMTehsil = mSpinnerTehsil.getSelectedItem().toString();
-                    String mStrMBlock = mSpinnerBlock.getSelectedItem().toString();
-                    if(mStrMBlock.equals("ALL BLOCKS")){
-                        retailerListAdapter.getFilter().filter(mStrMTehsil+"#");
-                    }else {
-                        retailerListAdapter.getFilter().filter(mStrMTehsil+"#"+mStrMBlock);
-                    }
-                }else {
-                    String mStrMTehsil = mSpinnerTehsil.getSelectedItem().toString();
-                    String mStrMBlock = mSpinnerBlock.getSelectedItem().toString();
-                    if(mStrMBlock.equals("ALL BLOCKS")){
-                        retailerListAdapter.getFilter().filter(mStrMTehsil+"#");
-                    }else {
-                        retailerListAdapter.getFilter().filter(mStrMTehsil+"#"+mStrMBlock);
-                    }
-                    //retailerListAdapter.getFilter().filter(mSpinnerTehsil.getSelectedItem().toString());
-                }
-
-            }
-
-            @Override
-            public void onNothingSelected(AdapterView<?> adapterView) {
-
-            }
-        });
+//        mSpinnerTehsil.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
+//            @Override
+//            public void onItemSelected(AdapterView<?> adapterView, View view, int i, long l) {
+//                if(mSpinnerTehsil.getSelectedItem().toString().equals("ALL TEHSIL") && mSpinnerBlock.getSelectedItem().toString().equals("ALL BLOCKS")){
+//                    String mStrMTehsil = mSpinnerTehsil.getSelectedItem().toString();
+//                    String mStrMBlock = mSpinnerBlock.getSelectedItem().toString();
+//                    if(mStrMBlock.equals("ALL BLOCKS")){
+//                        retailerListAdapter.getFilter().filter(mStrMTehsil+"#");
+//                    }else {
+//                        retailerListAdapter.getFilter().filter(mStrMTehsil+"#"+mStrMBlock);
+//                    }
+//                }else {
+//                    String mStrMTehsil = mSpinnerTehsil.getSelectedItem().toString();
+//                    String mStrMBlock = mSpinnerBlock.getSelectedItem().toString();
+//                    if(mStrMBlock.equals("ALL BLOCKS")){
+//                        retailerListAdapter.getFilter().filter(mStrMTehsil+"#");
+//                    }else {
+//                        retailerListAdapter.getFilter().filter(mStrMTehsil+"#"+mStrMBlock);
+//                    }
+//                    //retailerListAdapter.getFilter().filter(mSpinnerTehsil.getSelectedItem().toString());
+//                }
+//                //retailerListAdapter.getFilter().filter(mSpinnerTehsil.getSelectedItem().toString());
+//                mListBlock = database.GT_RAW_LOCATION_BLOCK(TBL_RAW_LOCATION_TEHSIL,mSpinnerTehsil.getSelectedItem().toString());
+//                mListBlock.add(0,"ALL BLOCKS");
+//                ArrayAdapter arrayAdapterBlock  = new ArrayAdapter(getActivity(),android.R.layout.simple_spinner_item,mListBlock.toArray(new String[mListBlock.size()]));
+//                arrayAdapterBlock.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+//                mSpinnerBlock.setAdapter(arrayAdapterBlock);
+//
+//            }
+//
+//            @Override
+//            public void onNothingSelected(AdapterView<?> adapterView) {
+//
+//            }
+//        });
+//
+//        mSpinnerBlock.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
+//            @Override
+//            public void onItemSelected(AdapterView<?> adapterView, View view, int i, long l) {
+//                if(mSpinnerTehsil.getSelectedItem().toString().equals("ALL TEHSIL") && mSpinnerBlock.getSelectedItem().toString().equals("BLOCK")){
+//                    String mStrMTehsil = mSpinnerTehsil.getSelectedItem().toString();
+//                    String mStrMBlock = mSpinnerBlock.getSelectedItem().toString();
+//                    if(mStrMBlock.equals("ALL BLOCKS")){
+//                        retailerListAdapter.getFilter().filter(mStrMTehsil+"#");
+//                    }else {
+//                        retailerListAdapter.getFilter().filter(mStrMTehsil+"#"+mStrMBlock);
+//                    }
+//                }else {
+//                    String mStrMTehsil = mSpinnerTehsil.getSelectedItem().toString();
+//                    String mStrMBlock = mSpinnerBlock.getSelectedItem().toString();
+//                    if(mStrMBlock.equals("ALL BLOCKS")){
+//                        retailerListAdapter.getFilter().filter(mStrMTehsil+"#");
+//                    }else {
+//                        retailerListAdapter.getFilter().filter(mStrMTehsil+"#"+mStrMBlock);
+//                    }
+//                    //retailerListAdapter.getFilter().filter(mSpinnerTehsil.getSelectedItem().toString());
+//                }
+//
+//            }
+//
+//            @Override
+//            public void onNothingSelected(AdapterView<?> adapterView) {
+//
+//            }
+//        });
 
         mListItem.clear();
         showProgress(getActivity());
@@ -208,6 +231,7 @@ public class ACTRetailerList extends Fragment {
                                 mTxer.setText("Dealer ("+jsonArrayProducts.length()+")");
                                 for (int j = 0; j<jsonArrayProducts.length();j++) {
                                     JSONObject jsonObject = jsonArrayProducts.getJSONObject(j);
+                                    String id = jsonObject.getString("id");
                                     String mStrRetailerName = jsonObject.getString("Retailer_name");
                                     String mStrPhoto = jsonObject.getString("photo");
                                     String mStrVillage = jsonObject.getString("village");
@@ -216,7 +240,9 @@ public class ACTRetailerList extends Fragment {
                                     String mStrOwnerName = jsonObject.getString("owner");
                                     String mStrTehsil = jsonObject.getString("tehsil");
                                     String mStrBlock = jsonObject.getString("block");
+                                    String last_order = jsonObject.getString("last_order");
                                     Retailers retailers = new Retailers();
+                                    retailers.setTbId(id);
                                     retailers.setTbFirstName(mStrOwnerName);
                                     retailers.setTbShopName(mStrRetailerName);
                                     retailers.setTbAddress1(mStrAddress);
@@ -225,6 +251,7 @@ public class ACTRetailerList extends Fragment {
                                     retailers.setTbMobile(mStrMobile);
                                     retailers.setTbTehsil(mStrTehsil);
                                     retailers.setTbBlock(mStrBlock);
+                                    retailers.setlast_order(last_order);
                                     mListItem.add(retailers);
 
                                 }
@@ -233,7 +260,7 @@ public class ACTRetailerList extends Fragment {
                                 retailerListAdapter.notifyDataSetChanged();
 
                             } else {
-                                mShowAlert(mActivity.getResources().getString(R.string.Something), mActivity);
+                                mShowAlert(response.getString("message"), mActivity);
                             }
                         } catch (JSONException e) {
                             e.printStackTrace();
@@ -260,6 +287,10 @@ public class ACTRetailerList extends Fragment {
                 return params;
             }
         };
+        strRequest.setRetryPolicy(new DefaultRetryPolicy(
+                10000,
+                DefaultRetryPolicy.DEFAULT_MAX_RETRIES,
+                DefaultRetryPolicy.DEFAULT_BACKOFF_MULT));
         queue.add(strRequest);
     }
 

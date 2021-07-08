@@ -20,8 +20,10 @@ import android.widget.RelativeLayout;
 import android.widget.TextView;
 
 import com.bumptech.glide.Glide;
+import com.nerolac.ACTOrderSummry;
 import com.nerolac.Modal.Retailers;
 import com.nerolac.R;
+import com.nerolac.RetailerVisitListActivity;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -84,7 +86,8 @@ public class RetailerListAdapter extends BaseAdapter implements Filterable {
             holder.mTextOwnerName = convertView.findViewById(R.id.mTextOwnerName);
             holder.mImgCall = convertView.findViewById(R.id.mImgCall);
             holder.mImgPhoto = convertView.findViewById(R.id.mImgPhoto);
-
+holder.mlastorder = convertView.findViewById(R.id.mtextlastorder);
+holder.mImglog = convertView.findViewById(R.id.mImglog);
             convertView.setTag(holder);
             } else {
             holder = (ViewHolder) convertView.getTag();
@@ -113,7 +116,17 @@ public class RetailerListAdapter extends BaseAdapter implements Filterable {
                 context.startActivity(callIntent);
             }
         });
-
+        holder.mImglog.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent(context, RetailerVisitListActivity.class);
+                intent.putExtra("retailerId", retailers.getTbId());
+                intent.putExtra("retailername", retailers.getTbShopName());
+                intent.putExtra("shopname",retailers.getTbShopName());
+                context.startActivity(intent);
+            }
+        });
+        holder.mlastorder.setText(retailers.getlast_order());
         return convertView;
     }
 
@@ -133,6 +146,8 @@ public class RetailerListAdapter extends BaseAdapter implements Filterable {
     TextView mTextTitle;
     ImageView mImgCall;
     ImageView mImgPhoto;
+        ImageView mImglog;
+        TextView mlastorder;
     }
 
     private class ItemFilter extends Filter {
@@ -145,7 +160,7 @@ public class RetailerListAdapter extends BaseAdapter implements Filterable {
             final ArrayList<Retailers> nlist = new ArrayList<Retailers>(count);
             String filterableStringName;
             for (int i = 0; i < count; i++) {
-                filterableStringName = list.get(i).getTbTehsil()+"#"+list.get(i).getTbBlock();
+                filterableStringName = list.get(i).getTbShopName()+"#"+list.get(i).getTbFirstName();
                 System.out.println("CCCCCCC "+filterableStringName);
                 System.out.println("CCCCCCC2 "+filterString.toLowerCase());
                 if (filterableStringName.toLowerCase().contains(filterString.toLowerCase())) {

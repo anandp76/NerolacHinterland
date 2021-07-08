@@ -82,11 +82,36 @@ public class Retailers {
 
 
 
-    String tbSourceType4;
-    String tbSourceType2;
+    String fld_gst_number;
+    String gst_available;
     String tbSourceType3;
     String tbSourceType1;
+    String last_order;
+    String tbSourceType4;
+    String tbSourceType2;
 
+    public String getfld_gst_number() {
+        return fld_gst_number;
+    }
+
+    public void setfld_gst_number(String tbSourceName1) {
+        this.fld_gst_number = tbSourceName1;
+    }
+    public String getgst_available() {
+        return gst_available;
+    }
+
+    public void setgst_available(String tbSourceName1) {
+        this.gst_available = tbSourceName1;
+    }
+
+    public String getlast_order() {
+        return last_order;
+    }
+
+    public void setlast_order(String tbSourceName1) {
+        this.last_order = tbSourceName1;
+    }
     public String getTbSourceName1() {
         return tbSourceName1;
     }

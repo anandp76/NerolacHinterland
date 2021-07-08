@@ -128,7 +128,18 @@ public class CommonData {
         }
         return mStrResult;
     }
-
+    public static String orderdate(String mStrDate){
+        String mStrResult="";
+        try {
+            SimpleDateFormat format1=new SimpleDateFormat("yyyy-MM-dd");
+            Date date=format1.parse(mStrDate);
+            mStrResult = (String) DateFormat.format("dd MMM, yyyy ",   date); // 20
+            // String monthString  = (String) DateFormat.format("MMM",  date); // Jun
+        } catch (ParseException e) {
+            e.printStackTrace();
+        }
+        return mStrResult;
+    }
     public static String getTimeformat() {
         Date c = Calendar.getInstance().getTime();
         System.out.println("Current time => " + c);

@@ -4,4 +4,8 @@
     <string name="string_here"><u>View More</u></string>
     <string name="Something">Something went wrong!!</string>
     <string name="remove"><u>Remove Product</u></string>
+    <string name="Camera_permission_txt">Please give Anmol Ratan access to this \n device\'s camera to click your pictures </string>
+    <string name="Cancel">Cancel</string>
+    <string name="OK">Ok</string>
+
 </resources>

@@ -1,0 +1,412 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:background="#fafafa"
+    android:fitsSystemWindows="true"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+    <RelativeLayout
+        android:id="@+id/mLayoutTitle"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <TextView
+            android:id="@+id/mTxer"
+            android:layout_marginLeft="15dp"
+            android:layout_marginTop="15dp"
+            android:text="Estimate Summary"
+            android:textSize="22dp"
+            android:textColor="@color/appblue"
+            android:textStyle="bold"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"/>
+
+        <ImageView
+            android:layout_marginTop="-20dp"
+            android:layout_alignParentRight="true"
+            android:scaleType="fitXY"
+            android:src="@drawable/ic_circle_blue"
+            android:layout_width="100dp"
+            android:layout_height="65dp"/>
+
+    </RelativeLayout>
+
+    <androidx.core.widget.NestedScrollView
+        android:scrollbars="none"
+        android:layout_above="@+id/mLayoutPlaceOrder"
+        android:layout_below="@+id/mLayoutTitle"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <RelativeLayout
+
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+            <androidx.recyclerview.widget.RecyclerView
+                android:id="@+id/mListView"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:divider="@null"
+                android:dividerHeight="0dp"
+                android:layout_marginTop="10dp"
+                android:orientation="vertical"
+                app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager" />
+
+
+
+
+            <RelativeLayout
+                android:layout_marginTop="10dp"
+                android:layout_below="@+id/mListView"
+                android:id="@+id/mLayoutItem4"
+                android:background="#ffffff"
+                android:padding="8dp"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+
+                <TextView
+                    android:id="@+id/mTextTitles2252"
+                    android:text="Dealer Details"
+                    android:textSize="16dp"
+                    android:textColor="@color/appblue"
+                    android:textStyle="bold"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"/>
+
+                <TextView
+                    android:layout_below="@+id/mTextTitles2252"
+                    android:id="@+id/mretailername"
+                    android:textStyle="bold"
+                    android:textColor="@color/apppink"
+                    android:text="Mehta Dealer"
+                    android:textSize="15dp"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"/>
+
+                <TextView
+                    android:textAllCaps="false"
+                    android:layout_marginTop="1dp"
+                    android:id="@+id/mTextAddresssgh"
+                    android:layout_below="@+id/mretailername"
+                    android:textColor="#666666"
+                    android:text="BAZARGATE (SUB OFFICE), MUMBAI"
+                    android:textSize="15dp"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"/>
+
+                <TextView
+                    android:textAllCaps="false"
+                    android:layout_marginTop="10dp"
+                    android:id="@+id/mTextete"
+                    android:layout_below="@+id/mTextAddresssgh"
+                    android:textColor="@color/appblue"
+                    android:text="Distributor"
+                    android:textSize="15dp"
+
+                    android:textStyle="bold"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"/>
+
+                <RelativeLayout
+                    android:layout_below="@+id/mTextete"
+
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content">
+
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:paddingBottom="5dp"
+                        android:textColor="@color/apppink"
+android:textSize="15dp"
+                        android:textStyle="bold"
+                        android:paddingTop="10dp"
+                        android:id="@+id/mSpinnerDistributor"/>
+
+                </RelativeLayout>
+
+
+
+            </RelativeLayout>
+
+
+            <RelativeLayout
+                android:layout_marginTop="10dp"
+                android:layout_below="@+id/mLayoutItem4"
+                android:id="@+id/mLayoutItem5"
+                android:background="#ffffff"
+                android:padding="8dp"
+                android:visibility="gone"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+
+                <TextView
+                    android:id="@+id/mTextTitles0"
+                    android:text="Discount Details"
+                    android:textSize="16dp"
+                    android:textColor="@color/appblue"
+                    android:textStyle="bold"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"/>
+
+                <RelativeLayout
+                    android:id="@+id/mFirst0"
+                    android:layout_marginTop="7dp"
+                    android:layout_below="@+id/mTextTitles0"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content">
+                    <TextView
+                        android:layout_centerVertical="true"
+                        android:layout_alignParentLeft="true"
+                        android:text="Scheme Discount"
+                        android:textSize="15dp"
+                        android:textColor="#666666"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"/>
+                    <RelativeLayout
+                        android:layout_alignParentRight="true"
+                        android:background="@drawable/border_rectangle_shap"
+                        android:layout_width="100dp"
+                        android:layout_height="wrap_content">
+                        <Spinner
+                            android:layout_centerHorizontal="true"
+                            android:paddingBottom="10dp"
+                            android:background="#00000000"
+                            android:paddingTop="10dp"
+                            android:id="@+id/mSpinnerScheme"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"/>
+                        <ImageView
+                            android:layout_marginRight="10dp"
+                            android:layout_alignParentRight="true"
+                            android:layout_centerVertical="true"
+                            android:src="@drawable/ic_keyboard_arrow"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"/>
+
+                    </RelativeLayout>
+                </RelativeLayout>
+                <RelativeLayout
+                    android:id="@+id/mFirst1"
+                    android:layout_marginTop="7dp"
+                    android:layout_below="@+id/mFirst0"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content">
+                    <TextView
+                        android:layout_centerVertical="true"
+                        android:layout_alignParentLeft="true"
+                        android:text="Distributor Discount"
+                        android:textSize="15dp"
+                        android:textColor="#666666"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"/>
+                    <RelativeLayout
+                        android:layout_alignParentRight="true"
+                        android:background="@drawable/border_rectangle_shap"
+                        android:layout_width="100dp"
+                        android:layout_height="wrap_content">
+                        <Spinner
+                            android:layout_centerHorizontal="true"
+                            android:paddingBottom="10dp"
+                            android:background="#00000000"
+                            android:paddingTop="10dp"
+                            android:id="@+id/mDistributor"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"/>
+                        <ImageView
+                            android:layout_marginRight="10dp"
+                            android:layout_alignParentRight="true"
+                            android:layout_centerVertical="true"
+                            android:src="@drawable/ic_keyboard_arrow"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"/>
+
+                    </RelativeLayout>
+                </RelativeLayout>
+
+            </RelativeLayout>
+
+            <RelativeLayout
+                android:layout_marginTop="10dp"
+                android:layout_below="@+id/mLayoutItem5"
+                android:id="@+id/mLayoutItem6"
+                android:background="#ffffff"
+                android:padding="8dp"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                >
+                <TextView
+                    android:id="@+id/mTextTitles"
+                    android:text="Price Details ( 3 Items )"
+                    android:textSize="16dp"
+                    android:textColor="@color/appblue"
+                    android:textStyle="bold"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:visibility="gone"/>
+
+                <RelativeLayout
+                    android:id="@+id/mFirst"
+                    android:layout_marginTop="7dp"
+                    android:layout_below="@+id/mTextTitles"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:visibility="gone">
+                    <TextView
+                        android:layout_alignParentLeft="true"
+                        android:text="Product Total"
+                        android:textSize="15dp"
+                        android:textColor="#666666"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"/>
+                    <TextView
+                        android:layout_alignParentRight="true"
+                        android:text="Rs. 3150.00"
+                        android:textSize="15dp"
+                        android:textColor="#666666"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"/>
+                </RelativeLayout>
+                <RelativeLayout
+                    android:id="@+id/mSecond"
+                    android:layout_marginTop="7dp"
+                    android:layout_below="@+id/mFirst"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:visibility="gone">
+                    <TextView
+                        android:layout_alignParentLeft="true"
+                        android:text="Dealer Scheme"
+                        android:textSize="15dp"
+                        android:textColor="#666666"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"/>
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_alignParentRight="true"
+                        android:text="Rs. -450.00"
+                        android:textColor="#666666"
+                        android:textSize="15dp" />
+                </RelativeLayout>
+                <RelativeLayout
+                    android:id="@+id/mThird"
+                    android:layout_marginTop="7dp"
+                    android:layout_below="@+id/mSecond"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:visibility="gone">
+                    <TextView
+                        android:layout_alignParentLeft="true"
+                        android:text="Distributor Discount"
+                        android:textSize="15dp"
+                        android:textColor="#666666"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"/>
+                    <TextView
+                        android:layout_alignParentRight="true"
+                        android:text="Rs. -150.00"
+                        android:textSize="15dp"
+                        android:textColor="#666666"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"/>
+                </RelativeLayout>
+
+                <View
+                    android:layout_marginTop="7dp"
+                    android:id="@+id/fdggh"
+                    android:layout_below="@+id/mThird"
+                    android:layout_width="match_parent"
+                    android:layout_height="1dp"
+                    android:background="#666666"
+                    android:visibility="gone"/>
+                <RelativeLayout
+                    android:id="@+id/mThirdgfh"
+                    android:layout_marginTop="7dp"
+                    android:layout_below="@+id/fdggh"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:visibility="gone">
+                    <TextView
+                        android:layout_alignParentLeft="true"
+                        android:text="Sub Total"
+                        android:textSize="15dp"
+                        android:textColor="#666666"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"/>
+                    <TextView
+                        android:layout_alignParentRight="true"
+                        android:text="Rs. 2550.00"
+                        android:textSize="15dp"
+                        android:textColor="#666666"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"/>
+                </RelativeLayout>
+                <RelativeLayout
+                    android:id="@+id/Fourth"
+                    android:layout_marginTop="7dp"
+                    android:layout_below="@+id/mThirdgfh"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:visibility="gone">
+                    <TextView
+                        android:layout_alignParentLeft="true"
+                        android:text="GST (18%)"
+                        android:textSize="15dp"
+                        android:textColor="#666666"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"/>
+                    <TextView
+                        android:layout_alignParentRight="true"
+                        android:text="Rs. 459.00"
+                        android:textSize="15dp"
+                        android:textColor="#666666"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"/>
+                </RelativeLayout>
+
+                <View
+                    android:layout_marginTop="7dp"
+                    android:id="@+id/fdg"
+                    android:layout_below="@+id/Fourth"
+                    android:layout_width="match_parent"
+                    android:layout_height="1dp"
+                    android:background="#666666"/>
+                <RelativeLayout
+                    android:id="@+id/mFourth"
+                    android:layout_marginTop="7dp"
+                    android:layout_below="@+id/fdg"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content">
+                    <TextView
+                        android:textStyle="bold"
+                        android:layout_alignParentLeft="true"
+                        android:text="Total Estimate Amount"
+                        android:textSize="15dp"
+                        android:textColor="@color/apppink"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"/>
+                    <TextView
+                        android:textStyle="bold"
+                        android:id="@+id/totalamount"
+                        android:layout_alignParentRight="true"
+                        android:text="Rs. 0"
+                        android:textSize="15dp"
+                        android:textColor="@color/apppink"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"/>
+                </RelativeLayout>
+
+            </RelativeLayout>
+        </RelativeLayout>
+
+    </androidx.core.widget.NestedScrollView>
+
+
+
+
+
+
+</RelativeLayout>

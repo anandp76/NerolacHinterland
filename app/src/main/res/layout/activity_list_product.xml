@@ -53,6 +53,7 @@
     </RelativeLayout>
 
     <RelativeLayout
+        android:id="@+id/search_btn"
         android:layout_marginTop="7dp"
         android:layout_marginLeft="7dp"
         android:layout_marginRight="7dp"
@@ -92,7 +93,7 @@
             android:textColor="@color/white"
             android:textSize="16dp"
             android:layout_centerInParent="true"
-            android:text="Add Item"
+            android:text="Next >>>"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"/>
     </RelativeLayout>

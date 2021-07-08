@@ -35,6 +35,7 @@
     android:id="@+id/mLayoutSearch"
     android:layout_below="@+id/mLayoutTitle"
     android:orientation="vertical"
+
     android:layout_width="match_parent"
     android:layout_height="wrap_content">
     <LinearLayout
@@ -50,7 +51,8 @@
             android:layout_marginRight="5dp"
             android:layout_weight="1"
             android:layout_width="0dp"
-            android:layout_height="wrap_content">
+            android:layout_height="wrap_content"
+            android:visibility="gone">
             <EditText
                 android:drawableRight="@drawable/ic_date_range"
                 android:hint="From date"
@@ -67,6 +69,7 @@
             android:layout_marginLeft="5dp"
             android:layout_weight="1"
             android:layout_width="0dp"
+            android:visibility="gone"
             android:layout_height="wrap_content">
             <EditText
                 android:drawableRight="@drawable/ic_date_range"
@@ -86,25 +89,28 @@
         android:layout_marginTop="7dp"
         android:layout_marginLeft="7dp"
         android:layout_marginRight="7dp"
-        android:background="@drawable/border_rectangle_shap"
+
         android:layout_width="match_parent"
         android:layout_height="wrap_content">
         <EditText
             android:hint="Search By Dealer Name"
             android:padding="8dp"
-            android:background="#ffffff"
+            android:background="@drawable/border_rectangle_shap"
             android:id="@+id/mEditByName"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"/>
     </RelativeLayout>
 
     <RelativeLayout
+        android:id="@+id/search_btn"
         android:layout_marginTop="7dp"
         android:layout_marginLeft="7dp"
         android:layout_marginRight="7dp"
         android:background="@color/colorAccent"
         android:layout_width="match_parent"
-        android:layout_height="45dp">
+        android:layout_height="45dp"
+        android:visibility="gone"
+        >
         <TextView
             android:textColor="@color/white"
             android:textSize="16dp"

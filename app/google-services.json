@@ -1,33 +1,41 @@
 {
   "project_info": {
-    "project_number": "997925064634",
-    "project_id": "nerolac-c356f",
-    "storage_bucket": "nerolac-c356f.appspot.com"
+    "project_number": "488089261871",
+    "project_id": "anmol-ratan-fbcd1",
+    "storage_bucket": "anmol-ratan-fbcd1.appspot.com"
   },
   "client": [
     {
       "client_info": {
-        "mobilesdk_app_id": "1:997925064634:android:b9663d191655b59e675783",
+        "mobilesdk_app_id": "1:488089261871:android:30b1567fb7d950331a73da",
         "android_client_info": {
           "package_name": "com.nerolac"
         }
       },
       "oauth_client": [
         {
-          "client_id": "997925064634-5q83pmgv804s37rp8qp81d10tqc097rs.apps.googleusercontent.com",
+          "client_id": "488089261871-ida4j9sfm57h9ut2skgiv81tro2fg0ki.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.nerolac",
+            "certificate_hash": "7d71c5c6a8a74ecaf8a5a7eea68f3447350133d6"
+          }
+        },
+        {
+          "client_id": "488089261871-v1jgh7if5sf6p5mc3sau41jmmlmbjmv8.apps.googleusercontent.com",
           "client_type": 3
         }
       ],
       "api_key": [
         {
-          "current_key": "AIzaSyCAPhuiUjHQ-kS4xmcNXfyLa3FFupT5vOg"
+          "current_key": "AIzaSyDgc-JtlvFINcAM5IquZYCbEyKRNl9v_18"
         }
       ],
       "services": {
         "appinvite_service": {
           "other_platform_oauth_client": [
             {
-              "client_id": "997925064634-5q83pmgv804s37rp8qp81d10tqc097rs.apps.googleusercontent.com",
+              "client_id": "488089261871-v1jgh7if5sf6p5mc3sau41jmmlmbjmv8.apps.googleusercontent.com",
               "client_type": 3
             }
           ]

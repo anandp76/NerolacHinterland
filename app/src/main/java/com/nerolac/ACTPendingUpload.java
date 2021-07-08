@@ -354,7 +354,7 @@ public class ACTPendingUpload extends Fragment {
             }
         };
         strRequest.setRetryPolicy(new DefaultRetryPolicy(
-                0,
+                5000,
                 DefaultRetryPolicy.DEFAULT_MAX_RETRIES,
                 DefaultRetryPolicy.DEFAULT_BACKOFF_MULT));
         queue.add(strRequest);
@@ -520,7 +520,7 @@ public class ACTPendingUpload extends Fragment {
             }
         };
         strRequest.setRetryPolicy(new DefaultRetryPolicy(
-                0,
+                5000,
                 DefaultRetryPolicy.DEFAULT_MAX_RETRIES,
                 DefaultRetryPolicy.DEFAULT_BACKOFF_MULT));
         queue.add(strRequest);

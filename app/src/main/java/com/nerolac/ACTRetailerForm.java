@@ -76,6 +76,7 @@ import static com.nerolac.DataBase.DataBaseStringRetailer.TABLE_RMD_PAINT_DEL_SO
 import static com.nerolac.DataBase.DataBaseStringRetailer.TABLE_RMD_PAINT_MERGE;
 import static com.nerolac.DataBase.DataBaseStringRetailer.TABLE_RMD_PAINT_SALES;
 import static com.nerolac.DataBase.DataBaseStringRetailer.TABLE_RMD_PRODUCTS;
+import static com.nerolac.DataBase.DataBaseStringRetailer.TABLE_RMD_PRODUCTS_raw;
 import static com.nerolac.DataBase.DataBaseStringRetailer.TBL_RAW_LOCATION_BLOCK;
 import static com.nerolac.DataBase.DataBaseStringRetailer.TBL_RAW_LOCATION_TEHSIL;
 import static com.nerolac.DataBase.DataBaseStringRetailer.TBL_USER_ID;
@@ -507,7 +508,7 @@ public class ACTRetailerForm extends Activity {
         mListTehsil = database.GT_RAW_LOCATION_TEHSIL(TBL_USER_ID,PreferenceManager.getNEROUSERID(ACTRetailerForm.this));
         mListTehsil.add(0,"TEHSIL");
 
-        mListProduct = database.GT_RAW_DATA(TABLE_RMD_PRODUCTS, PreferenceManager.getNEROUSERID(ACTRetailerForm.this));
+        mListProduct = database.GT_RAW_DATA_Raw_products(TABLE_RMD_PRODUCTS_raw, PreferenceManager.getNEROUSERID(ACTRetailerForm.this));
         mListPaintBrands = database.GT_RAW_DATA(TABLE_RMD_BRANDS, PreferenceManager.getNEROUSERID(ACTRetailerForm.this));
         mListPaintDelivery = database.GT_RAW_DATA(TABLE_RMD_PAINT_DEL_SOURCE, PreferenceManager.getNEROUSERID(ACTRetailerForm.this));
 
@@ -1137,7 +1138,7 @@ public class ACTRetailerForm extends Activity {
             }
         };
         strRequest.setRetryPolicy(new DefaultRetryPolicy(
-                0,
+                5000,
                 DefaultRetryPolicy.DEFAULT_MAX_RETRIES,
                 DefaultRetryPolicy.DEFAULT_BACKOFF_MULT));
         queue.add(strRequest);
