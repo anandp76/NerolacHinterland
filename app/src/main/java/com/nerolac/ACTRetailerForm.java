@@ -1205,7 +1205,7 @@ public class ACTRetailerForm extends Activity {
         String root = Environment.getExternalStorageDirectory().getAbsolutePath();
         File myDir = new File(root + "/saved_images");
         myDir.mkdirs();
-        String timeStamp = new SimpleDateFormat("ddMMyyyy_HHmm").format(new Date());
+        String timeStamp = new SimpleDateFormat("ddMMyyyy_HHmmss").format(new Date());
         String fname = "Image-"+ timeStamp +".jpg";
         File file = new File (myDir, fname);
         if (file.exists ()) file.delete ();

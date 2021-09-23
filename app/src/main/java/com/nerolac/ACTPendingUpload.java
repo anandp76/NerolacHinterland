@@ -323,28 +323,28 @@ public class ACTPendingUpload extends Fragment {
 
 
                 if(retailers.getTbImgOne() != null && !retailers.getTbImgOne().isEmpty()){
-                    params.put("image1","data:image/jpeg;base64,"+mStrImgOne);
+                    params.put("image1","data:image/png;base64,"+mStrImgOne);
                 }
 
                 if(retailers.getTbImgTwo() != null && !retailers.getTbImgTwo().isEmpty()){
-                    params.put("image2","data:image/jpeg;base64,"+mStrImgTwo);
+                    params.put("image2","data:image/png;base64,"+mStrImgTwo);
 
                 }
 
                 if(retailers.getTbImgThree() != null && !retailers.getTbImgThree().isEmpty()){
-                    params.put("image3","data:image/jpeg;base64,"+mStrImgThree);
+                    params.put("image3","data:image/png;base64,"+mStrImgThree);
                 }
 
                 if(retailers.getTbImgFour() != null && !retailers.getTbImgFour().isEmpty()){
-                    params.put("image4","data:image/jpeg;base64,"+mStrImgFour);
+                    params.put("image4","data:image/png;base64,"+mStrImgFour);
                 }
 
                 if(retailers.getTbImgFive() != null && !retailers.getTbImgFive().isEmpty()){
-                    params.put("image5","data:image/jpeg;base64,"+mStrImgFive);
+                    params.put("image5","data:image/png;base64,"+mStrImgFive);
                 }
 
                 if(retailers.getTbImgSix() != null && !retailers.getTbImgSix().isEmpty()){
-                    params.put("image6","data:image/jpeg;base64,"+mStrImgSix);
+                    params.put("image6","data:image/png;base64,"+mStrImgSix);
                 }
                 //
                 //
