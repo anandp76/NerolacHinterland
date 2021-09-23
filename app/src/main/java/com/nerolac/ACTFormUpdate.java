@@ -362,6 +362,10 @@ public class ACTFormUpdate extends Activity {
                 return params;
             }
         };
+        strRequest.setRetryPolicy(new DefaultRetryPolicy(
+                9000,
+                DefaultRetryPolicy.DEFAULT_MAX_RETRIES,
+                DefaultRetryPolicy.DEFAULT_BACKOFF_MULT));
         queue.add(strRequest);
     }
 

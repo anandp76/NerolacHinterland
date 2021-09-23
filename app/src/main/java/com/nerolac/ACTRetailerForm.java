@@ -1,8 +1,11 @@
 package com.nerolac;
 
 
+import android.Manifest;
 import android.app.Activity;
+import android.content.Context;
 import android.content.Intent;
+import android.content.pm.PackageManager;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 import android.graphics.Canvas;
@@ -13,6 +16,7 @@ import android.net.Uri;
 import android.os.Bundle;
 import android.os.Environment;
 import android.os.Handler;
+import android.provider.Settings;
 import android.text.Editable;
 import android.text.TextUtils;
 import android.text.TextWatcher;
@@ -66,6 +70,7 @@ import java.util.Date;
 import java.util.HashMap;
 import java.util.Map;
 
+import androidx.core.content.ContextCompat;
 import androidx.core.content.FileProvider;
 
 import static androidx.constraintlayout.motion.widget.MotionScene.TAG;
@@ -198,8 +203,8 @@ public class ACTRetailerForm extends Activity {
 
 
 
-    String mStrImgOnePath;
-    String mStrImgTwoPath;
+    String mStrImgOnePath = "";
+    String mStrImgTwoPath = "";
     String mStrImgThreePath;
     String mStrImgFourPath;
     String mStrImgFivePath;
@@ -288,7 +293,7 @@ public class ACTRetailerForm extends Activity {
 
     EditText mEditPainter1,mEditPainter2,mEditPainter3,mEditPainter4,mEditPainter5;
     EditText mEditPainterNumber1,mEditPainterNumber2,mEditPainterNumber3,mEditPainterNumber4,mEditPainterNumber5;
-
+    Context mContext;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -296,7 +301,7 @@ public class ACTRetailerForm extends Activity {
         setContentView(R.layout.activity_form);
         queue = Volley.newRequestQueue(ACTRetailerForm.this);
         setTranceprent(ACTRetailerForm.this,R.color.appblue);
-
+        mContext = ACTRetailerForm.this;
         path = getExternalFilesDir(null).getAbsolutePath();
         System.out.println("<><><>### "+path);
         c = Calendar.getInstance();
@@ -387,7 +392,7 @@ public class ACTRetailerForm extends Activity {
         mImgFive = (ImageView) findViewById(R.id.mImgFive);
         mImgSix = (ImageView) findViewById(R.id.mImgSix);
         radioGrpPaintAvailable = (RadioGroup) findViewById(R.id.radioGrpPaintAvailable);
-
+       // mImgOne.setVisibility(View.GONE);
 
         mFunLoadMataData();
 
@@ -587,47 +592,91 @@ public class ACTRetailerForm extends Activity {
         mImgOne.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent intent = new Intent(android.provider.MediaStore.ACTION_IMAGE_CAPTURE);
-                startActivityForResult(intent, 200);
+                if (ContextCompat.checkSelfPermission(mContext, Manifest.permission.CAMERA) != PackageManager.PERMISSION_GRANTED  && ContextCompat.checkSelfPermission(mContext, Manifest.permission.WRITE_EXTERNAL_STORAGE) != PackageManager.PERMISSION_GRANTED &&  ContextCompat.checkSelfPermission(mContext, Manifest.permission.ACCESS_FINE_LOCATION) != PackageManager.PERMISSION_GRANTED ) {
+                    Intent intent = new Intent(Settings.ACTION_APPLICATION_DETAILS_SETTINGS);
+                    Uri uri = Uri.fromParts("package", getPackageName(), null);
+                    intent.setData(uri);
+                    startActivity(intent);
+                }else {
+                    Intent intent = new Intent(android.provider.MediaStore.ACTION_IMAGE_CAPTURE);
+                    startActivityForResult(intent, 200);
+                }
+
             }
         });
 
         mImgTwo.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent intent = new Intent(android.provider.MediaStore.ACTION_IMAGE_CAPTURE);
-                startActivityForResult(intent, 300);
+                if (ContextCompat.checkSelfPermission(mContext, Manifest.permission.CAMERA) != PackageManager.PERMISSION_GRANTED  && ContextCompat.checkSelfPermission(mContext, Manifest.permission.WRITE_EXTERNAL_STORAGE) != PackageManager.PERMISSION_GRANTED &&  ContextCompat.checkSelfPermission(mContext, Manifest.permission.ACCESS_FINE_LOCATION) != PackageManager.PERMISSION_GRANTED ) {
+                    Intent intent = new Intent(Settings.ACTION_APPLICATION_DETAILS_SETTINGS);
+                    Uri uri = Uri.fromParts("package", getPackageName(), null);
+                    intent.setData(uri);
+                    startActivity(intent);
+                }else {
+                    Intent intent = new Intent(android.provider.MediaStore.ACTION_IMAGE_CAPTURE);
+                    startActivityForResult(intent, 300);
+                }
             }
         });
 
         mImgThree.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent intent = new Intent(android.provider.MediaStore.ACTION_IMAGE_CAPTURE);
-                startActivityForResult(intent, 400);
+                if (ContextCompat.checkSelfPermission(mContext, Manifest.permission.CAMERA) != PackageManager.PERMISSION_GRANTED  && ContextCompat.checkSelfPermission(mContext, Manifest.permission.WRITE_EXTERNAL_STORAGE) != PackageManager.PERMISSION_GRANTED &&  ContextCompat.checkSelfPermission(mContext, Manifest.permission.ACCESS_FINE_LOCATION) != PackageManager.PERMISSION_GRANTED ) {
+                    Intent intent = new Intent(Settings.ACTION_APPLICATION_DETAILS_SETTINGS);
+                    Uri uri = Uri.fromParts("package", getPackageName(), null);
+                    intent.setData(uri);
+                    startActivity(intent);
+                }else {
+                    Intent intent = new Intent(android.provider.MediaStore.ACTION_IMAGE_CAPTURE);
+                    startActivityForResult(intent, 400);
+                }
             }
         });
         mImgFour.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent intent = new Intent(android.provider.MediaStore.ACTION_IMAGE_CAPTURE);
-                startActivityForResult(intent, 500);
+                if (ContextCompat.checkSelfPermission(mContext, Manifest.permission.CAMERA) != PackageManager.PERMISSION_GRANTED  && ContextCompat.checkSelfPermission(mContext, Manifest.permission.WRITE_EXTERNAL_STORAGE) != PackageManager.PERMISSION_GRANTED &&  ContextCompat.checkSelfPermission(mContext, Manifest.permission.ACCESS_FINE_LOCATION) != PackageManager.PERMISSION_GRANTED ) {
+                    Intent intent = new Intent(Settings.ACTION_APPLICATION_DETAILS_SETTINGS);
+                    Uri uri = Uri.fromParts("package", getPackageName(), null);
+                    intent.setData(uri);
+                    startActivity(intent);
+                }else {
+                    Intent intent = new Intent(android.provider.MediaStore.ACTION_IMAGE_CAPTURE);
+                    startActivityForResult(intent, 500);
+                }
             }
         });
 
         mImgFive.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent intent = new Intent(android.provider.MediaStore.ACTION_IMAGE_CAPTURE);
-                startActivityForResult(intent, 600);
+                if (ContextCompat.checkSelfPermission(mContext, Manifest.permission.CAMERA) != PackageManager.PERMISSION_GRANTED  && ContextCompat.checkSelfPermission(mContext, Manifest.permission.WRITE_EXTERNAL_STORAGE) != PackageManager.PERMISSION_GRANTED &&  ContextCompat.checkSelfPermission(mContext, Manifest.permission.ACCESS_FINE_LOCATION) != PackageManager.PERMISSION_GRANTED ) {
+                    Intent intent = new Intent(Settings.ACTION_APPLICATION_DETAILS_SETTINGS);
+                    Uri uri = Uri.fromParts("package", getPackageName(), null);
+                    intent.setData(uri);
+                    startActivity(intent);
+                }else {
+                    Intent intent = new Intent(android.provider.MediaStore.ACTION_IMAGE_CAPTURE);
+                    startActivityForResult(intent, 600);
+                }
             }
         });
 
         mImgSix.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent intent = new Intent(android.provider.MediaStore.ACTION_IMAGE_CAPTURE);
-                startActivityForResult(intent, 700);
+                if (ContextCompat.checkSelfPermission(mContext, Manifest.permission.CAMERA) != PackageManager.PERMISSION_GRANTED  && ContextCompat.checkSelfPermission(mContext, Manifest.permission.WRITE_EXTERNAL_STORAGE) != PackageManager.PERMISSION_GRANTED &&  ContextCompat.checkSelfPermission(mContext, Manifest.permission.ACCESS_FINE_LOCATION) != PackageManager.PERMISSION_GRANTED ) {
+                    Intent intent = new Intent(Settings.ACTION_APPLICATION_DETAILS_SETTINGS);
+                    Uri uri = Uri.fromParts("package", getPackageName(), null);
+                    intent.setData(uri);
+                    startActivity(intent);
+                }else{
+                    Intent intent = new Intent(android.provider.MediaStore.ACTION_IMAGE_CAPTURE);
+                    startActivityForResult(intent, 700);
+                }
+
             }
         });
 
@@ -843,7 +892,14 @@ public class ACTRetailerForm extends Activity {
                 mShowAlert("Please enter source contact 4",ACTRetailerForm.this);
                 return;
                 }
-
+                else if(mStrImgOnePath.equals("")){
+                    mShowAlert("Please select first two Images!",ACTRetailerForm.this);
+                    return;
+                }
+                else if(mStrImgTwoPath.equals("")){
+                    mShowAlert("Please select first two Images!",ACTRetailerForm.this);
+                    return;
+                }
                 mStrDistrict = database.GT_RAW_LOCATION_DISTRICT(mStrBlocks,mStrTehsil).get(0);
                 Retailers retailers = new Retailers();
                 retailers.setTbAddress1(mStrAddress1);
@@ -1013,8 +1069,8 @@ public class ACTRetailerForm extends Activity {
 
     private Bitmap writeTextOnDrawable(Bitmap bm, String mStrDate) {
         bm = bm.copy(Bitmap.Config.ARGB_8888, true);
-        int width = 400;
-        int height = 600;//Math.round(width / aspectRatio);
+        int width = 600;
+        int height = 800;//Math.round(width / aspectRatio);
         bm = Bitmap.createScaledBitmap(bm, width, height, false);
         Canvas canvas = new Canvas(bm);
         canvas.drawBitmap(bm, new Matrix(), null);
@@ -1138,7 +1194,7 @@ public class ACTRetailerForm extends Activity {
             }
         };
         strRequest.setRetryPolicy(new DefaultRetryPolicy(
-                5000,
+                9000,
                 DefaultRetryPolicy.DEFAULT_MAX_RETRIES,
                 DefaultRetryPolicy.DEFAULT_BACKOFF_MULT));
         queue.add(strRequest);

@@ -7,5 +7,6 @@
     <string name="Camera_permission_txt">Please give Anmol Ratan access to this \n device\'s camera to click your pictures </string>
     <string name="Cancel">Cancel</string>
     <string name="OK">Ok</string>
-
+    <string name="RemoveItem"><u>Remove Item</u>.</string>
+    <string name="net_connection">Please check your internet connection</string>
 </resources>

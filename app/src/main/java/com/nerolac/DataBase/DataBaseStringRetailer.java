@@ -15,6 +15,7 @@ public class DataBaseStringRetailer {
     public static String TABLE_RMD_PAINT_MERGE = "tb_md_retailer_paint_merge";
     public static String TABLE_RMD_PAINT_DEL_SOURCE = "tb_md_retailer_paint_delivery_source";
     public static String TABLE_RMD_Add_To_Cart = "tb_md_add_to_cart";
+    public static String TABLE_RMD_update_To_Cart = "tb_md_update_to_cart";
     public static String TABLE_RMD_PRODUCTS_raw = "tb_md_productsraw";
     public static String TABLE_RETAILER = "tb_data_retailer";
     public static String TBL_ID = "tbRawId";
@@ -245,6 +246,15 @@ public class DataBaseStringRetailer {
             + TBL_RAW_Retailer_name + " TEXT NOT NULL,"
             + TBL_RAW_owner + " TEXT NOT NULL,"+ TBL_RAW_Retailer_photo + " TEXT NOT NULL,"+ TBL_RAW_Retailer_price + " TEXT NOT NULL,"+ TBL_RAW_quntity + " TEXT NOT NULL)";
 
+    public static String CT_TABLE_RMD_update_to_Cart = "CREATE TABLE "
+            + TABLE_RMD_update_To_Cart + " (" + TBL_ID + " INTEGER NOT NULL PRIMARY KEY AUTOINCREMENT,"
+            + TBL_RAW_product_id + " TEXT NOT NULL, " + TBL_RAW_category + " TEXT NOT NULL, "
+            + TBL_RAW_sku + " TEXT NOT NULL, "
+            + TBL_RAW_description + " TEXT NOT NULL, "
+            + TBL_RAW_pack_size + " TEXT NOT NULL, "
+            + TBL_RAW_amount + " TEXT NOT NULL,"+ TBL_RAW_Retailer_id + " TEXT NOT NULL,"
+            + TBL_RAW_Retailer_name + " TEXT NOT NULL,"
+            + TBL_RAW_owner + " TEXT NOT NULL,"+ TBL_RAW_Retailer_photo + " TEXT NOT NULL,"+ TBL_RAW_Retailer_price + " TEXT NOT NULL,"+ TBL_RAW_quntity + " TEXT NOT NULL)";
 
     public static String CT_TABLE_RMD_BRANDS = "CREATE TABLE "
             + TABLE_RMD_BRANDS + " (" + TBL_ID + " INTEGER NOT NULL PRIMARY KEY AUTOINCREMENT,"

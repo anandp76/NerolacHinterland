@@ -22,6 +22,7 @@ import android.widget.TextView;
 import com.bumptech.glide.Glide;
 import com.nerolac.ACTOrderSummry;
 import com.nerolac.Modal.Retailers;
+import com.nerolac.PainterActivity;
 import com.nerolac.R;
 import com.nerolac.RetailerVisitListActivity;
 
@@ -88,6 +89,7 @@ public class RetailerListAdapter extends BaseAdapter implements Filterable {
             holder.mImgPhoto = convertView.findViewById(R.id.mImgPhoto);
 holder.mlastorder = convertView.findViewById(R.id.mtextlastorder);
 holder.mImglog = convertView.findViewById(R.id.mImglog);
+holder.mImgpaint = convertView.findViewById(R.id.mImgpaint);
             convertView.setTag(holder);
             } else {
             holder = (ViewHolder) convertView.getTag();
@@ -123,6 +125,20 @@ holder.mImglog = convertView.findViewById(R.id.mImglog);
                 intent.putExtra("retailerId", retailers.getTbId());
                 intent.putExtra("retailername", retailers.getTbShopName());
                 intent.putExtra("shopname",retailers.getTbShopName());
+                intent.putExtra("vilage", retailers.getTbVillage());
+                intent.putExtra("tehsil",retailers.getTbTehsil());
+                context.startActivity(intent);
+            }
+        });
+        holder.mImgpaint.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent(context, PainterActivity.class);
+                intent.putExtra("retailerId", retailers.getTbId());
+                intent.putExtra("retailername", retailers.getTbShopName());
+                intent.putExtra("shopname",retailers.getTbShopName());
+                intent.putExtra("vilage", retailers.getTbVillage());
+                intent.putExtra("tehsil",retailers.getTbTehsil());
                 context.startActivity(intent);
             }
         });
@@ -146,6 +162,7 @@ holder.mImglog = convertView.findViewById(R.id.mImglog);
     TextView mTextTitle;
     ImageView mImgCall;
     ImageView mImgPhoto;
+        ImageView mImgpaint;
         ImageView mImglog;
         TextView mlastorder;
     }

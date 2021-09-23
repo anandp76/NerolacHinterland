@@ -4,6 +4,7 @@
 
     <uses-permission android:name="android.permission.INTERNET" />
     <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
+    <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
     <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION" />
     <uses-permission android:name="android.permission.CAMERA" />
     <uses-permission android:name="android.permission.CALL_PHONE" />
@@ -19,7 +20,9 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme.NoActionBar"
         android:usesCleartextTraffic="true">
-        <activity android:name=".ViewOrdersummryActivity"></activity>
+        <activity android:name=".AddPainterActivity"></activity>
+        <activity android:name=".PainterActivity" />
+        <activity android:name=".ViewOrdersummryActivity" />
         <activity android:name=".AddvisitActivity" />
         <activity android:name=".RetailerVisitListActivity" />
         <activity android:name=".ACT_UPLOAD_BILL_ACTIVITY" />

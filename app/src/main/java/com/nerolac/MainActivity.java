@@ -124,7 +124,7 @@ public class MainActivity extends Fragment {
                     requestPermission();
                 }else {
                     if ( !manager.isProviderEnabled( LocationManager.GPS_PROVIDER ) ){
-                        mShowAlert("Please turn on Gps first!!",getActivity());
+                        mShowAlert("'Please turn on Gps first!'!",getActivity());
                     }else {
                         ScreenNerolacHome.mIntRetailer = 1;
                         ScreenNerolacHome.mIntAttendance = 0;

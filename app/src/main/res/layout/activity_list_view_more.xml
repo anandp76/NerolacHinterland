@@ -66,12 +66,12 @@
             android:layout_height="wrap_content"/>
 
         <ImageView
-            android:layout_marginTop="-20dp"
-            android:layout_alignParentRight="true"
-            android:scaleType="fitXY"
-            android:src="@drawable/ic_circle_brawoun"
             android:layout_width="100dp"
-            android:layout_height="65dp"/>
+            android:layout_height="65dp"
+            android:layout_alignParentRight="true"
+            android:layout_marginTop="-20dp"
+            android:scaleType="fitXY"
+            android:src="@drawable/ic_circle_brawoun" />
 
     </RelativeLayout>
 

@@ -75,7 +75,7 @@ public class Database extends SQLiteOpenHelper {
         db.execSQL(CT_TBL_DMD_ASSETS);
         db.execSQL(CT_TBL_DMD_INTEREST_LEVEL);
         db.execSQL(CT_TABLE_RMD_Add_to_Cart);
-
+db.execSQL(CT_TABLE_RMD_update_to_Cart);
 
     }
 
@@ -104,8 +104,9 @@ public class Database extends SQLiteOpenHelper {
         db.execSQL("drop table if exists " + TBL_DMD_BNS_IN_YEAR);
         db.execSQL("drop table if exists " + TBL_DMD_BNS_TERRITORY);
         db.execSQL("drop table if exists " + TBL_DMD_BNS_CATEGORY);
-        db.execSQL("drop table if exists " + CT_TABLE_RMD_Add_to_Cart);
+        db.execSQL("drop table if exists " + TABLE_RMD_Add_To_Cart);
         db.execSQL("drop table if exists " + TABLE_RMD_PRODUCTS_raw);
+        db.execSQL("drop table if exists " + TABLE_RMD_update_To_Cart);
         onCreate(db);
     }
 
@@ -519,6 +520,26 @@ public class Database extends SQLiteOpenHelper {
         db.insert(TABLE_RMD_Add_To_Cart, null, values);
         db.close();
     }
+    public void IN_RAW_RMD_updatetocart(AddcartModal rawData) {
+        System.out.println("<><><>## call 1");
+        SQLiteDatabase db = this.getWritableDatabase();
+        ContentValues values = new ContentValues();
+        values.put(TBL_RAW_product_id,rawData.getproduct_id());
+        values.put(TBL_RAW_pack_size,rawData.getpack());
+        values.put(TBL_RAW_category,rawData.getcategory());
+        values.put(TBL_RAW_sku,rawData.getsku());
+        values.put(TBL_RAW_description,rawData.getdescription());
+        values.put(TBL_RAW_amount,rawData.getamount());
+        values.put(TBL_RAW_Retailer_id,rawData.getRetailer_id());
+        values.put(TBL_RAW_Retailer_name,rawData.getRetailer_name());
+        values.put(TBL_RAW_owner,rawData.getowner());
+        values.put(TBL_RAW_Retailer_photo,rawData.getRetailer_photo());
+        values.put(TBL_RAW_quntity,String.valueOf(rawData.getquntity()));
+        values.put(TBL_RAW_Retailer_price,rawData.getprice());
+
+        db.insert(TABLE_RMD_update_To_Cart, null, values);
+        db.close();
+    }
     public void IN_RAW_RMD_BRANDS(RawData rawData) {
         SQLiteDatabase db = this.getWritableDatabase();
         ContentValues values = new ContentValues();
@@ -631,6 +652,35 @@ public class Database extends SQLiteOpenHelper {
         c.close();
         return mListMetadeta;
     }
+    public ArrayList<AddcartModal> GT_Updatetocart(String mStrValue) {
+        ArrayList<AddcartModal> mListMetadeta = new ArrayList<AddcartModal>();
+        String selectQuery = "SELECT * FROM " + TABLE_RMD_update_To_Cart + " WHERE " + TBL_RAW_Retailer_id +  " = '" + mStrValue + "'";
+        System.out.println("<><><>selectQuery " + selectQuery);
+        SQLiteDatabase db = this.getReadableDatabase();
+        Cursor c = db.rawQuery(selectQuery, null);
+        if (c.moveToFirst()) {
+            do {
+                AddcartModal retailers = new AddcartModal();
+                retailers.setproduct_id(c.getString((c.getColumnIndex(TBL_RAW_product_id))));
+                retailers.setamount(c.getString((c.getColumnIndex(TBL_RAW_amount))));
+                retailers.setpack(c.getString((c.getColumnIndex(TBL_RAW_pack_size))));
+                retailers.setdescription(c.getString((c.getColumnIndex(TBL_RAW_description))));
+                retailers.setsku(c.getString((c.getColumnIndex(TBL_RAW_sku))));
+                retailers.setcategory(c.getString((c.getColumnIndex(TBL_RAW_category))));
+                retailers.setRetailer_id(c.getString((c.getColumnIndex(TBL_RAW_Retailer_id))));
+                retailers.setRetailer_name(c.getString((c.getColumnIndex(TBL_RAW_Retailer_name))));
+                retailers.setowner(c.getString((c.getColumnIndex(TBL_RAW_owner))));
+                retailers.setRetailer_photo(c.getString((c.getColumnIndex(TBL_RAW_Retailer_photo))));
+                retailers.setprice(c.getString((c.getColumnIndex(TBL_RAW_Retailer_price))));
+                retailers.setquntity(Integer.parseInt(c.getString((c.getColumnIndex(TBL_RAW_quntity)))));
+
+                mListMetadeta.add(retailers);
+
+            } while (c.moveToNext());
+        }
+        c.close();
+        return mListMetadeta;
+    }
     public ArrayList<AddcartModal> GT_Addtocart(String mStrValue) {
         ArrayList<AddcartModal> mListMetadeta = new ArrayList<AddcartModal>();
         String selectQuery = "SELECT * FROM " + TABLE_RMD_Add_To_Cart + " WHERE " + TBL_RAW_Retailer_id +  " = '" + mStrValue + "'";
@@ -684,6 +734,30 @@ db.update(TABLE_RMD_Add_To_Cart,values, "Retailer_id = ? AND product_id = ?", ar
         //db.insert(TABLE_RMD_Add_To_Cart, null, values);
         db.close();
     }
+    public void UP_RAW_RMD_updatetocart(AddcartModal rawData,String retailerid) {
+//        db.execSQL("UPDATE DB_TABLE SET YOUR_COLUMN='newValue' WHERE id=6 ");
+//        String selectQuery = "UPDATE" + TABLE_RMD_Add_To_Cart +" SET "+TBL_RAW_product_id+" = '"+rawData.getproduct_id()+"',"+ " WHERE " + TBL_RAW_Retailer_id +  " = '" + mStrValue + "'";
+//        System.out.println("<><><>selectQuery " + selectQuery);
+        System.out.println("<><><>## call 1");
+        SQLiteDatabase db = this.getWritableDatabase();
+        ContentValues values = new ContentValues();
+        values.put(TBL_RAW_product_id,rawData.getproduct_id());
+        values.put(TBL_RAW_pack_size,rawData.getpack());
+        values.put(TBL_RAW_category,rawData.getcategory());
+        values.put(TBL_RAW_sku,rawData.getsku());
+        values.put(TBL_RAW_description,rawData.getdescription());
+        values.put(TBL_RAW_amount,rawData.getamount());
+        values.put(TBL_RAW_Retailer_id,rawData.getRetailer_id());
+        values.put(TBL_RAW_Retailer_name,rawData.getRetailer_name());
+        values.put(TBL_RAW_owner,rawData.getowner());
+        values.put(TBL_RAW_Retailer_photo,rawData.getRetailer_photo());
+        values.put(TBL_RAW_Retailer_price,rawData.getprice());
+        values.put(TBL_RAW_quntity,rawData.getquntity());
+        String[] args = new String[]{retailerid, rawData.getproduct_id()};
+        db.update(TABLE_RMD_update_To_Cart,values, "Retailer_id = ? AND product_id = ?", args);
+        //db.insert(TABLE_RMD_Add_To_Cart, null, values);
+        db.close();
+    }
     public void deleteorder(String retelerid){
         SQLiteDatabase db = this.getWritableDatabase();
 
@@ -692,11 +766,27 @@ db.update(TABLE_RMD_Add_To_Cart,values, "Retailer_id = ? AND product_id = ?", ar
         //db.insert(TABLE_RMD_PAINT_SALES, null, values);
         db.close();
     }
+    public void deleteupdatedorder(String retelerid){
+        SQLiteDatabase db = this.getWritableDatabase();
+
+        String[] args = new String[]{retelerid};
+        db.delete(TABLE_RMD_update_To_Cart,"Retailer_id = ?",args);
+        //db.insert(TABLE_RMD_PAINT_SALES, null, values);
+        db.close();
+    }
     public void deleteorderItem(String retelerid ,String product_id){
         SQLiteDatabase db = this.getWritableDatabase();
 
         String[] args = new String[]{retelerid, product_id};
         db.delete(TABLE_RMD_Add_To_Cart,"Retailer_id = ? AND product_id = ?",args);
+        //db.insert(TABLE_RMD_PAINT_SALES, null, values);
+        db.close();
+    }
+    public void deleteupdatedorderItem(String retelerid ,String product_id){
+        SQLiteDatabase db = this.getWritableDatabase();
+
+        String[] args = new String[]{retelerid, product_id};
+        db.delete(TABLE_RMD_update_To_Cart,"Retailer_id = ? AND product_id = ?",args);
         //db.insert(TABLE_RMD_PAINT_SALES, null, values);
         db.close();
     }

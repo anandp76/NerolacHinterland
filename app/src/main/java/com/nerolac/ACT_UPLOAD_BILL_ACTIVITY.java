@@ -230,12 +230,12 @@ public class ACT_UPLOAD_BILL_ACTIVITY extends AppCompatActivity implements View.
                 String dateToStr2 = simpleDateFormat.format(today);
 
                 Log.e("dateToStr2", dateToStr2);
-                String dateToStr = simpleDateFormat.format(today);
+                //String dateToStr = simpleDateFormat.format(today);
                 params.put("fld_rorder_id", retailerModal.getfld_rorder_id());
                 params.put("fld_bill_no", bill_no_ext.getText().toString().trim());
                 params.put("fld_bill_date",Bill_Date);
                 params.put("fld_bill_amount", amount_ext.getText().toString().trim());
-                params.put("fld_bill_copy", ImageBase64);
+                params.put("fld_bill_copy","data:image/jpeg;base64,"+ ImageBase64);
                 params.put("fld_bill_upload_date", dateToStr2);
 
                 System.out.println("<><><>## "+params);
@@ -244,7 +244,7 @@ public class ACT_UPLOAD_BILL_ACTIVITY extends AppCompatActivity implements View.
             }
         };
         strRequest.setRetryPolicy(new DefaultRetryPolicy(
-                5000,
+                8000,
                 DefaultRetryPolicy.DEFAULT_MAX_RETRIES,
                 DefaultRetryPolicy.DEFAULT_BACKOFF_MULT));
         queue.add(strRequest);

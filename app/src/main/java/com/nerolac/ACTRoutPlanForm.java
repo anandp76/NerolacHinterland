@@ -1,15 +1,20 @@
 package com.nerolac;
 
 
+import android.Manifest;
 import android.app.Activity;
+import android.content.Context;
 import android.content.Intent;
+import android.content.pm.PackageManager;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 import android.graphics.Canvas;
 import android.graphics.Color;
 import android.graphics.Matrix;
 import android.graphics.Typeface;
+import android.net.Uri;
 import android.os.Bundle;
+import android.provider.Settings;
 import android.text.Editable;
 import android.text.TextUtils;
 import android.text.TextWatcher;
@@ -30,6 +35,8 @@ import android.widget.RelativeLayout;
 import android.widget.Spinner;
 import android.widget.TextView;
 
+import androidx.core.content.ContextCompat;
+
 import com.android.volley.AuthFailureError;
 import com.android.volley.DefaultRetryPolicy;
 import com.android.volley.Request;
@@ -40,6 +47,7 @@ import com.android.volley.toolbox.StringRequest;
 import com.android.volley.toolbox.Volley;
 import com.nerolac.DataBase.Database;
 import com.nerolac.Modal.Retailers;
+import com.nerolac.Utils.CommonData;
 import com.nerolac.Utils.FlowLayout;
 import com.nerolac.Utils.GPSTracker;
 import com.nerolac.Utils.ImageUtil;
@@ -66,6 +74,7 @@ import static com.nerolac.DataBase.DataBaseStringRetailer.TBL_RAW_LOCATION_STATE
 import static com.nerolac.DataBase.DataBaseStringRetailer.TBL_RAW_LOCATION_TEHSIL;
 import static com.nerolac.DataBase.DataBaseStringRetailer.TBL_USER_ID;
 import static com.nerolac.Utils.CommonData.BaseUrl;
+import static com.nerolac.Utils.CommonData.ChangeFormate;
 import static com.nerolac.Utils.CommonData.getTimeformat;
 import static com.nerolac.Utils.CommonData.getTimeformatCurrent;
 import static com.nerolac.Utils.CommonData.hidePDialog;
@@ -112,7 +121,7 @@ public class ACTRoutPlanForm extends Activity {
     RadioGroup radioGrpRetailers;
     ImageView mImgOne;
 
-    String mStrImgOne;
+    String mStrImgOne = "";
     String mStrSope;
 
     String mStrRawState = "STATE";
@@ -124,7 +133,7 @@ public class ACTRoutPlanForm extends Activity {
     String mStrRawOption;
     String mStrRawTravelId;
     String mStrShopValue;
-
+    Context mContext;
 
 
     @Override
@@ -134,7 +143,7 @@ public class ACTRoutPlanForm extends Activity {
         setContentView(R.layout.activity_rout_plan_form);
         queue = Volley.newRequestQueue(ACTRoutPlanForm.this);
         setTranceprent(ACTRoutPlanForm.this,R.color.appblue);
-
+        mContext = ACTRoutPlanForm.this;
         mSpinnerState = (Spinner)findViewById(R.id.mSpinnerState);
         mSpinnerDistrict = (Spinner)findViewById(R.id.mSpinnerDistrict);
         mSpinnerTehsil = (Spinner)findViewById(R.id.mSpinnerTehsil);
@@ -163,9 +172,14 @@ public class ACTRoutPlanForm extends Activity {
         mTextRadioTitle.setVisibility(View.GONE);
         radioGrpRetailers.setVisibility(View.GONE);
         }
+        else{
+            mTextTitlePictures.setVisibility(View.VISIBLE);
+            mLayoutPictures.setVisibility(View.VISIBLE);
+        }
         mStrARBlock = new String[]{mStrRawBlock};
         mStrARDistrict = new String[]{mStrRawDistrict};
         mStrARTehsil = new String[]{mStrRawTehsil};
+
         }
 
 
@@ -273,8 +287,8 @@ public class ACTRoutPlanForm extends Activity {
             {
                 RadioButton checkedRadioButton = (RadioButton)group.findViewById(checkedId);
                 if(checkedRadioButton.getText().toString().equals("Yes")){
-                    mTextTitlePictures.setVisibility(View.GONE);
-                    mLayoutPictures.setVisibility(View.GONE);
+                    mTextTitlePictures.setVisibility(View.VISIBLE);
+                    mLayoutPictures.setVisibility(View.VISIBLE);
                 }else {
                     mTextTitlePictures.setVisibility(View.VISIBLE);
                     mLayoutPictures.setVisibility(View.VISIBLE);
@@ -285,8 +299,15 @@ public class ACTRoutPlanForm extends Activity {
         mImgOne.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent intent = new Intent(android.provider.MediaStore.ACTION_IMAGE_CAPTURE);
-                startActivityForResult(intent, 200);
+                if (ContextCompat.checkSelfPermission(mContext, Manifest.permission.CAMERA) != PackageManager.PERMISSION_GRANTED  && ContextCompat.checkSelfPermission(mContext, Manifest.permission.WRITE_EXTERNAL_STORAGE) != PackageManager.PERMISSION_GRANTED &&  ContextCompat.checkSelfPermission(mContext, Manifest.permission.ACCESS_FINE_LOCATION) != PackageManager.PERMISSION_GRANTED ) {
+                    Intent intent = new Intent(Settings.ACTION_APPLICATION_DETAILS_SETTINGS);
+                    Uri uri = Uri.fromParts("package", getPackageName(), null);
+                    intent.setData(uri);
+                    startActivity(intent);
+                }else {
+                    Intent intent = new Intent(android.provider.MediaStore.ACTION_IMAGE_CAPTURE);
+                    startActivityForResult(intent, 200);
+                }
             }
         });
 
@@ -301,68 +322,79 @@ public class ACTRoutPlanForm extends Activity {
         mLayoutSubmit.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+                if (CommonData.isNetworkConnected(mContext)) {
+                    mStrState = mSpinnerState.getSelectedItem().toString();
+                    mStrDistrict = mSpinnerDistrict.getSelectedItem().toString();
+                    mStrTehsil = mSpinnerTehsil.getSelectedItem().toString();
+                    mStrBlock = mSpinnerBlock.getSelectedItem().toString();
+                    mStrVillage = mEditVillage.getText().toString();
+                    mStrKiloMeter = mEditKiloMeter.getText().toString();
+                    int selectedIdFM = radioGrpRetailers.getCheckedRadioButtonId();
+                    RadioButton radioSexButton = (RadioButton) findViewById(selectedIdFM);
+                    mStrSope = radioSexButton.getText().toString();
+                    if(mStrSope.equals("No")){
+                        mStrShopValue="0";
+                    }else {
+                        mStrShopValue="1";
+                    }
+                    if(mStrRawOption.equals("0")){
+                        if(mStrState.equals("STATE")){
+                            mShowAlert("Please select state!", ACTRoutPlanForm.this);
+                            return;
+                        }else if(mStrDistrict.equals("DISTRICT")){
+                            mShowAlert("Please select district!", ACTRoutPlanForm.this);
+                            return;
+                        }else if(mStrTehsil.equals("TEHSIL")){
+                            mShowAlert("Please select tehsil!", ACTRoutPlanForm.this);
+                            return;
+                        }else if(mStrBlock.equals("BLOCK")){
+                            mShowAlert("Please select block!", ACTRoutPlanForm.this);
+                            return;
+                        }else if(mStrVillage.length()<=0){
+                            mShowAlert("Please enter village name!", ACTRoutPlanForm.this);
+                            return;
+                        }else if(mStrKiloMeter.length()<=0){
+                            mShowAlert("Please enter kilo meter!", ACTRoutPlanForm.this);
+                            return;
+                        }else if( mStrImgOne.equals("")){
+                            mShowAlert("Please add a picture!", ACTRoutPlanForm.this);
+                            return;
+                        }
 
-                mStrState = mSpinnerState.getSelectedItem().toString();
-                mStrDistrict = mSpinnerDistrict.getSelectedItem().toString();
-                mStrTehsil = mSpinnerTehsil.getSelectedItem().toString();
-                mStrBlock = mSpinnerBlock.getSelectedItem().toString();
-                mStrVillage = mEditVillage.getText().toString();
-                mStrKiloMeter = mEditKiloMeter.getText().toString();
-                int selectedIdFM = radioGrpRetailers.getCheckedRadioButtonId();
-                RadioButton radioSexButton = (RadioButton) findViewById(selectedIdFM);
-                mStrSope = radioSexButton.getText().toString();
-                if(mStrSope.equals("No")){
-                    mStrShopValue="0";
-                }else {
-                    mStrShopValue="1";
-                }
-                if(mStrRawOption.equals("0")){
-                    if(mStrState.equals("STATE")){
-                        mShowAlert("Please select state!", ACTRoutPlanForm.this);
-                        return;
-                    }else if(mStrDistrict.equals("DISTRICT")){
-                        mShowAlert("Please select district!", ACTRoutPlanForm.this);
-                        return;
-                    }else if(mStrTehsil.equals("TEHSIL")){
-                        mShowAlert("Please select tehsil!", ACTRoutPlanForm.this);
-                        return;
-                    }else if(mStrBlock.equals("BLOCK")){
-                        mShowAlert("Please select block!", ACTRoutPlanForm.this);
-                        return;
-                    }else if(mStrVillage.length()<=0){
-                        mShowAlert("Please enter village name!", ACTRoutPlanForm.this);
-                        return;
-                    }else if(mStrKiloMeter.length()<=0){
-                        mShowAlert("Please enter kilo meter!", ACTRoutPlanForm.this);
-                        return;
-                    }else if(mStrSope.equals("No") && mStrImgOne.length()<=0){
-                        mShowAlert("Please add a picture!", ACTRoutPlanForm.this);
-                        return;
+                        showProgress(ACTRoutPlanForm.this);
+                        mFunEnterForm();
+                    }else {
+                        if(mStrState.equals("STATE")){
+                            mShowAlert("Please select state!", ACTRoutPlanForm.this);
+                            return;
+                        }else if(mStrDistrict.equals("DISTRICT")){
+                            mShowAlert("Please select district!", ACTRoutPlanForm.this);
+                            return;
+                        }else if(mStrTehsil.equals("TEHSIL")){
+                            mShowAlert("Please select tehsil!", ACTRoutPlanForm.this);
+                            return;
+                        }else if(mStrBlock.equals("BLOCK")){
+                            mShowAlert("Please select block!", ACTRoutPlanForm.this);
+                            return;
+                        }else if(mStrVillage.length()<=0){
+                            mShowAlert("Please enter village name!", ACTRoutPlanForm.this);
+                            return;
+                        }else if(mStrKiloMeter.length()<=0){
+                            mShowAlert("Please enter kilo meter!", ACTRoutPlanForm.this);
+                            return;
+                        }
+                        else if( mStrImgOne.equals("")){
+                            mShowAlert("Please add a picture!", ACTRoutPlanForm.this);
+                            return;
+                        }
+                        showProgress(ACTRoutPlanForm.this);
+                        // mFunEnterForm();
+                        mFunEnterFormEdit();
                     }
-                    showProgress(ACTRoutPlanForm.this);
-                    mFunEnterForm();
-                }else {
-                    if(mStrState.equals("STATE")){
-                        mShowAlert("Please select state!", ACTRoutPlanForm.this);
-                        return;
-                    }else if(mStrDistrict.equals("DISTRICT")){
-                        mShowAlert("Please select district!", ACTRoutPlanForm.this);
-                        return;
-                    }else if(mStrTehsil.equals("TEHSIL")){
-                        mShowAlert("Please select tehsil!", ACTRoutPlanForm.this);
-                        return;
-                    }else if(mStrBlock.equals("BLOCK")){
-                        mShowAlert("Please select block!", ACTRoutPlanForm.this);
-                        return;
-                    }else if(mStrVillage.length()<=0){
-                        mShowAlert("Please enter village name!", ACTRoutPlanForm.this);
-                        return;
-                    }else if(mStrKiloMeter.length()<=0){
-                        mShowAlert("Please enter kilo meter!", ACTRoutPlanForm.this);
-                        return;
-                    }
-                    showProgress(ACTRoutPlanForm.this);
-                    mFunEnterFormEdit();
+
+
+                } else {
+                    mShowAlert( getResources().getString(R.string.net_connection),ACTRoutPlanForm.this);
                 }
 
 
@@ -526,7 +558,9 @@ public class ACTRoutPlanForm extends Activity {
                                 mShowAlert("You have successfully submitted!!", ACTRoutPlanForm.this);
                                 finish();
                             } else {
-                                mShowAlert("Something went wrong!!", ACTRoutPlanForm.this);
+                                mShowAlert(response.getString("message"), ACTRoutPlanForm.this);
+
+                               // mShowAlert("Something went wrong!!", ACTRoutPlanForm.this);
                             }
                         } catch (JSONException e) {
                             e.printStackTrace();
@@ -565,7 +599,7 @@ public class ACTRoutPlanForm extends Activity {
             }
         };
         strRequest.setRetryPolicy(new DefaultRetryPolicy(
-                5000,
+                9000,
                 DefaultRetryPolicy.DEFAULT_MAX_RETRIES,
                 DefaultRetryPolicy.DEFAULT_BACKOFF_MULT));
         queue.add(strRequest);
@@ -584,7 +618,9 @@ public class ACTRoutPlanForm extends Activity {
                                 mShowAlert("You have successfully Updated!!", ACTRoutPlanForm.this);
                                 finish();
                             } else {
-                                mShowAlert("Something went wrong!!", ACTRoutPlanForm.this);
+                                mShowAlert(response.getString("message"), ACTRoutPlanForm.this);
+
+                                // mShowAlert("Something went wrong!!", ACTRoutPlanForm.this);
                             }
                         } catch (JSONException e) {
                             e.printStackTrace();
@@ -616,11 +652,12 @@ public class ACTRoutPlanForm extends Activity {
                 params.put("kilometer", mStrKiloMeter);
                 params.put("user_travel_id", mStrRawTravelId);
                 System.out.println("<><><>## "+params);
+                //params.put("image", "data:image/png;base64,"+mStrImgOne);
                 return params;
             }
         };
         strRequest.setRetryPolicy(new DefaultRetryPolicy(
-                5000,
+                9000,
                 DefaultRetryPolicy.DEFAULT_MAX_RETRIES,
                 DefaultRetryPolicy.DEFAULT_BACKOFF_MULT));
         queue.add(strRequest);
@@ -645,8 +682,8 @@ public class ACTRoutPlanForm extends Activity {
 
     private Bitmap writeTextOnDrawable(Bitmap bm, String mStrDate) {
         bm = bm.copy(Bitmap.Config.ARGB_8888, true);
-        int width = 400;
-        int height = 600;//Math.round(width / aspectRatio);
+        int width = 600;
+        int height = 800;//Math.round(width / aspectRatio);
         bm = Bitmap.createScaledBitmap(bm, width, height, false);
         Canvas canvas = new Canvas(bm);
         canvas.drawBitmap(bm, new Matrix(), null);

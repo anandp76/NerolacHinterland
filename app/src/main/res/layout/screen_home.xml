@@ -62,32 +62,33 @@
                 android:background="#d7d7d7" />
 
             <LinearLayout
-                android:layout_below="@+id/viesr"
-                android:orientation="vertical"
                 android:layout_width="match_parent"
-                android:layout_height="match_parent">
+                android:layout_height="match_parent"
+                android:layout_below="@+id/viesr"
+                android:orientation="vertical">
 
                 <RelativeLayout
                     android:id="@+id/mLayoutDashbord"
-                    android:padding="8dp"
                     android:layout_width="match_parent"
-                    android:layout_height="wrap_content">
+                    android:layout_height="wrap_content"
+                    android:padding="8dp">
 
                     <TextView
-                        android:layout_centerVertical="true"
-                        android:textColor="@color/appblue"
-                        android:textSize="16dp"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:text="Dashbord"/>
+                        android:layout_centerVertical="true"
+                        android:text="Dashbord"
+                        android:textColor="@color/appblue"
+                        android:textSize="16dp" />
 
                     <ImageView
-                        android:src="@drawable/ic_forwaord"
-                        android:layout_alignParentRight="true"
                         android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"/>
+                        android:layout_height="wrap_content"
+                        android:layout_alignParentRight="true"
+                        android:src="@drawable/ic_forwaord" />
 
                 </RelativeLayout>
+
                 <View
                     android:layout_width="match_parent"
                     android:layout_height="1dp"
@@ -95,25 +96,26 @@
 
                 <RelativeLayout
                     android:id="@+id/mLayoutRetailer"
-                    android:padding="8dp"
                     android:layout_width="match_parent"
-                    android:layout_height="wrap_content">
+                    android:layout_height="wrap_content"
+                    android:padding="8dp">
 
                     <TextView
-                        android:layout_centerVertical="true"
-                        android:textColor="@color/appblue"
-                        android:textSize="16dp"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:text="Dealer"/>
+                        android:layout_centerVertical="true"
+                        android:text="Dealer"
+                        android:textColor="@color/appblue"
+                        android:textSize="16dp" />
 
                     <ImageView
-                        android:src="@drawable/ic_forwaord"
-                        android:layout_alignParentRight="true"
                         android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"/>
+                        android:layout_height="wrap_content"
+                        android:layout_alignParentRight="true"
+                        android:src="@drawable/ic_forwaord" />
 
                 </RelativeLayout>
+
                 <View
                     android:layout_width="match_parent"
                     android:layout_height="1dp"
@@ -121,25 +123,26 @@
 
                 <RelativeLayout
                     android:id="@+id/mLayoutProspects"
-                    android:padding="8dp"
                     android:layout_width="match_parent"
-                    android:layout_height="wrap_content">
+                    android:layout_height="wrap_content"
+                    android:padding="8dp">
 
                     <TextView
-                        android:layout_centerVertical="true"
-                        android:textColor="@color/appblue"
-                        android:textSize="16dp"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:text="D. Prospects"/>
+                        android:layout_centerVertical="true"
+                        android:text="D. Prospects"
+                        android:textColor="@color/appblue"
+                        android:textSize="16dp" />
 
                     <ImageView
-                        android:src="@drawable/ic_forwaord"
-                        android:layout_alignParentRight="true"
                         android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"/>
+                        android:layout_height="wrap_content"
+                        android:layout_alignParentRight="true"
+                        android:src="@drawable/ic_forwaord" />
 
                 </RelativeLayout>
+
                 <View
                     android:layout_width="match_parent"
                     android:layout_height="1dp"
@@ -147,25 +150,26 @@
 
                 <RelativeLayout
                     android:id="@+id/mLayoutOrder"
-                    android:padding="8dp"
                     android:layout_width="match_parent"
-                    android:layout_height="wrap_content">
+                    android:layout_height="wrap_content"
+                    android:padding="8dp">
 
                     <TextView
-                        android:layout_centerVertical="true"
-                        android:textColor="@color/appblue"
-                        android:textSize="16dp"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:text="Order"/>
+                        android:layout_centerVertical="true"
+                        android:text="Order"
+                        android:textColor="@color/appblue"
+                        android:textSize="16dp" />
 
                     <ImageView
-                        android:src="@drawable/ic_forwaord"
-                        android:layout_alignParentRight="true"
                         android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"/>
+                        android:layout_height="wrap_content"
+                        android:layout_alignParentRight="true"
+                        android:src="@drawable/ic_forwaord" />
 
                 </RelativeLayout>
+
                 <View
                     android:layout_width="match_parent"
                     android:layout_height="1dp"
@@ -173,23 +177,23 @@
 
                 <RelativeLayout
                     android:id="@+id/mLayoutTravelLog"
-                    android:padding="8dp"
                     android:layout_width="match_parent"
-                    android:layout_height="wrap_content">
+                    android:layout_height="wrap_content"
+                    android:padding="8dp">
 
                     <TextView
-                        android:layout_centerVertical="true"
-                        android:textColor="@color/appblue"
-                        android:textSize="16dp"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:text="Travel Log"/>
+                        android:layout_centerVertical="true"
+                        android:text="Travel Log"
+                        android:textColor="@color/appblue"
+                        android:textSize="16dp" />
 
                     <ImageView
-                        android:src="@drawable/ic_forwaord"
-                        android:layout_alignParentRight="true"
                         android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"/>
+                        android:layout_height="wrap_content"
+                        android:layout_alignParentRight="true"
+                        android:src="@drawable/ic_forwaord" />
 
                 </RelativeLayout>
 
@@ -200,23 +204,23 @@
 
                 <RelativeLayout
                     android:id="@+id/mLayoutPendingTask"
-                    android:padding="8dp"
                     android:layout_width="match_parent"
-                    android:layout_height="wrap_content">
+                    android:layout_height="wrap_content"
+                    android:padding="8dp">
 
                     <TextView
-                        android:layout_centerVertical="true"
-                        android:textColor="@color/appblue"
-                        android:textSize="16dp"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:text="Pending Task"/>
+                        android:layout_centerVertical="true"
+                        android:text="Pending Task"
+                        android:textColor="@color/appblue"
+                        android:textSize="16dp" />
 
                     <ImageView
-                        android:src="@drawable/ic_forwaord"
-                        android:layout_alignParentRight="true"
                         android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"/>
+                        android:layout_height="wrap_content"
+                        android:layout_alignParentRight="true"
+                        android:src="@drawable/ic_forwaord" />
 
                 </RelativeLayout>
 
@@ -227,25 +231,26 @@
 
                 <RelativeLayout
                     android:id="@+id/mLayoutRoutePlan"
-                    android:padding="8dp"
                     android:layout_width="match_parent"
-                    android:layout_height="wrap_content">
+                    android:layout_height="wrap_content"
+                    android:padding="8dp">
 
                     <TextView
-                        android:layout_centerVertical="true"
-                        android:textColor="@color/appblue"
-                        android:textSize="16dp"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:text="Route Plan"/>
+                        android:layout_centerVertical="true"
+                        android:text="Route Plan"
+                        android:textColor="@color/appblue"
+                        android:textSize="16dp" />
 
                     <ImageView
-                        android:src="@drawable/ic_forwaord"
-                        android:layout_alignParentRight="true"
                         android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"/>
+                        android:layout_height="wrap_content"
+                        android:layout_alignParentRight="true"
+                        android:src="@drawable/ic_forwaord" />
 
                 </RelativeLayout>
+
                 <View
                     android:layout_width="match_parent"
                     android:layout_height="1dp"
@@ -253,25 +258,26 @@
 
                 <RelativeLayout
                     android:id="@+id/mLayoutAttendance"
-                    android:padding="8dp"
                     android:layout_width="match_parent"
-                    android:layout_height="wrap_content">
+                    android:layout_height="wrap_content"
+                    android:padding="8dp">
 
                     <TextView
-                        android:layout_centerVertical="true"
-                        android:textColor="@color/appblue"
-                        android:textSize="16dp"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:text="Attendance"/>
+                        android:layout_centerVertical="true"
+                        android:text="Attendance"
+                        android:textColor="@color/appblue"
+                        android:textSize="16dp" />
 
                     <ImageView
-                        android:src="@drawable/ic_forwaord"
-                        android:layout_alignParentRight="true"
                         android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"/>
+                        android:layout_height="wrap_content"
+                        android:layout_alignParentRight="true"
+                        android:src="@drawable/ic_forwaord" />
 
                 </RelativeLayout>
+
                 <View
                     android:layout_width="match_parent"
                     android:layout_height="1dp"
@@ -279,25 +285,26 @@
 
                 <RelativeLayout
                     android:id="@+id/mLayoutHandbook"
-                    android:padding="8dp"
                     android:layout_width="match_parent"
-                    android:layout_height="wrap_content">
+                    android:layout_height="wrap_content"
+                    android:padding="8dp">
 
                     <TextView
-                        android:layout_centerVertical="true"
-                        android:textColor="@color/appblue"
-                        android:textSize="16dp"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:text="Handbook"/>
+                        android:layout_centerVertical="true"
+                        android:text="Handbook"
+                        android:textColor="@color/appblue"
+                        android:textSize="16dp" />
 
                     <ImageView
-                        android:src="@drawable/ic_forwaord"
-                        android:layout_alignParentRight="true"
                         android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"/>
+                        android:layout_height="wrap_content"
+                        android:layout_alignParentRight="true"
+                        android:src="@drawable/ic_forwaord" />
 
                 </RelativeLayout>
+
                 <View
                     android:layout_width="match_parent"
                     android:layout_height="1dp"
@@ -305,25 +312,26 @@
 
                 <RelativeLayout
                     android:id="@+id/mLayoutInbox"
-                    android:padding="8dp"
                     android:layout_width="match_parent"
-                    android:layout_height="wrap_content">
+                    android:layout_height="wrap_content"
+                    android:padding="8dp">
 
                     <TextView
-                        android:layout_centerVertical="true"
-                        android:textColor="@color/appblue"
-                        android:textSize="16dp"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:text="Inbox"/>
+                        android:layout_centerVertical="true"
+                        android:text="Inbox"
+                        android:textColor="@color/appblue"
+                        android:textSize="16dp" />
 
                     <ImageView
-                        android:src="@drawable/ic_forwaord"
-                        android:layout_alignParentRight="true"
                         android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"/>
+                        android:layout_height="wrap_content"
+                        android:layout_alignParentRight="true"
+                        android:src="@drawable/ic_forwaord" />
 
                 </RelativeLayout>
+
                 <View
                     android:layout_width="match_parent"
                     android:layout_height="1dp"
@@ -332,25 +340,26 @@
 
                 <RelativeLayout
                     android:id="@+id/mLayoutChangePassword"
-                    android:padding="8dp"
                     android:layout_width="match_parent"
-                    android:layout_height="wrap_content">
+                    android:layout_height="wrap_content"
+                    android:padding="8dp">
 
                     <TextView
-                        android:layout_centerVertical="true"
-                        android:textColor="@color/appblue"
-                        android:textSize="16dp"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:text="Change Password"/>
+                        android:layout_centerVertical="true"
+                        android:text="Change Password"
+                        android:textColor="@color/appblue"
+                        android:textSize="16dp" />
 
                     <ImageView
-                        android:src="@drawable/ic_forwaord"
-                        android:layout_alignParentRight="true"
                         android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"/>
+                        android:layout_height="wrap_content"
+                        android:layout_alignParentRight="true"
+                        android:src="@drawable/ic_forwaord" />
 
                 </RelativeLayout>
+
                 <View
                     android:layout_width="match_parent"
                     android:layout_height="1dp"
@@ -358,52 +367,55 @@
 
                 <RelativeLayout
                     android:id="@+id/mLayoutLogout"
-                    android:padding="8dp"
                     android:layout_width="match_parent"
-                    android:layout_height="wrap_content">
+                    android:layout_height="wrap_content"
+                    android:padding="8dp">
 
                     <TextView
-                        android:layout_centerVertical="true"
-                        android:textColor="@color/appblue"
-                        android:textSize="16dp"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:text="Logout"/>
+                        android:layout_centerVertical="true"
+                        android:text="Logout"
+                        android:textColor="@color/appblue"
+                        android:textSize="16dp" />
 
                     <ImageView
-                        android:src="@drawable/ic_forwaord"
-                        android:layout_alignParentRight="true"
                         android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"/>
+                        android:layout_height="wrap_content"
+                        android:layout_alignParentRight="true"
+                        android:src="@drawable/ic_forwaord" />
 
                 </RelativeLayout>
+
                 <View
                     android:layout_width="match_parent"
                     android:layout_height="1dp"
                     android:background="#d7d7d7" />
+
                 <RelativeLayout
-                    android:padding="8dp"
                     android:layout_width="match_parent"
-                    android:layout_height="wrap_content">
+                    android:layout_height="wrap_content"
+                    android:padding="8dp">
 
                     <TextView
                         android:id="@+id/vierssion"
-                        android:layout_centerHorizontal="true"
-                        android:layout_centerVertical="true"
-                        android:textColor="@color/appblue"
-                        android:textSize="11dp"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:text="Version 3.32"/>
+                        android:layout_centerHorizontal="true"
+                        android:layout_centerVertical="true"
+                        android:text="Version 3.42"
+                        android:textColor="@color/appblue"
+                        android:textSize="11dp" />
 
                     <ImageView
-                        android:visibility="gone"
-                        android:src="@drawable/ic_forwaord"
-                        android:layout_alignParentRight="true"
                         android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"/>
+                        android:layout_height="wrap_content"
+                        android:layout_alignParentRight="true"
+                        android:src="@drawable/ic_forwaord"
+                        android:visibility="gone" />
 
                 </RelativeLayout>
+
                 <View
                     android:layout_width="match_parent"
                     android:layout_height="1dp"

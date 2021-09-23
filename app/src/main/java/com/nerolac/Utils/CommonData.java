@@ -5,6 +5,8 @@ import android.app.ProgressDialog;
 import android.content.Context;
 import android.graphics.Color;
 import android.graphics.drawable.ColorDrawable;
+import android.net.ConnectivityManager;
+import android.net.NetworkInfo;
 import android.os.Build;
 import android.os.Handler;
 import android.text.format.DateFormat;
@@ -162,6 +164,20 @@ public class CommonData {
         SimpleDateFormat df = new SimpleDateFormat("MMM dd, yyyy HH:mm a");
         String formattedDate = df.format(c);
         return formattedDate;
+    }
+    public static boolean isNetworkConnected(Context context) {
+        ConnectivityManager connectivity =
+                (ConnectivityManager) context.getSystemService(Context.CONNECTIVITY_SERVICE);
+        if (connectivity != null) {
+            NetworkInfo[] info = connectivity.getAllNetworkInfo();
+            if (info != null) {
+                for (NetworkInfo networkInfo : info)
+                    if (networkInfo.getState() == NetworkInfo.State.CONNECTED) {
+                        return true;
+                    }
+            }
+        }
+        return false;
     }
 
     public static boolean CheckCurrentDate(String mStrDate) {

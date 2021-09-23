@@ -286,6 +286,7 @@ public class ACTPendingUpload extends Fragment {
                 params.put("remark", retailers.getTbRemark());
                 params.put("outlet_type", retailers.getTbOutletType());
                 params.put("paint_available", retailers.getTbPaintAvail());
+                params.put("fld_did", "0");
                 if(retailers.getTbPainterNameOne() != null && !retailers.getTbPainterNameOne().isEmpty()){
                 params.put("painter1", retailers.getTbPainterNameOne()+","+retailers.getTbPainterExperienceOne()+","+retailers.getTbPainterEducationOne()+","+retailers.getTbPainterPhoneOne());
                 }
@@ -354,7 +355,7 @@ public class ACTPendingUpload extends Fragment {
             }
         };
         strRequest.setRetryPolicy(new DefaultRetryPolicy(
-                5000,
+                9000,
                 DefaultRetryPolicy.DEFAULT_MAX_RETRIES,
                 DefaultRetryPolicy.DEFAULT_BACKOFF_MULT));
         queue.add(strRequest);
@@ -475,6 +476,7 @@ public class ACTPendingUpload extends Fragment {
                 params.put("remark", retailers.getTbRemark());
                 params.put("outlet_type", retailers.getTbOutletType());
                 params.put("paint_available", retailers.getTbPaintAvail());
+                params.put("fld_did", "0");
                 if(retailers.getTbPainterNameOne() != null && !retailers.getTbPainterNameOne().isEmpty()){
                     params.put("painter1", retailers.getTbPainterNameOne()+","+retailers.getTbPainterExperienceOne()+","+retailers.getTbPainterEducationOne()+","+retailers.getTbPainterPhoneOne());
                 }
@@ -520,7 +522,7 @@ public class ACTPendingUpload extends Fragment {
             }
         };
         strRequest.setRetryPolicy(new DefaultRetryPolicy(
-                5000,
+                9000,
                 DefaultRetryPolicy.DEFAULT_MAX_RETRIES,
                 DefaultRetryPolicy.DEFAULT_BACKOFF_MULT));
         queue.add(strRequest);

@@ -661,7 +661,7 @@
 
                     <EditText
                         android:maxLength="10"
-                        android:inputType="phone"
+                        android:inputType="textCapWords"
                         android:id="@+id/mEditSourceLocation1"
                         android:layout_marginLeft="5dp"
                         android:layout_weight="1"
@@ -750,7 +750,7 @@
 
                     <EditText
                         android:maxLength="10"
-                        android:inputType="phone"
+                        android:inputType="textCapWords"
                         android:id="@+id/mEditSourceLocation2"
                         android:layout_marginLeft="5dp"
                         android:layout_weight="1"
@@ -839,7 +839,7 @@
 
                     <EditText
                         android:maxLength="10"
-                        android:inputType="phone"
+                        android:inputType="textCapWords"
                         android:id="@+id/mEditSourceLocation3"
                         android:layout_marginLeft="5dp"
                         android:layout_weight="1"
@@ -928,7 +928,7 @@
 
                     <EditText
                         android:maxLength="10"
-                        android:inputType="phone"
+                        android:inputType="textCapWords"
                         android:id="@+id/mEditSourceLocation4"
                         android:layout_marginLeft="5dp"
                         android:layout_weight="1"
@@ -1490,12 +1490,12 @@
                     android:layout_height="90dp">
 
                     <ImageView
-                        android:scaleType="fitXY"
                         android:id="@+id/mImgOne"
-                        android:layout_centerInParent="true"
-                        android:src="@drawable/ic_nero_add_img"
                         android:layout_width="match_parent"
-                        android:layout_height="match_parent"/>
+                        android:layout_height="match_parent"
+                        android:layout_centerInParent="true"
+                        android:scaleType="fitXY"
+                        android:src="@drawable/ic_nero_add_img" />
 
                 </RelativeLayout>
 

@@ -10,8 +10,10 @@ import android.content.IntentSender;
 import android.content.pm.PackageManager;
 import android.location.Location;
 import android.location.LocationManager;
+import android.net.Uri;
 import android.os.Bundle;
 import android.os.Handler;
+import android.provider.Settings;
 import android.util.Log;
 import android.view.View;
 import android.view.ViewGroup;
@@ -109,6 +111,7 @@ public class ScreenNerolacHome extends AppCompatActivity implements
     LocationRequest mLocationRequest;
     Handler handler;
     LocationManager manager;
+    Context mContext;
     private static final int PERMISSION_REQUEST_CODE = 200;
 
     @Override
@@ -132,7 +135,7 @@ public class ScreenNerolacHome extends AppCompatActivity implements
         mLayoutRoutePlan = (RelativeLayout) findViewById(R.id.mLayoutRoutePlan);
         mLayoutDashbord = (RelativeLayout) findViewById(R.id.mLayoutDashbord);
         mLayoutPendingTask = (RelativeLayout) findViewById(R.id.mLayoutPendingTask);
-
+mContext = ScreenNerolacHome.this;
         txtProfileName = (TextView) findViewById(R.id.txtProfileName);
         profileView = (RelativeLayout) findViewById(R.id.profileView);
 
@@ -147,9 +150,13 @@ public class ScreenNerolacHome extends AppCompatActivity implements
         } else
             Toast.makeText(this, "Not Connected!", Toast.LENGTH_SHORT).show();
 
-
-
-        profileView.setOnClickListener(new View.OnClickListener() {
+        if (ContextCompat.checkSelfPermission(mContext, Manifest.permission.CAMERA) != PackageManager.PERMISSION_GRANTED  && ContextCompat.checkSelfPermission(mContext, Manifest.permission.WRITE_EXTERNAL_STORAGE) != PackageManager.PERMISSION_GRANTED &&  ContextCompat.checkSelfPermission(mContext, Manifest.permission.ACCESS_FINE_LOCATION) != PackageManager.PERMISSION_GRANTED ) {
+            Intent intent = new Intent(Settings.ACTION_APPLICATION_DETAILS_SETTINGS);
+            Uri uri = Uri.fromParts("package", getPackageName(), null);
+            intent.setData(uri);
+            startActivity(intent);
+        }
+            profileView.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 mDrawerLayout.closeDrawer(GravityCompat.START);

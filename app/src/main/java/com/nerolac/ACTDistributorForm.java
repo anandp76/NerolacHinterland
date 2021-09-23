@@ -1,17 +1,22 @@
 package com.nerolac;
 
 
+import android.Manifest;
 import android.app.Activity;
+import android.content.Context;
 import android.content.Intent;
+import android.content.pm.PackageManager;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 import android.graphics.Canvas;
 import android.graphics.Color;
 import android.graphics.Matrix;
 import android.graphics.Typeface;
+import android.net.Uri;
 import android.os.Bundle;
 import android.os.Environment;
 import android.os.Handler;
+import android.provider.Settings;
 import android.text.Editable;
 import android.text.TextUtils;
 import android.text.TextWatcher;
@@ -32,6 +37,8 @@ import android.widget.RadioGroup;
 import android.widget.RelativeLayout;
 import android.widget.Spinner;
 import android.widget.TextView;
+
+import androidx.core.content.ContextCompat;
 
 import com.android.volley.AuthFailureError;
 import com.android.volley.DefaultRetryPolicy;
@@ -263,8 +270,8 @@ public class ACTDistributorForm extends Activity {
     ImageView mImgTwo;
     ImageView mImgThree;
     ImageView mImgView;
-    String mStrImgOne;
-    String mStrImgTwo;
+    String mStrImgOne = "";
+    String mStrImgTwo = "";
     String mStrImgThree;
     String mStrReDelivery;
 
@@ -280,7 +287,7 @@ public class ACTDistributorForm extends Activity {
     FlowLayout mLayoutDelivery;
     ArrayList<String> mListPaintDelivery = new ArrayList<String>();
     ArrayList<String> mListResultDelivery = new ArrayList<String>();
-
+    Context mContext;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -288,6 +295,7 @@ public class ACTDistributorForm extends Activity {
         setContentView(R.layout.activity_form_distributor);
         database = new Database(ACTDistributorForm.this);
         queue = Volley.newRequestQueue(ACTDistributorForm.this);
+        mContext = ACTDistributorForm.this;
         setTranceprent(ACTDistributorForm.this,R.color.appblue);
         mLayoutDelivery = (FlowLayout) findViewById(R.id.mLayoutDelivery);
         mSpinnerBrand1 = (Spinner)findViewById(R.id.mSpinnerBrand1);
@@ -648,27 +656,48 @@ public class ACTDistributorForm extends Activity {
         mImgOne.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                mImgView = mImgOne;
-                Intent intent = new Intent(android.provider.MediaStore.ACTION_IMAGE_CAPTURE);
-                startActivityForResult(intent, 200);
+                if (ContextCompat.checkSelfPermission(mContext, Manifest.permission.CAMERA) != PackageManager.PERMISSION_GRANTED  && ContextCompat.checkSelfPermission(mContext, Manifest.permission.WRITE_EXTERNAL_STORAGE) != PackageManager.PERMISSION_GRANTED &&  ContextCompat.checkSelfPermission(mContext, Manifest.permission.ACCESS_FINE_LOCATION) != PackageManager.PERMISSION_GRANTED ) {
+                    Intent intent = new Intent(Settings.ACTION_APPLICATION_DETAILS_SETTINGS);
+                    Uri uri = Uri.fromParts("package", getPackageName(), null);
+                    intent.setData(uri);
+                    startActivity(intent);
+                }else {
+                    mImgView = mImgOne;
+                    Intent intent = new Intent(android.provider.MediaStore.ACTION_IMAGE_CAPTURE);
+                    startActivityForResult(intent, 200);
+                }
             }
         });
 
         mImgTwo.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                mImgView = mImgTwo;
-                Intent intent = new Intent(android.provider.MediaStore.ACTION_IMAGE_CAPTURE);
-                startActivityForResult(intent, 300);
+                if (ContextCompat.checkSelfPermission(mContext, Manifest.permission.CAMERA) != PackageManager.PERMISSION_GRANTED  && ContextCompat.checkSelfPermission(mContext, Manifest.permission.WRITE_EXTERNAL_STORAGE) != PackageManager.PERMISSION_GRANTED &&  ContextCompat.checkSelfPermission(mContext, Manifest.permission.ACCESS_FINE_LOCATION) != PackageManager.PERMISSION_GRANTED ) {
+                    Intent intent = new Intent(Settings.ACTION_APPLICATION_DETAILS_SETTINGS);
+                    Uri uri = Uri.fromParts("package", getPackageName(), null);
+                    intent.setData(uri);
+                    startActivity(intent);
+                }else {
+                    mImgView = mImgTwo;
+                    Intent intent = new Intent(android.provider.MediaStore.ACTION_IMAGE_CAPTURE);
+                    startActivityForResult(intent, 300);
+                }
             }
         });
 
         mImgThree.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                mImgView = mImgThree;
-                Intent intent = new Intent(android.provider.MediaStore.ACTION_IMAGE_CAPTURE);
-                startActivityForResult(intent, 400);
+                if (ContextCompat.checkSelfPermission(mContext, Manifest.permission.CAMERA) != PackageManager.PERMISSION_GRANTED  && ContextCompat.checkSelfPermission(mContext, Manifest.permission.WRITE_EXTERNAL_STORAGE) != PackageManager.PERMISSION_GRANTED &&  ContextCompat.checkSelfPermission(mContext, Manifest.permission.ACCESS_FINE_LOCATION) != PackageManager.PERMISSION_GRANTED ) {
+                    Intent intent = new Intent(Settings.ACTION_APPLICATION_DETAILS_SETTINGS);
+                    Uri uri = Uri.fromParts("package", getPackageName(), null);
+                    intent.setData(uri);
+                    startActivity(intent);
+                }else {
+                    mImgView = mImgThree;
+                    Intent intent = new Intent(android.provider.MediaStore.ACTION_IMAGE_CAPTURE);
+                    startActivityForResult(intent, 400);
+                }
             }
         });
 
@@ -857,6 +886,14 @@ public class ACTDistributorForm extends Activity {
                     mShowAlert("Please enter prospect!",ACTDistributorForm.this);
                     return;
                 }
+                else if(mStrImgOne.equals("")){
+                    mShowAlert("Please select first two Images!",ACTDistributorForm.this);
+                    return;
+                }
+                else if(mStrImgTwo.equals("")){
+                    mShowAlert("Please select first two Images!",ACTDistributorForm.this);
+                    return;
+                }
                 showProgress(ACTDistributorForm.this);
                 mFunEnterForm();
             }
@@ -977,7 +1014,7 @@ public class ACTDistributorForm extends Activity {
             }
         };
         strRequest.setRetryPolicy(new DefaultRetryPolicy(
-                5000,
+                8000,
                 DefaultRetryPolicy.DEFAULT_MAX_RETRIES,
                 DefaultRetryPolicy.DEFAULT_BACKOFF_MULT));
         queue.add(strRequest);
@@ -996,7 +1033,7 @@ public class ACTDistributorForm extends Activity {
             bitmap = writeTextOnDrawable(bitmap,getTimeformat());
             bitmap.compress(Bitmap.CompressFormat.JPEG, 70, baos);
             bitmap1 = bitmap;
-            mImgView.setImageBitmap(bitmap);
+            mImgOne.setImageBitmap(bitmap);
             mStrImgOne = ImageUtil.convert(bitmap);
         }else if (resultCode == RESULT_OK && requestCode == 300) {
             Bitmap bitmap = (Bitmap) data.getExtras().get("data");
@@ -1005,8 +1042,8 @@ public class ACTDistributorForm extends Activity {
             options.inPreferredConfig = Bitmap.Config.ARGB_8888;
             bitmap = writeTextOnDrawable(bitmap,getTimeformat());
             bitmap.compress(Bitmap.CompressFormat.JPEG, 70, baos);
-            bitmap1 = bitmap;
-            mImgView.setImageBitmap(bitmap);
+            bitmap2 = bitmap;
+            mImgTwo.setImageBitmap(bitmap);
             mStrImgTwo = ImageUtil.convert(bitmap);
 
         }else if (resultCode == RESULT_OK && requestCode == 400) {
@@ -1016,8 +1053,8 @@ public class ACTDistributorForm extends Activity {
             options.inPreferredConfig = Bitmap.Config.ARGB_8888;
             bitmap = writeTextOnDrawable(bitmap,getTimeformat());
             bitmap.compress(Bitmap.CompressFormat.JPEG, 70, baos);
-            bitmap1 = bitmap;
-            mImgView.setImageBitmap(bitmap);
+            bitmap3 = bitmap;
+            mImgThree.setImageBitmap(bitmap);
             mStrImgThree = ImageUtil.convert(bitmap);
         }
 
@@ -1044,8 +1081,8 @@ public class ACTDistributorForm extends Activity {
 
     private Bitmap writeTextOnDrawable(Bitmap bm, String mStrDate) {
         bm = bm.copy(Bitmap.Config.ARGB_8888, true);
-        int width = 400;
-        int height = 600;//Math.round(width / aspectRatio);
+        int width = 600;
+        int height = 800;//Math.round(width / aspectRatio);
         bm = Bitmap.createScaledBitmap(bm, width, height, false);
         Canvas canvas = new Canvas(bm);
         canvas.drawBitmap(bm, new Matrix(), null);

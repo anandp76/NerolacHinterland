@@ -106,7 +106,7 @@
                 android:id="@+id/remove"
                 android:layout_below="@+id/prize"
                 android:textColor="@color/appblue"
-                android:text="Remove Item"
+                android:text="@string/RemoveItem"
                 android:textSize="16dp"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"/>
