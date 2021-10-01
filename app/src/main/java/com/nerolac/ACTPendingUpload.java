@@ -322,6 +322,8 @@ public class ACTPendingUpload extends Fragment {
                 }
 
 
+                
+
                 if(retailers.getTbImgOne() != null && !retailers.getTbImgOne().isEmpty()){
                     params.put("image1","data:image/png;base64,"+mStrImgOne);
                 }
