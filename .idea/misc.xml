@@ -3,11 +3,29 @@
   <component name="DesignSurface">
     <option name="filePathToZoomLevelMap">
       <map>
+        <entry key="../../../../../layout/custom_preview.xml" value="0.1421875" />
+        <entry key="app/src/main/res/drawable/border_rectangle_shap.xml" value="0.13177083333333334" />
+        <entry key="app/src/main/res/layout/activity_actaddvisit_log.xml" value="0.11322188449848024" />
+        <entry key="app/src/main/res/layout/activity_bar_retailers_distributor.xml" value="0.11322188449848024" />
         <entry key="app/src/main/res/layout/activity_form.xml" value="0.11322188449848024" />
+        <entry key="app/src/main/res/layout/activity_form_anaj_mandi.xml" value="0.25" />
+        <entry key="app/src/main/res/layout/activity_form_asha_bahu.xml" value="0.11322188449848024" />
+        <entry key="app/src/main/res/layout/activity_form_distributor.xml" value="0.11322188449848024" />
+        <entry key="app/src/main/res/layout/activity_form_sarpanch.xml" value="0.16530797101449277" />
+        <entry key="app/src/main/res/layout/activity_haatmarket_list_item.xml" value="0.5" />
+        <entry key="app/src/main/res/layout/activity_list_attendence.xml" value="0.115625" />
+        <entry key="app/src/main/res/layout/activity_list_diler_order.xml" value="0.1" />
+        <entry key="app/src/main/res/layout/activity_list_distributor.xml" value="0.10778985507246377" />
+        <entry key="app/src/main/res/layout/activity_list_haatmarket.xml" value="0.115625" />
         <entry key="app/src/main/res/layout/activity_list_view_more.xml" value="0.11322188449848024" />
         <entry key="app/src/main/res/layout/activity_retailer_visit_list.xml" value="0.11322188449848024" />
         <entry key="app/src/main/res/layout/activity_rout_plan_form.xml" value="0.11322188449848024" />
+        <entry key="app/src/main/res/layout/addtocart_item.xml" value="0.11322188449848024" />
+        <entry key="app/src/main/res/layout/addvisitlayout.xml" value="0.11322188449848024" />
+        <entry key="app/src/main/res/layout/dashboard.xml" value="0.16530797101449277" />
         <entry key="app/src/main/res/layout/dashboard_two.xml" value="0.33" />
+        <entry key="app/src/main/res/layout/item_checkbox.xml" value="0.5" />
+        <entry key="app/src/main/res/layout/painter_item_layout.xml" value="0.11322188449848024" />
         <entry key="app/src/main/res/layout/screen_home.xml" value="0.11322188449848024" />
       </map>
     </option>

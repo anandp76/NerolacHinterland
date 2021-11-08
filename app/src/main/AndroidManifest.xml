@@ -20,7 +20,10 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme.NoActionBar"
         android:usesCleartextTraffic="true">
-        <activity android:name=".AddPainterActivity"></activity>
+        <activity
+            android:name=".ACTAddvisitLogActivity"
+             />
+        <activity android:name=".AddPainterActivity" />
         <activity android:name=".PainterActivity" />
         <activity android:name=".ViewOrdersummryActivity" />
         <activity android:name=".AddvisitActivity" />

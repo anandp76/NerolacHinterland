@@ -592,7 +592,7 @@
             android:textColor="@color/appblue"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="Powered by : Nebula Advertising Pvt. Ltd.  V 3.43"/>
+            android:text="Powered by : Nebula Advertising Pvt. Ltd.  V 3.44"/>
     </LinearLayout>
 
     </LinearLayout>

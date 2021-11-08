@@ -104,11 +104,19 @@ public class RetailerVisitListActivity extends Activity {
         tehsil = bundle.getString("tehsil");
         String titel = bundle.getString("shopname");
         pagetitel.setText(titel);
-        mFunGetMataData1();
+        mContext= RetailerVisitListActivity.this;
+      //  mFunGetMataData1();
         mImgAddNew.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                alertmessage();
+                //alertmessage();
+                Intent intent = new Intent(mContext, ACTAddvisitLogActivity.class);
+                intent.putExtra("retailerId", retailerId);
+                intent.putExtra("retailername", retailename);
+                intent.putExtra("shopname",titel);
+                intent.putExtra("vilage", vilage);
+                intent.putExtra("tehsil",tehsil);
+                startActivity(intent);
             }
         });
 //        update_location.setOnClickListener(new View.OnClickListener() {
@@ -236,6 +244,11 @@ public class RetailerVisitListActivity extends Activity {
 
 
 
+    @Override
+    protected void onResume() {
+        super.onResume();
+        mFunGetMataData1();
+    }
     public void mFunGetMataData1() {
         mListItem = new ArrayList<>();
         StringRequest strRequest = new StringRequest(Request.Method.POST,BaseUrl+"RetailerVisitList",
